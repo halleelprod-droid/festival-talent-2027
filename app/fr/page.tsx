@@ -2,8 +2,9 @@ import AnnouncementBar from "@/components/home/AnnouncementBar";
 import CountdownSection from "@/components/home/CountdownSection";
 import AboutSection from "@/components/home/AboutSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
+import PartnersSection from "@/components/home/PartnersSection";
 import FinalCTA from "@/components/home/FinalCTA";
-
+import ExperienceSection from "@/components/home/ExperienceSection";
 export default function FrPage() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
@@ -49,8 +50,15 @@ export default function FrPage() {
       </section>
 
       <CountdownSection />
+
       <AboutSection />
+
+<ExperienceSection />
+
       <WhyPartnerSection />
+
+      <PartnersSection />
+
       <FinalCTA />
 
       <div className="fixed bottom-6 left-6 z-40 text-xs text-white/50">
