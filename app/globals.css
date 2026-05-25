@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #050505;
+  color: #F5F0E8;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+/* SMOOTH */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* GLASS */
+
+.glass {
+  background: rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(24px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* GOLD */
+
+.text-gradient-gold {
+  background:
+    linear-gradient(
+      to right,
+      #C9A84C,
+      #f6df9b,
+      #C9A84C
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+/* =========================================
+   ULTRA PREMIUM GLOBAL STYLE
+========================================= */
+
+/* RESET */
+
+* {
+  box-sizing: border-box;
+}
+
+/* BODY */
+
+body {
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(201,168,76,0.08),
+      transparent 40%
+    ),
+    #050505;
+
+  color: #F5F0E8;
+}
+
+/* SELECTION */
+
+::selection {
+  background: #C9A84C;
+  color: black;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201,168,76,0.5);
+
+  border-radius: 999px;
+}
+
+/* LINKS */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* BUTTONS */
+
+button {
+  cursor: pointer;
+}
+
+/* IMAGES */
+
+img {
+  user-select: none;
+}
+
+/* VIDEO */
+
+video {
+  pointer-events: none;
+}
+
+/* SECTION SPACING */
+
+section {
+  position: relative;
+  z-index: 5;
+}
+
+/* PREMIUM CONTAINER */
+
+.container-premium {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+/* =========================================
+   SMOOTH SCROLL
+========================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* BETTER RENDERING */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* PREMIUM SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #C9A84C,
+    #ff7b00
+  );
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+/* =========================================
+   MOBILE OPTIMIZATION
+========================================= */
+
+@media (max-width: 768px) {
+  section {
+    overflow: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    word-break: break-word;
+  }
+
+  .glass {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  button {
+    min-height: 52px;
+  }
+}
+
+/* PREVENT HORIZONTAL SCROLL */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/* CINEMATIC GRADIENT */
+.hero-gradient {
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.55) 35%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+/* PREMIUM BLUR */
+.glass {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* GOLD GLOW */
+.gold-glow {
+  box-shadow:
+    0 0 40px rgba(201, 168, 76, 0.25),
+    0 0 120px rgba(201, 168, 76, 0.15);
+}
+
+/* HERO LIGHT */
+.hero-light {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(201, 168, 76, 0.14),
+      transparent 65%
+    );
+  pointer-events: none;
+}
+
+/* NOISE */
+.noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image:
+    url("https://grainy-gradients.vercel.app/noise.svg");
+}
