@@ -1,27 +1,25 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import "./globals.css";
 
-import './globals.css';
-
-import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider';
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: 'Festival Talent 2027',
-
+  title: "Festival Talent 2027",
   description:
-    'Festival Talent 2027 — Une expérience immersive internationale réunissant musique, mode, culture et innovation.'
+    "Le plus grand rassemblement culturel et créatif nouvelle génération au Sénégal.",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html lang="fr">
-      <body className="bg-black text-white antialiased">
-        <SmoothScrollProvider>
-          {children}
-        </SmoothScrollProvider>
+      <body className="bg-black text-white">
+        <Navbar />
+
+        {children}
       </body>
     </html>
   );
