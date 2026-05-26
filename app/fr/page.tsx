@@ -8,6 +8,7 @@ import StatsSection from "@/components/home/StatsSection";
 import MediaSection from "@/components/home/MediaSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
+import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
 
 export default function FrPage() {
@@ -71,6 +72,8 @@ export default function FrPage() {
       <WhyPartnerSection />
 
       <PartnersSection />
+
+      <SponsorsCTA />
 
       <FinalCTA />
 
