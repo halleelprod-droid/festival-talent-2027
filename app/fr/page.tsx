@@ -6,6 +6,7 @@ import ScheduleSection from "@/components/home/ScheduleSection";
 import ArtistsSection from "@/components/home/ArtistsSection";
 import StatsSection from "@/components/home/StatsSection";
 import MediaSection from "@/components/home/MediaSection";
+import GallerySection from "@/components/home/GallerySection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
@@ -105,6 +106,10 @@ export default function FrPage() {
 
       <FadeUp>
         <MediaSection />
+      </FadeUp>
+
+      <FadeUp>
+        <GallerySection />
       </FadeUp>
 
       <FadeUp>
