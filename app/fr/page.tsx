@@ -10,12 +10,15 @@ import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
+import AnimatedBackground from "@/components/home/AnimatedBackground";
 
 import FadeUp from "@/components/ui/FadeUp";
 
 export default function FrPage() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
+      <AnimatedBackground />
+
       <div className="fixed top-0 left-0 z-50 h-1 w-full bg-white/20" />
 
       <AnnouncementBar />
