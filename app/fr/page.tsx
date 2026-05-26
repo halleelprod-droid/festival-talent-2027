@@ -1,10 +1,14 @@
 import AnnouncementBar from "@/components/home/AnnouncementBar";
 import CountdownSection from "@/components/home/CountdownSection";
 import AboutSection from "@/components/home/AboutSection";
+import ExperienceSection from "@/components/home/ExperienceSection";
+import ScheduleSection from "@/components/home/ScheduleSection";
+import ArtistsSection from "@/components/home/ArtistsSection";
+import StatsSection from "@/components/home/StatsSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import FinalCTA from "@/components/home/FinalCTA";
-import ExperienceSection from "@/components/home/ExperienceSection";
+
 export default function FrPage() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
@@ -53,7 +57,13 @@ export default function FrPage() {
 
       <AboutSection />
 
-<ExperienceSection />
+      <ExperienceSection />
+
+      <ScheduleSection />
+
+      <ArtistsSection />
+
+      <StatsSection />
 
       <WhyPartnerSection />
 
