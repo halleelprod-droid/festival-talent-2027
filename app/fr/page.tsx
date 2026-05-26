@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/home/ExperienceSection";
 import ScheduleSection from "@/components/home/ScheduleSection";
 import ArtistsSection from "@/components/home/ArtistsSection";
 import StatsSection from "@/components/home/StatsSection";
+import MediaSection from "@/components/home/MediaSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import FinalCTA from "@/components/home/FinalCTA";
@@ -64,6 +65,8 @@ export default function FrPage() {
       <ArtistsSection />
 
       <StatsSection />
+
+      <MediaSection />
 
       <WhyPartnerSection />
 
