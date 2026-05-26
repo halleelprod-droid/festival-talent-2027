@@ -37,15 +37,19 @@ export default function StatsSection() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] p-10 text-center hover:bg-white/[0.06] transition-all duration-300"
+              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 md:p-10 text-center hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
             >
-              <h3 className="text-4xl md:text-5xl font-black mb-4">
-                {stat.value}
-              </h3>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_45%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <p className="text-white/60 text-sm uppercase tracking-[0.2em]">
-                {stat.label}
-              </p>
+              <div className="relative z-10">
+                <h3 className="text-4xl md:text-5xl font-black mb-4">
+                  {stat.value}
+                </h3>
+
+                <p className="text-white/60 text-xs md:text-sm uppercase tracking-[0.2em]">
+                  {stat.label}
+                </p>
+              </div>
             </div>
           ))}
         </div>

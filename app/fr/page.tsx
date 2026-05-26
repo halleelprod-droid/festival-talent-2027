@@ -24,38 +24,57 @@ export default function FrPage() {
       <AnnouncementBar />
 
       <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),transparent_45%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.14),transparent_45%)]" />
 
-        <div className="relative text-center max-w-5xl">
-          <p className="uppercase tracking-[0.4em] text-sm text-white/60 mb-6">
-            Dakar • Sénégal • 2027
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
+
+        <div className="relative text-center max-w-6xl">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl mb-8">
+            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">
+              Official Festival Experience • Dakar 2027
+            </p>
+          </div>
+
+          <p className="uppercase tracking-[0.5em] text-sm text-white/40 mb-8">
+            Dakar • Sénégal • Afrique
           </p>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-8">
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black leading-none tracking-tight">
             FESTIVAL
             <br />
-            TALENT 2027
+            TALENT
+            <span className="text-white/30"> 2027</span>
           </h1>
 
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Le plus grand rassemblement culturel et créatif nouvelle génération
-            au Sénégal.
+          <p className="mt-10 text-white/60 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed">
+            Le plus grand rassemblement culturel, créatif et immersif nouvelle
+            génération au Sénégal.
           </p>
 
-          <div className="flex flex-col md:flex-row gap-4 justify-center mt-10">
+          <div className="flex flex-col md:flex-row gap-5 justify-center mt-14">
             <a
               href="/tickets"
-              className="px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-all duration-300"
+              className="px-10 py-5 rounded-full bg-white text-black font-black hover:scale-105 transition-all duration-300"
             >
               Réserver un ticket
             </a>
 
             <a
               href="/partners"
-              className="px-8 py-4 border border-white/20 rounded-full hover:bg-white/10 transition-all duration-300"
+              className="px-10 py-5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl hover:bg-white/[0.08] transition-all duration-300"
             >
               Devenir partenaire
             </a>
+          </div>
+
+          <div className="mt-20 flex flex-wrap justify-center gap-10 text-white/30 text-sm uppercase tracking-[0.3em]">
+            <span>Music</span>
+            <span>Fashion</span>
+            <span>Innovation</span>
+            <span>Culture</span>
+            <span>Digital</span>
           </div>
         </div>
       </section>

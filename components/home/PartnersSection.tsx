@@ -31,16 +31,18 @@ export default function PartnersSection() {
           {partners.map((partner, index) => (
             <div
               key={index}
-              className={`rounded-3xl border transition-all duration-300 hover:scale-[1.03]
+              className={`group relative overflow-hidden rounded-3xl border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2
               ${
                 partner === "UNION EUROPÉENNE"
-                  ? "border-blue-500/40 bg-blue-500/10"
-                  : "border-white/10 bg-white/[0.03]"
+                  ? "border-blue-400/40 bg-blue-500/10 hover:bg-blue-500/15"
+                  : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.08]"
               }`}
             >
-              <div className="p-10 flex items-center justify-center min-h-[180px]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_45%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative z-10 p-10 flex items-center justify-center min-h-[180px]">
                 <h3
-                  className={`text-center font-bold tracking-[0.15em]
+                  className={`text-center font-black tracking-[0.15em]
                   ${
                     partner === "UNION EUROPÉENNE"
                       ? "text-blue-300 text-xl"

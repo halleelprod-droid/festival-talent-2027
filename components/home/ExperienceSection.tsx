@@ -44,15 +44,19 @@ export default function ExperienceSection() {
           {experiences.map((item, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] p-10 hover:bg-white/[0.05] transition-all duration-300"
+              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-10 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
             >
-              <h3 className="text-2xl font-black mb-6">
-                {item.title}
-              </h3>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_45%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <p className="text-white/60 leading-relaxed">
-                {item.description}
-              </p>
+              <div className="relative z-10">
+                <h3 className="text-2xl font-black mb-6">
+                  {item.title}
+                </h3>
+
+                <p className="text-white/60 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
