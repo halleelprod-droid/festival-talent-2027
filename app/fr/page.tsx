@@ -11,6 +11,8 @@ import PartnersSection from "@/components/home/PartnersSection";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
 
+import FadeUp from "@/components/ui/FadeUp";
+
 export default function FrPage() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
@@ -55,27 +57,49 @@ export default function FrPage() {
         </div>
       </section>
 
-      <CountdownSection />
+      <FadeUp>
+        <CountdownSection />
+      </FadeUp>
 
-      <AboutSection />
+      <FadeUp>
+        <AboutSection />
+      </FadeUp>
 
-      <ExperienceSection />
+      <FadeUp>
+        <ExperienceSection />
+      </FadeUp>
 
-      <ScheduleSection />
+      <FadeUp>
+        <ScheduleSection />
+      </FadeUp>
 
-      <ArtistsSection />
+      <FadeUp>
+        <ArtistsSection />
+      </FadeUp>
 
-      <StatsSection />
+      <FadeUp>
+        <StatsSection />
+      </FadeUp>
 
-      <MediaSection />
+      <FadeUp>
+        <MediaSection />
+      </FadeUp>
 
-      <WhyPartnerSection />
+      <FadeUp>
+        <WhyPartnerSection />
+      </FadeUp>
 
-      <PartnersSection />
+      <FadeUp>
+        <PartnersSection />
+      </FadeUp>
 
-      <SponsorsCTA />
+      <FadeUp>
+        <SponsorsCTA />
+      </FadeUp>
 
-      <FinalCTA />
+      <FadeUp>
+        <FinalCTA />
+      </FadeUp>
 
       <div className="fixed bottom-6 left-6 z-40 text-xs text-white/50">
         Instagram • TikTok • YouTube
