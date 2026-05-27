@@ -44,19 +44,16 @@ export default function OfficialPartners() {
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
+              className="group rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_45%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="relative z-10 flex flex-col items-center justify-center">
-                <div className="relative w-full h-[180px] rounded-2xl overflow-hidden bg-black/20">
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    fill
-                    className="object-contain p-4"
-                  />
-                </div>
+              <div className="flex flex-col items-center">
+                <Image
+                  src={partner.image}
+                  alt={partner.name}
+                  width={220}
+                  height={220}
+                  className="object-contain rounded-2xl"
+                />
 
                 <h3 className="mt-6 text-lg font-bold text-center">
                   {partner.name}
