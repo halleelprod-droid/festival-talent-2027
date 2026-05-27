@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const partners = [
   {
     name: "Mano Perfetto",
@@ -44,15 +42,13 @@ export default function OfficialPartners() {
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="group rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
+              className="rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
             >
               <div className="flex flex-col items-center">
-                <Image
+                <img
                   src={partner.image}
                   alt={partner.name}
-                  width={220}
-                  height={220}
-                  className="object-contain rounded-2xl"
+                  className="w-full h-48 object-contain rounded-2xl bg-black/30 p-4"
                 />
 
                 <h3 className="mt-6 text-lg font-bold text-center">
