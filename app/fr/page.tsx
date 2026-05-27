@@ -10,6 +10,7 @@ import GallerySection from "@/components/home/GallerySection";
 import NewsletterSection from "@/components/home/NewsletterSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
+import OfficialPartners from "@/components/home/OfficialPartners";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
@@ -27,13 +28,11 @@ export default function FrPage() {
 
       <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.14),transparent_45%)]" />
-
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
 
         <div className="relative text-center max-w-6xl">
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl mb-8">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">
               Official Festival Experience • Dakar 2027
             </p>
@@ -119,6 +118,10 @@ export default function FrPage() {
 
       <FadeUp>
         <PartnersSection />
+      </FadeUp>
+
+      <FadeUp>
+        <OfficialPartners />
       </FadeUp>
 
       <FadeUp>
