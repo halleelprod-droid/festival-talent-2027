@@ -11,7 +11,7 @@ const partners = [
   },
   {
     name: "H & Hair",
-    image: "/partners/hhair.jpeg",
+    image: "/partners/h-hair.jpeg",
   },
   {
     name: "Universal Selfcare",
