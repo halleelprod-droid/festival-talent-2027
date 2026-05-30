@@ -27,34 +27,29 @@ export default function OfficialPartners() {
           </p>
 
           <h2 className="text-4xl md:text-6xl font-black">
-            PARTENAIRES
-            <br />
-            OFFICIELS
+            PARTENAIRES OFFICIELS
           </h2>
 
           <p className="mt-6 text-white/60 max-w-2xl mx-auto">
-            Les entreprises qui accompagnent officiellement Festival Talent
-            2027 dans son développement et son rayonnement.
+            Les partenaires financiers officiels de Festival Talent 2027.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {partners.map((partner, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {partners.map((partner) => (
             <div
-              key={index}
-              className="rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
+              key={partner.name}
+              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"
             >
-              <div className="flex flex-col items-center">
-                <img
-                  src={partner.image}
-                  alt={partner.name}
-                  className="w-full h-48 object-contain rounded-2xl bg-black/30 p-4"
-                />
+              <img
+                src={partner.image}
+                alt={partner.name}
+                className="w-full h-52 object-contain rounded-2xl bg-black"
+              />
 
-                <h3 className="mt-6 text-lg font-bold text-center">
-                  {partner.name}
-                </h3>
-              </div>
+              <h3 className="mt-6 text-center text-lg font-bold">
+                {partner.name}
+              </h3>
             </div>
           ))}
         </div>
