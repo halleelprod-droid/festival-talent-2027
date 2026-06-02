@@ -1,58 +1,44 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link
-          href="/fr"
-          className="text-xl md:text-2xl font-black tracking-[0.2em]"
-        >
-          FT2027
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link href="/fr" className="flex items-center">
+          <Image
+            src="/images/festival-talent-logo.jpeg"
+            alt="Festival Talent"
+            width={170}
+            height={70}
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm uppercase tracking-[0.2em]">
-          <Link href="/fr" className="hover:text-white/60 transition">
+        <nav className="hidden items-center gap-10 text-sm font-semibold uppercase tracking-[0.3em] text-white md:flex">
+          <Link href="/fr" className="hover:text-white/60">
             Accueil
           </Link>
 
-          <Link href="/programme" className="hover:text-white/60 transition">
+          <Link href="/programme" className="hover:text-white/60">
             Programme
           </Link>
 
-          <Link href="/partners" className="hover:text-white/60 transition">
+          <Link href="/partners" className="hover:text-white/60">
             Partenaires
           </Link>
 
-          <Link href="/tickets" className="hover:text-white/60 transition">
+          <Link href="/tickets" className="hover:text-white/60">
             Tickets
           </Link>
         </nav>
 
         <Link
           href="/tickets"
-          className="px-5 py-3 rounded-full bg-white text-black text-sm font-bold hover:scale-105 transition"
+          className="rounded-full bg-white px-7 py-3 text-sm font-bold text-black transition hover:scale-105"
         >
           Réserver
         </Link>
