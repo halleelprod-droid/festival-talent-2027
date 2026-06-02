@@ -20,6 +20,18 @@ import FadeUp from "@/components/ui/FadeUp";
 export default function FrPage() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
+    <div
+  style={{
+    background: "red",
+    color: "white",
+    padding: "20px",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "30px",
+  }}
+>
+  TEST DEMBA 2027
+</div>
       <AnimatedBackground />
 
       <div className="fixed top-0 left-0 z-50 h-1 w-full bg-white/20" />
