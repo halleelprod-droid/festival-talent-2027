@@ -7,14 +7,16 @@ import ArtistsSection from "@/components/home/ArtistsSection";
 import StatsSection from "@/components/home/StatsSection";
 import MediaSection from "@/components/home/MediaSection";
 import GallerySection from "@/components/home/GallerySection";
+import PreviousEditionSection from "@/components/home/PreviousEditionSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
+import MajorPartnerSection from "@/components/home/MajorPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import OfficialPartners from "@/components/home/OfficialPartners";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
-import MajorPartnerSection from "@/components/home/MajorPartnerSection";
+
 import FadeUp from "@/components/ui/FadeUp";
 
 export default function FrPage() {
@@ -32,12 +34,12 @@ export default function FrPage() {
 
         <div className="relative text-center max-w-6xl">
           <div className="mb-8 flex justify-center">
-  <img
-    src="/images/festival-talent-logo.png"
-    alt="Festival Talent"
-    className="h-32 md:h-44 w-auto object-contain"
-  />
-</div>
+            <img
+              src="/images/festival-talent-logo.png"
+              alt="Festival Talent"
+              className="h-32 md:h-44 w-auto object-contain"
+            />
+          </div>
 
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-400/20 bg-yellow-400/10 backdrop-blur-xl mb-8">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -88,20 +90,11 @@ export default function FrPage() {
       <FadeUp><StatsSection /></FadeUp>
       <FadeUp><MediaSection /></FadeUp>
       <FadeUp><GallerySection /></FadeUp>
-
-<FadeUp><WhyPartnerSection /></FadeUp>
-
-<FadeUp>
-  <MajorPartnerSection />
-</FadeUp>
-
-<FadeUp>
-  <PartnersSection />
-</FadeUp>
-
-<FadeUp>
-  <OfficialPartners />
-</FadeUp>
+      <FadeUp><PreviousEditionSection /></FadeUp>
+      <FadeUp><WhyPartnerSection /></FadeUp>
+      <FadeUp><MajorPartnerSection /></FadeUp>
+      <FadeUp><PartnersSection /></FadeUp>
+      <FadeUp><OfficialPartners /></FadeUp>
       <FadeUp><SponsorsCTA /></FadeUp>
       <FadeUp><NewsletterSection /></FadeUp>
       <FadeUp><FinalCTA /></FadeUp>
