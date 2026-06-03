@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/fr" className="flex items-center">
           <Image
-            src="/images/festival-talent-logo.jpeg"
+            src="/images/festival-talent-logo.png"
             alt="Festival Talent"
             width={240}
             height={90}
