@@ -16,7 +16,7 @@ import OfficialPartners from "@/components/home/OfficialPartners";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
-
+import PreviousArtistsSection from "@/components/home/PreviousArtistsSection";
 import FadeUp from "@/components/ui/FadeUp";
 
 export default function FrPage() {
@@ -91,6 +91,7 @@ export default function FrPage() {
       <FadeUp><MediaSection /></FadeUp>
       <FadeUp><GallerySection /></FadeUp>
       <FadeUp><PreviousEditionSection /></FadeUp>
+      <FadeUp><PreviousArtistsSection /></FadeUp>
       <FadeUp><WhyPartnerSection /></FadeUp>
       <FadeUp><MajorPartnerSection /></FadeUp>
       <FadeUp><PartnersSection /></FadeUp>
