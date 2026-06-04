@@ -10,6 +10,7 @@ import GallerySection from "@/components/home/GallerySection";
 import PreviousEditionSection from "@/components/home/PreviousEditionSection";
 import PreviousArtistsSection from "@/components/home/PreviousArtistsSection";
 import ImpactSection from "@/components/home/ImpactSection";
+import SponsorBenefitsSection from "@/components/home/SponsorBenefitsSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import MajorPartnerSection from "@/components/home/MajorPartnerSection";
@@ -18,7 +19,7 @@ import OfficialPartners from "@/components/home/OfficialPartners";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
-import SponsorBenefitsSection from "@/components/home/SponsorBenefitsSection";
+
 import FadeUp from "@/components/ui/FadeUp";
 
 export default function FrPage() {
@@ -85,81 +86,43 @@ export default function FrPage() {
         </div>
       </section>
 
-      <FadeUp>
-        <CountdownSection />
-      </FadeUp>
+      <FadeUp><CountdownSection /></FadeUp>
 
-      <FadeUp>
-        <AboutSection />
-      </FadeUp>
+      <FadeUp><AboutSection /></FadeUp>
 
-      <FadeUp>
-        <ExperienceSection />
-      </FadeUp>
+      <FadeUp><ExperienceSection /></FadeUp>
 
-      <FadeUp>
-        <ScheduleSection />
-      </FadeUp>
+      <FadeUp><ScheduleSection /></FadeUp>
 
-      <FadeUp>
-        <ArtistsSection />
-      </FadeUp>
+      <FadeUp><ArtistsSection /></FadeUp>
 
-      <FadeUp>
-        <StatsSection />
-      </FadeUp>
+      <FadeUp><StatsSection /></FadeUp>
 
-      <FadeUp>
-        <MediaSection />
-      </FadeUp>
+      <FadeUp><MediaSection /></FadeUp>
 
-      <FadeUp>
-        <GallerySection />
-      </FadeUp>
+      <FadeUp><GallerySection /></FadeUp>
 
-      <FadeUp>
-        <PreviousEditionSection />
-      </FadeUp>
+      <FadeUp><PreviousEditionSection /></FadeUp>
 
-      <FadeUp>
-        <PreviousArtistsSection />
-      </FadeUp>
+      <FadeUp><PreviousArtistsSection /></FadeUp>
 
-      <FadeUp>
-        <ImpactSection />
-      </FadeUp>
+      <FadeUp><ImpactSection /></FadeUp>
 
-      <FadeUp>
-  <SponsorBenefitsSection />
-</FadeUp>
+      <FadeUp><SponsorBenefitsSection /></FadeUp>
 
-      <FadeUp>
-        <WhyPartnerSection />
-      </FadeUp>
+      <FadeUp><WhyPartnerSection /></FadeUp>
 
-      <FadeUp>
-        <MajorPartnerSection />
-      </FadeUp>
+      <FadeUp><MajorPartnerSection /></FadeUp>
 
-      <FadeUp>
-        <PartnersSection />
-      </FadeUp>
+      <FadeUp><PartnersSection /></FadeUp>
 
-      <FadeUp>
-        <OfficialPartners />
-      </FadeUp>
+      <FadeUp><OfficialPartners /></FadeUp>
 
-      <FadeUp>
-        <SponsorsCTA />
-      </FadeUp>
+      <FadeUp><SponsorsCTA /></FadeUp>
 
-      <FadeUp>
-        <NewsletterSection />
-      </FadeUp>
+      <FadeUp><NewsletterSection /></FadeUp>
 
-      <FadeUp>
-        <FinalCTA />
-      </FadeUp>
+      <FadeUp><FinalCTA /></FadeUp>
 
       <div className="fixed bottom-6 left-6 z-40 text-xs text-white/50">
         Instagram • TikTok • YouTube

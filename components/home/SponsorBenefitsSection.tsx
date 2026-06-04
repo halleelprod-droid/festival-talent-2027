@@ -3,22 +3,22 @@ export default function SponsorBenefitsSection() {
     {
       title: "Visibilité de marque",
       description:
-        "Présence sur tous les supports digitaux, affiches, réseaux sociaux et événements.",
+        "Présence sur le site officiel, les réseaux sociaux, les supports print, les scènes et les espaces événementiels.",
     },
     {
-      title: "Accès à la jeunesse",
+      title: "Audience jeune & engagée",
       description:
-        "Connectez votre entreprise à une audience jeune, dynamique et engagée.",
+        "Touchez une génération créative, connectée, urbaine et active autour de la culture africaine.",
     },
     {
-      title: "Impact sociétal",
+      title: "Crédibilité institutionnelle",
       description:
-        "Associez votre marque à la culture, l’innovation et l’entrepreneuriat africain.",
+        "Associez votre marque à un projet porté par des partenaires officiels et une vision internationale.",
     },
     {
-      title: "Relations publiques",
+      title: "Impact culturel",
       description:
-        "Développez votre réseau avec les institutions, médias et leaders d’opinion.",
+        "Soutenez la jeunesse, les talents, la création, l’innovation et les industries culturelles africaines.",
     },
   ];
 
@@ -35,15 +35,21 @@ export default function SponsorBenefitsSection() {
             <br />
             NOUS SOUTENIR ?
           </h2>
+
+          <p className="mt-8 text-white/60 max-w-3xl mx-auto text-lg">
+            Devenir partenaire de Festival Talent 2027, c’est associer votre
+            marque à une plateforme culturelle ambitieuse, jeune et
+            internationale.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {benefits.map((item) => (
             <div
               key={item.title}
-              className="rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-10"
+              className="rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-10 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-500"
             >
-              <h3 className="text-2xl font-black mb-6 text-yellow-300">
+              <h3 className="text-2xl font-black text-yellow-300 mb-6">
                 {item.title}
               </h3>
 
