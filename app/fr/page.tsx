@@ -8,6 +8,8 @@ import StatsSection from "@/components/home/StatsSection";
 import MediaSection from "@/components/home/MediaSection";
 import GallerySection from "@/components/home/GallerySection";
 import PreviousEditionSection from "@/components/home/PreviousEditionSection";
+import PreviousArtistsSection from "@/components/home/PreviousArtistsSection";
+import ImpactSection from "@/components/home/ImpactSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import MajorPartnerSection from "@/components/home/MajorPartnerSection";
@@ -16,7 +18,7 @@ import OfficialPartners from "@/components/home/OfficialPartners";
 import SponsorsCTA from "@/components/home/SponsorsCTA";
 import FinalCTA from "@/components/home/FinalCTA";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
-import PreviousArtistsSection from "@/components/home/PreviousArtistsSection";
+import SponsorBenefitsSection from "@/components/home/SponsorBenefitsSection";
 import FadeUp from "@/components/ui/FadeUp";
 
 export default function FrPage() {
@@ -43,6 +45,7 @@ export default function FrPage() {
 
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-400/20 bg-yellow-400/10 backdrop-blur-xl mb-8">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+
             <p className="text-xs uppercase tracking-[0.3em] text-yellow-300">
               Official Festival Experience • Dakar 2027
             </p>
@@ -82,23 +85,81 @@ export default function FrPage() {
         </div>
       </section>
 
-      <FadeUp><CountdownSection /></FadeUp>
-      <FadeUp><AboutSection /></FadeUp>
-      <FadeUp><ExperienceSection /></FadeUp>
-      <FadeUp><ScheduleSection /></FadeUp>
-      <FadeUp><ArtistsSection /></FadeUp>
-      <FadeUp><StatsSection /></FadeUp>
-      <FadeUp><MediaSection /></FadeUp>
-      <FadeUp><GallerySection /></FadeUp>
-      <FadeUp><PreviousEditionSection /></FadeUp>
-      <FadeUp><PreviousArtistsSection /></FadeUp>
-      <FadeUp><WhyPartnerSection /></FadeUp>
-      <FadeUp><MajorPartnerSection /></FadeUp>
-      <FadeUp><PartnersSection /></FadeUp>
-      <FadeUp><OfficialPartners /></FadeUp>
-      <FadeUp><SponsorsCTA /></FadeUp>
-      <FadeUp><NewsletterSection /></FadeUp>
-      <FadeUp><FinalCTA /></FadeUp>
+      <FadeUp>
+        <CountdownSection />
+      </FadeUp>
+
+      <FadeUp>
+        <AboutSection />
+      </FadeUp>
+
+      <FadeUp>
+        <ExperienceSection />
+      </FadeUp>
+
+      <FadeUp>
+        <ScheduleSection />
+      </FadeUp>
+
+      <FadeUp>
+        <ArtistsSection />
+      </FadeUp>
+
+      <FadeUp>
+        <StatsSection />
+      </FadeUp>
+
+      <FadeUp>
+        <MediaSection />
+      </FadeUp>
+
+      <FadeUp>
+        <GallerySection />
+      </FadeUp>
+
+      <FadeUp>
+        <PreviousEditionSection />
+      </FadeUp>
+
+      <FadeUp>
+        <PreviousArtistsSection />
+      </FadeUp>
+
+      <FadeUp>
+        <ImpactSection />
+      </FadeUp>
+
+      <FadeUp>
+  <SponsorBenefitsSection />
+</FadeUp>
+
+      <FadeUp>
+        <WhyPartnerSection />
+      </FadeUp>
+
+      <FadeUp>
+        <MajorPartnerSection />
+      </FadeUp>
+
+      <FadeUp>
+        <PartnersSection />
+      </FadeUp>
+
+      <FadeUp>
+        <OfficialPartners />
+      </FadeUp>
+
+      <FadeUp>
+        <SponsorsCTA />
+      </FadeUp>
+
+      <FadeUp>
+        <NewsletterSection />
+      </FadeUp>
+
+      <FadeUp>
+        <FinalCTA />
+      </FadeUp>
 
       <div className="fixed bottom-6 left-6 z-40 text-xs text-white/50">
         Instagram • TikTok • YouTube
