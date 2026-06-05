@@ -21,7 +21,7 @@ import FinalCTA from "@/components/home/FinalCTA";
 import AnimatedBackground from "@/components/home/AnimatedBackground";
 import HighlightVideoSection from "@/components/home/HighlightVideoSection";
 import FadeUp from "@/components/ui/FadeUp";
-
+import SponsorshipPackages from "@/components/home/SponsorshipPackages";
 export default function FrPage() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
@@ -111,6 +111,8 @@ export default function FrPage() {
       <FadeUp><ImpactSection /></FadeUp>
 
       <FadeUp><SponsorBenefitsSection /></FadeUp>
+
+      <FadeUp><SponsorshipPackages /></FadeUp>
 
       <FadeUp><WhyPartnerSection /></FadeUp>
 
