@@ -22,6 +22,7 @@ import AnimatedBackground from "@/components/home/AnimatedBackground";
 import HighlightVideoSection from "@/components/home/HighlightVideoSection";
 import FadeUp from "@/components/ui/FadeUp";
 import SponsorshipPackages from "@/components/home/SponsorshipPackages";
+import OfficialVideoSection from "@/components/home/OfficialVideoSection";
 export default function FrPage() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
@@ -107,6 +108,10 @@ export default function FrPage() {
       <FadeUp><PreviousArtistsSection /></FadeUp>
 
       <FadeUp><HighlightVideoSection /></FadeUp>
+
+      <FadeUp>
+  <OfficialVideoSection />
+</FadeUp>
 
       <FadeUp><ImpactSection /></FadeUp>
 
