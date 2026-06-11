@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import {
   partnersLogos
@@ -68,19 +69,27 @@ export default function PartnersStrip() {
                   px-10
                 "
               >
-                <img
-                  src={partner.image}
-                  alt={partner.name}
-                  className="
-                    max-h-[70px]
-                    w-auto
-                    object-contain
-                    opacity-75
-                    transition
-                    duration-500
-                    hover:opacity-100
-                  "
-                />
+                {partner.image ? (
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    width={180}
+                    height={70}
+                    className="
+                      max-h-[70px]
+                      w-auto
+                      object-contain
+                      opacity-75
+                      transition
+                      duration-500
+                      hover:opacity-100
+                    "
+                  />
+                ) : (
+                  <span className="text-center text-lg font-black uppercase tracking-[0.2em] text-blue-200">
+                    {partner.name}
+                  </span>
+                )}
               </motion.div>
             )
           )}

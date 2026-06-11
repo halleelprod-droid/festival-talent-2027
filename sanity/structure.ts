@@ -1,4 +1,6 @@
-export const structure = (S: any) =>
+import type { StructureBuilder } from 'sanity/structure';
+
+export const structure = (S: StructureBuilder) =>
   S.list()
     .title('Contenu')
     .items([

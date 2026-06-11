@@ -3,12 +3,21 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+
+const links = [
+  { label: "Accueil", href: "/fr" },
+  { label: "Programme", href: "/programme" },
+  { label: "Partenaires", href: "/partners" },
+  { label: "Tickets", href: "/tickets" },
+  { label: "Media", href: "/media" },
+];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl">
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/fr">
           <Image
@@ -16,73 +25,59 @@ export default function Navbar() {
             alt="Festival Talent"
             width={240}
             height={90}
-            className="h-16 md:h-20 w-auto object-contain"
+            className="h-16 w-auto object-contain md:h-20"
             priority
           />
         </Link>
 
-        {/* Desktop */}
-        <nav className="hidden md:flex items-center gap-10 text-sm font-semibold uppercase tracking-[0.3em] text-white">
-          <Link href="/fr" className="hover:text-yellow-400 transition">
-            Accueil
-          </Link>
-
-          <Link href="/programme" className="hover:text-yellow-400 transition">
-            Programme
-          </Link>
-
-          <Link href="/partners" className="hover:text-yellow-400 transition">
-            Partenaires
-          </Link>
-
-          <Link href="/tickets" className="hover:text-yellow-400 transition">
-            Tickets
-          </Link>
+        <nav className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-[0.22em] text-white md:flex">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition hover:text-yellow-400"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
-        {/* Desktop CTA */}
         <Link
           href="/tickets"
-          className="hidden md:block rounded-full bg-white px-7 py-3 text-sm font-bold text-black transition hover:scale-105 hover:bg-yellow-400"
+          className="hidden rounded-full bg-white px-7 py-3 text-sm font-bold text-black transition hover:scale-105 hover:bg-yellow-400 md:block"
         >
-          Réserver
+          Reserver
         </Link>
 
-        {/* Mobile Button */}
         <button
+          type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white text-3xl"
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white md:hidden"
+          aria-label="Ouvrir le menu"
         >
-          ☰
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-black">
-          <div className="flex flex-col px-6 py-6 space-y-6 text-white uppercase tracking-[0.2em]">
-            <Link href="/fr" onClick={() => setMenuOpen(false)}>
-              Accueil
-            </Link>
-
-            <Link href="/programme" onClick={() => setMenuOpen(false)}>
-              Programme
-            </Link>
-
-            <Link href="/partners" onClick={() => setMenuOpen(false)}>
-              Partenaires
-            </Link>
-
-            <Link href="/tickets" onClick={() => setMenuOpen(false)}>
-              Tickets
-            </Link>
+        <div className="border-t border-white/10 bg-black md:hidden">
+          <div className="flex flex-col space-y-6 px-6 py-6 uppercase tracking-[0.2em] text-white">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
 
             <Link
               href="/tickets"
               onClick={() => setMenuOpen(false)}
-              className="rounded-full bg-yellow-400 text-black text-center py-3 font-bold"
+              className="rounded-full bg-yellow-400 py-3 text-center font-bold text-black"
             >
-              Réserver
+              Reserver
             </Link>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const partners = [
   {
     name: "Mano Perfetto",
@@ -41,10 +43,12 @@ export default function OfficialPartners() {
               key={partner.name}
               className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"
             >
-              <img
+              <Image
                 src={partner.image}
                 alt={partner.name}
-                className="w-full h-52 object-contain rounded-2xl bg-black"
+                width={360}
+                height={208}
+                className="h-52 w-full rounded-2xl bg-black object-contain"
               />
 
               <h3 className="mt-6 text-center text-lg font-bold">

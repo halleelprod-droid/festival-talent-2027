@@ -32,7 +32,7 @@ export async function POST(
       message:
         'Inscription réussie'
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         success: false,

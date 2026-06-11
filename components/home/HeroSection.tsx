@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { motion } from 'framer-motion';
 
@@ -8,9 +9,12 @@ export default function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-black text-white">
       {/* IMAGE FALLBACK */}
-      <img
-        src="/images/hero.jpg"
+      <Image
+        src="/images/previous/scene.jpg"
         alt="FT2027"
+        fill
+        sizes="100vw"
+        priority
         className="
           absolute
           inset-0

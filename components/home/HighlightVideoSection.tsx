@@ -1,21 +1,21 @@
 export default function HighlightVideoSection() {
   return (
-    <section className="relative py-32 px-6 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <p className="uppercase tracking-[0.4em] text-sm text-yellow-300 mb-6">
-            Aftermovie
+    <section className="relative border-t border-white/10 px-6 py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-20 text-center">
+          <p className="mb-6 text-sm uppercase tracking-[0.4em] text-yellow-300">
+            Aftermovie archive
           </p>
 
-          <h2 className="text-5xl md:text-7xl font-black">
+          <h2 className="text-5xl font-black md:text-7xl">
             REVIVEZ
             <br />
-            L’ÉDITION PRÉCÉDENTE
+            LE PREMIER FESTIVAL
           </h2>
 
-          <p className="mt-8 text-white/60 max-w-3xl mx-auto text-lg">
-            Un aperçu vidéo de l’ambiance, des performances, du public et de
-            l’énergie du Festival Talent.
+          <p className="mx-auto mt-8 max-w-3xl text-lg text-white/60">
+            Un apercu video de ambiance, des performances, du public et de
+            energie fondatrice du Festival Talent.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export default function HighlightVideoSection() {
             <iframe
               className="h-full w-full"
               src="https://www.youtube.com/embed/77w8NnB_B6A"
-              title="Festival Talent Aftermovie"
+              title="Festival Talent Aftermovie Archive"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />

@@ -1,41 +1,40 @@
-export default function ArtistsSection() {
-  const artists = [
-    "YOUSSOU NDOUR",
-    "SAMBA PEUZZY",
-    "SIDIKI DIABATÉ",
-    "SOPRANO",
-    "AMADEUS",
-  ];
+import { confirmedArtists } from "@/components/sections/constants";
 
+export default function ArtistsSection() {
   return (
-    <section className="relative py-32 px-6 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative border-t border-white/10 px-6 py-32">
+      <div className="mx-auto max-w-7xl">
         <div className="text-center">
-          <p className="uppercase tracking-[0.4em] text-sm text-white/50 mb-6">
+          <p className="mb-6 text-sm uppercase tracking-[0.4em] text-white/50">
             Official Line-up
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-black">
-            ARTISTES CONFIRMÉS
+          <h2 className="text-4xl font-black md:text-6xl">
+            ARTISTES CONFIRMES
           </h2>
 
-          <p className="mt-6 text-white/60 max-w-2xl mx-auto">
-            Une programmation forte réunissant des artistes majeurs du Sénégal,
-            de l’Afrique et de la scène internationale.
+          <p className="mx-auto mt-6 max-w-2xl text-white/60">
+            Programmation officielle confirmee : Youssou Ndour, Samba Peuzzi,
+            Sidiki Diabate, Soprano et Amadeus.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-20">
-          {artists.map((artist, index) => (
+        <div className="mt-20 grid gap-6 md:grid-cols-3">
+          {confirmedArtists.map((artist) => (
             <div
-              key={index}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-10 min-h-[220px] flex items-end hover:border-white/20 hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
+              key={artist.slug}
+              className="group relative flex min-h-[220px] items-end overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:bg-white/[0.08]"
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_45%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_45%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-              <h3 className="relative z-10 text-3xl font-black group-hover:translate-x-2 transition-all duration-300">
-                {artist}
-              </h3>
+              <div className="relative z-10">
+                <p className="mb-4 text-xs uppercase tracking-[0.3em] text-yellow-300">
+                  {artist.category}
+                </p>
+                <h3 className="text-3xl font-black transition-all duration-300 group-hover:translate-x-2">
+                  {artist.name}
+                </h3>
+              </div>
             </div>
           ))}
         </div>

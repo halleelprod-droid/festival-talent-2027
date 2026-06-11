@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function FounderSection() {
   return (
@@ -45,10 +46,12 @@ export default function FounderSection() {
             <div className="absolute -inset-8 bg-[#ff7b00]/20 blur-[100px] rounded-full" />
 
             <div className="relative overflow-hidden rounded-[40px] border border-white/10">
-              <img
-                src="/founder.jpg"
+              <Image
+                src="/images/previous/zairah.jpg"
                 alt="Fondatrice FT2027"
-                className="w-full h-[700px] object-cover"
+                width={900}
+                height={1200}
+                className="h-[700px] w-full object-cover"
               />
 
               {/* OVERLAY */}

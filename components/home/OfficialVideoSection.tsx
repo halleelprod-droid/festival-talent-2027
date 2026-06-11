@@ -1,50 +1,39 @@
 export default function OfficialVideoSection() {
   return (
-    <section className="py-32 bg-black">
-      <div className="max-w-7xl mx-auto px-6">
-
-        <div className="text-center mb-16">
-          <p className="uppercase tracking-[0.4em] text-yellow-400 mb-4">
-            Festival Talent Experience
+    <section className="bg-black py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 text-center">
+          <p className="mb-4 uppercase tracking-[0.4em] text-yellow-400">
+            Archives du premier festival
           </p>
 
-          <h2 className="text-5xl md:text-7xl font-black text-white">
-            VIDÉOS OFFICIELLES
+          <h2 className="text-5xl font-black text-white md:text-7xl">
+            VIDEOS ARCHIVES
           </h2>
 
-          <p className="text-white/60 mt-6 text-lg">
-            Revivez les meilleurs moments du Festival Talent.
+          <p className="mt-6 text-lg text-white/60">
+            Les videos actuelles retracent les meilleurs moments du premier
+            Festival Talent.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
-
-          <div className="rounded-3xl overflow-hidden border border-white/10">
-            <video
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full"
+        <div className="grid gap-10 md:grid-cols-2">
+          {["/videos/reel1.mp4", "/videos/reel2.mp4"].map((src, index) => (
+            <div
+              key={src}
+              className="overflow-hidden rounded-3xl border border-white/10"
             >
-              <source src="/videos/reel1.mp4" type="video/mp4" />
-            </video>
-          </div>
+              <video controls muted playsInline className="h-full w-full">
+                <source src={src} type="video/mp4" />
+              </video>
 
-          <div className="rounded-3xl overflow-hidden border border-white/10">
-            <video
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full"
-            >
-              <source src="/videos/reel2.mp4" type="video/mp4" />
-            </video>
-          </div>
-
+              <div className="border-t border-white/10 px-6 py-5">
+                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300">
+                  Archive video {index + 1}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -3,6 +3,13 @@
 import { motion } from 'framer-motion';
 import { useMemo } from 'react';
 
+function seededValue(index: number, salt: number) {
+  const value =
+    Math.sin(index * 97.13 + salt * 31.7) * 10000;
+
+  return value - Math.floor(value);
+}
+
 export default function ParticlesBackground() {
   const particles = useMemo(
     () =>
@@ -10,13 +17,13 @@ export default function ParticlesBackground() {
         (_, index) => ({
           id: index,
           size:
-            Math.random() * 3 + 2,
+            seededValue(index, 1) * 3 + 2,
           left:
-            Math.random() * 100,
+            seededValue(index, 2) * 100,
           duration:
-            Math.random() * 12 + 10,
+            seededValue(index, 3) * 12 + 10,
           delay:
-            Math.random() * 6
+            seededValue(index, 4) * 6
         })
       ),
     []

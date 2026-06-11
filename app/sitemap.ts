@@ -1,57 +1,21 @@
-import type { MetadataRoute } from 'next';
+import type { MetadataRoute } from "next";
+
+import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url:
-        'https://festivaltalent2027.com',
+  const lastModified = new Date();
+  const routes = [
+    { path: "/fr", changeFrequency: "weekly", priority: 1 },
+    { path: "/programme", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/partners", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/tickets", changeFrequency: "weekly", priority: 0.85 },
+    { path: "/media", changeFrequency: "monthly", priority: 0.75 },
+  ] as const;
 
-      lastModified:
-        new Date(),
-
-      changeFrequency:
-        'weekly',
-
-      priority: 1
-    },
-
-    {
-      url:
-        'https://festivaltalent2027.com/programme',
-
-      lastModified:
-        new Date(),
-
-      changeFrequency:
-        'weekly',
-
-      priority: 0.9
-    },
-
-    {
-      url:
-        'https://festivaltalent2027.com/artists',
-
-      lastModified:
-        new Date(),
-
-      changeFrequency:
-        'weekly',
-
-      priority: 0.8
-    },
-
-    {
-      url:
-        'https://festivaltalent2027.com/partners',
-
-      lastModified:
-        new Date(),
-
-      changeFrequency:
-        'monthly',
-
-      priority: 0.7
-    }
-  ];
+  return routes.map((route) => ({
+    url: `${siteUrl}${route.path}`,
+    lastModified,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
 }

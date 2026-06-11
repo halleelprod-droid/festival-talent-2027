@@ -1,81 +1,84 @@
 export default function SponsorshipPackages() {
   const packs = [
     {
-      name: "BRONZE",
-      price: "500 000 FCFA",
+      name: "GOLD",
+      price: "Sur demande",
       benefits: [
-        "Logo sur le site",
-        "Mention réseaux sociaux",
-        "Présence sur supports officiels",
+        "Visibilite dominante",
+        "Activation de marque",
+        "Interviews medias",
+        "Presence scene premium",
+        "Hospitalite VIP",
       ],
     },
     {
       name: "SILVER",
-      price: "1 000 000 FCFA",
+      price: "Sur demande",
       benefits: [
         "Logo premium",
         "Stand partenaire",
-        "Visibilité scène",
         "Campagne digitale",
+        "Visibilite scene",
       ],
     },
     {
-      name: "GOLD",
-      price: "2 500 000 FCFA",
+      name: "BRONZE",
+      price: "Sur demande",
       benefits: [
-        "Partenaire principal",
-        "Logo dominant",
-        "Interviews médias",
-        "Activation de marque",
-        "Visibilité complète",
+        "Logo sur le site",
+        "Mention reseaux sociaux",
+        "Presence supports officiels",
+      ],
+    },
+    {
+      name: "INSTITUTIONNELS",
+      price: "Convention",
+      benefits: [
+        "Mise en avant protocolaire",
+        "Visibilite institutionnelle",
+        "Programme jeunesse et culture",
+        "Impact territorial",
       ],
     },
   ];
 
   return (
-    <section className="relative py-32 px-6 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
-
-        <div className="text-center mb-20">
-          <p className="uppercase tracking-[0.4em] text-sm text-yellow-300 mb-6">
-            Sponsoring Packages
+    <section className="relative border-t border-white/10 px-6 py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-20 text-center">
+          <p className="mb-6 text-sm uppercase tracking-[0.4em] text-yellow-300">
+            Sponsors Premium
           </p>
 
-          <h2 className="text-5xl md:text-7xl font-black">
+          <h2 className="text-5xl font-black md:text-7xl">
             PACKS
             <br />
             PARTENAIRES
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 [perspective:1200px] md:grid-cols-2 xl:grid-cols-4">
           {packs.map((pack) => (
             <div
               key={pack.name}
-              className="rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-10"
+              className="premium-card rounded-[2rem] p-10 transition duration-500 hover:-translate-y-3 hover:rotate-1"
             >
-              <h3 className="text-3xl font-black text-yellow-300 mb-4">
+              <h3 className="mb-4 text-3xl font-black text-yellow-300">
                 {pack.name}
               </h3>
 
-              <p className="text-3xl font-black mb-8">
-                {pack.price}
-              </p>
+              <p className="mb-8 text-2xl font-black">{pack.price}</p>
 
               <ul className="space-y-4">
                 {pack.benefits.map((benefit) => (
-                  <li
-                    key={benefit}
-                    className="text-white/70"
-                  >
-                    ✓ {benefit}
+                  <li key={benefit} className="text-white/70">
+                    {benefit}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

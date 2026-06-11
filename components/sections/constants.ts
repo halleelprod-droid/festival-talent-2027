@@ -1,245 +1,214 @@
-export const artistsData = [
+export const confirmedArtists = [
   {
-    slug: 'burna-boy',
-    name: 'BURNA BOY',
-    category: 'AFRO FUSION',
-    country: 'Nigeria',
-    cover:
-      'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2000&auto=format&fit=crop',
+    slug: "youssou-ndour",
+    name: "Youssou Ndour",
+    category: "Mbalax Legend",
+    country: "Senegal",
+    image: "/images/youssou.jpg",
     description:
-      'Burna Boy delivers a futuristic Afro-Fusion experience blending powerful vocals, cinematic stage presence and global energy.',
-
-    performances: [
-      'Main Stage Performance',
-      'Exclusive Festival Showcase',
-      'Night Closing Experience',
-    ],
-
-    socials: {
-      instagram: 'https://instagram.com/burnaboygram',
-      youtube: 'https://youtube.com/@burnaboy',
-    },
+      "Youssou Ndour rejoint la programmation officielle de Festival Talent 2027.",
   },
-
   {
-    slug: 'wizkid',
-    name: 'WIZKID',
-    category: 'AFROBEATS',
-    country: 'Nigeria',
-    cover:
-      'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2000&auto=format&fit=crop',
+    slug: "samba-peuzzi",
+    name: "Samba Peuzzi",
+    category: "Urban Senegal",
+    country: "Senegal",
+    image: "/images/samba.jpg",
     description:
-      'Wizkid brings an immersive Afrobeat universe with legendary melodies and international superstar energy.',
-
-    performances: [
-      'Sunset Performance',
-      'Global Hit Showcase',
-      'VIP Experience',
-    ],
-
-    socials: {
-      instagram: 'https://instagram.com/wizkidayo',
-      youtube: 'https://youtube.com/@wizkid',
-    },
+      "Samba Peuzzi porte l'energie urbaine senegalaise sur la scene FT2027.",
   },
-
   {
-    slug: 'davido',
-    name: 'DAVIDO',
-    category: 'AFROBEATS',
-    country: 'Nigeria',
-    cover:
-      'https://images.unsplash.com/photo-1501612780327-45045538702b?q=80&w=2000&auto=format&fit=crop',
+    slug: "sidiki-diabate",
+    name: "Sidiki Diabate",
+    category: "Afro / Mandingue",
+    country: "Mali",
+    image: "/images/sidiki.jpg",
     description:
-      'Davido delivers explosive performances with vibrant visuals and unmatched crowd interaction.',
-
-    performances: [
-      'Arena Performance',
-      'Festival Live Session',
-      'Premium Showcase',
-    ],
-
-    socials: {
-      instagram: 'https://instagram.com/davido',
-      youtube: 'https://youtube.com/@davido',
-    },
+      "Sidiki Diabate apporte une signature afro-mandingue a l'experience FT2027.",
+  },
+  {
+    slug: "soprano",
+    name: "Soprano",
+    category: "International Rap",
+    country: "France",
+    image: "/images/soprano.jpg",
+    description:
+      "Soprano complete la dimension internationale de Festival Talent 2027.",
+  },
+  {
+    slug: "amadeus",
+    name: "Amadeus",
+    category: "Live Performance",
+    country: "International",
+    image: "/images/amadeus.jpg",
+    description:
+      "Amadeus rejoint les artistes confirmes pour une performance live premium.",
   },
 ];
+
+export const artistsData = confirmedArtists.map((artist) => ({
+  ...artist,
+  cover: artist.image,
+  performances: [
+    "Performance officielle FT2027",
+    "Festival Talent Live Experience",
+    "Showcase confirme",
+  ],
+  socials: {},
+}));
+
+export const featuredArtists = confirmedArtists.map((artist) => ({
+  slug: artist.slug,
+  name: artist.name,
+  category: artist.category,
+  image: artist.image,
+}));
+
 export const navigationLinks = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Programme', href: '/programme' },
-  { label: 'Artistes', href: '/artists' },
-  { label: 'Tickets', href: '/tickets' },
-  { label: 'Partenaires', href: '/partners' }
+  { label: "Accueil", href: "/fr" },
+  { label: "Programme", href: "/programme" },
+  { label: "Partenaires", href: "/partners" },
+  { label: "Tickets", href: "/tickets" },
+  { label: "Media", href: "/media" },
 ];
 
 export const socialLinks = [
-  { label: 'Instagram', href: 'https://instagram.com' },
-  { label: 'TikTok', href: 'https://tiktok.com' },
-  { label: 'YouTube', href: 'https://youtube.com' },
-  { label: 'Facebook', href: 'https://facebook.com' }
+  { label: "Instagram", href: "https://instagram.com" },
+  { label: "TikTok", href: "https://tiktok.com" },
+  { label: "YouTube", href: "https://youtube.com" },
+  { label: "Facebook", href: "https://facebook.com" },
 ];
 
 export const faqItems = [
   {
-    question: 'Où se déroule FT2027 ?',
-    answer: 'Le festival se déroule entre Dakar, Saly et une phase internationale en Europe.'
+    question: "Ou se deroule FT2027 ?",
+    answer:
+      "Le festival se deroule principalement entre Dakar et Saly, avec une vision internationale.",
   },
   {
-    question: 'Comment réserver ?',
-    answer: 'La billetterie officielle sera disponible directement sur le site.'
+    question: "Comment reserver ?",
+    answer: "La billetterie officielle est disponible via la page Tickets.",
   },
   {
-    question: 'Comment devenir partenaire ?',
-    answer: 'Les partenaires peuvent contacter l’équipe via la page Partenaires.'
-  }
+    question: "Comment devenir partenaire ?",
+    answer:
+      "Les partenaires peuvent contacter l'equipe via la page Partenaires.",
+  },
 ];
 
 export const liveStats = [
-  '50K+ Participants',
-  '4 Jours Immersifs',
-  '20+ Artistes',
-  'Dakar + Saly',
-  'Afrique → Europe'
+  "50K+ Participants",
+  "4 Jours Immersifs",
+  "5 Artistes Confirmes",
+  "Dakar + Saly",
+  "Afrique - Europe",
 ];
 
 export const festivalStats = [
-  { value: '50K+', label: 'Participants' },
-  { value: '4 Days', label: 'Experience' },
-  { value: '20+', label: 'Artists' },
-  { value: 'Global', label: 'Audience' }
+  { value: "50K+", label: "Participants attendus" },
+  { value: "4 jours", label: "Experience immersive" },
+  { value: "5", label: "Artistes confirmes" },
+  { value: "Global", label: "Audience internationale" },
 ];
 
 export const partnerStats = [
-  { value: '50K+', label: 'Participants attendus' },
-  { value: '20+', label: 'Artistes & créateurs' },
-  { value: '4 Days', label: 'Expérience immersive' },
-  { value: 'Global', label: 'Visibilité internationale' }
+  { value: "50K+", label: "Participants attendus" },
+  { value: "5", label: "Artistes confirmes" },
+  { value: "4 jours", label: "Experience immersive" },
+  { value: "Global", label: "Visibilite internationale" },
 ];
 
 export const sponsorOpportunities = [
-  'Naming',
-  'Branding',
-  'VIP Experience',
-  'Media',
-  'Innovation',
-  'Youth Impact'
+  "Naming",
+  "Branding",
+  "Experience VIP",
+  "Media",
+  "Innovation",
+  "Impact jeunesse",
 ];
 
 export const partnersLogos = [
-  { name: 'Union Européenne', image: '/images/partners/eu.png' },
-  { name: 'RTS', image: '/images/partners/rts.png' },
-  { name: 'Trace', image: '/images/partners/trace.png' },
-  { name: 'Wave', image: '/images/partners/wave.png' },
-  { name: 'Orange', image: '/images/partners/orange.png' },
-  { name: 'Air Sénégal', image: '/images/partners/airsenegal.png' }
+  { name: "Union Europeenne" },
+  { name: "Mano Perfetto", image: "/partners/mano.jpeg" },
+  { name: "Val2Events", image: "/partners/val2events.jpeg" },
+  { name: "H & Hair", image: "/partners/h-hair.jpeg" },
+  { name: "Universal Selfcare", image: "/partners/universal.jpeg" },
 ];
 
 export const officialSchedule = [
   {
-    day: 'Jour 1',
-    date: '20 Août 2026',
-    city: 'Dakar',
-    theme: "L’Aiguille et le Micro",
-    color: '#C9A84C',
+    day: "Jour 1",
+    date: "10 juillet 2027",
+    city: "Dakar",
+    theme: "L'aiguille et le micro",
+    color: "#C9A84C",
     events: [
-      'Fashion Week Jeunesse',
-      'Live Painting Start',
-      'Cérémonie d’ouverture',
-      'Défilé jeunes créateurs'
-    ]
+      "Ceremonie d'ouverture",
+      "Defile jeunes createurs",
+      "Live painting",
+      "Concerts d'ouverture",
+    ],
   },
   {
-    day: 'Jour 2',
-    date: '21 Août 2026',
-    city: 'Dakar',
-    theme: 'Couleurs et Sons',
-    color: '#ff7b00',
+    day: "Jour 2",
+    date: "11 juillet 2027",
+    city: "Dakar",
+    theme: "Couleurs et sons",
+    color: "#ff7b00",
     events: [
-      'Village Talents',
-      'Concours Stylisme Live',
-      'Masterclass Musique',
-      'Scène Ouverte Géante'
-    ]
+      "Village Talents",
+      "Concours stylisme live",
+      "Masterclass musique",
+      "Scene ouverte",
+    ],
   },
   {
-    day: 'Jour 3',
-    date: '22 Août 2026',
-    city: 'Saly',
-    theme: 'Moteurs et Adrénaline',
-    color: '#00c2ff',
+    day: "Jour 3",
+    date: "12 juillet 2027",
+    city: "Saly",
+    theme: "Moteurs et adrenaline",
+    color: "#00c2ff",
     events: [
-      'Défi Moteurs Jeunesse',
-      'Village Plage',
-      'Finales Moto',
-      'Sunset Concert'
-    ]
+      "Village plage",
+      "Experiences jeunesse",
+      "Finales sportives",
+      "Sunset concert",
+    ],
   },
   {
-    day: 'Jour 4',
-    date: '23 Août 2026',
-    city: 'Dakar',
-    theme: 'Le Sénégal de Demain',
-    color: '#9b5cff',
+    day: "Jour 4",
+    date: "13 juillet 2027",
+    city: "Dakar",
+    theme: "Le Senegal de demain",
+    color: "#9b5cff",
     events: [
-      'Finale Peinture',
-      'Fashion Week Finale',
-      'Grande Parade',
-      'Concert de Clôture'
-    ]
-  }
+      "Finale peinture",
+      "Fashion week finale",
+      "Grande parade",
+      "Concert de cloture",
+    ],
+  },
 ];
+
 export const festivalLocations = [
   {
-    name: 'Place du Souvenir',
-    city: 'Dakar',
-    description: 'Défilés, concerts et cérémonies officielles.'
+    name: "Place du Souvenir",
+    city: "Dakar",
+    description: "Defiles, concerts et ceremonies officielles.",
   },
   {
-    name: 'Monument Renaissance',
-    city: 'Dakar',
-    description: 'Live painting, masterclass et village créatif.'
+    name: "Monument Renaissance",
+    city: "Dakar",
+    description: "Live painting, masterclass et village creatif.",
   },
   {
-    name: 'Circuit Saly',
-    city: 'Saly',
-    description: 'Courses moto, drift et expériences adrénaline.'
+    name: "Circuit Saly",
+    city: "Saly",
+    description: "Experiences jeunesse, sport et adrenaline.",
   },
   {
-    name: 'Plage de Saly',
-    city: 'Saly',
-    description: 'Sunset concerts, DJ sets et village plage.'
-  }
-];
-export const featuredArtists = [
-  {
-    slug: 'youssou-ndour',
-    name: 'Youssou Ndour',
-    category: 'Mbalax Legend',
-    image: '/images/artists/youssou.jpg'
+    name: "Plage de Saly",
+    city: "Saly",
+    description: "Sunset concerts, DJ sets et village plage.",
   },
-  {
-    slug: 'samba-peuzzy',
-    name: 'Samba Peuzzy',
-    category: 'Urban Senegal',
-    image: '/images/artists/samba.jpg'
-  },
-  {
-    slug: 'sidiki-diabate',
-    name: 'Sidiki Diabaté',
-    category: 'Afro / Mandingue',
-    image: '/images/artists/sidiki.jpg'
-  },
-  {
-    slug: 'soprano',
-    name: 'Soprano',
-    category: 'International Rap',
-    image: '/images/artists/soprano.jpg'
-  },
-  {
-    slug: 'amadeus',
-    name: 'Amadeus',
-    category: 'Live Performance',
-    image: '/images/artists/amadeus.jpg'
-  }
 ];

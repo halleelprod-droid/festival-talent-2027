@@ -17,6 +17,13 @@ import {
 
 import * as THREE from 'three';
 
+function seededValue(index: number) {
+  const value =
+    Math.sin(index * 97.13) * 10000;
+
+  return value - Math.floor(value);
+}
+
 function Stars() {
   const ref =
     useRef<THREE.Points>(null);
@@ -32,7 +39,7 @@ function Stars() {
         i++
       ) {
         positions[i] =
-          (Math.random() - 0.5) * 6;
+          (seededValue(i) - 0.5) * 6;
       }
 
       return positions;
