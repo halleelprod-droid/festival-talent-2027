@@ -10,6 +10,8 @@ import {
   MonitorSmartphone,
   RadioTower,
   Gem,
+  Rocket,
+  Music2,
 } from "lucide-react";
 
 const staffMembers = [
@@ -61,6 +63,26 @@ const staffMembers = [
     icon: Megaphone,
     image: "/images/staff/babacar-ndour.jpg",
     initials: "BN",
+    featured: false,
+  },
+  {
+    name: "Abdourahmane Ndiaye",
+    role: "Responsable Pôle Entrepreneur",
+    description:
+      "Coordonne le pôle entrepreneuriat, accompagne les porteurs de projets et participe à la valorisation des jeunes entrepreneurs au sein du Festival Talent 2027.",
+    icon: Rocket,
+    image: "/images/staff/abdourahmane-ndiaye.jpg",
+    initials: "AN",
+    featured: false,
+  },
+  {
+    name: "DJ You",
+    role: "Directeur Artistique",
+    description:
+      "Assure la direction artistique du Festival Talent 2027, accompagne la programmation créative et participe à la cohérence musicale, scénique et culturelle de l’événement.",
+    icon: Music2,
+    image: "/images/staff/dj-you.jpg",
+    initials: "DY",
     featured: false,
   },
   {
