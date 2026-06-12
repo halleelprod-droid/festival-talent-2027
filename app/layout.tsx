@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar";
-import {
-  defaultDescription,
-  siteName,
-  siteUrl,
-} from "@/lib/seo";
+import { defaultDescription, siteName, siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -41,8 +37,11 @@ export const metadata: Metadata = {
         type: "image/png",
         sizes: "512x512",
       },
+      {
+        url: "/favicon.ico",
+      },
     ],
-    shortcut: "/icon.png",
+    shortcut: "/favicon.ico",
     apple: "/icon.png",
   },
 
@@ -86,3 +85,18 @@ export const metadata: Metadata = {
     },
   },
 };
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="fr">
+      <body className="bg-black text-white">
+        <Navbar />
+        {children}
+      </body>
+    </html>
+  );
+}
