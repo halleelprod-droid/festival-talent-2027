@@ -50,8 +50,8 @@ export default function ProgrammePreview({
           </h2>
 
           <p className="mt-10 max-w-2xl text-lg leading-relaxed text-zinc-300">
-            Trois jours de performances, expériences immersives,
-            showcases et moments exclusifs au cœur de Dakar.
+            De janvier a avril 2027, pre-selections officielles, showcases et
+            moments exclusifs relient Paris et Rome autour des talents retenus.
           </p>
         </motion.div>
 

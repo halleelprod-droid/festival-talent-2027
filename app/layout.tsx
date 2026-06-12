@@ -19,8 +19,10 @@ export const metadata: Metadata = {
   keywords: [
     "Festival Talent 2027",
     "Festival Talent",
-    "Dakar",
-    "Senegal",
+    "Paris",
+    "Rome",
+    "pre-selections officielles",
+    "tournee europeenne",
     "Union Europeenne",
     "Youssou Ndour",
     "Samba Peuzzi",

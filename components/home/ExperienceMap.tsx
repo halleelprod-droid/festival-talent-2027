@@ -29,14 +29,14 @@ export default function ExperienceMap() {
           </p>
 
           <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.06em] md:text-7xl lg:text-[8rem]">
-            Dakar
+            Paris
             <br />
-            To Saly.
+            To Rome.
           </h2>
 
           <p className="mt-10 max-w-2xl text-lg leading-relaxed text-zinc-400">
-            FT2027 transforme plusieurs lieux emblématiques
-            du Sénégal en expérience immersive internationale.
+            FT2027 prepare une tournee europeenne de janvier a avril 2027,
+            precedee par des pre-selections officielles dans huit disciplines.
           </p>
         </motion.div>
 

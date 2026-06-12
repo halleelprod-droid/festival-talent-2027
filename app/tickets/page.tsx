@@ -6,7 +6,7 @@ import TicketsPageClient from "./TicketsPageClient";
 export const metadata: Metadata = buildPageMetadata({
   title: "Billetterie officielle",
   description:
-    "Billetterie officielle Festival Talent 2027 : Pass Standard, Pass VIP et Pass Premium pour vivre l'experience a Dakar.",
+    "Billetterie officielle Festival Talent 2027 : Pass Standard, Pass VIP et Pass Premium pour la tournee europeenne entre Paris et Rome.",
   path: "/tickets",
 });
 

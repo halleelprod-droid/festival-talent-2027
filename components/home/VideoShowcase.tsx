@@ -99,7 +99,7 @@ export default function VideoShowcase() {
             </h3>
 
             <p className="mt-4 uppercase tracking-[0.3em] text-sm text-zinc-400">
-              Dakar • Culture • Music • Future
+              Paris - Rome - Culture - Music - Future
             </p>
           </div>
         </motion.div>

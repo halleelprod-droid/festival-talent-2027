@@ -29,24 +29,21 @@ export default function LocationSection() {
           </span>
 
           <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.05em] md:text-7xl lg:text-[8rem]">
-            Dakar
+            Paris
             <br />
-            after dark.
+            to Rome.
           </h2>
 
           <p className="mt-10 max-w-2xl text-lg leading-relaxed text-zinc-300 md:text-xl">
-            Festival Talent 2027 transforme Dakar en capitale
-            immersive de la nouvelle génération culturelle africaine.
-            Entre musique, innovation, performances live et expériences
-            visuelles, FT2027 crée un univers pensé comme une rencontre
-            entre futur, créativité et énergie urbaine.
+            Festival Talent 2027 prepare une tournee europeenne entre Paris et
+            Rome, de janvier a avril 2027, precedee par des pre-selections
+            officielles dans plusieurs disciplines.
           </p>
 
           <p className="mt-6 max-w-2xl leading-relaxed text-zinc-400">
-            Pendant plusieurs jours, artistes, créateurs, médias,
-            entrepreneurs et communautés se retrouvent dans une
-            expérience premium conçue pour connecter l’Afrique
-            au reste du monde à travers la culture.
+            Danse, musique, mode, art, entrepreneuriat, technologie, culture
+            urbaine et sports mecaniques structurent le parcours des talents
+            selectionnes vers la scene europeenne.
           </p>
 
           {/* INFOS */}
@@ -54,18 +51,18 @@ export default function LocationSection() {
             {[
               {
                 title: 'Lieu',
-                value: 'Dakar Arena • Sénégal',
-                desc: 'Un espace transformé en expérience immersive nouvelle génération.'
+                value: 'Paris + Rome',
+                desc: 'Deux etapes europeennes pour connecter les talents selectionnes.'
               },
               {
                 title: 'Date',
-                value: '10 Juillet 2027',
-                desc: 'Trois jours d’expériences, concerts et performances exclusives.'
+                value: 'Janvier a avril 2027',
+                desc: 'Une tournee precedee par des pre-selections officielles.'
               },
               {
                 title: 'Format',
-                value: 'Immersive Festival',
-                desc: 'Musique, culture, digital, lifestyle et innovation réunis.'
+                value: 'Tournee europeenne',
+                desc: 'Showcases, panels, coaching, media et rencontres partenaires.'
               },
               {
                 title: 'Partenaire',
@@ -132,11 +129,11 @@ export default function LocationSection() {
           {/* TEXT */}
           <div className="absolute bottom-0 left-0 right-0 p-10">
             <h3 className="text-5xl font-black md:text-6xl">
-              DAKAR
+              PARIS - ROME
             </h3>
 
             <p className="mt-4 max-w-md uppercase tracking-[0.3em] text-sm leading-relaxed text-zinc-300">
-              West Africa • Music • Culture • Future • FT2027 Experience
+              Europe - Music - Culture - Future - FT2027 Experience
             </p>
           </div>
         </motion.div>

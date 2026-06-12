@@ -49,9 +49,9 @@ export default function OfficialSchedule() {
               lg:text-[8rem]
             "
           >
-            4 Days.
+            Paris.
             <br />
-            Infinite Energy.
+            Rome.
           </h2>
 
           <p
@@ -63,9 +63,9 @@ export default function OfficialSchedule() {
               text-zinc-400
             "
           >
-            Une programmation immersive entre musique,
-            mode, innovation, culture et expériences
-            créatives à Dakar et Saly.
+            Une programmation officielle entre pre-selections, Paris et Rome,
+            de janvier a avril 2027, dans les disciplines danse, musique, mode,
+            art, entrepreneuriat, technologie, culture urbaine et sports mecaniques.
           </p>
         </motion.div>
 

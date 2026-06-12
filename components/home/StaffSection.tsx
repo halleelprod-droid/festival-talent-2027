@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Crown,
@@ -96,11 +97,13 @@ function StaffImage({
   }
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
       onError={() => setImageError(true)}
-      className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-105"
+      className="object-cover object-top transition duration-700 group-hover:scale-105"
     />
   );
 }
@@ -166,7 +169,7 @@ export default function StaffSection() {
                 >
                   <div
                     className={`relative overflow-hidden bg-zinc-950 ${
-                      member.featured ? "h-[420px] lg:h-full" : "h-80"
+                      member.featured ? "h-[430px] lg:h-full" : "h-80"
                     }`}
                   >
                     <StaffImage
@@ -184,7 +187,9 @@ export default function StaffSection() {
 
                   <div
                     className={`relative p-7 ${
-                      member.featured ? "flex flex-col justify-center lg:p-12" : ""
+                      member.featured
+                        ? "flex flex-col justify-center lg:p-12"
+                        : ""
                     }`}
                   >
                     {member.featured && (

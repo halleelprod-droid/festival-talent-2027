@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { CalendarDays, Clock3, MapPin } from "lucide-react";
 
-const FESTIVAL_DATE = new Date("2027-03-01T00:00:00").getTime();
+const FESTIVAL_DATE = new Date("2027-01-01T00:00:00").getTime();
 
 type TimeLeft = {
   days: number;
@@ -82,13 +82,16 @@ export default function CountdownSection() {
           </p>
 
           <h2 className="mt-8 text-5xl font-black leading-none tracking-tight text-white sm:text-6xl md:text-8xl">
-            The Future
-            <span className="block">Starts Soon.</span>
+            Paris & Rome
+            <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+              Starts Soon.
+            </span>
           </h2>
 
           <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-white/65 sm:text-lg">
-            Festival Talent 2027 arrive bientôt pour une expérience immersive
-            mêlant culture, musique, mode, innovation, leadership et jeunesse.
+            Festival Talent 2027 prépare sa tournée européenne entre Paris et
+            Rome, avec des pré-sélections officielles avant le lancement de
+            janvier 2027.
           </p>
         </motion.div>
 
@@ -131,19 +134,17 @@ export default function CountdownSection() {
           <div className="rounded-3xl border border-yellow-400/20 bg-yellow-400/[0.06] p-5 text-left backdrop-blur-xl">
             <CalendarDays className="mb-3 text-yellow-300" size={24} />
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">
-              Date
+              Période
             </p>
-            <p className="mt-2 text-white/70">À partir de mars 2027</p>
+            <p className="mt-2 text-white/70">Janvier — Avril 2027</p>
           </div>
 
           <div className="rounded-3xl border border-yellow-400/20 bg-yellow-400/[0.06] p-5 text-left backdrop-blur-xl">
             <MapPin className="mb-3 text-yellow-300" size={24} />
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">
-              Lieu
+              Villes
             </p>
-            <p className="mt-2 text-white/70">
-              Dakar • Sénégal • International
-            </p>
+            <p className="mt-2 text-white/70">Paris • Rome • Europe</p>
           </div>
 
           <div className="rounded-3xl border border-yellow-400/20 bg-yellow-400/[0.06] p-5 text-left backdrop-blur-xl">
@@ -152,7 +153,7 @@ export default function CountdownSection() {
               Expérience
             </p>
             <p className="mt-2 text-white/70">
-              Musique, mode, art, panels, innovation et jeunesse.
+              Pré-sélections, showcases, panels, networking et talents.
             </p>
           </div>
         </motion.div>

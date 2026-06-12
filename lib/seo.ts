@@ -5,7 +5,7 @@ export const siteUrl = "https://festivaltalentofficial.com";
 export const siteName = "Festival Talent 2027";
 
 export const defaultDescription =
-  "Festival Talent 2027, festival international premium a Dakar avec musique, mode, culture, jeunesse et innovation. L'Union Europeenne est le premier partenaire officiel majeur.";
+  "Festival Talent 2027 prepare une tournee europeenne entre Paris et Rome, de janvier a avril 2027, precedee par des pre-selections officielles en danse, musique, mode, art, entrepreneuriat, technologie, culture urbaine et sports mecaniques. L'Union Europeenne est le premier partenaire officiel majeur.";
 
 const defaultImage = "/images/festival-talent-logo.png";
 

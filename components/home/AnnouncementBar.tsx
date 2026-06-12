@@ -20,11 +20,11 @@ export default function AnnouncementBar() {
               </span>
 
               <span className="text-sm uppercase tracking-[0.3em] text-zinc-400">
-                Dakar - 10 juillet 2027
+                Paris - Rome - Janvier a avril 2027
               </span>
 
               <span className="text-sm uppercase tracking-[0.3em] text-zinc-400">
-                Festival international premium
+                Pre-selections officielles avant janvier 2027
               </span>
 
               <span className="text-sm uppercase tracking-[0.3em] text-[#C9A84C]">

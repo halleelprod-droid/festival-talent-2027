@@ -100,9 +100,9 @@ export default function FinalCTA() {
             text-zinc-400
           "
         >
-          Rejoignez FT2027 à Dakar pour vivre
-          une expérience immersive unique entre
-          musique, culture, innovation et futur.
+          Rejoignez FT2027 entre Paris et Rome pour suivre une tournee
+          europeenne dediee aux talents selectionnes en musique, mode,
+          art, entrepreneuriat, technologie, culture urbaine et sports mecaniques.
         </motion.p>
 
         {/* BUTTONS */}

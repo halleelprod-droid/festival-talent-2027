@@ -93,10 +93,9 @@ export default function CinematicReel() {
               text-zinc-300
             "
           >
-            Festival Talent 2027 connecte musique,
-            mode, innovation, jeunesse et culture
-            dans une expérience immersive
-            internationale entre l’Afrique et l’Europe.
+            Festival Talent 2027 prepare une tournee europeenne entre Paris et
+            Rome, de janvier a avril 2027, precedee par des pre-selections
+            officielles dans huit disciplines.
           </p>
 
           {/* BUTTONS */}
@@ -147,13 +146,13 @@ export default function CinematicReel() {
               },
 
               {
-                value: '20+',
-                label: 'Artistes'
+                value: '8',
+                label: 'Disciplines'
               },
 
               {
-                value: '4 Days',
-                label: 'Experience'
+                value: '4 mois',
+                label: 'Tournee'
               },
 
               {

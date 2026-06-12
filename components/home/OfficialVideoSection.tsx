@@ -4,11 +4,11 @@ export default function OfficialVideoSection() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 text-center">
           <p className="mb-4 uppercase tracking-[0.4em] text-yellow-400">
-            Archives du premier festival
+            Les videos affichees viennent du premier Festival Talent
           </p>
 
           <h2 className="text-5xl font-black text-white md:text-7xl">
-            VIDEOS ARCHIVES
+            ARCHIVES VIDEO DU PREMIER FESTIVAL TALENT
           </h2>
 
           <p className="mt-6 text-lg text-white/60">

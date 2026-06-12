@@ -157,7 +157,7 @@ export default function Footer() {
           </p>
 
           <p>
-            Dakar • Sénégal • Afrique
+            Paris - Rome - Europe
           </p>
         </div>
       </div>

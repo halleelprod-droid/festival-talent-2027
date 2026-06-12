@@ -60,7 +60,7 @@ export default function TicketsSection() {
           </h2>
 
           <p className="mt-10 max-w-2xl text-lg leading-relaxed text-zinc-400">
-            Reservez votre place pour vivre FT2027 au coeur de Dakar dans une
+            Reservez votre place pour vivre FT2027 entre Paris et Rome dans une
             experience immersive premium.
           </p>
         </motion.div>

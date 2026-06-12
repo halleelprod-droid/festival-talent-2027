@@ -88,7 +88,7 @@ export default function FrPageClient() {
             <div className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
 
             <p className="text-xs uppercase tracking-[0.3em] text-yellow-300">
-              Official Festival Experience - Dakar 2027
+              Official European Tour - 2027
             </p>
           </motion.div>
 
@@ -98,7 +98,7 @@ export default function FrPageClient() {
             transition={{ delay: 0.1, duration: 0.9 }}
             className="mb-8 text-sm uppercase tracking-[0.5em] text-white/40"
           >
-            Dakar - Senegal - Afrique
+            Paris - Rome - Janvier a avril 2027
           </motion.p>
 
           <motion.h1
@@ -121,8 +121,10 @@ export default function FrPageClient() {
             transition={{ delay: 0.28, duration: 1 }}
             className="mx-auto mt-10 max-w-3xl text-lg leading-relaxed text-white/60 md:text-2xl"
           >
-            Le plus grand rassemblement culturel, creatif et immersif nouvelle
-            generation au Senegal.
+            Festival Talent 2027 prepare une tournee europeenne entre Paris et
+            Rome, de janvier a avril 2027, precedee par des pre-selections
+            officielles en danse, musique, mode, art, entrepreneuriat,
+            technologie, culture urbaine et sports mecaniques.
           </motion.p>
 
           <motion.div

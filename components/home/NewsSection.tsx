@@ -18,8 +18,8 @@ const articles = [
   {
     category: 'Experience',
     title:
-      'FT2027 transforme Dakar en plateforme culturelle immersive.',
-    date: 'Août 2026'
+      'FT2027 prepare une tournee europeenne entre Paris et Rome.',
+    date: 'Juin 2026'
   }
 ];
 

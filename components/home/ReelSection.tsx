@@ -104,7 +104,7 @@ export default function ReelSection() {
             </h3>
 
             <p className="mt-4 uppercase tracking-[0.3em] text-sm text-zinc-300">
-              Dakar • Culture • Future • Live Experience
+              Paris - Rome - Culture - Future - Live Experience
             </p>
           </div>
         </motion.div>

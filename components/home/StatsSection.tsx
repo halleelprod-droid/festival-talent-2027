@@ -5,12 +5,12 @@ export default function StatsSection() {
       label: "Participants attendus",
     },
     {
-      value: "20+",
-      label: "Artistes & créateurs",
+      value: "8",
+      label: "Disciplines officielles",
     },
     {
-      value: "4",
-      label: "Jours d’expérience",
+      value: "4 mois",
+      label: "Tournee europeenne",
     },
     {
       value: "15M+",

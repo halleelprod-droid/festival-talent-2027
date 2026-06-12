@@ -83,7 +83,7 @@ export const faqItems = [
   {
     question: "Ou se deroule FT2027 ?",
     answer:
-      "Le festival se deroule principalement entre Dakar et Saly, avec une vision internationale.",
+      "Festival Talent 2027 prepare une tournee europeenne entre Paris et Rome, de janvier a avril 2027, precedee par des pre-selections officielles.",
   },
   {
     question: "Comment reserver ?",
@@ -98,23 +98,25 @@ export const faqItems = [
 
 export const liveStats = [
   "50K+ Participants",
-  "4 Jours Immersifs",
+  "Janvier - Avril 2027",
   "5 Artistes Confirmes",
-  "Dakar + Saly",
+  "Paris + Rome",
   "Afrique - Europe",
 ];
 
 export const festivalStats = [
   { value: "50K+", label: "Participants attendus" },
-  { value: "4 jours", label: "Experience immersive" },
+  { value: "4 mois", label: "Tournee europeenne" },
   { value: "5", label: "Artistes confirmes" },
   { value: "Global", label: "Audience internationale" },
 ];
 
+export const stats = festivalStats;
+
 export const partnerStats = [
   { value: "50K+", label: "Participants attendus" },
   { value: "5", label: "Artistes confirmes" },
-  { value: "4 jours", label: "Experience immersive" },
+  { value: "8", label: "Disciplines officielles" },
   { value: "Global", label: "Visibilite internationale" },
 ];
 
@@ -127,6 +129,21 @@ export const sponsorOpportunities = [
   "Impact jeunesse",
 ];
 
+export const experienceHighlights = [
+  {
+    title: "Pre-selections officielles",
+    text: "Avant janvier 2027, les talents sont identifies en danse, musique, mode, art, entrepreneuriat, technologie, culture urbaine et sports mecaniques.",
+  },
+  {
+    title: "Paris",
+    text: "Une etape europeenne dediee aux showcases, rencontres partenaires, panels et sessions media.",
+  },
+  {
+    title: "Rome",
+    text: "Une phase consacree au leadership, au coaching, aux performances selectionnees et au networking international.",
+  },
+];
+
 export const partnersLogos = [
   { name: "Union Europeenne" },
   { name: "Mano Perfetto", image: "/partners/mano.jpeg" },
@@ -137,78 +154,84 @@ export const partnersLogos = [
 
 export const officialSchedule = [
   {
-    day: "Jour 1",
-    date: "10 juillet 2027",
-    city: "Dakar",
-    theme: "L'aiguille et le micro",
+    day: "Pre-selections",
+    date: "Avant janvier 2027",
+    city: "Officiel",
+    theme: "Detection des talents",
     color: "#C9A84C",
     events: [
-      "Ceremonie d'ouverture",
-      "Defile jeunes createurs",
-      "Live painting",
-      "Concerts d'ouverture",
+      "Danse et musique",
+      "Mode et art",
+      "Entrepreneuriat et technologie",
+      "Culture urbaine et sports mecaniques",
     ],
   },
   {
-    day: "Jour 2",
-    date: "11 juillet 2027",
-    city: "Dakar",
-    theme: "Couleurs et sons",
+    day: "Etape Paris",
+    date: "Janvier - fevrier 2027",
+    city: "Paris",
+    theme: "Showcases et rencontres",
     color: "#ff7b00",
     events: [
-      "Village Talents",
-      "Concours stylisme live",
-      "Masterclass musique",
-      "Scene ouverte",
+      "Showcases jeunes talents",
+      "Panels culture et entrepreneuriat",
+      "Rencontres partenaires",
+      "Sessions media",
     ],
   },
   {
-    day: "Jour 3",
-    date: "12 juillet 2027",
-    city: "Saly",
-    theme: "Moteurs et adrenaline",
+    day: "Etape Rome",
+    date: "Mars - avril 2027",
+    city: "Rome",
+    theme: "Leadership et excellence",
     color: "#00c2ff",
     events: [
-      "Village plage",
-      "Experiences jeunesse",
-      "Finales sportives",
-      "Sunset concert",
+      "Talent talks",
+      "Coaching et motivation",
+      "Performances selectionnees",
+      "Networking international",
     ],
   },
   {
-    day: "Jour 4",
-    date: "13 juillet 2027",
-    city: "Dakar",
-    theme: "Le Senegal de demain",
+    day: "Finalisation",
+    date: "Avril 2027",
+    city: "Europe",
+    theme: "Mise en lumiere officielle",
     color: "#9b5cff",
     events: [
-      "Finale peinture",
-      "Fashion week finale",
-      "Grande parade",
-      "Concert de cloture",
+      "Annonce des talents retenus",
+      "Accompagnement des profils",
+      "Preparation media",
+      "Prochaines etapes Festival Talent",
     ],
   },
 ];
 
 export const festivalLocations = [
   {
-    name: "Place du Souvenir",
-    city: "Dakar",
-    description: "Defiles, concerts et ceremonies officielles.",
+    name: "Pre-selections officielles",
+    city: "Avant janvier 2027",
+    description:
+      "Detection des talents dans les disciplines danse, musique, mode, art, entrepreneuriat, technologie, culture urbaine et sports mecaniques.",
   },
   {
-    name: "Monument Renaissance",
-    city: "Dakar",
-    description: "Live painting, masterclass et village creatif.",
+    name: "Etape Paris",
+    city: "Paris",
+    description:
+      "Showcases, rencontres partenaires, panels et sessions media pour ouvrir la tournee europeenne.",
   },
   {
-    name: "Circuit Saly",
-    city: "Saly",
-    description: "Experiences jeunesse, sport et adrenaline.",
+    name: "Etape Rome",
+    city: "Rome",
+    description:
+      "Leadership, coaching, performances selectionnees et networking international.",
   },
   {
-    name: "Plage de Saly",
-    city: "Saly",
-    description: "Sunset concerts, DJ sets et village plage.",
+    name: "Finalisation europeenne",
+    city: "Avril 2027",
+    description:
+      "Mise en lumiere officielle des talents retenus et preparation des prochaines etapes.",
   },
 ];
+
+export const locations = festivalLocations;

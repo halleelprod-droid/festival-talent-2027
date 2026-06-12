@@ -1,7 +1,16 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mic2, Users, Sparkles, Globe2, CalendarDays, MapPin } from "lucide-react";
+import {
+  Mic2,
+  Users,
+  Sparkles,
+  Globe2,
+  CalendarDays,
+  MapPin,
+} from "lucide-react";
 
 const speakers = [
   {
@@ -10,6 +19,8 @@ const speakers = [
     tags: ["Coach", "Formateur", "Conférencier"],
     description:
       "Expert en développement personnel et en accompagnement vers la réussite, engagé auprès de la jeunesse et des entrepreneurs.",
+    image: "/images/speakers/mistermoo-mindset.jpg",
+    initials: "MM",
   },
   {
     name: "Coach Oldy Sow",
@@ -17,6 +28,8 @@ const speakers = [
     tags: ["Leadership", "Motivation", "Excellence"],
     description:
       "Intervenant inspirant autour du leadership, de l’éveil des consciences, de la discipline et du développement personnel.",
+    image: "/images/speakers/oldy-sow.jpg",
+    initials: "OS",
   },
 ];
 
@@ -42,6 +55,39 @@ const highlights = [
     text: "Une dynamique qui positionne Festival Talent comme une plateforme d’impact.",
   },
 ];
+
+function SpeakerImage({
+  src,
+  alt,
+  initials,
+}: {
+  src: string;
+  alt: string;
+  initials: string;
+}) {
+  const [imageError, setImageError] = useState(false);
+
+  if (!src || imageError) {
+    return (
+      <div className="flex h-full items-center justify-center bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.25),transparent_38%),linear-gradient(135deg,#050505,#171717,#050505)]">
+        <div className="flex h-28 w-28 items-center justify-center rounded-full border border-yellow-400/30 bg-yellow-400/10 text-3xl font-black text-yellow-300 shadow-2xl shadow-yellow-900/30">
+          {initials}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(max-width: 768px) 100vw, 50vw"
+      onError={() => setImageError(true)}
+      className="object-cover object-top transition duration-700 group-hover:scale-105"
+    />
+  );
+}
 
 export default function TalentTalksSection() {
   return (
@@ -95,7 +141,9 @@ export default function TalentTalksSection() {
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 transition group-hover:scale-110">
                   <Icon size={22} />
                 </div>
+
                 <h3 className="text-xl font-bold text-white">{item.title}</h3>
+
                 <p className="mt-3 text-sm leading-6 text-white/60">
                   {item.text}
                 </p>
@@ -112,38 +160,51 @@ export default function TalentTalksSection() {
             transition={{ duration: 0.7 }}
             className="rounded-[2rem] border border-yellow-400/20 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-8 shadow-2xl shadow-yellow-950/20 backdrop-blur-xl"
           >
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">
+            <p className="mb-6 text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">
               Invités d’honneur
             </p>
 
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2">
               {speakers.map((speaker) => (
-                <div
+                <article
                   key={speaker.name}
-                  className="rounded-3xl border border-white/10 bg-black/40 p-6 transition duration-300 hover:border-yellow-400/50 hover:bg-yellow-400/[0.05]"
+                  className="group overflow-hidden rounded-3xl border border-white/10 bg-black/40 transition duration-300 hover:border-yellow-400/50 hover:bg-yellow-400/[0.05]"
                 >
-                  <h3 className="text-2xl font-black uppercase text-white">
-                    {speaker.name}
-                  </h3>
-                  <p className="mt-2 text-sm font-medium text-yellow-300">
-                    {speaker.role}
-                  </p>
+                  <div className="relative h-80 overflow-hidden bg-zinc-950">
+                    <SpeakerImage
+                      src={speaker.image}
+                      alt={speaker.name}
+                      initials={speaker.initials}
+                    />
 
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {speaker.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-yellow-400/20 bg-yellow-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-yellow-200"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                   </div>
 
-                  <p className="mt-5 text-sm leading-6 text-white/65">
-                    {speaker.description}
-                  </p>
-                </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-black uppercase text-white">
+                      {speaker.name}
+                    </h3>
+
+                    <p className="mt-2 text-sm font-medium text-yellow-300">
+                      {speaker.role}
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {speaker.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-yellow-400/20 bg-yellow-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-yellow-200"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <p className="mt-5 text-sm leading-6 text-white/65">
+                      {speaker.description}
+                    </p>
+                  </div>
+                </article>
               ))}
             </div>
           </motion.div>
@@ -177,7 +238,9 @@ export default function TalentTalksSection() {
                 <MapPin className="mt-1 text-yellow-300" size={22} />
                 <div>
                   <p className="font-bold text-white">Lieu</p>
-                  <p className="text-sm text-white/60">Italie, plusieurs villes</p>
+                  <p className="text-sm text-white/60">
+                    Italie, plusieurs villes
+                  </p>
                 </div>
               </div>
 
@@ -185,7 +248,9 @@ export default function TalentTalksSection() {
                 <CalendarDays className="mt-1 text-yellow-300" size={22} />
                 <div>
                   <p className="font-bold text-white">Date</p>
-                  <p className="text-sm text-white/60">À partir de mars 2027</p>
+                  <p className="text-sm text-white/60">
+                    À partir de mars 2027
+                  </p>
                 </div>
               </div>
 
@@ -205,6 +270,7 @@ export default function TalentTalksSection() {
               <p className="text-sm font-semibold uppercase tracking-wide text-yellow-200">
                 Au programme
               </p>
+
               <p className="mt-2 text-sm text-white/65">
                 Conférences, ateliers, échanges, networking et rencontres
                 inspirantes.

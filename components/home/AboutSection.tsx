@@ -25,10 +25,10 @@ export default function AboutSection() {
           />
 
           <p className="mt-10 max-w-3xl text-lg leading-relaxed text-zinc-300 md:text-xl">
-            Festival Talent 2027 est une plateforme immersive qui
-            fusionne musique, culture urbaine, innovation et
-            expériences digitales pour créer le futur des festivals
-            africains.
+            Festival Talent 2027 prepare une tournee europeenne entre Paris et
+            Rome, de janvier a avril 2027, precedee par des pre-selections
+            officielles dans plusieurs disciplines : danse, musique, mode, art,
+            entrepreneuriat, technologie, culture urbaine et sports mecaniques.
           </p>
         </FadeIn>
 
@@ -45,7 +45,7 @@ export default function AboutSection() {
             },
             {
               title: 'Impact',
-              text: 'Un festival construit pour inspirer, connecter et faire rayonner Dakar.'
+              text: 'Un festival construit pour connecter les talents selectionnes a une scene europeenne.'
             }
           ].map((item, index) => (
             <FadeIn
