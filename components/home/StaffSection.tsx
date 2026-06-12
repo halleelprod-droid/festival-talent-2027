@@ -18,6 +18,7 @@ const staffMembers = [
   {
     name: "Zairah Diamant Noire",
     role: "Initiatrice du Projet",
+    department: "Direction",
     description:
       "Porte la vision fondatrice de Festival Talent 2027 et incarne l’ambition de révéler les talents, d’inspirer la jeunesse et de construire un événement culturel majeur.",
     icon: Gem,
@@ -28,6 +29,7 @@ const staffMembers = [
   {
     name: "Masseck Sy",
     role: "Cofondateur",
+    department: "Direction",
     description:
       "Participe à la vision stratégique, au développement institutionnel et à la construction globale du Festival Talent 2027.",
     icon: Crown,
@@ -38,6 +40,7 @@ const staffMembers = [
   {
     name: "Ibrahima Khalilou Danso",
     role: "Directeur Exécutif",
+    department: "Direction",
     description:
       "Assure la coordination générale, le pilotage opérationnel et le suivi des grandes orientations du festival.",
     icon: Briefcase,
@@ -48,6 +51,7 @@ const staffMembers = [
   {
     name: "Mamadou Ngom",
     role: "Responsable Pôle Régie",
+    department: "Organisation",
     description:
       "Coordonne la régie, l’organisation technique, les besoins terrain et la fluidité opérationnelle des différentes activités.",
     icon: RadioTower,
@@ -58,6 +62,7 @@ const staffMembers = [
   {
     name: "Babacar Ndour",
     role: "Responsable Communication",
+    department: "Communication",
     description:
       "Pilote la communication, l’image publique, les annonces officielles, les médias et la visibilité digitale du festival.",
     icon: Megaphone,
@@ -68,6 +73,7 @@ const staffMembers = [
   {
     name: "Abdourahmane Ndiaye",
     role: "Responsable Pôle Entrepreneur",
+    department: "Entrepreneuriat",
     description:
       "Coordonne le pôle entrepreneuriat, accompagne les porteurs de projets et participe à la valorisation des jeunes entrepreneurs au sein du Festival Talent 2027.",
     icon: Rocket,
@@ -78,6 +84,7 @@ const staffMembers = [
   {
     name: "DJ You",
     role: "Directeur Artistique",
+    department: "Artistique",
     description:
       "Assure la direction artistique du Festival Talent 2027, accompagne la programmation créative et participe à la cohérence musicale, scénique et culturelle de l’événement.",
     icon: Music2,
@@ -88,6 +95,7 @@ const staffMembers = [
   {
     name: "Ibrahima Fall",
     role: "Développeur Web / Conception Digitale",
+    department: "Digital",
     description:
       "Responsable de la conception, du déploiement et de l’expérience digitale du site officiel Festival Talent 2027.",
     icon: MonitorSmartphone,
@@ -220,12 +228,18 @@ export default function StaffSection() {
                       </div>
                     )}
 
-                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-yellow-300">
-                      {member.role}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full border border-yellow-400/25 bg-yellow-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-yellow-300">
+                        {member.department}
+                      </span>
+
+                      <span className="text-xs font-bold uppercase tracking-[0.22em] text-yellow-300">
+                        {member.role}
+                      </span>
+                    </div>
 
                     <h3
-                      className={`mt-3 font-black uppercase text-white ${
+                      className={`mt-4 font-black uppercase text-white ${
                         member.featured
                           ? "text-4xl sm:text-5xl"
                           : "text-2xl"
