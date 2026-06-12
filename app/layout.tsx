@@ -33,9 +33,23 @@ export const metadata: Metadata = {
   authors: [{ name: "Festival Talent" }],
   creator: "Festival Talent",
   publisher: "Festival Talent",
+
+  icons: {
+    icon: [
+      {
+        url: "/icon.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
+
   alternates: {
     canonical: "/fr",
   },
+
   openGraph: {
     title: siteName,
     description: defaultDescription,
@@ -52,12 +66,14 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description: defaultDescription,
     images: ["/images/festival-talent-logo.png"],
   },
+
   robots: {
     index: true,
     follow: true,
@@ -70,19 +86,3 @@ export const metadata: Metadata = {
     },
   },
 };
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="fr">
-      <body className="bg-black text-white">
-        <Navbar />
-
-        {children}
-      </body>
-    </html>
-  );
-}
