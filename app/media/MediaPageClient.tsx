@@ -18,7 +18,7 @@ const archiveStats = [
     label: "Édition passée",
   },
   {
-    value: "07",
+    value: "42",
     label: "Archives photo",
   },
   {
@@ -27,43 +27,15 @@ const archiveStats = [
   },
 ];
 
-const festivalGalleryImages = [
-  {
-    src: "/images/previous/scene.jpg",
-    title: "Scène & ambiance",
-    label: "Moment fort",
-  },
-  {
-    src: "/images/previous/public.jpg",
-    title: "Public du festival",
-    label: "Énergie",
-  },
-  {
-    src: "/images/previous/fashion.jpg",
-    title: "Mode & création",
-    label: "Fashion",
-  },
-  {
-    src: "/images/previous/djyou.jpg",
-    title: "DJ You",
-    label: "Direction artistique",
-  },
-  {
-    src: "/images/previous/dip.jpg",
-    title: "Prestation live",
-    label: "Performance",
-  },
-  {
-    src: "/images/previous/zairah.jpg",
-    title: "Zairah Diamant Noire",
-    label: "Initiatrice",
-  },
-  {
-    src: "/images/previous/official.jpg",
-    title: "Festival Talent",
-    label: "Archive officielle",
-  },
-];
+const festivalGalleryImages = Array.from({ length: 42 }, (_, index) => {
+  const number = String(index + 1).padStart(2, "0");
+
+  return {
+    src: `/images/previous/gallery/festival-passe-${number}.jpg`,
+    title: `Archive photo ${number}`,
+    label: "Festival passé",
+  };
+});
 
 const festivalVideos = Array.from({ length: 8 }, (_, index) => {
   const number = index + 1;
@@ -303,44 +275,53 @@ export default function MediaPageClient() {
           </motion.div>
 
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {festivalGalleryImages.map((image, index) => (
-              <motion.article
-                key={`${image.src}-${index}`}
-                initial={{ opacity: 0, y: 26 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.06, duration: 0.6 }}
-                className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 transition duration-300 hover:border-yellow-400/40 ${
-                  index === 0 ? "sm:col-span-2 lg:col-span-2" : ""
-                }`}
-              >
-                <div
-                  className={`relative ${
-                    index === 0 ? "h-[420px]" : "h-[320px]"
+            {festivalGalleryImages.map((image, index) => {
+              const isLarge =
+                index === 0 ||
+                index === 7 ||
+                index === 14 ||
+                index === 21 ||
+                index === 28 ||
+                index === 35;
+
+              return (
+                <motion.article
+                  key={`${image.src}-${index}`}
+                  initial={{ opacity: 0, y: 26 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: Math.min(index * 0.025, 0.5),
+                    duration: 0.55,
+                  }}
+                  className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 transition duration-300 hover:border-yellow-400/40 ${
+                    isLarge ? "sm:col-span-2 lg:col-span-2" : ""
                   }`}
                 >
-                  <Image
-                    src={image.src}
-                    alt={image.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition duration-700 group-hover:scale-110"
-                  />
+                  <div className={`relative ${isLarge ? "h-[420px]" : "h-[320px]"}`}>
+                    <Image
+                      src={image.src}
+                      alt={image.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition duration-700 group-hover:scale-110"
+                    />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <span className="rounded-full border border-yellow-400/30 bg-black/50 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-yellow-300 backdrop-blur-md">
-                      {image.label}
-                    </span>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <span className="rounded-full border border-yellow-400/30 bg-black/50 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-yellow-300 backdrop-blur-md">
+                        {image.label}
+                      </span>
 
-                    <h3 className="mt-4 text-2xl font-black uppercase text-white">
-                      {image.title}
-                    </h3>
+                      <h3 className="mt-4 text-2xl font-black uppercase text-white">
+                        {image.title}
+                      </h3>
+                    </div>
                   </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
