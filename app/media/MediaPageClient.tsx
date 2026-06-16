@@ -17,7 +17,7 @@ const archiveStats = [
     label: "Édition passée",
   },
   {
-    value: "07",
+    value: "42",
     label: "Archives photo",
   },
   {
@@ -26,43 +26,15 @@ const archiveStats = [
   },
 ];
 
-const festivalGalleryImages = [
-  {
-    src: "/images/previous/scene.jpg",
-    title: "Scène & ambiance",
-    label: "Moment fort",
-  },
-  {
-    src: "/images/previous/public.jpg",
-    title: "Public du festival",
-    label: "Énergie",
-  },
-  {
-    src: "/images/previous/fashion.jpg",
-    title: "Mode & création",
-    label: "Fashion",
-  },
-  {
-    src: "/images/previous/djyou.jpg",
-    title: "DJ You",
-    label: "Direction artistique",
-  },
-  {
-    src: "/images/previous/dip.jpg",
-    title: "Prestation live",
-    label: "Performance",
-  },
-  {
-    src: "/images/previous/zairah.jpg",
-    title: "Zairah Diamant Noire",
-    label: "Initiatrice",
-  },
-  {
-    src: "/images/previous/official.jpg",
-    title: "Festival Talent",
-    label: "Archive officielle",
-  },
-];
+const festivalGalleryImages = Array.from({ length: 42 }, (_, index) => {
+  const number = String(index + 1).padStart(2, "0");
+
+  return {
+    src: `/images/previous/gallery/festival-passe-${number}.jpg`,
+    title: `Archive Festival Talent ${number}`,
+    label: "Festival passé",
+  };
+});
 
 const archiveHighlights = [
   {
@@ -235,14 +207,18 @@ export default function MediaPageClient() {
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.6 }}
+                transition={{ delay: Math.min(index * 0.025, 0.5), duration: 0.55 }}
                 className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 transition duration-300 hover:border-yellow-400/40 ${
-                  index === 0 ? "sm:col-span-2 lg:col-span-2" : ""
+                  index === 0 || index === 7 || index === 18 || index === 29
+                    ? "sm:col-span-2 lg:col-span-2"
+                    : ""
                 }`}
               >
                 <div
                   className={`relative ${
-                    index === 0 ? "h-[420px]" : "h-[320px]"
+                    index === 0 || index === 7 || index === 18 || index === 29
+                      ? "h-[420px]"
+                      : "h-[320px]"
                   }`}
                 >
                   <Image
