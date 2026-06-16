@@ -22,7 +22,7 @@ const archiveStats = [
     label: "Archives photo",
   },
   {
-    value: "02",
+    value: "08",
     label: "Archives vidéo",
   },
 ];
@@ -65,18 +65,15 @@ const festivalGalleryImages = [
   },
 ];
 
-const festivalVideos = [
-  {
-    src: "/videos/reel1.mp4",
-    title: "Archive vidéo 01",
+const festivalVideos = Array.from({ length: 8 }, (_, index) => {
+  const number = index + 1;
+
+  return {
+    src: `/videos/reel${number}.mp4`,
+    title: `Archive vidéo ${String(number).padStart(2, "0")}`,
     label: "Festival passé",
-  },
-  {
-    src: "/videos/reel2.mp4",
-    title: "Archive vidéo 02",
-    label: "Festival passé",
-  },
-];
+  };
+});
 
 const archiveHighlights = [
   {
@@ -242,14 +239,14 @@ export default function MediaPageClient() {
             </p>
           </motion.div>
 
-          <div className="mt-16 grid gap-6 lg:grid-cols-2">
+          <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {festivalVideos.map((video, index) => (
               <motion.article
                 key={video.src}
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.6 }}
+                transition={{ delay: index * 0.05, duration: 0.6 }}
                 className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-3 shadow-2xl shadow-black/40 backdrop-blur-xl transition duration-300 hover:border-yellow-400/40"
               >
                 <div className="relative overflow-hidden rounded-[1.5rem] bg-black">
@@ -258,7 +255,7 @@ export default function MediaPageClient() {
                     controls
                     preload="metadata"
                     playsInline
-                    className="aspect-video h-full w-full bg-black object-cover"
+                    className="aspect-[9/16] h-full w-full bg-black object-cover"
                   />
 
                   <div className="pointer-events-none absolute bottom-5 left-5 right-5">
@@ -266,7 +263,7 @@ export default function MediaPageClient() {
                       {video.label}
                     </span>
 
-                    <h3 className="mt-4 text-2xl font-black uppercase text-white drop-shadow-lg">
+                    <h3 className="mt-4 text-xl font-black uppercase text-white drop-shadow-lg">
                       {video.title}
                     </h3>
                   </div>
