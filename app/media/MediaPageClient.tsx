@@ -9,6 +9,7 @@ import {
   ImageIcon,
   Play,
   Sparkles,
+  Video,
 } from "lucide-react";
 
 const archiveStats = [
@@ -17,24 +18,65 @@ const archiveStats = [
     label: "Édition passée",
   },
   {
-    value: "42",
+    value: "07",
     label: "Archives photo",
   },
   {
-    value: "100%",
-    label: "Souvenirs officiels",
+    value: "02",
+    label: "Archives vidéo",
   },
 ];
 
-const festivalGalleryImages = Array.from({ length: 42 }, (_, index) => {
-  const number = String(index + 1).padStart(2, "0");
+const festivalGalleryImages = [
+  {
+    src: "/images/previous/scene.jpg",
+    title: "Scène & ambiance",
+    label: "Moment fort",
+  },
+  {
+    src: "/images/previous/public.jpg",
+    title: "Public du festival",
+    label: "Énergie",
+  },
+  {
+    src: "/images/previous/fashion.jpg",
+    title: "Mode & création",
+    label: "Fashion",
+  },
+  {
+    src: "/images/previous/djyou.jpg",
+    title: "DJ You",
+    label: "Direction artistique",
+  },
+  {
+    src: "/images/previous/dip.jpg",
+    title: "Prestation live",
+    label: "Performance",
+  },
+  {
+    src: "/images/previous/zairah.jpg",
+    title: "Zairah Diamant Noire",
+    label: "Initiatrice",
+  },
+  {
+    src: "/images/previous/official.jpg",
+    title: "Festival Talent",
+    label: "Archive officielle",
+  },
+];
 
-  return {
-    src: `/images/previous/gallery/festival-passe-${number}.jpg`,
-    title: `Archive Festival Talent ${number}`,
+const festivalVideos = [
+  {
+    src: "/videos/reel1.mp4",
+    title: "Archive vidéo 01",
     label: "Festival passé",
-  };
-});
+  },
+  {
+    src: "/videos/reel2.mp4",
+    title: "Archive vidéo 02",
+    label: "Festival passé",
+  },
+];
 
 const archiveHighlights = [
   {
@@ -172,6 +214,69 @@ export default function MediaPageClient() {
         </div>
       </section>
 
+      <section className="relative px-6 py-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mx-auto max-w-4xl text-center"
+          >
+            <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-2 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+              <Video size={16} />
+              Vidéos officielles
+            </div>
+
+            <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-5xl lg:text-7xl">
+              Vidéos du
+              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                festival passé
+              </span>
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/60 sm:text-lg">
+              Une sélection de vidéos courtes pour revivre l&apos;ambiance, les
+              prestations, les coulisses et l&apos;énergie de la précédente
+              édition.
+            </p>
+          </motion.div>
+
+          <div className="mt-16 grid gap-6 lg:grid-cols-2">
+            {festivalVideos.map((video, index) => (
+              <motion.article
+                key={video.src}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.6 }}
+                className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-3 shadow-2xl shadow-black/40 backdrop-blur-xl transition duration-300 hover:border-yellow-400/40"
+              >
+                <div className="relative overflow-hidden rounded-[1.5rem] bg-black">
+                  <video
+                    src={video.src}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="aspect-video h-full w-full bg-black object-cover"
+                  />
+
+                  <div className="pointer-events-none absolute bottom-5 left-5 right-5">
+                    <span className="rounded-full border border-yellow-400/30 bg-black/60 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-yellow-300 backdrop-blur-md">
+                      {video.label}
+                    </span>
+
+                    <h3 className="mt-4 text-2xl font-black uppercase text-white drop-shadow-lg">
+                      {video.title}
+                    </h3>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="relative px-6 py-24 text-white sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <motion.div
@@ -207,18 +312,14 @@ export default function MediaPageClient() {
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: Math.min(index * 0.025, 0.5), duration: 0.55 }}
+                transition={{ delay: index * 0.06, duration: 0.6 }}
                 className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 transition duration-300 hover:border-yellow-400/40 ${
-                  index === 0 || index === 7 || index === 18 || index === 29
-                    ? "sm:col-span-2 lg:col-span-2"
-                    : ""
+                  index === 0 ? "sm:col-span-2 lg:col-span-2" : ""
                 }`}
               >
                 <div
                   className={`relative ${
-                    index === 0 || index === 7 || index === 18 || index === 29
-                      ? "h-[420px]"
-                      : "h-[320px]"
+                    index === 0 ? "h-[420px]" : "h-[320px]"
                   }`}
                 >
                   <Image
