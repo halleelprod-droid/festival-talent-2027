@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -69,6 +70,12 @@ const archiveHighlights = [
 ];
 
 export default function MediaPageClient() {
+  const [visibleVideos, setVisibleVideos] = useState(4);
+  const [visibleImages, setVisibleImages] = useState(12);
+
+  const displayedVideos = festivalVideos.slice(0, visibleVideos);
+  const displayedImages = festivalGalleryImages.slice(0, visibleImages);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_34%),linear-gradient(to_bottom,#000,rgba(15,13,3,0.96),#000)]" />
@@ -140,6 +147,7 @@ export default function MediaPageClient() {
                   className="h-full w-full"
                   src="https://www.youtube.com/embed/77w8NnB_B6A"
                   title="Archives vidéo du premier Festival Talent"
+                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
@@ -212,7 +220,7 @@ export default function MediaPageClient() {
           </motion.div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {festivalVideos.map((video, index) => (
+            {displayedVideos.map((video, index) => (
               <motion.article
                 key={video.src}
                 initial={{ opacity: 0, y: 26 }}
@@ -225,7 +233,7 @@ export default function MediaPageClient() {
                   <video
                     src={video.src}
                     controls
-                    preload="metadata"
+                    preload="none"
                     playsInline
                     className="aspect-[9/16] h-full w-full bg-black object-cover"
                   />
@@ -243,6 +251,18 @@ export default function MediaPageClient() {
               </motion.article>
             ))}
           </div>
+
+          {visibleVideos < festivalVideos.length && (
+            <div className="mt-10 text-center">
+              <button
+                type="button"
+                onClick={() => setVisibleVideos((current) => current + 4)}
+                className="rounded-full border border-yellow-400/30 bg-yellow-400/10 px-8 py-4 text-xs font-black uppercase tracking-[0.3em] text-yellow-300 transition hover:bg-yellow-400 hover:text-black"
+              >
+                Voir plus de vidéos
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -275,14 +295,8 @@ export default function MediaPageClient() {
           </motion.div>
 
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {festivalGalleryImages.map((image, index) => {
-              const isLarge =
-                index === 0 ||
-                index === 7 ||
-                index === 14 ||
-                index === 21 ||
-                index === 28 ||
-                index === 35;
+            {displayedImages.map((image, index) => {
+              const isLarge = index === 0 || index === 7;
 
               return (
                 <motion.article
@@ -291,18 +305,23 @@ export default function MediaPageClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{
-                    delay: Math.min(index * 0.025, 0.5),
+                    delay: Math.min(index * 0.025, 0.35),
                     duration: 0.55,
                   }}
                   className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 transition duration-300 hover:border-yellow-400/40 ${
                     isLarge ? "sm:col-span-2 lg:col-span-2" : ""
                   }`}
                 >
-                  <div className={`relative ${isLarge ? "h-[420px]" : "h-[320px]"}`}>
+                  <div
+                    className={`relative ${
+                      isLarge ? "h-[420px]" : "h-[320px]"
+                    }`}
+                  >
                     <Image
                       src={image.src}
                       alt={image.title}
                       fill
+                      quality={70}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition duration-700 group-hover:scale-110"
                     />
@@ -323,6 +342,18 @@ export default function MediaPageClient() {
               );
             })}
           </div>
+
+          {visibleImages < festivalGalleryImages.length && (
+            <div className="mt-10 text-center">
+              <button
+                type="button"
+                onClick={() => setVisibleImages((current) => current + 12)}
+                className="rounded-full border border-yellow-400/30 bg-yellow-400/10 px-8 py-4 text-xs font-black uppercase tracking-[0.3em] text-yellow-300 transition hover:bg-yellow-400 hover:text-black"
+              >
+                Voir plus d&apos;images
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
