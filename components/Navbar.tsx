@@ -16,6 +16,10 @@ const navLinks = [
     href: "/programme",
   },
   {
+    label: "PRÉ-SÉLECTIONS",
+    href: "/preselections",
+  },
+  {
     label: "ARTISTES",
     href: "/artists",
   },
@@ -66,7 +70,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden items-center gap-9 lg:flex">
+        <div className="hidden items-center gap-6 xl:gap-8 lg:flex">
           {navLinks.map((link) => {
             const active = isActive(link.href);
 
@@ -74,7 +78,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-xs font-black uppercase tracking-[0.35em] transition duration-300 ${
+                className={`relative text-[10px] font-black uppercase tracking-[0.26em] transition duration-300 xl:text-xs ${
                   active ? "text-yellow-300" : "text-white/80 hover:text-white"
                 }`}
               >
@@ -82,7 +86,7 @@ export default function Navbar() {
 
                 <span
                   className={`absolute -bottom-3 left-0 h-[2px] rounded-full bg-yellow-400 transition-all duration-300 ${
-                    active ? "w-full" : "w-0 group-hover:w-full"
+                    active ? "w-full" : "w-0"
                   }`}
                 />
               </Link>
@@ -93,7 +97,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-4 lg:flex">
           <Link
             href="/tickets"
-            className="rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-9 py-4 text-xs font-black uppercase tracking-[0.2em] text-black shadow-2xl shadow-yellow-900/30 transition duration-300 hover:scale-105 hover:shadow-yellow-700/40"
+            className="rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-7 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black shadow-2xl shadow-yellow-900/30 transition duration-300 hover:scale-105 hover:shadow-yellow-700/40 xl:px-9 xl:text-xs"
           >
             Réserver
           </Link>
