@@ -3,80 +3,138 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
-const links = [
-  { label: "Accueil", href: "/fr" },
-  { label: "Programme", href: "/programme" },
-  { label: "Partenaires", href: "/partners" },
-  { label: "Tickets", href: "/tickets" },
-  { label: "Media", href: "/media" },
+const navLinks = [
+  {
+    label: "ACCUEIL",
+    href: "/fr",
+  },
+  {
+    label: "PROGRAMME",
+    href: "/programme",
+  },
+  {
+    label: "ARTISTES",
+    href: "/artists",
+  },
+  {
+    label: "PARTENAIRES",
+    href: "/partners",
+  },
+  {
+    label: "TICKETS",
+    href: "/tickets",
+  },
+  {
+    label: "MEDIA",
+    href: "/media",
+  },
 ];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/fr") {
+      return pathname === "/" || pathname === "/fr";
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/fr" aria-label="Retour à l'accueil">
-          <Image
-            src="/images/festival-talent-logo.png"
-            alt="Festival Talent"
-            width={240}
-            height={90}
-            className="h-16 w-auto object-contain md:h-20"
-            priority
-          />
-        </Link>
-
-        <nav className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-[0.22em] text-white md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="relative transition duration-300 hover:text-[#C9A84C]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-2xl">
+      <nav className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 sm:px-10 lg:px-12">
         <Link
-          href="/tickets"
-          className="hidden rounded-full bg-[#C9A84C] px-8 py-4 text-sm font-black uppercase tracking-wide text-black shadow-[0_0_25px_rgba(201,168,76,0.35)] transition duration-300 hover:scale-105 hover:bg-white hover:text-black md:block"
+          href="/fr"
+          aria-label="Festival Talent - Accueil"
+          className="group flex items-center"
+          onClick={() => setIsOpen(false)}
         >
-          Réserver
+          <div className="relative h-16 w-28 overflow-hidden">
+            <Image
+              src="/images/festival-talent-logo.png"
+              alt="Festival Talent"
+              fill
+              priority
+              sizes="112px"
+              className="object-contain transition duration-300 group-hover:scale-105"
+            />
+          </div>
         </Link>
 
-        <button
-          type="button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white backdrop-blur-xl transition hover:border-[#C9A84C] hover:text-[#C9A84C] md:hidden"
-          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+        <div className="hidden items-center gap-9 lg:flex">
+          {navLinks.map((link) => {
+            const active = isActive(link.href);
 
-      {menuOpen && (
-        <div className="border-t border-white/10 bg-black/95 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col space-y-6 px-6 py-7 uppercase tracking-[0.2em] text-white">
-            {links.map((link) => (
+            return (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm font-bold transition hover:text-[#C9A84C]"
+                className={`relative text-xs font-black uppercase tracking-[0.35em] transition duration-300 ${
+                  active ? "text-yellow-300" : "text-white/80 hover:text-white"
+                }`}
               >
                 {link.label}
+
+                <span
+                  className={`absolute -bottom-3 left-0 h-[2px] rounded-full bg-yellow-400 transition-all duration-300 ${
+                    active ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
               </Link>
-            ))}
+            );
+          })}
+        </div>
+
+        <div className="hidden items-center gap-4 lg:flex">
+          <Link
+            href="/tickets"
+            className="rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-9 py-4 text-xs font-black uppercase tracking-[0.2em] text-black shadow-2xl shadow-yellow-900/30 transition duration-300 hover:scale-105 hover:shadow-yellow-700/40"
+          >
+            Réserver
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Ouvrir le menu"
+          onClick={() => setIsOpen((current) => !current)}
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-yellow-400/40 hover:text-yellow-300 lg:hidden"
+        >
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      {isOpen && (
+        <div className="border-t border-white/10 bg-black/95 px-6 py-6 backdrop-blur-2xl lg:hidden">
+          <div className="flex flex-col gap-3">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`rounded-2xl border px-5 py-4 text-sm font-black uppercase tracking-[0.25em] transition ${
+                    active
+                      ? "border-yellow-400/40 bg-yellow-400/10 text-yellow-300"
+                      : "border-white/10 bg-white/[0.03] text-white/75 hover:border-yellow-400/30 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
 
             <Link
               href="/tickets"
-              onClick={() => setMenuOpen(false)}
-              className="rounded-full bg-[#C9A84C] py-4 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_25px_rgba(201,168,76,0.35)] transition hover:bg-white hover:text-black"
+              onClick={() => setIsOpen(false)}
+              className="mt-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-6 py-4 text-center text-sm font-black uppercase tracking-[0.25em] text-black"
             >
               Réserver
             </Link>
