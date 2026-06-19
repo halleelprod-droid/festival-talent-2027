@@ -84,9 +84,9 @@ const steps = [
       "Le participant choisit la catégorie qui correspond le mieux à son talent ou à son projet.",
   },
   {
-    title: "Envoyer sa candidature",
+    title: "Remplir le formulaire",
     description:
-      "L’inscription se fait via WhatsApp avec le nom, la discipline, la ville et une courte présentation.",
+      "La candidature est enregistrée dans la base officielle des pré-sélections Festival Talent.",
   },
   {
     title: "Passer la sélection",
@@ -116,7 +116,7 @@ export default function PreselectionsPage() {
             <div>
               <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-6 py-3 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
                 <BadgeCheck size={17} />
-                Inscriptions ouvertes bientôt
+                Inscriptions aux pré-sélections
               </div>
 
               <h1 className="mt-8 text-5xl font-black uppercase leading-none tracking-tight sm:text-7xl lg:text-8xl">
@@ -135,15 +135,13 @@ export default function PreselectionsPage() {
               </p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a
+                  href="#formulaire-preselections"
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-8 py-4 text-xs font-black uppercase tracking-[0.25em] text-black transition hover:scale-105"
                 >
-                  S’inscrire via WhatsApp
+                  Remplir le formulaire
                   <ArrowRight size={17} />
-                </Link>
+                </a>
 
                 <Link
                   href="/programme"
@@ -168,9 +166,9 @@ export default function PreselectionsPage() {
               </h2>
 
               <p className="mt-6 text-base leading-8 text-white/65">
-                Les pré-sélections permettent d’identifier les profils les plus
-                prometteurs avant les grandes étapes internationales du Festival
-                Talent 2027.
+                Les pré-sélections permettent d&apos;identifier les profils les
+                plus prometteurs avant les grandes étapes internationales du
+                Festival Talent 2027.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -209,7 +207,7 @@ export default function PreselectionsPage() {
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/60 sm:text-lg">
-              Chaque discipline représente un espace d’expression, de
+              Chaque discipline représente un espace d&apos;expression, de
               compétition, de créativité et de mise en lumière pour les jeunes
               talents.
             </p>
@@ -242,38 +240,27 @@ export default function PreselectionsPage() {
         </div>
       </section>
 
-      <section className="relative px-6 py-20 sm:px-10 lg:px-20">
+      <section
+        id="formulaire-preselections"
+        className="relative px-6 py-20 sm:px-10 lg:px-20"
+      >
         <div className="mx-auto max-w-5xl">
           <div className="mb-10 text-center">
             <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
               Formulaire officiel
             </p>
-            <h2 className="mt-5 text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl">
-              Envoyer sa
-              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
-                candidature
-              </span>
+
+            <h2 className="mt-5 text-4xl font-black uppercase text-white sm:text-5xl">
+              Candidature pré-sélections
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/60">
-              Complete le formulaire officiel pour enregistrer ta candidature
-              aux pre-selections. WhatsApp reste disponible comme option
-              alternative si tu preferes echanger directement avec l'equipe.
+
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/65">
+              Remplis le formulaire pour intégrer la base officielle des talents
+              candidats au Festival Talent 2027.
             </p>
           </div>
 
           <PreselectionForm />
-
-          <div className="mt-8 text-center">
-            <Link
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-7 py-4 text-xs font-black uppercase tracking-[0.22em] text-yellow-300 transition hover:border-yellow-300/60 hover:bg-yellow-400/15"
-            >
-              Alternative WhatsApp
-              <ArrowRight size={17} />
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -302,16 +289,16 @@ export default function PreselectionsPage() {
 
           <div className="mt-14 rounded-[2rem] border border-yellow-400/20 bg-yellow-400/[0.06] p-8 text-center backdrop-blur-xl sm:p-10">
             <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
-              Candidature
+              Assistance
             </p>
 
             <h2 className="mt-5 text-3xl font-black uppercase text-white sm:text-4xl">
-              Prêt à tenter ta chance ?
+              Besoin d&apos;aide pour ta candidature ?
             </h2>
 
             <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/65">
-              Envoie ton nom, ta discipline, ta ville et une courte présentation
-              via WhatsApp pour être orienté vers les prochaines étapes.
+              Si tu rencontres un problème avec le formulaire, tu peux contacter
+              directement l&apos;équipe Festival Talent via WhatsApp.
             </p>
 
             <Link
@@ -320,7 +307,7 @@ export default function PreselectionsPage() {
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-8 py-4 text-xs font-black uppercase tracking-[0.25em] text-black transition hover:scale-105"
             >
-              S’inscrire maintenant
+              Contacter sur WhatsApp
               <ArrowRight size={17} />
             </Link>
           </div>
