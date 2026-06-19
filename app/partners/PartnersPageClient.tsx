@@ -4,311 +4,320 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  BadgeCheck,
   Building2,
   Crown,
+  Gem,
   Globe2,
   Handshake,
-  Landmark,
   Megaphone,
   ShieldCheck,
   Sparkles,
-  Star,
+  Target,
+  Trophy,
   Users,
 } from "lucide-react";
 
-const partnerCategories = [
+const whatsappLink =
+  "https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20recevoir%20le%20dossier%20sponsoring%20et%20les%20opportunit%C3%A9s%20partenaires.";
+
+const partnerBenefits = [
   {
-    title: "Partenaire officiel majeur",
-    name: "Union Européenne",
+    icon: Users,
+    title: "Impact jeunesse",
     description:
-      "Premier partenaire officiel mis en avant dans la vision institutionnelle, sociale et internationale du Festival Talent 2027.",
-    icon: Globe2,
-    featured: true,
+      "Associer votre marque à un projet qui valorise les jeunes talents, la créativité, l’entrepreneuriat et l’innovation.",
   },
   {
-    title: "Partenaires institutionnels",
-    name: "Institutions publiques & organisations",
-    description:
-      "Des partenaires engagés pour accompagner la jeunesse, la culture, l’innovation et l’impact social.",
-    icon: Landmark,
-  },
-  {
-    title: "Sponsors officiels",
-    name: "Entreprises & marques",
-    description:
-      "Des entreprises associées à une expérience culturelle, créative et médiatique de grande ampleur.",
-    icon: Building2,
-  },
-  {
-    title: "Médias partenaires",
-    name: "Presse, digital & audiovisuel",
-    description:
-      "Des relais stratégiques pour amplifier la visibilité du festival au Sénégal et à l’international.",
     icon: Megaphone,
+    title: "Visibilité premium",
+    description:
+      "Bénéficier d’une exposition sur le site officiel, les supports de communication, les réseaux sociaux et les activations terrain.",
+  },
+  {
+    icon: Globe2,
+    title: "Rayonnement international",
+    description:
+      "S’inscrire dans une dynamique ambitieuse entre le Sénégal, Paris et Rome pour toucher des publics variés.",
   },
 ];
 
 const sponsorPacks = [
   {
-    name: "Gold",
+    name: "Partenaire Majeur",
     icon: Crown,
+    level: "Premium",
     description:
-      "Visibilité premium, présence forte sur les supports officiels, activations de marque et accès privilégié aux espaces partenaires.",
+      "Positionnement prioritaire sur l’ensemble du dispositif Festival Talent 2027.",
     benefits: [
-      "Logo prioritaire sur supports officiels",
-      "Présence sur site web et réseaux sociaux",
-      "Activation de marque possible",
-      "Accès partenaires selon dispositif",
-    ],
-  },
-  {
-    name: "Silver",
-    icon: Star,
-    description:
-      "Un dispositif équilibré pour associer votre marque à l’énergie du festival et toucher une audience jeune et engagée.",
-    benefits: [
-      "Logo sur supports partenaires",
-      "Mention digitale officielle",
+      "Logo mis en avant sur le site officiel",
+      "Présence sur les supports majeurs",
+      "Mention dans les communications officielles",
       "Visibilité pendant les temps forts",
-      "Opportunités de networking",
+      "Activation personnalisée selon le partenariat",
     ],
   },
   {
-    name: "Bronze",
-    icon: Handshake,
+    name: "Sponsor Gold",
+    icon: Trophy,
+    level: "Gold",
     description:
-      "Une formule accessible pour soutenir Festival Talent 2027 et rejoindre l’écosystème des partenaires.",
+      "Pack conçu pour les marques souhaitant une forte présence sur le projet.",
     benefits: [
-      "Mention partenaire",
-      "Présence digitale",
-      "Association à l’impact jeunesse",
-      "Possibilité d’évolution vers une formule supérieure",
+      "Logo sur supports digitaux",
+      "Présence dans les annonces sponsorisées",
+      "Mise en avant sur la page partenaires",
+      "Possibilité d’activation de marque",
     ],
   },
   {
-    name: "Institutionnel",
-    icon: ShieldCheck,
+    name: "Sponsor Silver",
+    icon: Gem,
+    level: "Silver",
     description:
-      "Une catégorie dédiée aux institutions, organisations, programmes jeunesse, culture et innovation.",
+      "Pack adapté aux entreprises souhaitant accompagner le projet avec une visibilité ciblée.",
     benefits: [
-      "Valorisation de l’impact social",
-      "Présence institutionnelle",
-      "Panels, conférences et initiatives jeunesse",
-      "Visibilité auprès des publics ciblés",
+      "Logo sur la page partenaires",
+      "Mention sur certains contenus officiels",
+      "Association à une discipline ou activité",
+      "Visibilité digitale ciblée",
+    ],
+  },
+  {
+    name: "Partenaire Institutionnel",
+    icon: Building2,
+    level: "Institutionnel",
+    description:
+      "Pour les institutions, organisations et structures engagées dans l’impact social, culturel et jeunesse.",
+    benefits: [
+      "Association à l’impact du projet",
+      "Valorisation institutionnelle",
+      "Présence dans les supports officiels",
+      "Participation aux temps forts",
     ],
   },
 ];
 
-const impactItems = [
-  {
-    icon: Users,
-    title: "Jeunesse",
-    text: "Un accès direct aux jeunes talents, étudiants, créateurs, porteurs de projets et entrepreneurs.",
-  },
-  {
-    icon: Sparkles,
-    title: "Culture & créativité",
-    text: "Un événement multidisciplinaire mêlant musique, mode, art, technologie, leadership et culture urbaine.",
-  },
-  {
-    icon: Globe2,
-    title: "Rayonnement international",
-    text: "Une plateforme pensée pour connecter le Sénégal, l’Afrique et l’Europe autour des talents.",
-  },
+const focusAreas = [
+  "Culture",
+  "Jeunesse",
+  "Entrepreneuriat",
+  "Innovation",
+  "Mode",
+  "Musique",
+  "Technologie",
+  "Sport mécanique",
 ];
 
 export default function PartnersPageClient() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.18),transparent_35%),linear-gradient(to_bottom,#000,#050505,#000)]" />
-      <div className="absolute left-1/2 top-20 h-[650px] w-[650px] -translate-x-1/2 rounded-full bg-yellow-500/10 blur-[150px]" />
-      <div className="absolute -left-36 bottom-32 h-[460px] w-[460px] rounded-full bg-yellow-400/10 blur-[130px]" />
-      <div className="absolute -right-36 top-52 h-[460px] w-[460px] rounded-full bg-orange-500/10 blur-[130px]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.18),transparent_34%),linear-gradient(to_bottom,#000,rgba(12,10,3,0.96),#000)]" />
+      <div className="pointer-events-none fixed -left-40 top-32 h-96 w-96 rounded-full bg-yellow-500/10 blur-3xl" />
+      <div className="pointer-events-none fixed -right-40 bottom-20 h-96 w-96 rounded-full bg-yellow-500/10 blur-3xl" />
 
-      <section className="relative mx-auto max-w-7xl px-6 pb-24 pt-40 sm:px-10 lg:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mx-auto max-w-4xl text-center"
-        >
-          <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-3 text-xs font-black uppercase tracking-[0.28em] text-yellow-300">
-            <ShieldCheck size={16} />
-            Partenaires officiels
-          </div>
-
-          <h1 className="text-5xl font-black uppercase leading-none tracking-tight sm:text-6xl lg:text-8xl">
-            Construire
-            <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
-              l’impact ensemble
-            </span>
-          </h1>
-
-          <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-            Festival Talent 2027 rassemble entreprises, institutions, médias et
-            partenaires internationaux autour d’une ambition commune : révéler
-            les talents, soutenir la jeunesse, valoriser la culture et créer un
-            événement majeur au Sénégal.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.8 }}
-          className="relative mt-16 overflow-hidden rounded-[2.5rem] border border-yellow-400/40 bg-gradient-to-br from-yellow-400/[0.14] via-white/[0.05] to-white/[0.02] p-8 shadow-2xl shadow-yellow-950/30 backdrop-blur-xl lg:p-12"
-        >
-          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-yellow-400/20 blur-3xl" />
-          <div className="absolute -bottom-28 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-
-          <div className="relative grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-            <div className="flex min-h-[300px] items-center justify-center rounded-[2rem] border border-white/10 bg-black/45 p-8 backdrop-blur-xl">
-              <div className="text-center">
-                <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 shadow-2xl shadow-yellow-900/30">
-                  <Globe2 size={42} />
-                </div>
-
-                <p className="text-xs font-black uppercase tracking-[0.32em] text-yellow-300">
-                  Premier partenaire officiel
-                </p>
-
-                <h2 className="mt-4 text-4xl font-black uppercase leading-none text-white sm:text-5xl">
-                  Union
-                  <span className="block text-yellow-300">Européenne</span>
-                </h2>
-              </div>
-            </div>
-
-            <div>
-              <p className="inline-flex items-center gap-2 rounded-full border border-yellow-400/25 bg-yellow-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-yellow-300">
-                <Sparkles size={15} />
-                Partenaire majeur
-              </p>
-
-              <h3 className="mt-6 text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
-                Une dimension institutionnelle et internationale renforcée.
-              </h3>
-
-              <p className="mt-5 text-base leading-8 text-white/65">
-                L’Union Européenne est mise en avant comme premier partenaire
-                officiel majeur du Festival Talent 2027. Cette présence renforce
-                la crédibilité, l’impact et la portée internationale du projet,
-                notamment autour de la jeunesse, de la culture, de
-                l’entrepreneuriat, de la créativité et de l’innovation.
-              </p>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {["Jeunesse", "Culture", "Innovation"].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-3xl border border-white/10 bg-black/35 p-5"
-                  >
-                    <p className="text-sm font-black uppercase tracking-[0.18em] text-yellow-300">
-                      {item}
-                    </p>
-                    <p className="mt-3 text-sm leading-6 text-white/60">
-                      Axe prioritaire pour l’impact et le rayonnement du
-                      festival.
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {partnerCategories.map((category, index) => {
-            const Icon = category.icon;
-
-            return (
-              <motion.article
-                key={category.title}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.6 }}
-                whileHover={{ y: -8, rotateX: 3, rotateY: -3 }}
-                className={`group relative overflow-hidden rounded-[2rem] border p-7 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 ${
-                  category.featured
-                    ? "border-yellow-400/45 bg-yellow-400/[0.08]"
-                    : "border-white/10 bg-white/[0.04] hover:border-yellow-400/45 hover:bg-yellow-400/[0.06]"
-                }`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-
-                <div className="relative">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 transition duration-300 group-hover:scale-110">
-                    <Icon size={25} />
-                  </div>
-
-                  <p className="text-xs font-black uppercase tracking-[0.22em] text-yellow-300">
-                    {category.title}
-                  </p>
-
-                  <h3 className="mt-4 text-2xl font-black uppercase text-white">
-                    {category.name}
-                  </h3>
-
-                  <p className="mt-4 text-sm leading-7 text-white/60">
-                    {category.description}
-                  </p>
-                </div>
-              </motion.article>
-            );
-          })}
-        </div>
-
-        <div className="mt-24">
+      <section className="relative px-6 pb-24 pt-32 sm:px-10 lg:px-20 lg:pt-40">
+        <div className="mx-auto max-w-7xl">
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="mx-auto max-w-5xl text-center"
+          >
+            <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-6 py-3 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+              <Handshake size={17} />
+              Partenaires & Sponsors
+            </div>
+
+            <h1 className="mt-10 text-5xl font-black uppercase leading-none tracking-tight sm:text-7xl lg:text-8xl">
+              Construire
+              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                l’impact ensemble
+              </span>
+            </h1>
+
+            <p className="mx-auto mt-8 max-w-4xl text-base leading-8 text-white/65 sm:text-lg">
+              Festival Talent 2027 offre aux marques, institutions et partenaires
+              une opportunité unique de s’associer à un projet culturel,
+              entrepreneurial et international centré sur la jeunesse, les
+              talents et l’innovation.
+            </p>
+
+            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+              <Link
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-8 py-5 text-xs font-black uppercase tracking-[0.25em] text-black transition hover:scale-105"
+              >
+                Demander le dossier sponsoring
+                <ArrowRight size={17} />
+              </Link>
+
+              <Link
+                href="/preselections"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 py-5 text-xs font-black uppercase tracking-[0.25em] text-white/80 transition hover:border-yellow-400/40 hover:text-yellow-300"
+              >
+                Voir les pré-sélections
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <motion.article
+            initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="max-w-4xl"
+            className="relative overflow-hidden rounded-[3rem] border border-yellow-400/30 bg-yellow-400/[0.06] p-8 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10 lg:p-14"
           >
-            <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
-              Packs sponsoring
-            </p>
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl" />
 
-            <h2 className="mt-5 text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
-              Des formules pensées pour
-              <span className="block text-yellow-300">
-                chaque niveau d’engagement
+            <div className="relative grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-yellow-400/30 bg-black/40 text-yellow-300">
+                  <ShieldCheck size={38} />
+                </div>
+
+                <p className="mt-8 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+                  Premier partenaire officiel majeur
+                </p>
+
+                <h2 className="mt-5 text-4xl font-black uppercase leading-tight text-white sm:text-5xl lg:text-6xl">
+                  Union Européenne
+                </h2>
+
+                <p className="mt-6 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
+                  L’Union Européenne est mise en avant comme premier partenaire
+                  officiel majeur du projet Festival Talent. Cette présence
+                  renforce la crédibilité, l’impact et l’ambition internationale
+                  de l’initiative.
+                </p>
+              </div>
+
+              <div className="rounded-[2.5rem] border border-white/10 bg-black/35 p-8 backdrop-blur-xl">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {focusAreas.map((area) => (
+                    <div
+                      key={area}
+                      className="rounded-[1.5rem] border border-yellow-400/15 bg-yellow-400/[0.06] px-5 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-yellow-300"
+                    >
+                      {area}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.article>
+        </div>
+      </section>
+
+      <section className="relative px-6 py-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-2 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+              <Target size={16} />
+              Pourquoi devenir partenaire ?
+            </div>
+
+            <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-5xl lg:text-7xl">
+              Une visibilité
+              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                avec du sens
               </span>
             </h2>
 
-            <p className="mt-5 max-w-3xl text-base leading-8 text-white/65">
-              Les packs sponsors permettent d’associer votre marque à un
-              événement culturel majeur, avec une visibilité adaptée à vos
-              objectifs : notoriété, impact jeunesse, présence institutionnelle,
-              activation terrain ou rayonnement international.
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/60 sm:text-lg">
+              Devenir partenaire de Festival Talent, c’est associer votre marque
+              à une plateforme qui connecte culture, jeunesse, créativité et
+              opportunités internationales.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-4">
+          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+            {partnerBenefits.map((benefit, index) => {
+              const Icon = benefit.icon;
+
+              return (
+                <motion.article
+                  key={benefit.title}
+                  initial={{ opacity: 0, y: 26 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.6 }}
+                  className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-yellow-400/40 hover:bg-yellow-400/[0.06]"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
+                    <Icon size={26} />
+                  </div>
+
+                  <h3 className="mt-6 text-2xl font-black uppercase text-white">
+                    {benefit.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-7 text-white/55">
+                    {benefit.description}
+                  </p>
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative px-6 py-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-2 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+              <Crown size={16} />
+              Offres partenaires
+            </div>
+
+            <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-5xl lg:text-7xl">
+              Packs
+              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                sponsoring
+              </span>
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/60 sm:text-lg">
+              Les packs peuvent être adaptés selon les objectifs de visibilité,
+              d’impact, d’activation terrain ou de partenariat institutionnel.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {sponsorPacks.map((pack, index) => {
               const Icon = pack.icon;
 
               return (
                 <motion.article
                   key={pack.name}
-                  initial={{ opacity: 0, y: 28 }}
+                  initial={{ opacity: 0, y: 26 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08, duration: 0.6 }}
-                  whileHover={{ y: -8 }}
-                  className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 backdrop-blur-xl transition duration-300 hover:border-yellow-400/45 hover:bg-yellow-400/[0.06]"
+                  transition={{ delay: index * 0.06, duration: 0.6 }}
+                  className="group flex h-full flex-col rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-yellow-400/40 hover:bg-yellow-400/[0.06]"
                 >
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
-                    <Icon size={25} />
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 transition group-hover:scale-110">
+                      <Icon size={26} />
+                    </div>
+
+                    <span className="rounded-full border border-yellow-400/25 bg-yellow-400/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-yellow-300">
+                      {pack.level}
+                    </span>
                   </div>
 
-                  <h3 className="text-2xl font-black uppercase text-white">
+                  <h3 className="mt-7 text-2xl font-black uppercase text-white">
                     {pack.name}
                   </h3>
 
-                  <p className="mt-4 text-sm leading-7 text-white/60">
+                  <p className="mt-4 text-sm leading-7 text-white/55">
                     {pack.description}
                   </p>
 
@@ -316,83 +325,62 @@ export default function PartnersPageClient() {
                     {pack.benefits.map((benefit) => (
                       <li
                         key={benefit}
-                        className="flex items-start gap-3 text-sm leading-6 text-white/65"
+                        className="flex gap-3 text-sm leading-6 text-white/60"
                       >
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-300 shadow-[0_0_12px_rgba(250,204,21,0.8)]" />
-                        {benefit}
+                        <BadgeCheck
+                          size={17}
+                          className="mt-1 shrink-0 text-yellow-300"
+                        />
+                        <span>{benefit}</span>
                       </li>
                     ))}
                   </ul>
+
+                  <Link
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex items-center justify-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-6 py-4 text-xs font-black uppercase tracking-[0.22em] text-yellow-300 transition hover:bg-yellow-400 hover:text-black"
+                  >
+                    Demander
+                    <ArrowRight size={15} />
+                  </Link>
                 </motion.article>
               );
             })}
           </div>
         </div>
+      </section>
 
-        <div className="mt-24 grid gap-5 md:grid-cols-3">
-          {impactItems.map((item, index) => {
-            const Icon = item.icon;
+      <section className="relative px-6 pb-28 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-[3rem] border border-yellow-400/25 bg-yellow-400/[0.08] p-8 text-center shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-12">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl border border-yellow-400/30 bg-black/40 text-yellow-300">
+            <Sparkles size={38} />
+          </div>
 
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.6 }}
-                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 backdrop-blur-xl"
-              >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
-                  <Icon size={22} />
-                </div>
-
-                <h3 className="text-xl font-black uppercase text-white">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-white/60">
-                  {item.text}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-16 overflow-hidden rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-8 text-center backdrop-blur-xl"
-        >
-          <h3 className="text-2xl font-black uppercase text-white">
-            Devenir partenaire du Festival Talent 2027
-          </h3>
-
-          <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-white/65">
-            Associez votre image à une initiative culturelle, jeunesse et
-            internationale. Festival Talent 2027 offre aux partenaires une
-            visibilité forte, une présence stratégique et une association directe
-            à l’impact social et créatif.
+          <p className="mt-8 text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
+            Rejoindre l’aventure
           </p>
 
-          <div className="mt-7 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="/fr#newsletter"
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-wide text-black transition hover:scale-105 hover:bg-white"
-            >
-              Être contacté
-              <ArrowRight size={17} />
-            </Link>
+          <h2 className="mx-auto mt-5 max-w-4xl text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
+            Votre marque peut devenir un acteur clé de Festival Talent 2027
+          </h2>
 
-            <Link
-              href="/tickets"
-              className="rounded-full border border-white/15 bg-white/10 px-8 py-4 text-sm font-black uppercase tracking-wide text-white transition hover:border-yellow-400 hover:bg-yellow-400 hover:text-black"
-            >
-              Voir les pass
-            </Link>
-          </div>
-        </motion.div>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65">
+            Demandez le dossier sponsoring pour découvrir les opportunités de
+            visibilité, d’impact et de collaboration autour du projet.
+          </p>
+
+          <Link
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-8 py-5 text-xs font-black uppercase tracking-[0.25em] text-black transition hover:scale-105"
+          >
+            Demander le dossier sponsoring
+            <ArrowRight size={17} />
+          </Link>
+        </div>
       </section>
     </main>
   );
