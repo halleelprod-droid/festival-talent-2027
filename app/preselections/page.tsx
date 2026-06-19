@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PreselectionForm from "@/components/preselections/PreselectionForm";
 import {
   ArrowLeft,
   ArrowRight,
@@ -237,6 +238,41 @@ export default function PreselectionsPage() {
                 </article>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative px-6 py-20 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-10 text-center">
+            <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
+              Formulaire officiel
+            </p>
+            <h2 className="mt-5 text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl">
+              Envoyer sa
+              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                candidature
+              </span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/60">
+              Complete le formulaire officiel pour enregistrer ta candidature
+              aux pre-selections. WhatsApp reste disponible comme option
+              alternative si tu preferes echanger directement avec l'equipe.
+            </p>
+          </div>
+
+          <PreselectionForm />
+
+          <div className="mt-8 text-center">
+            <Link
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-7 py-4 text-xs font-black uppercase tracking-[0.22em] text-yellow-300 transition hover:border-yellow-300/60 hover:bg-yellow-400/15"
+            >
+              Alternative WhatsApp
+              <ArrowRight size={17} />
+            </Link>
           </div>
         </div>
       </section>
