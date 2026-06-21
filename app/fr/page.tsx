@@ -1,89 +1,80 @@
 import AnnouncementBar from "@/components/home/AnnouncementBar";
 import HeroSection from "@/components/home/HeroSection";
-import CountdownSection from "@/components/home/CountdownSection";
+import BattleDanceSection from "@/components/home/BattleDanceSection";
+import LiveStatsBar from "@/components/home/LiveStatsBar";
 import AboutSection from "@/components/home/AboutSection";
+import FounderSection from "@/components/home/FounderSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
-import TalentTalksSection from "@/components/home/TalentTalksSection";
-import StaffSection from "@/components/home/StaffSection";
-import ScheduleSection from "@/components/home/ScheduleSection";
-import ArtistsSection from "@/components/home/ArtistsSection";
+import WhyFTSection from "@/components/home/WhyFTSection";
 import StatsSection from "@/components/home/StatsSection";
-import MediaSection from "@/components/home/MediaSection";
+import ArtistsSection from "@/components/home/ArtistsSection";
+import OfficialSchedule from "@/components/home/OfficialSchedule";
+import ReelSection from "@/components/home/ReelSection";
 import GallerySection from "@/components/home/GallerySection";
-import PreviousEditionSection from "@/components/home/PreviousEditionSection";
-import PreviousArtistsSection from "@/components/home/PreviousArtistsSection";
-import ImpactSection from "@/components/home/ImpactSection";
-import SponsorBenefitsSection from "@/components/home/SponsorBenefitsSection";
-import NewsletterSection from "@/components/home/NewsletterSection";
+import ExperienceMap from "@/components/home/ExperienceMap";
+import CountdownSection from "@/components/home/CountdownSection";
+import TicketsSection from "@/components/home/TicketsSection";
 import WhyPartnerSection from "@/components/home/WhyPartnerSection";
-import MajorPartnerSection from "@/components/home/MajorPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
-import OfficialPartners from "@/components/home/OfficialPartners";
-import SponsorsCTA from "@/components/home/SponsorsCTA";
+import FAQSection from "@/components/home/FAQSection";
+import QuoteSection from "@/components/home/QuoteSection";
+import SponsorCTASection from "@/components/home/SponsorCTASection";
+import NewsletterSection from "@/components/home/NewsletterSection";
 import FinalCTA from "@/components/home/FinalCTA";
-import AnimatedBackground from "@/components/home/AnimatedBackground";
-import HighlightVideoSection from "@/components/home/HighlightVideoSection";
-import SponsorshipPackages from "@/components/home/SponsorshipPackages";
-import OfficialVideoSection from "@/components/home/OfficialVideoSection";
+import GratitudeSection from "@/components/home/GratitudeSection";
 
-export default function FrPage() {
+export default function HomePage() {
   return (
-    <main className="relative overflow-hidden bg-black text-white">
-      <AnimatedBackground />
-
-      <div className="fixed left-0 top-0 z-50 h-1 w-full bg-white/20" />
-
+    <>
       <AnnouncementBar />
 
-      <HeroSection />
+      <main className="min-h-screen bg-black text-white">
+        <HeroSection />
 
-      <CountdownSection />
+        <BattleDanceSection />
 
-      <AboutSection />
+        <LiveStatsBar />
 
-      <TalentTalksSection />
+        <AboutSection />
 
-      <StaffSection />
+        <FounderSection />
 
-      <ExperienceSection />
+        <ExperienceSection />
 
-      <ScheduleSection />
+        <WhyFTSection />
 
-      <ArtistsSection />
+        <StatsSection />
 
-      <StatsSection />
+        <ArtistsSection />
 
-      <OfficialVideoSection />
+        <OfficialSchedule />
 
-      <HighlightVideoSection />
+        <ReelSection />
 
-      <MediaSection />
+        <GallerySection />
 
-      <GallerySection />
+        <ExperienceMap />
 
-      <PreviousEditionSection />
+        <CountdownSection />
 
-      <PreviousArtistsSection />
+        <TicketsSection />
 
-      <ImpactSection />
+        <WhyPartnerSection />
 
-      <MajorPartnerSection />
+        <PartnersSection />
 
-      <OfficialPartners />
+        <FAQSection />
 
-      <PartnersSection />
+        <QuoteSection />
 
-      <SponsorshipPackages />
+        <SponsorCTASection />
 
-      <SponsorBenefitsSection />
+        <NewsletterSection />
 
-      <WhyPartnerSection />
+        <FinalCTA />
 
-      <SponsorsCTA />
-
-      <NewsletterSection />
-
-      <FinalCTA />
-    </main>
+        <GratitudeSection />
+      </main>
+    </>
   );
 }
