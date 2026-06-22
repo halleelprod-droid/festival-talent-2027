@@ -4,6 +4,7 @@ import BattleDanceSection from "@/components/home/BattleDanceSection";
 import LiveStatsBar from "@/components/home/LiveStatsBar";
 import AboutSection from "@/components/home/AboutSection";
 import FounderSection from "@/components/home/FounderSection";
+import StaffSection from "@/components/home/StaffSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
 import WhyFTSection from "@/components/home/WhyFTSection";
 import StatsSection from "@/components/home/StatsSection";
@@ -38,6 +39,8 @@ export default function HomePage() {
         <AboutSection />
 
         <FounderSection />
+
+        <StaffSection />
 
         <ExperienceSection />
 
