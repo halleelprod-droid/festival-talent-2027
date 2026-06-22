@@ -60,6 +60,16 @@ const requirements = [
   "Début prévu en septembre 2026",
 ];
 
+const upcomingDisciplines = [
+  "Musique",
+  "Mode",
+  "Art",
+  "Entrepreneuriat",
+  "Technologie",
+  "Culture urbaine",
+  "Sports mécaniques",
+];
+
 export default function BattleDanceSection() {
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 text-white sm:px-10 lg:px-20">
@@ -179,6 +189,38 @@ export default function BattleDanceSection() {
                   Kaayfecc
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 overflow-hidden rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8 lg:p-10">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.32em] text-yellow-300">
+                D’autres pré-sélections arrivent
+              </p>
+
+              <h3 className="mt-4 text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
+                La danse ouvre la dynamique
+              </h3>
+
+              <p className="mt-5 text-sm leading-7 text-white/65 sm:text-base sm:leading-8">
+                Les Battles de Danse par zones ouvrent la dynamique, mais
+                Festival Talent 2027 annoncera aussi des pré-sélections dans
+                les autres secteurs : musique, mode, art, entrepreneuriat,
+                technologie, culture urbaine et sports mécaniques.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {upcomingDisciplines.map((discipline) => (
+                <span
+                  key={discipline}
+                  className="rounded-full border border-white/10 bg-black/35 px-4 py-3 text-xs font-black uppercase tracking-[0.18em] text-white/75"
+                >
+                  {discipline}
+                </span>
+              ))}
             </div>
           </div>
         </div>

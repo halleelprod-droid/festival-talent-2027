@@ -281,6 +281,42 @@ export default function ProgrammePage() {
         </div>
       </section>
 
+      <section className="relative px-6 pb-10 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="overflow-hidden rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-7 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-9">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.32em] text-yellow-300">
+                  Suite des pré-sélections
+                </p>
+
+                <h2 className="mt-4 text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
+                  Après les Battles de Danse
+                </h2>
+
+                <p className="mt-5 text-sm leading-7 text-white/65 sm:text-base sm:leading-8">
+                  Après les Battles de Danse, d’autres pré-sélections seront
+                  annoncées progressivement pour les autres pôles du festival.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {disciplines
+                  .filter((discipline) => discipline !== "Danse")
+                  .map((discipline) => (
+                    <span
+                      key={discipline}
+                      className="rounded-full border border-white/10 bg-black/35 px-4 py-3 text-xs font-black uppercase tracking-[0.18em] text-white/75"
+                    >
+                      {discipline}
+                    </span>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="relative px-6 py-24 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-4xl text-center">

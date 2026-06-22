@@ -29,6 +29,8 @@ const disciplines = [
   "Sports mécaniques",
 ];
 
+const otherDisciplines = disciplines.filter((discipline) => discipline !== "Danse");
+
 const battleDetails = [
   {
     icon: Wallet,
@@ -262,6 +264,44 @@ export default function PreselectionsPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-16 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="overflow-hidden rounded-[3rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-8 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10 lg:p-12">
+            <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+                  Pas seulement la danse
+                </p>
+
+                <h2 className="mt-5 text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
+                  Plusieurs appels à talents
+                </h2>
+
+                <p className="mt-6 text-base leading-8 text-white/65">
+                  Les Battles de Danse sont une première phase. D’autres appels
+                  à talents seront communiqués pour les autres disciplines du
+                  Festival Talent 2027.
+                </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {otherDisciplines.map((discipline) => (
+                  <div
+                    key={discipline}
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-5 py-4"
+                  >
+                    <BadgeCheck className="shrink-0 text-yellow-300" size={19} />
+                    <span className="text-sm font-black uppercase tracking-[0.16em] text-white/80">
+                      {discipline}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
