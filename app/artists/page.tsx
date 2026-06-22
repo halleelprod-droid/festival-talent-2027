@@ -13,10 +13,34 @@ import {
   Users,
 } from "lucide-react";
 
+const confirmedArtists = [
+  {
+    name: "Samba Peuzzi",
+    image: "/images/samba.jpg",
+    role: "Artiste confirmé",
+    description:
+      "Samba Peuzzi est officiellement confirmé pour Festival Talent 2027. Sa présence accompagne l’énergie du projet, les pré-sélections, les Battles de Danse par zones et la célébration des jeunes talents.",
+  },
+  {
+    name: "Morijah",
+    image: "/images/artists/morijah.jpg",
+    role: "Artiste confirmée",
+    description:
+      "Morijah rejoint officiellement Festival Talent 2027 avec une présence forte autour de la musique, de l’inspiration et de la jeunesse.",
+  },
+  {
+    name: "Cysoul",
+    image: "/images/artists/cysoul.jpg",
+    role: "Artiste confirmé",
+    description:
+      "Cysoul rejoint officiellement Festival Talent 2027 et apporte une dimension musicale internationale au projet.",
+  },
+];
+
 const upcomingArtists = [
   {
     category: "Musique",
-    description: "De nouveaux artistes seront annoncés prochainement.",
+    description: "De nouveaux artistes pourront être annoncés prochainement.",
   },
   {
     category: "Danse",
@@ -55,10 +79,9 @@ export default function ArtistsPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-4xl text-base leading-8 text-white/65 sm:text-lg">
-              Festival Talent communique uniquement les artistes confirmés
-              officiellement. Pour le moment, Samba Peuzzi est l’artiste annoncé
-              pour Festival Talent 2027. Les prochaines confirmations seront
-              publiées progressivement.
+              Festival Talent 2027 confirme officiellement Samba Peuzzi,
+              Morijah et Cysoul. Les prochaines confirmations seront publiées
+              progressivement après validation de l’organisation.
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
@@ -82,100 +105,69 @@ export default function ArtistsPage() {
       </section>
 
       <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
-        <div className="mx-auto max-w-7xl">
-          <article className="relative overflow-hidden rounded-[3rem] border border-yellow-400/25 bg-yellow-400/[0.07] shadow-2xl shadow-black/40 backdrop-blur-xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-black/70" />
-
-            <div className="grid min-h-[620px] lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="relative min-h-[440px] overflow-hidden lg:min-h-full">
+        <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-3">
+          {confirmedArtists.map((artist) => (
+            <article
+              key={artist.name}
+              className="group relative overflow-hidden rounded-[3rem] border border-yellow-400/25 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-yellow-400/50"
+            >
+              <div className="relative h-[520px] overflow-hidden">
                 <Image
-                  src="/images/samba.jpg"
-                  alt="Samba Peuzzi"
+                  src={artist.image}
+                  alt={artist.name}
                   fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  priority={artist.name === "Samba Peuzzi"}
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover transition duration-700 group-hover:scale-110"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
                 <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-black/60 px-4 py-3 text-xs font-black uppercase tracking-[0.22em] text-yellow-300 backdrop-blur-xl">
                   <BadgeCheck size={15} />
                   Confirmé
                 </div>
+
+                <div className="absolute bottom-7 left-7 right-7">
+                  <p className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+                    {artist.role}
+                  </p>
+
+                  <h2 className="mt-3 text-5xl font-black uppercase leading-none text-white sm:text-6xl">
+                    {artist.name}
+                  </h2>
+                </div>
               </div>
 
-              <div className="relative flex flex-col justify-center p-8 sm:p-10 lg:p-14">
-                <div className="inline-flex w-fit items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-3 text-xs font-black uppercase tracking-[0.28em] text-yellow-300">
-                  <Crown size={15} />
-                  Artiste confirmé
-                </div>
-
-                <h2 className="mt-8 text-5xl font-black uppercase leading-none text-white sm:text-7xl lg:text-8xl">
-                  Samba
-                  <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
-                    Peuzzi
-                  </span>
-                </h2>
-
-                <p className="mt-7 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-                  Samba Peuzzi est l’artiste confirmé pour Festival Talent 2027.
-                  Sa présence accompagne l’énergie du projet, les pré-sélections,
-                  les Battles de Danse par zones et la célébration des jeunes
-                  talents.
+              <div className="p-7">
+                <p className="text-sm leading-7 text-white/60">
+                  {artist.description}
                 </p>
 
-                <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                  <div className="rounded-[1.6rem] border border-white/10 bg-black/35 p-5">
-                    <Mic2 className="text-yellow-300" size={25} />
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.24em] text-white/40">
-                      Statut
-                    </p>
-                    <p className="mt-1 text-lg font-black uppercase text-white">
-                      Confirmé
-                    </p>
-                  </div>
-
-                  <div className="rounded-[1.6rem] border border-white/10 bg-black/35 p-5">
-                    <CalendarDays className="text-yellow-300" size={25} />
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.24em] text-white/40">
+                <div className="mt-7 grid grid-cols-2 gap-4">
+                  <div className="rounded-[1.5rem] border border-white/10 bg-black/35 p-4">
+                    <CalendarDays className="text-yellow-300" size={23} />
+                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-white/40">
                       Édition
                     </p>
-                    <p className="mt-1 text-lg font-black uppercase text-white">
+                    <p className="mt-1 text-sm font-black uppercase text-white">
                       2027
                     </p>
                   </div>
 
-                  <div className="rounded-[1.6rem] border border-white/10 bg-black/35 p-5">
-                    <Globe2 className="text-yellow-300" size={25} />
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.24em] text-white/40">
+                  <div className="rounded-[1.5rem] border border-white/10 bg-black/35 p-4">
+                    <Globe2 className="text-yellow-300" size={23} />
+                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-white/40">
                       Projet
                     </p>
-                    <p className="mt-1 text-lg font-black uppercase text-white">
+                    <p className="mt-1 text-sm font-black uppercase text-white">
                       Paris & Rome
                     </p>
                   </div>
                 </div>
-
-                <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-                  <Link
-                    href="/programme"
-                    className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-7 py-4 text-xs font-black uppercase tracking-[0.24em] text-black transition hover:scale-105"
-                  >
-                    Voir le programme
-                    <ArrowRight size={16} />
-                  </Link>
-
-                  <Link
-                    href="/preselections"
-                    className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 py-4 text-xs font-black uppercase tracking-[0.24em] text-white/80 transition hover:border-yellow-400/40 hover:text-yellow-300"
-                  >
-                    S’inscrire
-                  </Link>
-                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -195,8 +187,8 @@ export default function ArtistsPage() {
             </h2>
 
             <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-              Les autres artistes, invités et talents seront ajoutés uniquement
-              après validation officielle par l’organisation.
+              D’autres artistes, invités et talents pourront être ajoutés après
+              confirmation officielle par l’organisation.
             </p>
           </div>
 
