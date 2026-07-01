@@ -1,14 +1,5 @@
 export const confirmedArtists = [
   {
-    slug: "youssou-ndour",
-    name: "Youssou Ndour",
-    category: "Mbalax Legend",
-    country: "Senegal",
-    image: "/images/youssou.jpg",
-    description:
-      "Youssou Ndour rejoint la programmation officielle de Festival Talent 2027.",
-  },
-  {
     slug: "samba-peuzzi",
     name: "Samba Peuzzi",
     category: "Urban Senegal",
@@ -18,31 +9,22 @@ export const confirmedArtists = [
       "Samba Peuzzi porte l'energie urbaine senegalaise sur la scene FT2027.",
   },
   {
-    slug: "sidiki-diabate",
-    name: "Sidiki Diabate",
-    category: "Afro / Mandingue",
-    country: "Mali",
-    image: "/images/sidiki.jpg",
+    slug: "morijah",
+    name: "Morijah",
+    category: "Musique inspiration",
+    country: "Cote d'Ivoire",
+    image: "/images/artists/morijah.jpg",
     description:
-      "Sidiki Diabate apporte une signature afro-mandingue a l'experience FT2027.",
+      "Morijah rejoint officiellement Festival Talent 2027 avec une presence forte autour de la musique, de l'inspiration et de la jeunesse.",
   },
   {
-    slug: "soprano",
-    name: "Soprano",
-    category: "International Rap",
-    country: "France",
-    image: "/images/soprano.jpg",
+    slug: "cysoul",
+    name: "Cysoul",
+    category: "Musique internationale",
+    country: "Cameroun",
+    image: "/images/artists/cysoul.jpg",
     description:
-      "Soprano complete la dimension internationale de Festival Talent 2027.",
-  },
-  {
-    slug: "amadeus",
-    name: "Amadeus",
-    category: "Live Performance",
-    country: "International",
-    image: "/images/amadeus.jpg",
-    description:
-      "Amadeus rejoint les artistes confirmes pour une performance live premium.",
+      "Cysoul rejoint officiellement Festival Talent 2027 et apporte une dimension musicale internationale au projet.",
   },
 ];
 
@@ -67,6 +49,9 @@ export const featuredArtists = confirmedArtists.map((artist) => ({
 export const navigationLinks = [
   { label: "Accueil", href: "/fr" },
   { label: "Programme", href: "/programme" },
+  { label: "Activites", href: "/activites" },
+  { label: "Pre-selections", href: "/preselections" },
+  { label: "Artistes", href: "/artists" },
   { label: "Partenaires", href: "/partners" },
   { label: "Tickets", href: "/tickets" },
   { label: "Media", href: "/media" },
@@ -99,7 +84,7 @@ export const faqItems = [
 export const liveStats = [
   "50K+ Participants",
   "Janvier - Avril 2027",
-  "5 Artistes Confirmes",
+  "3 Artistes Confirmes",
   "Paris + Rome",
   "Afrique - Europe",
 ];
@@ -107,7 +92,7 @@ export const liveStats = [
 export const festivalStats = [
   { value: "50K+", label: "Participants attendus" },
   { value: "4 mois", label: "Tournee europeenne" },
-  { value: "5", label: "Artistes confirmes" },
+  { value: "3", label: "Artistes confirmes" },
   { value: "Global", label: "Audience internationale" },
 ];
 
@@ -115,7 +100,7 @@ export const stats = festivalStats;
 
 export const partnerStats = [
   { value: "50K+", label: "Participants attendus" },
-  { value: "5", label: "Artistes confirmes" },
+  { value: "3", label: "Artistes confirmes" },
   { value: "8", label: "Disciplines officielles" },
   { value: "Global", label: "Visibilite internationale" },
 ];

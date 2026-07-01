@@ -6,7 +6,7 @@ import MediaPageClient from "./MediaPageClient";
 export const metadata: Metadata = buildPageMetadata({
   title: "Media et archives",
   description:
-    "Archives officielles du premier Festival Talent : videos, photos, aftermovie et moments forts avant Festival Talent 2027.",
+    "Archives et couverture média Festival Talent 2027 avec Sen Influenceurs, Pierre Ndiaye Events, vidéos, photos et moments officiels.",
   path: "/media",
 });
 

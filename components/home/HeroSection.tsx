@@ -31,8 +31,8 @@ const highlights = [
   },
   {
     icon: Trophy,
-    label: "Battle Dance",
-    value: "300.000 FCFA",
+    label: "Battle All Style",
+    value: "500.000 FCFA",
   },
   {
     icon: Plane,
@@ -86,8 +86,8 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-8 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
-            Festival Talent 2027 ouvre ses pré-sélections et lance les Battles
-            de Danse par zones. Une aventure culturelle et internationale entre
+            Festival Talent 2027 ouvre ses pré-sélections et lance le Battle
+            All Style par zones. Une aventure culturelle et internationale entre
             le Sénégal, Paris, Rome et l’Italie.
           </p>
 
@@ -145,11 +145,11 @@ export default function HeroSection() {
             <div className="relative">
               <div className="rounded-[2.5rem] border border-white/10 bg-white/[0.04] p-6">
                 <p className="text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
-                  Battle de danse par zones
+                  Battle All Style par zones
                 </p>
 
                 <h2 className="mt-5 text-4xl font-black uppercase leading-none text-white sm:text-5xl">
-                  300.000
+                  500.000
                   <span className="block text-2xl text-yellow-300 sm:text-3xl">
                     FCFA à gagner
                   </span>

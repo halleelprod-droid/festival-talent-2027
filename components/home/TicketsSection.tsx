@@ -35,7 +35,7 @@ export default function TicketsSection() {
           </h2>
 
           <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-            Les tickets d’inscription aux Battles de Danse sont différents de la
+            Les tickets d’inscription au Battle All Style sont différents de la
             billetterie officielle du festival. Les inscriptions aux battles
             peuvent démarrer, tandis que la billetterie Festival Talent 2027 sera
             annoncée prochainement.
@@ -56,7 +56,7 @@ export default function TicketsSection() {
               </p>
 
               <h3 className="mt-5 text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
-                Ticket Battle de Danse
+                Ticket Battle All Style
               </h3>
 
               <div className="mt-7 rounded-[2rem] border border-yellow-400/25 bg-black/35 p-6">
@@ -76,7 +76,7 @@ export default function TicketsSection() {
                     size={18}
                     className="mt-1 shrink-0 text-yellow-300"
                   />
-                  <span>Inscription aux Battles de Danse par zones.</span>
+                  <span>Inscription au Battle All Style par zones.</span>
                 </li>
 
                 <li className="flex gap-3 text-sm leading-6 text-white/70">
@@ -92,7 +92,7 @@ export default function TicketsSection() {
                     size={18}
                     className="mt-1 shrink-0 text-yellow-300"
                   />
-                  <span>300.000 FCFA à gagner et voyage en Italie.</span>
+                  <span>500.000 FCFA à gagner et voyage en Italie.</span>
                 </li>
               </ul>
 
@@ -180,7 +180,7 @@ export default function TicketsSection() {
           </p>
 
           <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-white/70">
-            Le ticket d’inscription Battle de Danse à 2.000 FCFA ne remplace pas
+            Le ticket d’inscription Battle All Style à 2.000 FCFA ne remplace pas
             le billet d’accès au Festival Talent 2027. La billetterie officielle
             du festival sera annoncée séparément.
           </p>

@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  ArrowRight,
   Camera,
   Clapperboard,
   Film,
@@ -77,6 +79,13 @@ const officialMediaPartner = {
     "Sen Influenceurs accompagne Festival Talent 2027 dans sa visibilite digitale, sa communication d'influence, la promotion des talents et la couverture mediatique des activites du festival.",
 };
 
+const eventProductionPartner = {
+  name: "Pierre Ndiaye Events",
+  label: "Partenaire événementiel & production",
+  description:
+    "Pierre Ndiaye Events accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires et activation terrain.",
+};
+
 export default function MediaPageClient() {
   const [visibleVideos, setVisibleVideos] = useState(4);
   const [visibleImages, setVisibleImages] = useState(12);
@@ -141,22 +150,60 @@ export default function MediaPageClient() {
       </section>
 
       <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-8 text-center shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-yellow-400/30 bg-black/40 text-yellow-300">
-            <Handshake size={30} />
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto mb-10 max-w-4xl text-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-2 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+              <Handshake size={16} />
+              Couverture média & influence
+            </div>
+
+            <h2 className="mt-7 text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
+              Les relais officiels du dispositif
+            </h2>
           </div>
 
-          <p className="mt-6 text-xs font-black uppercase tracking-[0.32em] text-yellow-300">
-            {officialMediaPartner.label}
-          </p>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {[officialMediaPartner, eventProductionPartner].map((partner) => (
+              <article
+                key={partner.name}
+                className="overflow-hidden rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-8 text-center shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10"
+              >
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-yellow-400/30 bg-black/40 text-yellow-300">
+                  <Handshake size={30} />
+                </div>
 
-          <h2 className="mt-4 text-3xl font-black uppercase text-white sm:text-4xl">
-            {officialMediaPartner.name}
-          </h2>
+                <p className="mt-6 text-xs font-black uppercase tracking-[0.28em] text-yellow-300">
+                  {partner.label}
+                </p>
 
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/65">
-            {officialMediaPartner.description}
-          </p>
+                <h3 className="mt-4 text-3xl font-black uppercase text-white sm:text-4xl">
+                  {partner.name}
+                </h3>
+
+                <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/65">
+                  {partner.description}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href="/activites"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-8 py-5 text-xs font-black uppercase tracking-[0.22em] text-black transition hover:scale-105"
+            >
+              Découvrir les activités
+              <ArrowRight size={17} />
+            </Link>
+
+            <Link
+              href="/preselections"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-8 py-5 text-xs font-black uppercase tracking-[0.22em] text-yellow-300 transition hover:bg-yellow-400 hover:text-black"
+            >
+              S’inscrire aux pré-sélections
+              <ArrowRight size={17} />
+            </Link>
+          </div>
         </div>
       </section>
 

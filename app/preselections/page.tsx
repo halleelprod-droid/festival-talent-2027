@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -13,6 +14,14 @@ import {
   Wallet,
 } from "lucide-react";
 import PreselectionForm from "@/components/preselections/PreselectionForm";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Pré-sélections | Festival Talent 2027",
+  description:
+    "Inscrivez-vous aux pré-sélections Festival Talent 2027 : Battle All Style, musique, mode, art, entrepreneuriat, technologie, culture urbaine et sports mécaniques.",
+  path: "/preselections",
+});
 
 const whatsappLink =
   "https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20les%20pr%C3%A9-s%C3%A9lections%20et%20les%20Battles%20de%20Danse.";
@@ -28,7 +37,18 @@ const disciplines = [
   "Sports mécaniques",
 ];
 
-const otherDisciplines = disciplines.filter((discipline) => discipline !== "Danse");
+const upcomingPreselections = [
+  "Peinture / Designer",
+  "Influenceurs",
+  "Fashion",
+  "Musique",
+  "Théâtre",
+  "Sports mécaniques",
+  "Lutte",
+  "Art",
+  "Technologie",
+  "Entrepreneuriat",
+];
 
 const battleDetails = [
   {
@@ -38,7 +58,7 @@ const battleDetails = [
   },
   {
     icon: Trophy,
-    title: "300.000 FCFA",
+    title: "500.000 FCFA",
     description: "Cagnotte prévue pour récompenser les meilleurs talents.",
   },
   {
@@ -146,11 +166,11 @@ export default function PreselectionsPage() {
               <div>
                 <div className="inline-flex items-center gap-3 rounded-full border border-red-500/30 bg-red-500/10 px-5 py-3 text-xs font-black uppercase tracking-[0.32em] text-red-300">
                   <Crown size={16} />
-                  Focus Battle de Danse
+                  Focus Battle All Style
                 </div>
 
                 <h2 className="mt-8 text-4xl font-black uppercase leading-tight text-white sm:text-5xl lg:text-6xl">
-                  Battle de Danse
+                  Battle All Style
                   <span className="block bg-gradient-to-r from-red-400 via-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                     par zones
                   </span>
@@ -169,8 +189,9 @@ export default function PreselectionsPage() {
 
                   <p className="mt-4 text-sm leading-7 text-white/65">
                     Les frais d’inscription de 2.000 FCFA concernent le Battle
-                    de Danse par zones. La billetterie officielle du Festival
-                    Talent 2027 sera annoncée séparément.
+                    All Style par personne ou par groupe. La billetterie
+                    officielle du Festival Talent 2027 sera annoncée
+                    séparément.
                   </p>
                 </div>
 
@@ -273,7 +294,7 @@ export default function PreselectionsPage() {
             <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
-                  Pas seulement la danse
+                  D’autres pré-sélections arrivent
                 </p>
 
                 <h2 className="mt-5 text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
@@ -281,16 +302,16 @@ export default function PreselectionsPage() {
                 </h2>
 
                 <p className="mt-6 text-base leading-8 text-white/65">
-                  Les Battles de Danse par zones marquent une premiere phase des
-                  pre-selections Festival Talent 2027. D&apos;autres pre-selections
-                  seront progressivement annoncees dans les autres secteurs :
-                  musique, mode, art, entrepreneuriat, technologie, culture
-                  urbaine et sports mecaniques.
+                  Les Battles All Style par zones ouvrent la dynamique des
+                  pré-sélections Festival Talent 2027. D’autres appels à talents
+                  seront progressivement annoncés dans les secteurs
+                  peinture/design, influence, mode, musique, théâtre, sports
+                  mécaniques, entrepreneuriat, technologie et culture urbaine.
                 </p>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
-                {otherDisciplines.map((discipline) => (
+                {upcomingPreselections.map((discipline) => (
                   <div
                     key={discipline}
                     className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-5 py-4"

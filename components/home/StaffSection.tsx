@@ -41,7 +41,7 @@ const staffMembers: StaffMember[] = [
   },
   {
     name: "Ibrahima Khalilou Danso",
-    role: "Directeur Executif",
+    role: "Directeur Exécutif",
     department: "Direction",
     description:
       "Assure la coordination generale, le pilotage operationnel et le suivi des grandes orientations du festival.",
@@ -60,7 +60,7 @@ const staffMembers: StaffMember[] = [
   },
   {
     name: "Pierre Ndiaye",
-    role: "Responsable des Partenariats Strategiques & Relations Medias",
+    role: "Responsable des Partenariats Stratégiques & Relations Médias",
     department: "Partenariats",
     description:
       "Structure les relations partenaires, accompagne le rayonnement institutionnel et renforce les liens medias du projet.",
@@ -69,7 +69,7 @@ const staffMembers: StaffMember[] = [
   },
   {
     name: "Mamadou Ngom",
-    role: "Responsable Pole Regie",
+    role: "Responsable Pôle Régie",
     department: "Organisation",
     description:
       "Coordonne la regie, l'organisation technique, les besoins terrain et la fluidite operationnelle des differentes activites.",
@@ -79,7 +79,7 @@ const staffMembers: StaffMember[] = [
   },
   {
     name: "Ibrahima Fall",
-    role: "Developpeur Web / Conception Digitale",
+    role: "Développeur Web / Conception Digitale",
     department: "Digital",
     description:
       "Responsable de la conception, du deploiement et de l'experience digitale du site officiel Festival Talent 2027.",
@@ -98,7 +98,7 @@ const staffMembers: StaffMember[] = [
   },
   {
     name: "Abdourahmane Ndiaye",
-    role: "Responsable Pole Entrepreneuriat",
+    role: "Responsable Pôle Entrepreneuriat",
     department: "Entrepreneuriat",
     description:
       "Coordonne le pole entrepreneuriat, accompagne les porteurs de projets et participe a la valorisation des jeunes entrepreneurs.",

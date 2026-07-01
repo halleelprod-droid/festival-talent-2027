@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -15,6 +16,15 @@ import {
   Users,
   Wallet,
 } from "lucide-react";
+
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Programme | Festival Talent 2027",
+  description:
+    "Découvrez le programme officiel Festival Talent 2027 : pré-sélections, Battle All Style, peinture/design, influenceurs, fashion week, musique, sports, Italie et concert final au Casino de Paris.",
+  path: "/programme",
+});
 
 const whatsappLink =
   "https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20les%20Battles%20de%20Danse%20par%20zones.";
@@ -47,39 +57,88 @@ const disciplines = [
 
 const timeline = [
   {
-    date: "Début septembre 2026",
-    title: "Lancement des inscriptions",
+    date: "01 au 30 septembre 2026",
+    title: "Pré-sélections Danse",
     description:
-      "Ouverture des inscriptions pour les Battles de Danse par zones. Les talents peuvent s’inscrire en solo ou en groupe.",
+      "Campagnes d’information, inscriptions, présélections dans 6 zones de Dakar, sélection des danseurs, préparation et coaching.",
     icon: CalendarDays,
   },
   {
-    date: "Septembre à décembre 2026",
-    title: "Battles par zones",
+    date: "01 au 31 octobre 2026",
+    title: "Sélections Peinture",
     description:
-      "Organisation des sélections dans plusieurs zones afin de révéler les meilleurs danseurs et groupes.",
-    icon: MapPin,
+      "Appel à candidatures national, ateliers et masterclass, sélection de peintres/designers.",
+    icon: Star,
   },
   {
-    date: "Finale nationale",
-    title: "Sélection finale",
+    date: "01 au 30 novembre 2026",
+    title: "Showcases Influenceurs",
     description:
-      "Les meilleurs talents se retrouvent autour du Monument de la Renaissance pour la grande sélection finale.",
+      "Castings, formations, création de contenu et sélection d’influenceurs.",
+    icon: Users,
+  },
+  {
+    date: "01 au 31 décembre 2026",
+    title: "Fashion Week",
+    description:
+      "Appel aux stylistes et créateurs, ateliers design, défilés régionaux et sélection de créateurs.",
+    icon: Crown,
+  },
+  {
+    date: "01 au 31 janvier 2027",
+    title: "Sélections Musicales",
+    description:
+      "Castings régionaux, bootcamps, concerts de présélection et sélection d’artistes.",
+    icon: Mic2,
+  },
+  {
+    date: "01 au 15 février 2027",
+    title: "Art du théâtre & Peintres",
+    description:
+      "Castings, ateliers théâtre, création et exposition.",
+    icon: Flag,
+  },
+  {
+    date: "01 au 28 février 2027",
+    title: "Tournée nationale avec Samba Peuzzi",
+    description:
+      "Concerts et animations dans les régions, promotion des talents sélectionnés et rencontres avec les communautés.",
+    icon: Globe2,
+  },
+  {
+    date: "01 au 15 mars 2027",
+    title: "Courses motos, voitures, avions, hélicoptères",
+    description:
+      "Compétitions régionales, sélection des meilleurs pilotes et épreuves finales.",
     icon: Trophy,
   },
   {
-    date: "Janvier à avril 2027",
-    title: "Festival Talent 2027 — Paris & Rome",
+    date: "16 au 20 mars 2027",
+    title: "Luttes sénégalaises",
     description:
-      "Les talents sélectionnés entrent dans la dynamique internationale du Festival Talent 2027 entre Paris et Rome.",
+      "Tournois régionaux, demi-finales, finales et valorisation des champions.",
+    icon: Users,
+  },
+  {
+    date: "21 au 31 mars 2027",
+    title: "Festival Talent Italie",
+    description:
+      "Voyage et installation de la délégation, participation au Festival Talent en Italie, compétitions internationales, échanges culturels et networking.",
     icon: Plane,
+  },
+  {
+    date: "15 mai 2027",
+    title: "Concert final au Casino de Paris",
+    description:
+      "Prestation de Samba Peuzzi et autres artistes, célébration des talents du Sénégal et clôture officielle.",
+    icon: Sparkles,
   },
 ];
 
 const battleAdvantages = [
   {
     icon: Trophy,
-    title: "300.000 FCFA à gagner",
+    title: "500.000 FCFA à gagner",
     description:
       "Une cagnotte exceptionnelle est prévue pour récompenser les meilleurs talents.",
   },
@@ -163,7 +222,7 @@ export default function ProgrammePage() {
               <div>
                 <div className="inline-flex items-center gap-3 rounded-full border border-red-500/30 bg-red-500/10 px-5 py-3 text-xs font-black uppercase tracking-[0.28em] text-red-300">
                   <Sparkles size={16} />
-                  Battle de danse par zones
+                  Battle All Style par zones
                 </div>
 
                 <h2 className="mt-8 text-4xl font-black uppercase leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -174,7 +233,7 @@ export default function ProgrammePage() {
                 </h2>
 
                 <p className="mt-6 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-                  Les Battles de Danse par zones ouvrent la route vers Festival
+                  Le Battle All Style par zones ouvre la route vers Festival
                   Talent 2027. Les participants peuvent concourir en solo ou en
                   groupe, tous styles confondus, avec une grande finale autour
                   du Monument de la Renaissance.
@@ -246,7 +305,7 @@ export default function ProgrammePage() {
                       Cagnotte exceptionnelle
                     </p>
                     <p className="mt-3 text-5xl font-black uppercase text-white sm:text-6xl">
-                      300.000
+                      500.000
                     </p>
                     <p className="mt-2 text-xl font-black uppercase text-yellow-300">
                       FCFA à gagner
@@ -467,6 +526,13 @@ export default function ProgrammePage() {
                 </article>
               );
             })}
+          </div>
+
+          <div className="mx-auto mt-8 max-w-5xl rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-6 text-center backdrop-blur-xl">
+            <p className="text-sm font-semibold leading-7 text-white/75">
+              Les dates peuvent être ajustées selon les confirmations
+              logistiques et partenaires.
+            </p>
           </div>
         </div>
       </section>

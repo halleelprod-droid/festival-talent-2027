@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,6 +12,15 @@ import {
   Star,
   Users,
 } from "lucide-react";
+
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Artistes | Festival Talent 2027",
+  description:
+    "Découvrez les artistes confirmés pour Festival Talent 2027 : Samba Peuzzi, Morijah et Cysoul.",
+  path: "/artists",
+});
 
 const confirmedArtists = [
   {
@@ -78,9 +88,9 @@ export default function ArtistsPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-4xl text-base leading-8 text-white/65 sm:text-lg">
-              Festival Talent 2027 confirme officiellement Samba Peuzzi,
-              Morijah et Cysoul. Les prochaines confirmations seront publiées
-              progressivement après validation de l’organisation.
+              Les artistes confirmés pour Festival Talent 2027 sont Samba
+              Peuzzi, Morijah et Cysoul. D’autres annonces pourront être
+              communiquées officiellement.
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">

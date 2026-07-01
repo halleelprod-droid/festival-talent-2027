@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -9,7 +10,17 @@ import {
   ShieldCheck,
   Sparkles,
   Ticket,
+  Users,
 } from "lucide-react";
+
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Tickets | Festival Talent 2027",
+  description:
+    "Informations tickets Festival Talent 2027 : Battle All Style, pré-sélections danse, karting gratuit et billetterie officielle bientôt disponible.",
+  path: "/tickets",
+});
 
 const whatsappLink =
   "https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20%C3%AAtre%20inform%C3%A9%20d%C3%A8s%20l'ouverture%20des%20r%C3%A9servations%20pour%20Festival%20Talent%202027.";
@@ -40,6 +51,29 @@ const benefits = [
   "Accès aux annonces officielles du festival",
   "Possibilité de suivre les pré-sélections",
   "Mise à jour sur les artistes confirmés",
+];
+
+const ticketClarifications = [
+  {
+    icon: Ticket,
+    title: "Battle All Style",
+    text: "Inscription Battle : 2.000 FCFA par personne ou par groupe.",
+  },
+  {
+    icon: Users,
+    title: "Pré-sélections danse",
+    text: "Participation générale affichée sur le programme : 5.000 FCFA pour les danseurs, si confirmé par les supports officiels.",
+  },
+  {
+    icon: Sparkles,
+    title: "Billetterie Festival Talent",
+    text: "Les billets d’accès au Festival Talent seront annoncés prochainement.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Karting",
+    text: "L’activité Karting prévoit une entrée gratuite, avec des modalités spécifiques.",
+  },
 ];
 
 export default function TicketsPage() {
@@ -89,6 +123,42 @@ export default function TicketsPage() {
                 Voir les pré-sélections
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 rounded-[2rem] border border-red-500/25 bg-red-500/10 p-6 text-center backdrop-blur-xl">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-red-200">
+              Les frais d’inscription aux pré-sélections et les billets d’accès
+              au Festival Talent sont deux choses différentes.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {ticketClarifications.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <article
+                  key={item.title}
+                  className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-yellow-400/40 hover:bg-yellow-400/[0.06]"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
+                    <Icon size={25} />
+                  </div>
+
+                  <h2 className="mt-6 text-xl font-black uppercase text-white">
+                    {item.title}
+                  </h2>
+
+                  <p className="mt-4 text-sm leading-7 text-white/60">
+                    {item.text}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

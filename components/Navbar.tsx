@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Brush,
   CalendarDays,
   Clapperboard,
   Handshake,
@@ -33,6 +34,11 @@ const navLinks: NavLink[] = [
     label: "Programme",
     href: "/programme",
     icon: CalendarDays,
+  },
+  {
+    label: "Activités",
+    href: "/activites",
+    icon: Brush,
   },
   {
     label: "Pré-sélections",
@@ -116,7 +122,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`group relative z-10 flex items-center gap-2 rounded-[1.2rem] px-3 py-3 text-[10px] font-black uppercase tracking-[0.18em] transition duration-300 xl:px-4 ${
+                className={`group relative z-10 flex items-center gap-2 rounded-[1.2rem] px-2.5 py-3 text-[10px] font-black uppercase tracking-[0.14em] transition duration-300 xl:px-3 ${
                   active
                     ? "bg-yellow-400 text-black shadow-lg shadow-yellow-900/30"
                     : "text-white/70 hover:bg-white/[0.06] hover:text-yellow-300"
@@ -141,7 +147,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             href="/tickets"
-            className="relative overflow-hidden rounded-[1.5rem] bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-7 py-4 text-[10px] font-black uppercase tracking-[0.25em] text-black shadow-2xl shadow-yellow-900/40 transition duration-300 hover:scale-105 xl:px-9 xl:text-xs"
+            className="relative overflow-hidden rounded-[1.5rem] bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-5 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black shadow-2xl shadow-yellow-900/40 transition duration-300 hover:scale-105 xl:px-7 xl:text-xs"
           >
             <span className="relative z-10">Réserver</span>
             <span className="absolute inset-0 translate-x-[-120%] bg-white/40 blur-xl transition duration-700 hover:translate-x-[120%]" />

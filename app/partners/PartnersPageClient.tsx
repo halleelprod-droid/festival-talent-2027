@@ -113,16 +113,16 @@ const officialPartners = [
   {
     icon: ShieldCheck,
     label: "Partenaire Officiel Majeur",
-    name: "Union Europeenne",
+    name: "Union Européenne",
     description:
-      "L'Union Europeenne est mise en avant comme partenaire officiel majeur du projet Festival Talent. Cette presence renforce la credibilite, l'impact et l'ambition internationale de l'initiative.",
+      "L'Union Européenne est mise en avant comme partenaire officiel majeur du projet Festival Talent. Cette présence renforce la crédibilité, l'impact et l'ambition internationale de l'initiative.",
   },
   {
     icon: Megaphone,
     label: "Partenaire Media & Influence Officiel",
     name: "Sen Influenceurs",
     description:
-      "Sen Influenceurs accompagne Festival Talent 2027 dans sa visibilite digitale, sa communication d'influence, la promotion des talents et la couverture mediatique des activites du festival.",
+      "Sen Influenceurs accompagne Festival Talent 2027 dans la visibilité digitale, la communication d’influence, la promotion des talents et la couverture médiatique des activités.",
   },
   {
     icon: Trophy,
@@ -130,6 +130,34 @@ const officialPartners = [
     name: "Kaayfecc",
     description:
       "Kaayfecc accompagne officiellement les Battles de Danse par zones, ouvertes aux solos et groupes, tous styles et toutes zones.",
+  },
+  {
+    icon: Handshake,
+    label: "Partenaire Événementiel & Production",
+    name: "Pierre Ndiaye Events",
+    description:
+      "Pierre Ndiaye Events accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires et activation terrain.",
+  },
+  {
+    icon: Building2,
+    label: "Partenaire Construction & Développement",
+    name: "Mano Perfetto",
+    description:
+      "Mano Perfetto accompagne Festival Talent 2027 comme partenaire construction et développement.",
+  },
+  {
+    icon: Sparkles,
+    label: "Partenaire Beauté & Lifestyle",
+    name: "H & Hair",
+    description:
+      "H & Hair accompagne Festival Talent 2027 sur l’univers beauté, lifestyle et image.",
+  },
+  {
+    icon: Gem,
+    label: "Partenaire Bien-être & Santé",
+    name: "Universal Selfcare",
+    description:
+      "Universal Selfcare accompagne Festival Talent 2027 sur les dimensions bien-être, santé et selfcare.",
   },
 ];
 

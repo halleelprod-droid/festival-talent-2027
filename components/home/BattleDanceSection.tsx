@@ -32,7 +32,7 @@ const zones = [
 const battleInfos = [
   {
     icon: Trophy,
-    title: "300.000 FCFA",
+    title: "500.000 FCFA",
     label: "Cagnotte à gagner",
   },
   {
@@ -43,7 +43,7 @@ const battleInfos = [
   {
     icon: Wallet,
     title: "2.000 FCFA",
-    label: "Frais d’inscription",
+    label: "Par personne ou groupe",
   },
   {
     icon: Users,
@@ -58,6 +58,7 @@ const requirements = [
   "Pré-sélections organisées par zones",
   "Sélection finale autour du Monument de la Renaissance",
   "Début prévu en septembre 2026",
+  "Inscription & infos : WhatsApp 781 948 606",
 ];
 
 const upcomingDisciplines = [
@@ -87,14 +88,14 @@ export default function BattleDanceSection() {
             </div>
 
             <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
-              Battle de danse
+              Battle All Style
               <span className="block bg-gradient-to-r from-red-400 via-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                 par zones
               </span>
             </h2>
 
             <p className="mt-7 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-              Festival Talent lance ses Battles de Danse par zones pour révéler
+              Festival Talent lance le Battle All Style par zones pour révéler
               les meilleurs danseurs et groupes. Une opportunité unique de
               montrer ton talent, représenter ta zone et rejoindre l’aventure
               Festival Talent 2027.

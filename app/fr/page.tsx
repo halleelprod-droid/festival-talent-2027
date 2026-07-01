@@ -1,6 +1,7 @@
 import AnnouncementBar from "@/components/home/AnnouncementBar";
 import HeroSection from "@/components/home/HeroSection";
 import BattleDanceSection from "@/components/home/BattleDanceSection";
+import ActivitiesHighlightSection from "@/components/home/ActivitiesHighlightSection";
 import LiveStatsBar from "@/components/home/LiveStatsBar";
 import AboutSection from "@/components/home/AboutSection";
 import FounderSection from "@/components/home/FounderSection";
@@ -33,6 +34,8 @@ export default function HomePage() {
         <HeroSection />
 
         <BattleDanceSection />
+
+        <ActivitiesHighlightSection />
 
         <LiveStatsBar />
 
