@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -134,9 +135,10 @@ const officialPartners = [
   {
     icon: Handshake,
     label: "Partenaire Événementiel & Production",
-    name: "Pierre Ndiaye Events",
+    name: "PIN EVENTS",
     description:
-      "Pierre Ndiaye Events accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires et activation terrain.",
+      "PIN EVENTS accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires, communication terrain et activation des activités.",
+    logo: "/images/partners/pin-events.png",
   },
   {
     icon: Building2,
@@ -308,6 +310,18 @@ export default function PartnersPageClient() {
                   <h3 className="mt-4 text-3xl font-black uppercase text-white">
                     {partner.name}
                   </h3>
+
+                  {"logo" in partner && partner.logo ? (
+                    <div className="mt-5 w-fit rounded-2xl border border-yellow-400/25 bg-black/40 p-3">
+                      <Image
+                        src={partner.logo}
+                        alt={`Logo ${partner.name}`}
+                        width={160}
+                        height={80}
+                        className="h-12 w-auto object-contain"
+                      />
+                    </div>
+                  ) : null}
 
                   <p className="mt-4 text-sm leading-7 text-white/60">
                     {partner.description}

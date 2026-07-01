@@ -1,4 +1,4 @@
-import { BadgeCheck, Globe2, Megaphone, Trophy } from "lucide-react";
+import { BadgeCheck, Globe2, Handshake, Megaphone, Trophy } from "lucide-react";
 
 const officialPartners = [
   {
@@ -22,6 +22,14 @@ const officialPartners = [
     description:
       "Kaayfecc accompagne la dynamique des Battles de Danse par zones, avec solos, groupes, tous styles et toutes zones.",
     icon: Trophy,
+  },
+  {
+    name: "PIN EVENTS",
+    label: "Partenaire Événementiel & Production",
+    description:
+      "PIN EVENTS accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires, communication terrain et activation des activités.",
+    icon: Handshake,
+    logo: "/images/partners/pin-events.png",
   },
 ];
 
@@ -92,6 +100,16 @@ export default function PartnersSection() {
                     <h3 className="mt-3 text-3xl font-black uppercase tracking-[0.08em] text-white md:text-5xl">
                       {partner.name}
                     </h3>
+
+                    {"logo" in partner && partner.logo ? (
+                      <div className="mt-4 inline-flex rounded-2xl border border-yellow-400/25 bg-black/40 p-3">
+                        <img
+                          src={partner.logo}
+                          alt={`Logo ${partner.name}`}
+                          className="h-12 w-auto object-contain"
+                        />
+                      </div>
+                    ) : null}
 
                     <p className="mt-5 max-w-4xl text-sm leading-7 text-white/60 md:text-base md:leading-8">
                       {partner.description}

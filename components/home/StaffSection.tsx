@@ -19,11 +19,17 @@ import type { LucideIcon } from "lucide-react";
 type StaffMember = {
   name: string;
   role: string;
+  subtitle?: string;
   department: string;
   description: string;
   icon: LucideIcon;
   initials: string;
   image?: string;
+  logo?: {
+    src: string;
+    alt: string;
+  };
+  achievements?: string[];
   featured?: boolean;
 };
 
@@ -60,12 +66,26 @@ const staffMembers: StaffMember[] = [
   },
   {
     name: "Pierre Ndiaye",
-    role: "Responsable des Partenariats Stratégiques & Relations Médias",
+    role: "Directeur des Partenariats, Communication & Événementiel",
+    subtitle: "CEO de PIN EVENTS • Fondateur de DUNYA",
     department: "Partenariats",
     description:
-      "Structure les relations partenaires, accompagne le rayonnement institutionnel et renforce les liens medias du projet.",
+      "Entrepreneur sénégalais spécialisé dans l’événementiel, la communication, l’influence digitale et le management artistique, Pierre Ndiaye accompagne Festival Talent 2027 dans le développement des partenariats, la stratégie de communication et les activations événementielles.",
     icon: Handshake,
+    image: "/images/staff/pierre-ndiaye.jpg",
+    logo: {
+      src: "/images/partners/pin-events.png",
+      alt: "Logo PIN EVENTS",
+    },
     initials: "PN",
+    achievements: [
+      "CEO de PIN EVENTS",
+      "Fondateur de DUNYA",
+      "Initiateur du Festival KeuMeuFeu Wake UP",
+      "Coorganisateur des Sénégal TikTok Awards 2022",
+      "Coorganisateur du Gala des Étoiles",
+      "Manager d’artistes",
+    ],
   },
   {
     name: "Mamadou Ngom",
@@ -151,6 +171,27 @@ function StaffImage({
   );
 }
 
+function StaffLogo({ logo }: { logo?: { src: string; alt: string } }) {
+  const [logoError, setLogoError] = useState(false);
+
+  if (!logo || logoError) {
+    return null;
+  }
+
+  return (
+    <div className="mt-6 w-fit rounded-2xl border border-yellow-400/25 bg-black/45 p-3">
+      <Image
+        src={logo.src}
+        alt={logo.alt}
+        width={150}
+        height={70}
+        onError={() => setLogoError(true)}
+        className="h-12 w-auto object-contain"
+      />
+    </div>
+  );
+}
+
 export default function StaffSection() {
   return (
     <section className="relative overflow-hidden bg-black px-6 py-28 text-white sm:px-10 lg:px-20">
@@ -199,6 +240,8 @@ export default function StaffSection() {
                 className={`group relative overflow-hidden rounded-[2rem] border bg-white/[0.04] shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:border-yellow-400/50 hover:bg-yellow-400/[0.06] ${
                   member.featured
                     ? "border-yellow-400/45 xl:col-span-3"
+                    : member.name === "Pierre Ndiaye"
+                      ? "border-yellow-400/35 bg-yellow-400/[0.055] xl:col-span-2"
                     : "border-white/10"
                 }`}
               >
@@ -206,12 +249,16 @@ export default function StaffSection() {
 
                 <div
                   className={`grid ${
-                    member.featured ? "lg:grid-cols-[0.9fr_1.1fr]" : ""
+                    member.featured || member.name === "Pierre Ndiaye"
+                      ? "lg:grid-cols-[0.9fr_1.1fr]"
+                      : ""
                   }`}
                 >
                   <div
                     className={`relative overflow-hidden bg-zinc-950 ${
-                      member.featured ? "h-[430px] lg:h-full" : "h-80"
+                      member.featured || member.name === "Pierre Ndiaye"
+                        ? "h-[430px] lg:h-full"
+                        : "h-80"
                     }`}
                   >
                     <StaffImage
@@ -229,7 +276,7 @@ export default function StaffSection() {
 
                   <div
                     className={`relative p-7 ${
-                      member.featured
+                      member.featured || member.name === "Pierre Ndiaye"
                         ? "flex flex-col justify-center lg:p-12"
                         : ""
                     }`}
@@ -260,13 +307,36 @@ export default function StaffSection() {
                       {member.name}
                     </h3>
 
+                    {member.subtitle && (
+                      <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-yellow-300/90">
+                        {member.subtitle}
+                      </p>
+                    )}
+
                     <p
                       className={`mt-4 leading-7 text-white/60 ${
-                        member.featured ? "max-w-2xl text-base" : "text-sm"
+                        member.featured || member.name === "Pierre Ndiaye"
+                          ? "max-w-2xl text-base"
+                          : "text-sm"
                       }`}
                     >
                       {member.description}
                     </p>
+
+                    <StaffLogo logo={member.logo} />
+
+                    {member.achievements && (
+                      <div className="mt-6 flex flex-wrap gap-2">
+                        {member.achievements.map((achievement) => (
+                          <span
+                            key={achievement}
+                            className="rounded-full border border-white/10 bg-black/35 px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white/70"
+                          >
+                            {achievement}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.article>
