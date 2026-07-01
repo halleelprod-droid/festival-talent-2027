@@ -7,6 +7,7 @@ import {
   Camera,
   Clapperboard,
   Film,
+  Handshake,
   ImageIcon,
   Play,
   Sparkles,
@@ -69,6 +70,13 @@ const archiveHighlights = [
   },
 ];
 
+const officialMediaPartner = {
+  name: "Sen Influenceurs",
+  label: "Partenaire Media & Influence Officiel",
+  description:
+    "Sen Influenceurs accompagne Festival Talent 2027 dans sa visibilite digitale, sa communication d'influence, la promotion des talents et la couverture mediatique des activites du festival.",
+};
+
 export default function MediaPageClient() {
   const [visibleVideos, setVisibleVideos] = useState(4);
   const [visibleImages, setVisibleImages] = useState(12);
@@ -129,6 +137,26 @@ export default function MediaPageClient() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.07] p-8 text-center shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-yellow-400/30 bg-black/40 text-yellow-300">
+            <Handshake size={30} />
+          </div>
+
+          <p className="mt-6 text-xs font-black uppercase tracking-[0.32em] text-yellow-300">
+            {officialMediaPartner.label}
+          </p>
+
+          <h2 className="mt-4 text-3xl font-black uppercase text-white sm:text-4xl">
+            {officialMediaPartner.name}
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/65">
+            {officialMediaPartner.description}
+          </p>
         </div>
       </section>
 

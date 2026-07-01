@@ -109,6 +109,30 @@ const focusAreas = [
   "Sport mécanique",
 ];
 
+const officialPartners = [
+  {
+    icon: ShieldCheck,
+    label: "Partenaire Officiel Majeur",
+    name: "Union Europeenne",
+    description:
+      "L'Union Europeenne est mise en avant comme partenaire officiel majeur du projet Festival Talent. Cette presence renforce la credibilite, l'impact et l'ambition internationale de l'initiative.",
+  },
+  {
+    icon: Megaphone,
+    label: "Partenaire Media & Influence Officiel",
+    name: "Sen Influenceurs",
+    description:
+      "Sen Influenceurs accompagne Festival Talent 2027 dans sa visibilite digitale, sa communication d'influence, la promotion des talents et la couverture mediatique des activites du festival.",
+  },
+  {
+    icon: Trophy,
+    label: "Partenaire Officiel Battle de Danse",
+    name: "Kaayfecc",
+    description:
+      "Kaayfecc accompagne officiellement les Battles de Danse par zones, ouvertes aux solos et groupes, tous styles et toutes zones.",
+  },
+];
+
 export default function PartnersPageClient() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
@@ -213,6 +237,57 @@ export default function PartnersPageClient() {
               </div>
             </div>
           </motion.article>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-2 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
+              <BadgeCheck size={16} />
+              Partenaires officiels
+            </div>
+
+            <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-5xl lg:text-7xl">
+              Ils accompagnent
+              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                Festival Talent 2027
+              </span>
+            </h2>
+          </div>
+
+          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+            {officialPartners.map((partner, index) => {
+              const Icon = partner.icon;
+
+              return (
+                <motion.article
+                  key={partner.name}
+                  initial={{ opacity: 0, y: 26 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.6 }}
+                  className="rounded-[2rem] border border-yellow-400/25 bg-yellow-400/[0.06] p-8 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-yellow-400/45"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
+                    <Icon size={26} />
+                  </div>
+
+                  <p className="mt-6 text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+                    {partner.label}
+                  </p>
+
+                  <h3 className="mt-4 text-3xl font-black uppercase text-white">
+                    {partner.name}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-7 text-white/60">
+                    {partner.description}
+                  </p>
+                </motion.article>
+              );
+            })}
+          </div>
         </div>
       </section>
 

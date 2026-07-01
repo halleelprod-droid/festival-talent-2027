@@ -9,6 +9,12 @@ import {
   socialLinks
 } from '@/components/sections/constants';
 
+const officialPartners = [
+  'Union Europeenne - Partenaire Officiel Majeur',
+  'Sen Influenceurs - Partenaire Media & Influence Officiel',
+  'Kaayfecc - Partenaire Officiel Battle de Danse',
+];
+
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-black text-white">
@@ -17,7 +23,7 @@ export default function Footer() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-24">
         {/* TOP */}
-        <div className="grid gap-16 lg:grid-cols-3">
+        <div className="grid gap-16 lg:grid-cols-4">
           {/* BRAND */}
           <motion.div
             initial={{
@@ -88,6 +94,40 @@ export default function Footer() {
                 >
                   {link.label}
                 </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* PARTNERS */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 40
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }}
+            transition={{
+              delay: 0.16,
+              duration: 1
+            }}
+            viewport={{
+              once: true
+            }}
+          >
+            <p className="text-sm uppercase tracking-[0.35em] text-[#C9A84C]">
+              Partenaires
+            </p>
+
+            <div className="mt-8 flex flex-col gap-5">
+              {officialPartners.map((partner) => (
+                <p
+                  key={partner}
+                  className="text-sm leading-6 text-zinc-300"
+                >
+                  {partner}
+                </p>
               ))}
             </div>
           </motion.div>

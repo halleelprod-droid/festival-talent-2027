@@ -6,7 +6,7 @@ import PartnersPageClient from "./PartnersPageClient";
 export const metadata: Metadata = buildPageMetadata({
   title: "Partenaires et sponsors",
   description:
-    "Devenir partenaire du Festival Talent 2027. L'Union Europeenne est le premier partenaire officiel majeur, avec des offres Gold, Silver, Bronze et institutionnelles.",
+    "Devenir partenaire du Festival Talent 2027 avec l'Union Europeenne, Sen Influenceurs, Kaayfecc et les opportunites Gold, Silver, Bronze et institutionnelles.",
   path: "/partners",
 });
 

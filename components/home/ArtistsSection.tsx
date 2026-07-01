@@ -4,11 +4,8 @@ import {
   ArrowRight,
   BadgeCheck,
   CalendarDays,
-  Crown,
   Globe2,
   Mic2,
-  Sparkles,
-  Star,
 } from "lucide-react";
 
 const artists = [

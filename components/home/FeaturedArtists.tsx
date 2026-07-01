@@ -10,7 +10,7 @@ const confirmedArtist = {
   role: "Artiste confirmé",
   image: "/images/samba.jpg",
   description:
-    "Samba Peuzzi est le premier artiste officiellement confirmé pour Festival Talent 2027. Sa présence marque une étape forte dans la construction de la programmation artistique du festival.",
+    "Samba Peuzzi est officiellement confirme pour Festival Talent 2027, aux cotes de Morijah et Cysoul dans la programmation annoncee.",
   tags: ["Musique", "Culture urbaine", "Performance live"],
 };
 
@@ -31,20 +31,20 @@ export default function FeaturedArtists() {
         >
           <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-6 py-3 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
             <BadgeCheck size={17} />
-            Artiste confirmé
+            Artistes confirmes
           </div>
 
           <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
-            Premier artiste
+            Line-up
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
-              officiellement confirmé
+              officiellement confirme
             </span>
           </h2>
 
           <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-            Festival Talent 2027 dévoile progressivement sa programmation
-            artistique. Pour le moment, Samba Peuzzi est le seul artiste
-            officiellement confirmé.
+            Festival Talent 2027 confirme officiellement Samba Peuzzi, Morijah
+            et Cysoul. D&apos;autres annonces pourront etre publiees
+            progressivement apres validation de l&apos;organisation.
           </p>
         </motion.div>
 

@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   Sparkles,
   Ticket,
-  Users,
 } from "lucide-react";
 
 const whatsappLink =

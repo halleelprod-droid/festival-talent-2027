@@ -295,8 +295,11 @@ export default function ProgrammePage() {
                 </h2>
 
                 <p className="mt-5 text-sm leading-7 text-white/65 sm:text-base sm:leading-8">
-                  Après les Battles de Danse, d’autres pré-sélections seront
-                  annoncées progressivement pour les autres pôles du festival.
+                  Les Battles de Danse par zones marquent une premiere phase des
+                  pre-selections Festival Talent 2027. D&apos;autres pre-selections
+                  seront progressivement annoncees dans les autres secteurs :
+                  musique, mode, art, entrepreneuriat, technologie, culture
+                  urbaine et sports mecaniques.
                 </p>
               </div>
 

@@ -5,7 +5,6 @@ import {
   CalendarDays,
   CheckCircle2,
   Clock,
-  Sparkles,
   Ticket,
   Trophy,
   Wallet,

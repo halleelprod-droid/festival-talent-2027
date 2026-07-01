@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
-  CalendarDays,
   Crown,
   Globe2,
   MapPin,
@@ -282,9 +281,11 @@ export default function PreselectionsPage() {
                 </h2>
 
                 <p className="mt-6 text-base leading-8 text-white/65">
-                  Les Battles de Danse sont une première phase. D’autres appels
-                  à talents seront communiqués pour les autres disciplines du
-                  Festival Talent 2027.
+                  Les Battles de Danse par zones marquent une premiere phase des
+                  pre-selections Festival Talent 2027. D&apos;autres pre-selections
+                  seront progressivement annoncees dans les autres secteurs :
+                  musique, mode, art, entrepreneuriat, technologie, culture
+                  urbaine et sports mecaniques.
                 </p>
               </div>
 
