@@ -42,9 +42,9 @@ const highlights = [
 ];
 
 const quickFacts = [
-  "Samba Peuzzi confirmé",
+  "Samba Peuzzi, Morijah et Cysoul confirmés",
   "Union Européenne partenaire officiel majeur",
-  "Kaayfecc partenaire officiel Battle",
+  "PIN EVENTS partenaire événementiel officiel",
   "Solos, groupes, tous styles, toutes zones",
 ];
 

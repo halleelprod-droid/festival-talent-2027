@@ -327,10 +327,10 @@ export default function ProgrammePage() {
 
                   <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
                     <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-300">
-                      Partenaire officiel
+                      Départ officiel
                     </p>
                     <p className="mt-3 text-3xl font-black uppercase text-white">
-                      Kaayfecc
+                      Septembre 2026
                     </p>
                   </div>
                 </div>
@@ -358,7 +358,8 @@ export default function ProgrammePage() {
                   pre-selections Festival Talent 2027. D&apos;autres pre-selections
                   seront progressivement annoncees dans les autres secteurs :
                   musique, mode, art, entrepreneuriat, technologie, culture
-                  urbaine et sports mecaniques.
+                  urbaine, sports mecaniques, peinture/design, influence,
+                  theatre et lutte.
                 </p>
               </div>
 

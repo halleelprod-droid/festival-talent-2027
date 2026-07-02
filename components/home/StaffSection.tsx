@@ -66,11 +66,11 @@ const staffMembers: StaffMember[] = [
   },
   {
     name: "Pierre Ndiaye",
-    role: "Directeur des Partenariats, Communication & Événementiel",
+    role: "Directeur des Partenariats et Relations Institutionnelles",
     subtitle: "CEO de PIN EVENTS • Fondateur de DUNYA",
     department: "Partenariats",
     description:
-      "Entrepreneur sénégalais spécialisé dans l’événementiel, la communication, l’influence digitale et le management artistique, Pierre Ndiaye accompagne Festival Talent 2027 dans le développement des partenariats, la stratégie de communication et les activations événementielles.",
+      "Entrepreneur sénégalais spécialisé dans l’événementiel, la communication, l’influence digitale, les relations institutionnelles et le développement de partenariats, Pierre Ndiaye accompagne Festival Talent 2027 dans la structuration des collaborations stratégiques, la coordination événementielle et le rayonnement institutionnel du projet.",
     icon: Handshake,
     image: "/images/staff/pierre-ndiaye.jpg",
     logo: {
@@ -79,12 +79,13 @@ const staffMembers: StaffMember[] = [
     },
     initials: "PN",
     achievements: [
-      "CEO de PIN EVENTS",
-      "Fondateur de DUNYA",
-      "Initiateur du Festival KeuMeuFeu Wake UP",
-      "Coorganisateur des Sénégal TikTok Awards 2022",
-      "Coorganisateur du Gala des Étoiles",
-      "Manager d’artistes",
+      "CEO PIN EVENTS",
+      "Fondateur DUNYA",
+      "Festival KeuMeuFeu Wake UP",
+      "Sénégal TikTok Awards",
+      "Gala Des Étoiles",
+      "Management artistique",
+      "Relations institutionnelles",
     ],
   },
   {
@@ -212,16 +213,15 @@ export default function StaffSection() {
           </p>
 
           <h2 className="mt-6 text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
-            L&apos;equipe qui construit
+            L&apos;équipe dirigeante du
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
               Festival Talent 2027
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-            Une equipe engagee oeuvre pour batir une experience internationale
-            autour de la jeunesse, de la culture, de la musique, de la mode, de
-            l&apos;innovation, du leadership et de l&apos;impact.
+            Des profils engagés dans la culture, l&apos;événementiel, la
+            communication, l&apos;innovation et le développement des talents.
           </p>
         </motion.div>
 

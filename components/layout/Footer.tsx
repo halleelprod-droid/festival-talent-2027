@@ -10,9 +10,10 @@ import {
 } from '@/components/sections/constants';
 
 const officialPartners = [
-  'Union Europeenne - Partenaire Officiel Majeur',
-  'Sen Influenceurs - Partenaire Media & Influence Officiel',
-  'Kaayfecc - Partenaire Officiel Battle de Danse',
+  'Union Européenne - Partenaire Officiel Majeur',
+  'Sen Influenceurs - Partenaire Média & Influence Officiel',
+  'PIN EVENTS - Partenaire Événementiel, Production & Relations Institutionnelles',
+  'Val2Events - Partenaire associé',
 ];
 
 export default function Footer() {

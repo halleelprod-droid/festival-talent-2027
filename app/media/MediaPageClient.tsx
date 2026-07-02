@@ -80,10 +80,10 @@ const officialMediaPartner = {
 };
 
 const eventProductionPartner = {
-  name: "Pierre Ndiaye Events",
-  label: "Partenaire événementiel & production",
+  name: "PIN EVENTS",
+  label: "Partenaire événementiel, production & relations institutionnelles",
   description:
-    "Pierre Ndiaye Events accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires et activation terrain.",
+    "PIN EVENTS accompagne Festival Talent 2027 dans l’organisation des activités, la production événementielle, les partenariats stratégiques, les relations institutionnelles et les activations terrain.",
 };
 
 export default function MediaPageClient() {

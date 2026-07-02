@@ -1,21 +1,41 @@
 import Image from "next/image";
 
-const partners = [
+type OfficialPartner = {
+  name: string;
+  label: string;
+  image?: string;
+};
+
+const partners: OfficialPartner[] = [
   {
-    name: "Mano Perfetto",
-    image: "/partners/mano.jpeg",
+    name: "Union Européenne",
+    label: "Partenaire Officiel Majeur",
   },
   {
-    name: "Val2Events",
-    image: "/partners/val2events.jpeg",
+    name: "Sen Influenceurs",
+    label: "Partenaire Média & Influence Officiel",
+  },
+  {
+    name: "PIN EVENTS",
+    label: "Partenaire Événementiel, Production & Relations Institutionnelles",
+    image: "/images/partners/pin-events.png",
+  },
+  {
+    name: "Mano Perfetto",
+    label: "Partenaire Construction & Développement",
   },
   {
     name: "H & Hair",
-    image: "/partners/h-hair.jpeg",
+    label: "Partenaire Beauté & Lifestyle",
   },
   {
     name: "Universal Selfcare",
-    image: "/partners/universal.jpeg",
+    label: "Partenaire Bien-être & Santé",
+  },
+  {
+    name: "Val2Events",
+    label: "Partenaire associé",
+    image: "/partners/val2events.jpeg",
   },
 ];
 
@@ -29,7 +49,7 @@ export default function OfficialPartners() {
           </p>
 
           <h2 className="text-4xl md:text-6xl font-black">
-            PARTENAIRES OFFICIELS
+            PARTENAIRES OFFICIELS & ASSOCIÉS
           </h2>
 
           <p className="mt-6 text-white/60 max-w-2xl mx-auto">
@@ -37,23 +57,35 @@ export default function OfficialPartners() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {partners.map((partner) => (
             <div
               key={partner.name}
               className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"
             >
-              <Image
-                src={partner.image}
-                alt={partner.name}
-                width={360}
-                height={208}
-                className="h-52 w-full rounded-2xl bg-black object-contain"
-              />
+              {partner.image ? (
+                <Image
+                  src={partner.image}
+                  alt={partner.name}
+                  width={360}
+                  height={208}
+                  className="h-52 w-full rounded-2xl bg-black object-contain"
+                />
+              ) : (
+                <div className="flex h-52 w-full items-center justify-center rounded-2xl border border-yellow-400/20 bg-black text-center text-4xl font-black uppercase tracking-[0.18em] text-yellow-300">
+                  {partner.name
+                    .split(" ")
+                    .map((word) => word[0])
+                    .join("")}
+                </div>
+              )}
 
               <h3 className="mt-6 text-center text-lg font-bold">
                 {partner.name}
               </h3>
+              <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.18em] text-white/50">
+                {partner.label}
+              </p>
             </div>
           ))}
         </div>

@@ -116,28 +116,21 @@ const officialPartners = [
     label: "Partenaire Officiel Majeur",
     name: "Union Européenne",
     description:
-      "L'Union Européenne est mise en avant comme partenaire officiel majeur du projet Festival Talent. Cette présence renforce la crédibilité, l'impact et l'ambition internationale de l'initiative.",
+      "L’Union Européenne accompagne Festival Talent 2027 dans sa vision de promotion des jeunes talents, de la culture, de l’innovation et de l’entrepreneuriat.",
   },
   {
     icon: Megaphone,
-    label: "Partenaire Media & Influence Officiel",
+    label: "Partenaire Média & Influence Officiel",
     name: "Sen Influenceurs",
     description:
-      "Sen Influenceurs accompagne Festival Talent 2027 dans la visibilité digitale, la communication d’influence, la promotion des talents et la couverture médiatique des activités.",
-  },
-  {
-    icon: Trophy,
-    label: "Partenaire Officiel Battle de Danse",
-    name: "Kaayfecc",
-    description:
-      "Kaayfecc accompagne officiellement les Battles de Danse par zones, ouvertes aux solos et groupes, tous styles et toutes zones.",
+      "Sen Influenceurs accompagne Festival Talent 2027 dans sa stratégie digitale, la communication d’influence, la promotion des talents et la couverture médiatique des activités.",
   },
   {
     icon: Handshake,
-    label: "Partenaire Événementiel & Production",
+    label: "Partenaire Événementiel, Production & Relations Institutionnelles",
     name: "PIN EVENTS",
     description:
-      "PIN EVENTS accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires, communication terrain et activation des activités.",
+      "PIN EVENTS accompagne Festival Talent 2027 dans l’organisation des activités, la production événementielle, les partenariats stratégiques, les relations institutionnelles et les activations terrain.",
     logo: "/images/partners/pin-events.png",
   },
   {
@@ -160,6 +153,14 @@ const officialPartners = [
     name: "Universal Selfcare",
     description:
       "Universal Selfcare accompagne Festival Talent 2027 sur les dimensions bien-être, santé et selfcare.",
+  },
+  {
+    icon: BadgeCheck,
+    label: "Partenaire associé",
+    name: "Val2Events",
+    description:
+      "Val2Events accompagne l’écosystème Festival Talent 2027 dans la dynamique événementielle et partenariale du projet.",
+    logo: "/partners/val2events.jpeg",
   },
 ];
 
@@ -246,10 +247,9 @@ export default function PartnersPageClient() {
                 </h2>
 
                 <p className="mt-6 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-                  L’Union Européenne est mise en avant comme premier partenaire
-                  officiel majeur du projet Festival Talent. Cette présence
-                  renforce la crédibilité, l’impact et l’ambition internationale
-                  de l’initiative.
+                  L’Union Européenne accompagne Festival Talent 2027 dans sa
+                  vision de promotion des jeunes talents, de la culture, de
+                  l’innovation et de l’entrepreneuriat.
                 </p>
               </div>
 

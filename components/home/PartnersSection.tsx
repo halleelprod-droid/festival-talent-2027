@@ -1,44 +1,61 @@
-import { BadgeCheck, Globe2, Handshake, Megaphone, Trophy } from "lucide-react";
+import {
+  BadgeCheck,
+  Building2,
+  Gem,
+  Globe2,
+  Handshake,
+  Megaphone,
+  Sparkles,
+} from "lucide-react";
 
 const officialPartners = [
   {
-    name: "Union Europeenne",
+    name: "Union Européenne",
     label: "Partenaire Officiel Majeur",
     description:
-      "Un partenaire institutionnel majeur qui renforce la credibilite, l'impact et l'ambition internationale de Festival Talent 2027.",
+      "L’Union Européenne accompagne Festival Talent 2027 dans sa vision de promotion des jeunes talents, de la culture, de l’innovation et de l’entrepreneuriat.",
     icon: Globe2,
     featured: true,
   },
   {
     name: "Sen Influenceurs",
-    label: "Partenaire Media & Influence Officiel",
+    label: "Partenaire Média & Influence Officiel",
     description:
-      "Sen Influenceurs accompagne Festival Talent 2027 dans sa visibilite digitale, sa communication d'influence, la promotion des talents et la couverture mediatique des activites du festival.",
+      "Sen Influenceurs accompagne Festival Talent 2027 dans sa stratégie digitale, la communication d’influence, la promotion des talents et la couverture médiatique des activités.",
     icon: Megaphone,
   },
   {
-    name: "Kaayfecc",
-    label: "Partenaire Officiel Battle de Danse",
-    description:
-      "Kaayfecc accompagne la dynamique des Battles de Danse par zones, avec solos, groupes, tous styles et toutes zones.",
-    icon: Trophy,
-  },
-  {
     name: "PIN EVENTS",
-    label: "Partenaire Événementiel & Production",
+    label: "Partenaire Événementiel, Production & Relations Institutionnelles",
     description:
-      "PIN EVENTS accompagne Festival Talent 2027 sur les volets événementiel, production, relations partenaires, communication terrain et activation des activités.",
+      "PIN EVENTS accompagne Festival Talent 2027 dans l’organisation des activités, la production événementielle, les partenariats stratégiques, les relations institutionnelles et les activations terrain.",
     icon: Handshake,
     logo: "/images/partners/pin-events.png",
   },
+  {
+    name: "Mano Perfetto",
+    label: "Partenaire Construction & Développement",
+    description:
+      "Mano Perfetto accompagne Festival Talent 2027 comme partenaire construction et développement.",
+    icon: Building2,
+  },
+  {
+    name: "H & Hair",
+    label: "Partenaire Beauté & Lifestyle",
+    description:
+      "H & Hair accompagne Festival Talent 2027 sur l’univers beauté, lifestyle et image.",
+    icon: Sparkles,
+  },
+  {
+    name: "Universal Selfcare",
+    label: "Partenaire Bien-être & Santé",
+    description:
+      "Universal Selfcare accompagne Festival Talent 2027 sur les dimensions bien-être, santé et selfcare.",
+    icon: Gem,
+  },
 ];
 
-const supportingPartners = [
-  "MANO PERFETTO",
-  "VAL2EVENTS",
-  "H & HAIR",
-  "UNIVERSAL SELFCARE",
-];
+const associatedPartners = ["VAL2EVENTS"];
 
 export default function PartnersSection() {
   return (
@@ -121,8 +138,15 @@ export default function PartnersSection() {
           })}
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-4">
-          {supportingPartners.map((partner) => (
+        <div className="mt-12 rounded-[2rem] border border-yellow-400/20 bg-yellow-400/[0.06] p-6 text-center backdrop-blur-xl">
+          <BadgeCheck className="mx-auto text-yellow-300" size={24} />
+          <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-white/70">
+            Liste officielle des partenaires Festival Talent 2027
+          </p>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {associatedPartners.map((partner) => (
             <div
               key={partner}
               className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.08]"
