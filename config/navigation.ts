@@ -10,6 +10,7 @@ export const primaryNavigationLinks = [
 export const moreNavigationLinks = [
   { label: "Actualités", href: "/news" },
   { label: "Équipe", href: "/team" },
+  { label: "Espace candidat", href: "/candidat" },
   { label: "Contact", href: "/contact" },
   { label: "Tickets", href: "/tickets" },
   { label: "Media", href: "/media" },
@@ -18,6 +19,8 @@ export const moreNavigationLinks = [
 export const footerNavigationLinks = [
   { label: "Actualités", href: "/news" },
   { label: "Équipe", href: "/team" },
+  { label: "Espace candidat", href: "/candidat" },
+  { label: "Statistiques", href: "/stats" },
   { label: "Contact", href: "/contact" },
   { label: "Activités", href: "/activites" },
   { label: "Pré-sélections", href: "/preselections" },
@@ -30,3 +33,5 @@ export const navigationLinks = [
   ...primaryNavigationLinks,
   ...moreNavigationLinks,
 ];
+
+export const adminFooterLink = { label: "Admin", href: "/admin" };

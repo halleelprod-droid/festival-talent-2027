@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { motion } from 'framer-motion';
 
-import { footerNavigationLinks } from '@/config/navigation';
+import { adminFooterLink, footerNavigationLinks } from '@/config/navigation';
 import { socialLinks } from '@/config/social';
 
 const officialPartners = [
@@ -195,9 +195,18 @@ export default function Footer() {
             © 2027 Festival Talent. All rights reserved.
           </p>
 
-          <p>
-            Paris - Rome - Europe
-          </p>
+          <div className="flex flex-wrap items-center gap-5">
+            <p>
+              Paris - Rome - Europe
+            </p>
+
+            <Link
+              href={adminFooterLink.href}
+              className="text-zinc-600 transition hover:text-zinc-400"
+            >
+              {adminFooterLink.label}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
