@@ -4,9 +4,10 @@ export const confirmedArtists = [
     name: "Samba Peuzzi",
     category: "Urban Senegal",
     country: "Senegal",
-    image: "/images/samba.jpg",
+    image: "/images/previous/scene.jpg",
     description:
       "Samba Peuzzi porte l'energie urbaine senegalaise sur la scene FT2027.",
+    role: "Artiste confirme",
   },
   {
     slug: "morijah",
@@ -16,6 +17,7 @@ export const confirmedArtists = [
     image: "/images/artists/morijah.jpg",
     description:
       "Morijah rejoint officiellement Festival Talent 2027 avec une presence forte autour de la musique, de l'inspiration et de la jeunesse.",
+    role: "Artiste confirmee",
   },
   {
     slug: "cysoul",
@@ -25,6 +27,7 @@ export const confirmedArtists = [
     image: "/images/artists/cysoul.jpg",
     description:
       "Cysoul rejoint officiellement Festival Talent 2027 et apporte une dimension musicale internationale au projet.",
+    role: "Artiste confirme",
   },
 ];
 

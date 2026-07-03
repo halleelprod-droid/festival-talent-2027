@@ -17,25 +17,24 @@ import {
 import type { LucideIcon } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Badge from "@/components/ui/Badge";
+import {
+  staffMembers as centralizedStaffMembers,
+  type StaffIconKey,
+} from "@/data/staff";
 
-type StaffMember = {
-  name: string;
-  role: string;
-  subtitle?: string;
-  department: string;
-  description: string;
-  icon: LucideIcon;
-  initials: string;
-  image?: string;
-  logo?: {
-    src: string;
-    alt: string;
-  };
-  achievements?: string[];
-  featured?: boolean;
+const staffIcons: Record<StaffIconKey, LucideIcon> = {
+  briefcase: Briefcase,
+  crown: Crown,
+  gem: Gem,
+  handshake: Handshake,
+  megaphone: Megaphone,
+  monitor: MonitorSmartphone,
+  music: Music2,
+  radio: RadioTower,
+  rocket: Rocket,
 };
 
-const staffMembers: StaffMember[] = [
+/* const staffMembers = [
   {
     name: "ZAIRAH DIAMANT NOIRE",
     role: "Initiatrice du projet",
@@ -139,7 +138,7 @@ const staffMembers: StaffMember[] = [
     image: "/images/staff/dj-you.jpg",
     initials: "DY",
   },
-];
+]; */
 
 function StaffImage({
   src,
@@ -221,8 +220,8 @@ export default function StaffSection() {
         />
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {staffMembers.map((member, index) => {
-            const Icon = member.icon;
+          {centralizedStaffMembers.map((member, index) => {
+            const Icon = staffIcons[member.icon];
 
             return (
               <motion.article

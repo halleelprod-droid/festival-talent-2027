@@ -10,12 +10,15 @@ import {
 } from 'framer-motion';
 
 import {
+  ChevronDown,
   Menu,
   X
 } from 'lucide-react';
 
 import {
-  navigationLinks
+  moreNavigationLinks,
+  navigationLinks,
+  primaryNavigationLinks
 } from '@/config/navigation';
 
 export default function Navbar() {
@@ -23,6 +26,9 @@ export default function Navbar() {
     useState(false);
 
   const [open, setOpen] =
+    useState(false);
+
+  const [moreOpen, setMoreOpen] =
     useState(false);
 
   useEffect(() => {
@@ -99,8 +105,8 @@ export default function Navbar() {
           </Link>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden items-center gap-10 lg:flex">
-            {navigationLinks.map((link) => (
+          <nav className="hidden items-center gap-7 lg:flex">
+            {primaryNavigationLinks.map((link) => (
               <motion.div
                 key={link.label}
                 whileHover={{
@@ -123,6 +129,95 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
+
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() =>
+                  setMoreOpen(!moreOpen)
+                }
+                aria-expanded={moreOpen}
+                aria-controls="desktop-more-menu"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  text-sm
+                  uppercase
+                  tracking-[0.25em]
+                  text-zinc-300
+                  transition
+                  hover:text-white
+                "
+              >
+                Plus
+                <ChevronDown
+                  size={14}
+                  className={`transition ${moreOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {moreOpen && (
+                  <motion.div
+                    id="desktop-more-menu"
+                    initial={{
+                      opacity: 0,
+                      y: 8
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 8
+                    }}
+                    className="
+                      absolute
+                      right-0
+                      top-10
+                      w-56
+                      overflow-hidden
+                      rounded-2xl
+                      border
+                      border-white/10
+                      bg-black/90
+                      p-2
+                      shadow-2xl
+                      shadow-black/50
+                      backdrop-blur-xl
+                    "
+                  >
+                    {moreNavigationLinks.map((link) => (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={() =>
+                          setMoreOpen(false)
+                        }
+                        className="
+                          block
+                          rounded-xl
+                          px-4
+                          py-3
+                          text-xs
+                          font-black
+                          uppercase
+                          tracking-[0.18em]
+                          text-zinc-300
+                          transition
+                          hover:bg-white/[0.06]
+                          hover:text-yellow-300
+                        "
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
           {/* CTA */}

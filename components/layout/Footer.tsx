@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { motion } from 'framer-motion';
 
-import { navigationLinks } from '@/config/navigation';
+import { footerNavigationLinks } from '@/config/navigation';
 import { socialLinks } from '@/config/social';
 
 const officialPartners = [
@@ -80,7 +80,7 @@ export default function Footer() {
             </p>
 
             <div className="mt-8 flex flex-col gap-5">
-              {navigationLinks.map((link) => (
+              {footerNavigationLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
