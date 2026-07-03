@@ -10,6 +10,7 @@ import PartnersSection from "@/components/home/PartnersSection";
 import FAQSection from "@/components/home/FAQSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
 import GratitudeSection from "@/components/home/GratitudeSection";
+import PlatformVisionSection from "@/components/home/PlatformVisionSection";
 import ProgrammePreview from "@/components/home/ProgrammePreview";
 import SectionDivider from "@/components/ui/SectionDivider";
 
@@ -75,6 +76,8 @@ export default function HomePage() {
         <FAQSection />
 
         <NewsletterSection />
+
+        <PlatformVisionSection />
 
         <GratitudeSection />
 

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 import { adminFooterLink, footerNavigationLinks } from '@/config/navigation';
 import { socialLinks } from '@/config/social';
+import { platformFooterLinks } from '@/data/platform';
 
 const officialPartners = [
   'Union Européenne - Partenaire Officiel Majeur',
@@ -170,6 +171,24 @@ export default function Footer() {
                   {social.label}
                 </a>
               ))}
+            </div>
+
+            <div className="mt-10 border-t border-white/10 pt-8">
+              <p className="text-xs uppercase tracking-[0.28em] text-[#C9A84C]">
+                Plateforme
+              </p>
+
+              <div className="mt-5 flex flex-col gap-4">
+                {platformFooterLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="w-fit text-sm text-zinc-400 transition hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
