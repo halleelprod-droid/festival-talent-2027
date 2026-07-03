@@ -25,7 +25,7 @@ export const metadata: Metadata = buildPageMetadata({
 const confirmedArtists = [
   {
     name: "Samba Peuzzi",
-    image: "/images/samba.jpg",
+    image: "/images/previous/scene.jpg",
     role: "Artiste confirmé",
     description:
       "Samba Peuzzi est officiellement confirmé pour Festival Talent 2027. Sa présence accompagne l’énergie du projet, les pré-sélections, les Battles de Danse par zones et la célébration des jeunes talents.",
@@ -156,7 +156,7 @@ export default function ArtistsPage() {
                 <div className="mt-7 grid grid-cols-2 gap-4">
                   <div className="rounded-[1.5rem] border border-white/10 bg-black/35 p-4">
                     <CalendarDays className="text-yellow-300" size={23} />
-                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-white/40">
+                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-white/55">
                       Édition
                     </p>
                     <p className="mt-1 text-sm font-black uppercase text-white">
@@ -166,7 +166,7 @@ export default function ArtistsPage() {
 
                   <div className="rounded-[1.5rem] border border-white/10 bg-black/35 p-4">
                     <Globe2 className="text-yellow-300" size={23} />
-                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-white/40">
+                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-white/55">
                       Projet
                     </p>
                     <p className="mt-1 text-sm font-black uppercase text-white">

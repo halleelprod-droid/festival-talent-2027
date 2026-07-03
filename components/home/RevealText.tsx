@@ -14,7 +14,7 @@ export default function RevealText({
   className
 }: Props) {
   return (
-    <motion.h1
+    <motion.h2
       initial={{
         opacity: 0,
         y: 120
@@ -30,6 +30,6 @@ export default function RevealText({
       className={className}
     >
       {text}
-    </motion.h1>
+    </motion.h2>
   );
 }

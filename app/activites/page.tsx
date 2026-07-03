@@ -218,7 +218,7 @@ export default function ActivitesPage() {
                     {activity.title}
                   </h2>
 
-                  <p className="mt-3 text-sm font-black uppercase tracking-[0.2em] text-white/40">
+                  <p className="mt-3 text-sm font-black uppercase tracking-[0.2em] text-white/55">
                     {activity.date}
                   </p>
 

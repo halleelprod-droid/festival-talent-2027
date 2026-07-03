@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-import { confirmedArtists } from '@/components/sections/constants';
+import { confirmedArtists } from '@/data/artists';
 
 export default function LineupSection() {
   return (

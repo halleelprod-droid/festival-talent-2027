@@ -6,11 +6,25 @@ import { ReactNode } from 'react';
 interface GlassCardProps {
   children: ReactNode;
   className?: string;
+  variant?: 'glass' | 'gold';
+  radius?: 'default' | 'lg';
 }
+
+const variantClass: Record<NonNullable<GlassCardProps['variant']>, string> = {
+  glass: 'border-white/10 bg-white/[0.04]',
+  gold: 'border-yellow-400/25 bg-yellow-400/[0.06]'
+};
+
+const radiusClass: Record<NonNullable<GlassCardProps['radius']>, string> = {
+  default: 'rounded-card',
+  lg: 'rounded-card-lg'
+};
 
 export default function GlassCard({
   children,
-  className = ''
+  className = '',
+  variant = 'glass',
+  radius = 'default'
 }: GlassCardProps) {
   return (
     <motion.div
@@ -25,9 +39,10 @@ export default function GlassCard({
         damping: 18
       }}
       className={`
-        relative overflow-hidden rounded-[2rem]
-        border border-white/10
-        bg-white/[0.04]
+        relative overflow-hidden
+        ${radiusClass[radius]}
+        border
+        ${variantClass[variant]}
         backdrop-blur-2xl
         shadow-[0_0_40px_rgba(0,0,0,0.25)]
         ${className}

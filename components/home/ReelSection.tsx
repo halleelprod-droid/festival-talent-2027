@@ -4,6 +4,8 @@ import {
   motion
 } from 'framer-motion';
 
+import FadeIn from '@/components/ui/FadeIn';
+
 export default function ReelSection() {
   return (
     <section className="relative overflow-hidden bg-black py-40 text-[#F5F0E8]">
@@ -15,26 +17,12 @@ export default function ReelSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* HEADER */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 80
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-          transition={{
-            duration: 1
-          }}
-          viewport={{ once: true }}
-          className="max-w-5xl"
-        >
+        <FadeIn className="max-w-5xl">
           <span className="uppercase tracking-[0.4em] text-[#C9A84C] text-sm">
             Official Trailer
           </span>
 
-          <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.05em] md:text-7xl lg:text-[8rem]">
+          <h2 className="font-display mt-8 text-5xl leading-[0.9] tracking-[-0.05em] md:text-7xl lg:text-[8rem]">
             Une expérience
             <br />
             pensée comme un film.
@@ -45,7 +33,7 @@ export default function ReelSection() {
             dans une expérience immersive inspirée du cinéma,
             des performances live et du futur du divertissement.
           </p>
-        </motion.div>
+        </FadeIn>
 
         {/* VIDEO BLOCK */}
         <motion.div
@@ -69,10 +57,11 @@ export default function ReelSection() {
             muted
             loop
             playsInline
+            preload="none"
             className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
           >
             <source
-              src="https://cdn.coverr.co/videos/coverr-nightclub-party-1564849137400?download=1080p"
+              src="/videos/reel1.mp4"
               type="video/mp4"
             />
           </video>
@@ -99,7 +88,7 @@ export default function ReelSection() {
 
           {/* CONTENT */}
           <div className="absolute bottom-0 left-0 right-0 p-10">
-            <h3 className="text-4xl font-black md:text-6xl">
+            <h3 className="font-display text-4xl md:text-6xl">
               FT2027 OFFICIAL REEL
             </h3>
 

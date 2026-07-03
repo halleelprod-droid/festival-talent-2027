@@ -1,8 +1,11 @@
 'use client';
 
+import Link from 'next/link';
 import {
   motion
 } from 'framer-motion';
+
+import MagneticButton from '@/components/ui/MagneticButton';
 
 export default function FinalCTA() {
   return (
@@ -62,9 +65,9 @@ export default function FinalCTA() {
           }}
           viewport={{ once: true }}
           className="
+            font-display
             mt-10
             text-5xl
-            font-black
             leading-[0.9]
             tracking-[-0.05em]
             md:text-7xl
@@ -130,24 +133,13 @@ export default function FinalCTA() {
           "
         >
           {/* PRIMARY */}
-          <button
-            className="
-              rounded-full
-              bg-[#C9A84C]
-              px-10
-              py-5
-              font-semibold
-              text-black
-              transition
-              hover:scale-105
-              hover:shadow-[0_0_40px_rgba(201,168,76,0.45)]
-            "
-          >
+          <MagneticButton href="/tickets">
             Réserver maintenant
-          </button>
+          </MagneticButton>
 
           {/* SECONDARY */}
-          <button
+          <Link
+            href="/artists"
             className="
               glass
               rounded-full
@@ -161,7 +153,7 @@ export default function FinalCTA() {
             "
           >
             Découvrir le lineup
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>

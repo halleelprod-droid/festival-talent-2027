@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 import {
   liveStats
-} from '@/components/sections/constants';
+} from '@/data/stats';
 
 export default function LiveStatsBar() {
   return (

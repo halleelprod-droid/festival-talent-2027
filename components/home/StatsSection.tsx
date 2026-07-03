@@ -26,7 +26,7 @@ export default function StatsSection() {
             Festival Impact
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-black">
+          <h2 className="font-display text-4xl md:text-6xl">
             UN IMPACT
             <br />
             INTERNATIONAL

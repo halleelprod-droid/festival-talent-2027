@@ -154,7 +154,7 @@ export default function ScheduleSection() {
                   {phase.title}
                 </h3>
 
-                <p className="mt-3 text-sm font-bold uppercase tracking-[0.2em] text-white/45">
+                <p className="mt-3 text-sm font-bold uppercase tracking-[0.2em] text-white/55">
                   {phase.location}
                 </p>
 

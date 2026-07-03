@@ -34,7 +34,7 @@ export default function ParallaxSection({
 
     const element = ref.current;
 
-    gsap.to(element, {
+    const tween = gsap.to(element, {
       y: speed,
       ease: 'none',
 
@@ -47,10 +47,8 @@ export default function ParallaxSection({
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(
-        (trigger) =>
-          trigger.kill()
-      );
+      tween.scrollTrigger?.kill();
+      tween.kill();
     };
   }, [speed]);
 

@@ -15,6 +15,8 @@ import {
   Rocket,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Badge from "@/components/ui/Badge";
 
 type StaffMember = {
   name: string;
@@ -201,29 +203,22 @@ export default function StaffSection() {
       <div className="absolute -right-32 bottom-20 h-80 w-80 rounded-full bg-yellow-500/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mx-auto max-w-4xl text-center"
-        >
-          <p className="text-sm font-bold uppercase tracking-[0.45em] text-yellow-400">
-            L&apos;equipe officielle
-          </p>
-
-          <h2 className="mt-6 text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
-            L&apos;équipe dirigeante du
-            <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
-              Festival Talent 2027
-            </span>
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65 sm:text-lg">
-            Des profils engagés dans la culture, l&apos;événementiel, la
-            communication, l&apos;innovation et le développement des talents.
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="L'equipe officielle"
+          tone="amber"
+          align="center"
+          className="mx-auto max-w-4xl"
+          titleClassName="uppercase leading-tight tracking-tight text-white sm:text-5xl"
+          title={
+            <>
+              L&apos;équipe dirigeante du
+              <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                Festival Talent 2027
+              </span>
+            </>
+          }
+          description="Des profils engagés dans la culture, l'événementiel, la communication, l'innovation et le développement des talents."
+        />
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {staffMembers.map((member, index) => {
@@ -288,9 +283,7 @@ export default function StaffSection() {
                     )}
 
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="rounded-full border border-yellow-400/25 bg-yellow-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-yellow-300">
-                        {member.department}
-                      </span>
+                      <Badge size="sm">{member.department}</Badge>
 
                       <span className="text-xs font-bold uppercase tracking-[0.2em] text-yellow-300">
                         {member.role}

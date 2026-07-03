@@ -80,7 +80,7 @@ export default function AboutSection() {
               la musique et le futur.”
             </p>
 
-            <p className="mt-8 text-xs uppercase tracking-[0.3em] text-zinc-500">
+            <p className="mt-8 text-xs uppercase tracking-[0.3em] text-zinc-400">
               Festival Talent 2027
             </p>
           </div>

@@ -108,7 +108,7 @@ export default function TalentTalksSection() {
             Leadership • Motivation • Excellence
           </div>
 
-          <h2 className="text-4xl font-black uppercase tracking-tight sm:text-5xl lg:text-7xl">
+          <h2 className="font-display text-4xl uppercase tracking-tight sm:text-5xl lg:text-7xl">
             Talent Talks
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
               Panels & Coaching

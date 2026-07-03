@@ -87,7 +87,7 @@ export default function BattleDanceSection() {
               Pré-sélections officielles
             </div>
 
-            <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
+            <h2 className="font-display mt-8 text-4xl uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
               Battle All Style
               <span className="block bg-gradient-to-r from-red-400 via-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                 par zones
@@ -116,7 +116,7 @@ export default function BattleDanceSection() {
                       {info.title}
                     </h3>
 
-                    <p className="mt-2 text-xs font-black uppercase tracking-[0.22em] text-white/40">
+                    <p className="mt-2 text-xs font-black uppercase tracking-[0.22em] text-white/55">
                       {info.label}
                     </p>
                   </div>
@@ -253,7 +253,7 @@ export default function BattleDanceSection() {
                   </div>
 
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/35">
+                    <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">
                       Zone {String(index + 1).padStart(2, "0")}
                     </p>
 

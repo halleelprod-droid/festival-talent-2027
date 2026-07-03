@@ -17,13 +17,13 @@ export default function ParticlesBackground() {
         (_, index) => ({
           id: index,
           size:
-            seededValue(index, 1) * 3 + 2,
+            Number((seededValue(index, 1) * 3 + 2).toFixed(3)),
           left:
-            seededValue(index, 2) * 100,
+            Number((seededValue(index, 2) * 100).toFixed(3)),
           duration:
-            seededValue(index, 3) * 12 + 10,
+            Number((seededValue(index, 3) * 12 + 10).toFixed(3)),
           delay:
-            seededValue(index, 4) * 6
+            Number((seededValue(index, 4) * 6).toFixed(3))
         })
       ),
     []
@@ -51,8 +51,8 @@ export default function ParticlesBackground() {
           }}
           className="absolute rounded-full bg-[#C9A84C]/20 blur-[1px]"
           style={{
-            width: particle.size,
-            height: particle.size,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
             left: `${particle.left}%`,
             willChange:
               'transform, opacity'

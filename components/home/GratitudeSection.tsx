@@ -19,7 +19,7 @@ export default function GratitudeSection() {
 
         <div className="relative mx-auto mt-10 max-w-6xl">
           <h2
-            className="select-none text-6xl font-black uppercase leading-none tracking-tight text-transparent sm:text-8xl lg:text-9xl"
+            className="font-display select-none text-6xl uppercase leading-none tracking-tight text-transparent sm:text-8xl lg:text-9xl"
             style={{
               WebkitTextStroke: "1px rgba(250, 204, 21, 0.65)",
               textShadow:

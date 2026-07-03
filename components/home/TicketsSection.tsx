@@ -27,7 +27,7 @@ export default function TicketsSection() {
             Tickets & réservations
           </div>
 
-          <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
+          <h2 className="font-display mt-8 text-4xl uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
             Deux accès,
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
               deux objectifs
@@ -60,7 +60,7 @@ export default function TicketsSection() {
               </h3>
 
               <div className="mt-7 rounded-[2rem] border border-yellow-400/25 bg-black/35 p-6">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/40">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/55">
                   Frais d’inscription
                 </p>
 
@@ -125,7 +125,7 @@ export default function TicketsSection() {
                 <Clock size={30} />
               </div>
 
-              <p className="mt-7 text-xs font-black uppercase tracking-[0.32em] text-white/40">
+              <p className="mt-7 text-xs font-black uppercase tracking-[0.32em] text-white/55">
                 Bientôt disponible
               </p>
 
@@ -142,7 +142,7 @@ export default function TicketsSection() {
               <div className="mt-7 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[1.6rem] border border-white/10 bg-black/35 p-5">
                   <Bell className="text-yellow-300" size={25} />
-                  <p className="mt-3 text-xs font-black uppercase tracking-[0.24em] text-white/40">
+                  <p className="mt-3 text-xs font-black uppercase tracking-[0.24em] text-white/55">
                     Alerte
                   </p>
                   <p className="mt-1 text-lg font-black uppercase text-white">
@@ -152,7 +152,7 @@ export default function TicketsSection() {
 
                 <div className="rounded-[1.6rem] border border-white/10 bg-black/35 p-5">
                   <CalendarDays className="text-yellow-300" size={25} />
-                  <p className="mt-3 text-xs font-black uppercase tracking-[0.24em] text-white/40">
+                  <p className="mt-3 text-xs font-black uppercase tracking-[0.24em] text-white/55">
                     Édition
                   </p>
                   <p className="mt-1 text-lg font-black uppercase text-white">

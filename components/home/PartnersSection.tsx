@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   BadgeCheck,
   Building2,
@@ -7,6 +8,9 @@ import {
   Megaphone,
   Sparkles,
 } from "lucide-react";
+
+import GlassCard from "@/components/ui/GlassCard";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const officialPartners = [
   {
@@ -63,21 +67,14 @@ export default function PartnersSection() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.14),transparent_35%)]" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="text-center">
-          <p className="mb-6 text-sm uppercase tracking-[0.4em] text-yellow-300">
-            Official Partners
-          </p>
-
-          <h2 className="text-4xl font-black uppercase md:text-6xl">
-            Nos partenaires
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-2xl text-white/60">
-            Festival Talent 2027 rassemble institutions, medias, partenaires
-            culturels et organisations autour de la jeunesse, de la creation et
-            de l&apos;innovation.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Official Partners"
+          tone="amber"
+          align="center"
+          titleClassName="uppercase"
+          title="Nos partenaires"
+          description="Festival Talent 2027 rassemble institutions, medias, partenaires culturels et organisations autour de la jeunesse, de la creation et de l'innovation."
+        />
 
         <div className="mt-20 grid gap-6 lg:grid-cols-3">
           {officialPartners.map((partner) => {
@@ -120,9 +117,11 @@ export default function PartnersSection() {
 
                     {"logo" in partner && partner.logo ? (
                       <div className="mt-4 inline-flex rounded-2xl border border-yellow-400/25 bg-black/40 p-3">
-                        <img
+                        <Image
                           src={partner.logo}
                           alt={`Logo ${partner.name}`}
+                          width={150}
+                          height={48}
                           className="h-12 w-auto object-contain"
                         />
                       </div>
@@ -138,24 +137,21 @@ export default function PartnersSection() {
           })}
         </div>
 
-        <div className="mt-12 rounded-[2rem] border border-yellow-400/20 bg-yellow-400/[0.06] p-6 text-center backdrop-blur-xl">
+        <GlassCard variant="gold" className="mt-12 p-6 text-center">
           <BadgeCheck className="mx-auto text-yellow-300" size={24} />
           <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-white/70">
             Liste officielle des partenaires Festival Talent 2027
           </p>
-        </div>
+        </GlassCard>
 
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {associatedPartners.map((partner) => (
-            <div
-              key={partner}
-              className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.08]"
-            >
+            <GlassCard key={partner} className="p-5 text-center">
               <BadgeCheck className="mx-auto text-yellow-300" size={22} />
               <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-white/75">
                 {partner}
               </p>
-            </div>
+            </GlassCard>
           ))}
         </div>
       </div>

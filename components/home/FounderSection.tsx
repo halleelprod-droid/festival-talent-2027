@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
+import FadeIn from '@/components/ui/FadeIn';
+
 export default function FounderSection() {
   return (
     <section className="relative py-32 overflow-hidden">
@@ -17,21 +19,15 @@ export default function FounderSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         {/* TITLE */}
-        <motion.div
-          initial={{ opacity: 0, y: 70 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
+        <FadeIn className="mb-20">
           <p className="text-[#C9A84C] uppercase tracking-[0.4em] text-sm mb-5">
             Vision
           </p>
 
-          <h2 className="text-5xl md:text-7xl font-black leading-none uppercase">
+          <h2 className="font-display text-5xl md:text-7xl leading-none uppercase">
             La Fondatrice
           </h2>
-        </motion.div>
+        </FadeIn>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* IMAGE */}
@@ -71,7 +67,7 @@ export default function FounderSection() {
                 Initiatrice du projet
               </p>
 
-              <h3 className="text-4xl md:text-6xl font-black leading-tight mb-8">
+              <h3 className="font-display text-4xl md:text-6xl leading-tight mb-8">
                 ZAÏRHA
                 <br />
                 DIAMANT NOIR

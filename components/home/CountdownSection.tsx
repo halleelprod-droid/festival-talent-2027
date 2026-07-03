@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { CalendarDays, Clock3, MapPin } from "lucide-react";
 
+import FadeIn from "@/components/ui/FadeIn";
+
 const FESTIVAL_DATE = new Date("2027-01-01T00:00:00").getTime();
 
 type TimeLeft = {
@@ -70,18 +72,12 @@ export default function CountdownSection() {
       <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-500/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mx-auto max-w-4xl"
-        >
+        <FadeIn className="mx-auto max-w-4xl">
           <p className="text-sm font-bold uppercase tracking-[0.45em] text-yellow-400">
             Festival Countdown
           </p>
 
-          <h2 className="mt-8 text-5xl font-black leading-none tracking-tight text-white sm:text-6xl md:text-8xl">
+          <h2 className="font-display mt-8 text-5xl leading-none tracking-tight text-white sm:text-6xl md:text-8xl">
             Paris & Rome
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
               Starts Soon.
@@ -93,7 +89,7 @@ export default function CountdownSection() {
             Rome, avec des pré-sélections officielles avant le lancement de
             janvier 2027.
           </p>
-        </motion.div>
+        </FadeIn>
 
         <div className="mt-16 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-7">
           {countdownItems.map((item, index) => (
@@ -116,7 +112,7 @@ export default function CountdownSection() {
                   {String(item.value).padStart(2, "0")}
                 </h3>
 
-                <p className="mt-5 text-xs font-bold uppercase tracking-[0.35em] text-white/45">
+                <p className="mt-5 text-xs font-bold uppercase tracking-[0.35em] text-white/55">
                   {item.label}
                 </p>
               </div>

@@ -160,7 +160,7 @@ const officialPartners = [
     name: "Val2Events",
     description:
       "Val2Events accompagne l’écosystème Festival Talent 2027 dans la dynamique événementielle et partenariale du projet.",
-    logo: "/partners/val2events.jpeg",
+    logo: "/images/partners/val2events.jpeg",
   },
 ];
 

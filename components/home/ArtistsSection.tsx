@@ -11,7 +11,7 @@ import {
 const artists = [
   {
     name: "Samba Peuzzi",
-    image: "/images/samba.jpg",
+    image: "/images/previous/scene.jpg",
     role: "Artiste confirmé",
     description:
       "Artiste confirmé pour Festival Talent 2027. Sa présence accompagne l’énergie du festival, les pré-sélections et la célébration des talents.",
@@ -46,7 +46,7 @@ export default function ArtistsSection() {
             Artistes confirmés
           </div>
 
-          <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
+          <h2 className="font-display mt-8 text-4xl uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
             Line-up
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
               officiel
@@ -105,7 +105,7 @@ export default function ArtistsSection() {
                 <div className="mt-6 grid grid-cols-2 gap-3">
                   <div className="rounded-[1.3rem] border border-white/10 bg-black/35 p-4">
                     <CalendarDays className="text-yellow-300" size={22} />
-                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
+                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/55">
                       Édition
                     </p>
                     <p className="mt-1 text-sm font-black uppercase text-white">
@@ -115,7 +115,7 @@ export default function ArtistsSection() {
 
                   <div className="rounded-[1.3rem] border border-white/10 bg-black/35 p-4">
                     <Globe2 className="text-yellow-300" size={22} />
-                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
+                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.2em] text-white/55">
                       Projet
                     </p>
                     <p className="mt-1 text-sm font-black uppercase text-white">

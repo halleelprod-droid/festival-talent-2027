@@ -2,28 +2,47 @@ import AnnouncementBar from "@/components/home/AnnouncementBar";
 import HeroSection from "@/components/home/HeroSection";
 import BattleDanceSection from "@/components/home/BattleDanceSection";
 import ActivitiesHighlightSection from "@/components/home/ActivitiesHighlightSection";
-import LiveStatsBar from "@/components/home/LiveStatsBar";
-import AboutSection from "@/components/home/AboutSection";
-import FounderSection from "@/components/home/FounderSection";
 import StaffSection from "@/components/home/StaffSection";
-import ExperienceSection from "@/components/home/ExperienceSection";
 import WhyFTSection from "@/components/home/WhyFTSection";
-import StatsSection from "@/components/home/StatsSection";
 import ArtistsSection from "@/components/home/ArtistsSection";
-import OfficialSchedule from "@/components/home/OfficialSchedule";
-import ReelSection from "@/components/home/ReelSection";
 import GallerySection from "@/components/home/GallerySection";
-import ExperienceMap from "@/components/home/ExperienceMap";
-import CountdownSection from "@/components/home/CountdownSection";
-import TicketsSection from "@/components/home/TicketsSection";
-import WhyPartnerSection from "@/components/home/WhyPartnerSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import FAQSection from "@/components/home/FAQSection";
-import QuoteSection from "@/components/home/QuoteSection";
-import SponsorCTASection from "@/components/home/SponsorCTASection";
 import NewsletterSection from "@/components/home/NewsletterSection";
-import FinalCTA from "@/components/home/FinalCTA";
 import GratitudeSection from "@/components/home/GratitudeSection";
+import ProgrammePreview from "@/components/home/ProgrammePreview";
+import SectionDivider from "@/components/ui/SectionDivider";
+
+const homeProgrammeEvents = [
+  {
+    _id: "preselections",
+    title: "Pre-selections officielles",
+    location: "Senegal et zones partenaires",
+    date: "2026-09-01",
+    category: "Detection",
+  },
+  {
+    _id: "battles",
+    title: "Battles All Style",
+    location: "Zones regionales",
+    date: "2026-09-15",
+    category: "Competition",
+  },
+  {
+    _id: "italie",
+    title: "Experience Italie",
+    location: "Italie",
+    date: "2027-03-21",
+    category: "International",
+  },
+  {
+    _id: "final",
+    title: "Concert final",
+    location: "Casino de Paris",
+    date: "2027-05-15",
+    category: "Finale",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -33,53 +52,33 @@ export default function HomePage() {
       <main className="min-h-screen bg-black text-white">
         <HeroSection />
 
+        <WhyFTSection />
+
         <BattleDanceSection />
 
         <ActivitiesHighlightSection />
 
-        <LiveStatsBar />
-
-        <AboutSection />
-
-        <FounderSection />
-
-        <StaffSection />
-
-        <ExperienceSection />
-
-        <WhyFTSection />
-
-        <StatsSection />
+        <ProgrammePreview events={homeProgrammeEvents} />
 
         <ArtistsSection />
 
-        <OfficialSchedule />
+        <SectionDivider />
 
-        <ReelSection />
-
-        <GallerySection />
-
-        <ExperienceMap />
-
-        <CountdownSection />
-
-        <TicketsSection />
-
-        <WhyPartnerSection />
+        <StaffSection />
 
         <PartnersSection />
 
+        <SectionDivider />
+
+        <GallerySection />
+
         <FAQSection />
-
-        <QuoteSection />
-
-        <SponsorCTASection />
 
         <NewsletterSection />
 
-        <FinalCTA />
-
         <GratitudeSection />
+
+        <SectionDivider />
       </main>
     </>
   );

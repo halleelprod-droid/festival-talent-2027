@@ -35,7 +35,7 @@ const partners: OfficialPartner[] = [
   {
     name: "Val2Events",
     label: "Partenaire associé",
-    image: "/partners/val2events.jpeg",
+    image: "/images/partners/val2events.jpeg",
   },
 ];
 

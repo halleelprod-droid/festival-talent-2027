@@ -78,7 +78,7 @@ export default function LocationSection() {
                 <div className="absolute inset-0 opacity-0 transition duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,#C9A84C10,transparent_60%)]" />
 
                 <div className="relative z-10">
-                  <p className="uppercase tracking-[0.3em] text-xs text-zinc-500">
+                  <p className="uppercase tracking-[0.3em] text-xs text-zinc-400">
                     {item.title}
                   </p>
 

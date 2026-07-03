@@ -273,7 +273,7 @@ export default function PreselectionsPage() {
                   </div>
 
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/35">
+                    <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">
                       Zone {String(index + 1).padStart(2, "0")}
                     </p>
 

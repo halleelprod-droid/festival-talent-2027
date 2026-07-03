@@ -117,7 +117,7 @@ export default function ProgrammePreview({
                         )}
                       </span>
 
-                      <p className="mt-2 uppercase tracking-[0.3em] text-xs text-zinc-500">
+                      <p className="mt-2 uppercase tracking-[0.3em] text-xs text-zinc-400">
                         FT2027 LIVE EXPERIENCE
                       </p>
                     </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import FadeIn from '@/components/ui/FadeIn';
 
 export default function QuoteSection() {
   return (
@@ -12,20 +12,7 @@ export default function QuoteSection() {
       <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C9A84C]/10 blur-[140px]" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 80
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-          transition={{
-            duration: 1.2
-          }}
-          viewport={{ once: true }}
-        >
+        <FadeIn>
           {/* TOP */}
           <p className="text-sm uppercase tracking-[0.45em] text-[#C9A84C]">
             FT2027 Vision
@@ -34,9 +21,9 @@ export default function QuoteSection() {
           {/* QUOTE */}
           <h2
             className="
+              font-display
               mt-14
               text-5xl
-              font-black
               leading-[1]
               tracking-[-0.06em]
               md:text-7xl
@@ -68,7 +55,7 @@ export default function QuoteSection() {
             d’une expérience immersive entre culture,
             innovation, musique et vision panafricaine.
           </p>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   );

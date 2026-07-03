@@ -15,6 +15,8 @@ import {
   Users,
 } from "lucide-react";
 
+import StatisticCard from "@/components/ui/StatisticCard";
+
 const whatsappLink =
   "https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20les%20pr%C3%A9-s%C3%A9lections%20et%20les%20Battles%20de%20Danse.";
 
@@ -78,7 +80,7 @@ export default function HeroSection() {
             Festival Talent 2027
           </div>
 
-          <h1 className="mt-8 text-5xl font-black uppercase leading-none tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl">
+          <h1 className="font-display mt-8 text-5xl uppercase leading-none tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl">
             Révélons
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
               les talents
@@ -163,7 +165,7 @@ export default function HeroSection() {
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-[1.5rem] border border-yellow-400/20 bg-yellow-400/10 p-4">
                     <MapPin className="text-yellow-300" size={24} />
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/45">
+                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/55">
                       Zones
                     </p>
                     <p className="mt-1 text-lg font-black uppercase text-white">
@@ -173,7 +175,7 @@ export default function HeroSection() {
 
                   <div className="rounded-[1.5rem] border border-yellow-400/20 bg-yellow-400/10 p-4">
                     <Users className="text-yellow-300" size={24} />
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/45">
+                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/55">
                       Catégories
                     </p>
                     <p className="mt-1 text-lg font-black uppercase text-white">
@@ -183,7 +185,7 @@ export default function HeroSection() {
 
                   <div className="rounded-[1.5rem] border border-yellow-400/20 bg-yellow-400/10 p-4">
                     <Mic2 className="text-yellow-300" size={24} />
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/45">
+                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/55">
                       Artiste
                     </p>
                     <p className="mt-1 text-lg font-black uppercase text-white">
@@ -193,7 +195,7 @@ export default function HeroSection() {
 
                   <div className="rounded-[1.5rem] border border-yellow-400/20 bg-yellow-400/10 p-4">
                     <Plane className="text-yellow-300" size={24} />
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/45">
+                    <p className="mt-3 text-xs font-black uppercase tracking-[0.2em] text-white/55">
                       Prix
                     </p>
                     <p className="mt-1 text-lg font-black uppercase text-white">
@@ -216,24 +218,14 @@ export default function HeroSection() {
       </div>
 
       <div className="relative mx-auto mt-16 grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {highlights.map((item) => {
-          const Icon = item.icon;
-
-          return (
-            <div
-              key={item.label}
-              className="rounded-[1.7rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl shadow-black/20 backdrop-blur-xl"
-            >
-              <Icon className="text-yellow-300" size={26} />
-              <p className="mt-4 text-xs font-black uppercase tracking-[0.25em] text-white/35">
-                {item.label}
-              </p>
-              <p className="mt-2 text-xl font-black uppercase text-white">
-                {item.value}
-              </p>
-            </div>
-          );
-        })}
+        {highlights.map((item) => (
+          <StatisticCard
+            key={item.label}
+            icon={item.icon}
+            label={item.label}
+            value={item.value}
+          />
+        ))}
       </div>
     </section>
   );

@@ -68,7 +68,7 @@ export default function ActivitiesHighlightSection() {
               Activités phares
             </div>
 
-            <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
+            <h2 className="font-display mt-8 text-4xl uppercase leading-none tracking-tight sm:text-6xl lg:text-7xl">
               Plusieurs secteurs
               <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-red-500 bg-clip-text text-transparent">
                 un même festival

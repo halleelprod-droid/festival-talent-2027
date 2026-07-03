@@ -16,7 +16,7 @@ import {
 
 import {
   navigationLinks
-} from '@/components/sections/constants';
+} from '@/config/navigation';
 
 export default function Navbar() {
   const [scrolled, setScrolled] =
@@ -92,9 +92,9 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <div className="h-3 w-3 rounded-full bg-[#C9A84C]" />
 
-              <h1 className="text-sm font-black uppercase tracking-[0.35em] text-white">
+              <span className="text-sm font-black uppercase tracking-[0.35em] text-white">
                 FT2027
-              </h1>
+              </span>
             </div>
           </Link>
 
@@ -151,6 +151,9 @@ export default function Navbar() {
             onClick={() =>
               setOpen(!open)
             }
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
             className="
               flex
               h-12
@@ -178,6 +181,9 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
             initial={{
               opacity: 0
             }}

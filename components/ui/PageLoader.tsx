@@ -57,7 +57,7 @@ export default function PageLoader() {
           {/* CONTENT */}
           <div className="relative z-10 text-center">
             {/* LOGO */}
-            <motion.h1
+            <motion.div
               initial={{
                 opacity: 0,
                 scale: 0.8
@@ -82,7 +82,7 @@ export default function PageLoader() {
               <span className="text-[#C9A84C]">
                 2027
               </span>
-            </motion.h1>
+            </motion.div>
 
             {/* LINE */}
             <motion.div

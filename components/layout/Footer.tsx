@@ -4,10 +4,8 @@ import Link from 'next/link';
 
 import { motion } from 'framer-motion';
 
-import {
-  navigationLinks,
-  socialLinks
-} from '@/components/sections/constants';
+import { navigationLinks } from '@/config/navigation';
+import { socialLinks } from '@/config/social';
 
 const officialPartners = [
   'Union Européenne - Partenaire Officiel Majeur',
@@ -187,7 +185,7 @@ export default function Footer() {
             border-white/10
             pt-8
             text-sm
-            text-zinc-500
+            text-zinc-400
             md:flex-row
             md:items-center
             md:justify-between

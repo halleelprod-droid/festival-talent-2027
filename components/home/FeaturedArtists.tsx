@@ -8,7 +8,7 @@ import { ArrowRight, BadgeCheck, Mic2, Sparkles } from "lucide-react";
 const confirmedArtist = {
   name: "Samba Peuzzi",
   role: "Artiste confirmé",
-  image: "/images/samba.jpg",
+  image: "/images/previous/scene.jpg",
   description:
     "Samba Peuzzi est officiellement confirme pour Festival Talent 2027, aux cotes de Morijah et Cysoul dans la programmation annoncee.",
   tags: ["Musique", "Culture urbaine", "Performance live"],

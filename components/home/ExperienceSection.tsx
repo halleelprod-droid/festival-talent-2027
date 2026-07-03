@@ -25,7 +25,7 @@ export default function ExperienceSection() {
             Festival Experience
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-black leading-tight">
+          <h2 className="font-display text-4xl md:text-6xl leading-tight">
             UNE NOUVELLE
             <br />
             GÉNÉRATION

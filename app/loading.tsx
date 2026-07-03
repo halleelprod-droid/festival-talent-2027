@@ -25,9 +25,9 @@ export default function Loading() {
         >
           <div className="h-4 w-4 rounded-full bg-[#C9A84C]" />
 
-          <h1 className="text-4xl font-black uppercase tracking-[0.4em]">
+          <div className="text-4xl font-black uppercase tracking-[0.4em]">
             FT2027
-          </h1>
+          </div>
         </motion.div>
 
         {/* LOADER */}
@@ -46,7 +46,7 @@ export default function Loading() {
         </div>
 
         {/* TEXT */}
-        <p className="mt-8 text-sm uppercase tracking-[0.35em] text-zinc-500">
+        <p className="mt-8 text-sm uppercase tracking-[0.35em] text-zinc-400">
           Loading Experience
         </p>
       </div>

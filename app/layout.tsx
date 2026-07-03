@@ -1,8 +1,75 @@
 import type { Metadata } from "next";
+import { Inter, Anton } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-import Navbar from "@/components/Navbar";
+import SiteChrome from "@/components/providers/SiteChrome";
 import { defaultDescription, siteName, siteUrl } from "@/lib/seo";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: siteName,
+      url: siteUrl,
+      logo: `${siteUrl}/images/festival-talent-logo.png`,
+      sameAs: [],
+    },
+    {
+      "@type": "Event",
+      name: siteName,
+      description: defaultDescription,
+      startDate: "2027-01-01",
+      endDate: "2027-04-30",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      eventStatus: "https://schema.org/EventScheduled",
+      location: [
+        {
+          "@type": "Place",
+          name: "Paris",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Paris",
+            addressCountry: "FR",
+          },
+        },
+        {
+          "@type": "Place",
+          name: "Rome",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Rome",
+            addressCountry: "IT",
+          },
+        },
+      ],
+      organizer: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      offers: {
+        "@type": "Offer",
+        url: `${siteUrl}/tickets`,
+        availability: "https://schema.org/InStock",
+      },
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -93,10 +160,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${inter.variable} ${anton.variable}`}>
       <body className="bg-black text-white">
-        <Navbar />
-        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <SiteChrome>{children}</SiteChrome>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

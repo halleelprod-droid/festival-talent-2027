@@ -1,10 +1,19 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 
 import {
   festivalLocations
-} from '@/components/sections/constants';
+} from '@/data/program';
+import FadeIn from '@/components/ui/FadeIn';
+
+const TourMap = dynamic(() => import('./TourMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="mt-16 h-[480px] animate-pulse rounded-[2rem] border border-white/10 bg-white/[0.03]" />
+  ),
+});
 
 export default function ExperienceMap() {
   return (
@@ -17,18 +26,12 @@ export default function ExperienceMap() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="max-w-4xl"
-        >
+        <FadeIn className="max-w-4xl">
           <p className="text-sm uppercase tracking-[0.4em] text-[#C9A84C]">
             Festival Locations
           </p>
 
-          <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.06em] md:text-7xl lg:text-[8rem]">
+          <h2 className="font-display mt-8 text-5xl leading-[0.9] tracking-[-0.06em] md:text-7xl lg:text-[8rem]">
             Paris
             <br />
             To Rome.
@@ -38,10 +41,12 @@ export default function ExperienceMap() {
             FT2027 prepare une tournee europeenne de janvier a avril 2027,
             precedee par des pre-selections officielles dans huit disciplines.
           </p>
-        </motion.div>
+        </FadeIn>
+
+        <TourMap />
 
         {/* GRID */}
-        <div className="mt-24 grid gap-8 md:grid-cols-2">
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
           {festivalLocations.map((location, index) => (
             <motion.div
               key={location.name}

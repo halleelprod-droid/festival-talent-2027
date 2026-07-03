@@ -6,8 +6,33 @@ import {
 
 import {
   useEffect,
-  useState
+  useState,
+  useSyncExternalStore
 } from 'react';
+
+function subscribe(callback: () => void) {
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  fine.addEventListener('change', callback);
+  reduced.addEventListener('change', callback);
+
+  return () => {
+    fine.removeEventListener('change', callback);
+    reduced.removeEventListener('change', callback);
+  };
+}
+
+function getSnapshot() {
+  return (
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+}
+
+function getServerSnapshot() {
+  return false;
+}
 
 export default function CursorGlow() {
   const [
@@ -18,7 +43,15 @@ export default function CursorGlow() {
     y: 0
   });
 
+  const enabled = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
+
   useEffect(() => {
+    if (!enabled) return;
+
     const moveCursor = (
       e: MouseEvent
     ) => {
@@ -38,7 +71,9 @@ export default function CursorGlow() {
         'mousemove',
         moveCursor
       );
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <>

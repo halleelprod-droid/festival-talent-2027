@@ -1,10 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 import {
   sponsorOpportunities
-} from '@/components/sections/constants';
+} from '@/data/partners';
+import GlassCard from '@/components/ui/GlassCard';
+import Button from '@/components/ui/Button';
 
 export default function SponsorCTASection() {
   return (
@@ -16,29 +16,7 @@ export default function SponsorCTASection() {
       <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-[#C9A84C]/10 blur-[140px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 60
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-          transition={{
-            duration: 1
-          }}
-          viewport={{ once: true }}
-          className="
-            glass
-            overflow-hidden
-            rounded-[3rem]
-            border
-            border-white/10
-            p-10
-            md:p-16
-          "
-        >
+        <GlassCard radius="lg" className="p-10 md:p-16">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             {/* LEFT */}
             <div>
@@ -46,7 +24,7 @@ export default function SponsorCTASection() {
                 Sponsors & Investors
               </p>
 
-              <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.06em] md:text-7xl">
+              <h2 className="font-display mt-8 text-5xl leading-[0.9] tracking-[-0.06em] md:text-7xl">
                 Build The
                 <br />
                 Future With Us.
@@ -99,41 +77,15 @@ export default function SponsorCTASection() {
 
               {/* BUTTONS */}
               <div className="flex flex-wrap gap-5">
-                <button
-                  className="
-                    rounded-full
-                    bg-[#C9A84C]
-                    px-8
-                    py-5
-                    font-semibold
-                    text-black
-                    transition
-                    hover:scale-105
-                    hover:shadow-[0_0_35px_rgba(201,168,76,0.45)]
-                  "
-                >
-                  Become a Sponsor
-                </button>
+                <Button href="/partners">Become a Sponsor</Button>
 
-                <button
-                  className="
-                    glass
-                    rounded-full
-                    border
-                    border-white/10
-                    px-8
-                    py-5
-                    text-white
-                    transition
-                    hover:border-[#C9A84C]
-                  "
-                >
+                <Button href="/partners" variant="outline">
                   Download Pitch Deck
-                </button>
+                </Button>
               </div>
             </div>
           </div>
-        </motion.div>
+        </GlassCard>
       </div>
     </section>
   );

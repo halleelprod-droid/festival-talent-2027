@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import {
   partnersLogos
-} from '@/components/sections/constants';
+} from '@/data/partners';
 
 export default function PartnersStrip() {
   const duplicatedLogos = [

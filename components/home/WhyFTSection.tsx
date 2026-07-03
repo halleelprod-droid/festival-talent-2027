@@ -2,6 +2,9 @@
 
 import { motion } from 'framer-motion';
 
+import SectionHeading from '@/components/ui/SectionHeading';
+import GlassCard from '@/components/ui/GlassCard';
+
 const features = [
   {
     title: 'Culture',
@@ -32,66 +35,30 @@ export default function WhyFTSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
+        <SectionHeading
+          eyebrow="Why FT2027"
           className="max-w-4xl"
-        >
-          <p className="text-sm uppercase tracking-[0.4em] text-[#C9A84C]">
-            Why FT2027
-          </p>
-
-          <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.06em] md:text-7xl lg:text-[8rem]">
-            More Than
-            <br />
-            A Festival.
-          </h2>
-
-          <p className="mt-10 max-w-2xl text-lg leading-relaxed text-zinc-400">
-            FT2027 est une expérience culturelle immersive
-            pensée pour connecter les talents, les cultures
-            et les nouvelles générations créatives.
-          </p>
-        </motion.div>
+          title={
+            <>
+              More Than
+              <br />
+              A Festival.
+            </>
+          }
+          description="FT2027 est une expérience culturelle immersive pensée pour connecter les talents, les cultures et les nouvelles générations créatives."
+        />
 
         {/* GRID */}
         <div className="mt-24 grid gap-8 md:grid-cols-2">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              initial={{
-                opacity: 0,
-                y: 80
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0
-              }}
-              transition={{
-                delay: index * 0.08,
-                duration: 1
-              }}
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.08, duration: 1 }}
               viewport={{ once: true }}
-              whileHover={{
-                y: -8
-              }}
-              className="
-                glass
-                group
-                relative
-                overflow-hidden
-                rounded-[2rem]
-                border
-                border-white/10
-                p-10
-              "
             >
-              {/* LIGHT */}
-              <div className="absolute inset-0 opacity-0 transition duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_center,#C9A84C15,transparent_70%)]" />
-
-              <div className="relative z-10">
+              <GlassCard className="p-10">
                 <div className="flex items-center gap-4">
                   <div className="h-3 w-3 rounded-full bg-[#C9A84C]" />
 
@@ -100,14 +67,14 @@ export default function WhyFTSection() {
                   </p>
                 </div>
 
-                <h3 className="mt-8 text-4xl font-black">
+                <h3 className="font-display mt-8 text-4xl">
                   {feature.title}
                 </h3>
 
                 <p className="mt-6 leading-relaxed text-zinc-400">
                   {feature.text}
                 </p>
-              </div>
+              </GlassCard>
             </motion.div>
           ))}
         </div>

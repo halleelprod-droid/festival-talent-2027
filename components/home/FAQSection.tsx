@@ -14,7 +14,21 @@ import {
 
 import {
   faqItems
-} from '@/components/sections/constants';
+} from '@/data/faq';
+import FadeIn from '@/components/ui/FadeIn';
+
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 
 export default function FAQSection() {
   const [active, setActive] =
@@ -22,23 +36,22 @@ export default function FAQSection() {
 
   return (
     <section className="relative overflow-hidden bg-black py-40 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
+
       {/* BG */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#C9A84C10,transparent_60%)]" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6">
         {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
+        <FadeIn className="text-center">
           <p className="text-sm uppercase tracking-[0.4em] text-[#C9A84C]">
             FAQ
           </p>
 
-          <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.06em] md:text-7xl">
+          <h2 className="font-display mt-8 text-5xl leading-[0.9] tracking-[-0.06em] md:text-7xl">
             Questions
             <br />
             Fréquentes.
@@ -48,7 +61,7 @@ export default function FAQSection() {
             Toutes les informations importantes concernant
             l’expérience FT2027.
           </p>
-        </motion.div>
+        </FadeIn>
 
         {/* FAQ LIST */}
         <div className="mt-24 flex flex-col gap-6">
@@ -89,6 +102,8 @@ export default function FAQSection() {
                         : index
                     )
                   }
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
                   className="
                     flex
                     w-full
@@ -133,6 +148,8 @@ export default function FAQSection() {
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
+                      id={`faq-answer-${index}`}
+                      role="region"
                       initial={{
                         height: 0,
                         opacity: 0

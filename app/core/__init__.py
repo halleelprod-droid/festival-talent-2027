@@ -1,0 +1,2 @@
+"""SIDRA core package."""
+

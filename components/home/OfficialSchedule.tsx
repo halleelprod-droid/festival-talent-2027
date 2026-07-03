@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 
 import {
   officialSchedule
-} from '@/components/sections/constants';
+} from '@/data/program';
+import FadeIn from '@/components/ui/FadeIn';
 
 export default function OfficialSchedule() {
   return (
@@ -17,32 +18,16 @@ export default function OfficialSchedule() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* HEADER */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 60
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-          transition={{
-            duration: 1
-          }}
-          viewport={{
-            once: true
-          }}
-          className="max-w-4xl"
-        >
+        <FadeIn className="max-w-4xl">
           <p className="text-sm uppercase tracking-[0.4em] text-[#C9A84C]">
             Official Schedule
           </p>
 
           <h2
             className="
+              font-display
               mt-8
               text-5xl
-              font-black
               leading-[0.9]
               tracking-[-0.06em]
               md:text-7xl
@@ -67,7 +52,7 @@ export default function OfficialSchedule() {
             de janvier a avril 2027, dans les disciplines danse, musique, mode,
             art, entrepreneuriat, technologie, culture urbaine et sports mecaniques.
           </p>
-        </motion.div>
+        </FadeIn>
 
         {/* DAYS */}
         <div className="mt-24 grid gap-8">

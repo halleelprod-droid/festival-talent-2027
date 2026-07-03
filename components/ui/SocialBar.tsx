@@ -7,23 +7,26 @@ import {
 import {
   Camera,
   Play,
-  Music2
+  Music2,
+  Globe2
 } from 'lucide-react';
 
-const socials = [
-  {
-    icon: Camera,
-    href: '#'
-  },
-  {
-    icon: Play,
-    href: '#'
-  },
-  {
-    icon: Music2,
-    href: '#'
-  }
-];
+import {
+  socialLinks
+} from '@/config/social';
+
+const iconByLabel: Record<string, typeof Camera> = {
+  Instagram: Camera,
+  TikTok: Music2,
+  YouTube: Play,
+  Facebook: Globe2
+};
+
+const socials = socialLinks.map((social) => ({
+  icon: iconByLabel[social.label] ?? Globe2,
+  href: social.href,
+  label: social.label
+}));
 
 export default function SocialBar() {
   return (
@@ -42,16 +45,18 @@ export default function SocialBar() {
     >
       {socials.map(
         (
-          social,
-          index
+          social
         ) => {
           const Icon =
             social.icon;
 
           return (
             <motion.a
-              key={index}
+              key={social.label}
               href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
               whileHover={{
                 scale: 1.12,
                 y: -4

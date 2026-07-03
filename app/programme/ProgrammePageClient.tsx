@@ -250,7 +250,7 @@ export default function ProgrammePageClient() {
                       {phase.title}
                     </h2>
 
-                    <p className="mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-white/45">
+                    <p className="mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-white/55">
                       {phase.period}
                     </p>
 

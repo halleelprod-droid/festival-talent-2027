@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 import {
   partnerStats
-} from '@/components/sections/constants';
+} from '@/data/partners';
 
 export default function WhyPartnerSection() {
   return (
@@ -28,7 +28,7 @@ export default function WhyPartnerSection() {
               Partnership
             </p>
 
-            <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.06em] md:text-7xl">
+            <h2 className="font-display mt-8 text-5xl leading-[0.9] tracking-[-0.06em] md:text-7xl">
               Why Partner
               <br />
               With FT2027.
