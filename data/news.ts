@@ -13,7 +13,7 @@ export type NewsArticle = {
 export const newsArticles: NewsArticle[] = [
   {
     slug: "festival-talent-2027-devoile-ses-activites",
-    title: "Festival Talent 2027 devoile ses activites",
+    title: "Festival Talent 2027 dévoile ses activités",
     date: "2026-07-03",
     category: "Activites",
     excerpt:
@@ -26,7 +26,7 @@ export const newsArticles: NewsArticle[] = [
   },
   {
     slug: "preselections-plusieurs-secteurs",
-    title: "Les pre-selections s'etendent a plusieurs secteurs",
+    title: "Les pré-sélections s'étendent à plusieurs secteurs",
     date: "2026-07-02",
     category: "Pre-selections",
     excerpt:
@@ -38,7 +38,7 @@ export const newsArticles: NewsArticle[] = [
   },
   {
     slug: "samba-peuzzi-morijah-cysoul-confirmes",
-    title: "Samba Peuzzi, Morijah et Cysoul confirmes",
+    title: "Samba Peuzzi, Morijah et Cysoul confirmés",
     date: "2026-07-01",
     category: "Artistes",
     excerpt:
@@ -50,7 +50,7 @@ export const newsArticles: NewsArticle[] = [
   },
   {
     slug: "pin-events-rejoint-aventure",
-    title: "PIN EVENTS rejoint l'aventure",
+    title: "PIN EVENTS rejoint l’aventure",
     date: "2026-06-30",
     category: "Partenaires",
     excerpt:
@@ -62,7 +62,7 @@ export const newsArticles: NewsArticle[] = [
   },
   {
     slug: "sen-influenceurs-partenaire-media-officiel",
-    title: "Sen Influenceurs partenaire media officiel",
+    title: "Sen Influenceurs partenaire média officiel",
     date: "2026-06-29",
     category: "Media",
     excerpt:

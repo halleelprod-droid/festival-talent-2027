@@ -16,9 +16,9 @@ import { newsArticles } from "@/data/news";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Actualites",
+  title: "Actualités",
   description:
-    "Actualites officielles Festival Talent 2027 : annonces artistes, partenaires, pre-selections, activites, medias et communiques.",
+    "Actualités officielles Festival Talent 2027 : annonces artistes, partenaires, pré-sélections, activités, médias et communiqués.",
   path: "/news",
 });
 
@@ -44,7 +44,7 @@ export default function NewsPage() {
             className="max-w-5xl"
             title={
               <>
-                Actualites
+                Actualités
                 <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
                   Festival Talent
                 </span>
@@ -61,7 +61,7 @@ export default function NewsPage() {
             <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div>
                 <Badge icon={Megaphone} size="sm">
-                  A la une
+                À la une
                 </Badge>
 
                 <h2 className="mt-6 max-w-3xl text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
@@ -113,7 +113,7 @@ export default function NewsPage() {
                 Fil officiel
               </p>
               <h2 className="mt-3 text-3xl font-black uppercase text-white sm:text-4xl">
-                Dernieres annonces
+                Dernières annonces
               </h2>
             </div>
 

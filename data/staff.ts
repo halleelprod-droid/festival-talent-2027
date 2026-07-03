@@ -60,7 +60,7 @@ export const staffMembers: StaffMember[] = [
   {
     name: "Pierre Ndiaye",
     role: "Directeur des Partenariats et Relations Institutionnelles",
-    subtitle: "CEO de PIN EVENTS - Fondateur de DUNYA",
+    subtitle: "CEO de PIN EVENTS • Fondateur de DUNYA",
     department: "Partenariats",
     description:
       "Entrepreneur senegalais specialise dans l'evenementiel, la communication, l'influence digitale, les relations institutionnelles et le developpement de partenariats. Pierre Ndiaye accompagne Festival Talent 2027 dans la structuration des collaborations strategiques, la coordination evenementielle et le rayonnement institutionnel du projet.",

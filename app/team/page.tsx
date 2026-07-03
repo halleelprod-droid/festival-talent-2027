@@ -9,9 +9,9 @@ import { staffMembers } from "@/data/staff";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Equipe",
+  title: "Équipe",
   description:
-    "Equipe officielle Festival Talent 2027 : direction, partenariats, communication, digital, entrepreneuriat, artistique et organisation.",
+    "Équipe officielle Festival Talent 2027 : direction, partenariats, communication, digital, entrepreneuriat, artistique et organisation.",
   path: "/team",
 });
 
@@ -23,7 +23,7 @@ export default function TeamPage() {
       <section className="relative px-6 pb-16 pt-32 sm:px-10 lg:px-20 lg:pt-40">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            eyebrow="Equipe officielle"
+            eyebrow="Équipe officielle"
             icon={Users}
             align="center"
             className="max-w-5xl"
