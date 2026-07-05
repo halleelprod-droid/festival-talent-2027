@@ -1,0 +1,22 @@
+export { platformDomains } from "@/data/platform-architecture";
+export type { PlatformDomain, PlatformDomainContract } from "@/types/platform";
+
+export { activitiesModule } from "./activities";
+export { administrationModule } from "./administration";
+export { academyModule } from "./academy";
+export { artistsModule } from "./artists";
+export { candidatesModule } from "./candidates";
+export { dashboardModule } from "./dashboard";
+export { financeModule } from "./finance";
+export { mediaModule } from "./media";
+export { messagesModule } from "./messages";
+export { newsModule } from "./news";
+export { notificationsModule } from "./notifications";
+export { partnersModule } from "./partners";
+export { preselectionsModule } from "./preselections";
+export { sponsorsModule } from "./sponsors";
+export { statisticsModule } from "./statistics";
+export { staffModule } from "./staff";
+export { ticketingModule } from "./ticketing";
+export { ticketsModule } from "./tickets";
+export { usersModule } from "./users";

@@ -3,6 +3,7 @@ import HeroSection from "@/components/home/HeroSection";
 import BattleDanceSection from "@/components/home/BattleDanceSection";
 import ActivitiesHighlightSection from "@/components/home/ActivitiesHighlightSection";
 import StaffSection from "@/components/home/StaffSection";
+import CoachesSection from "@/components/home/CoachesSection";
 import WhyFTSection from "@/components/home/WhyFTSection";
 import ArtistsSection from "@/components/home/ArtistsSection";
 import GallerySection from "@/components/home/GallerySection";
@@ -66,6 +67,8 @@ export default function HomePage() {
         <SectionDivider />
 
         <StaffSection />
+
+        <CoachesSection />
 
         <PartnersSection />
 
