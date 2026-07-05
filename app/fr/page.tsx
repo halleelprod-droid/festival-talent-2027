@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import AnnouncementBar from "@/components/home/AnnouncementBar";
 import HeroSection from "@/components/home/HeroSection";
 import BattleDanceSection from "@/components/home/BattleDanceSection";
@@ -10,12 +12,22 @@ import ArtistsSection from "@/components/home/ArtistsSection";
 import JuryComingSoonSection from "@/components/home/JuryComingSoonSection";
 import GallerySection from "@/components/home/GallerySection";
 import PartnersSection from "@/components/home/PartnersSection";
+import TicketsSection from "@/components/home/TicketsSection";
+import MediaSection from "@/components/home/MediaSection";
 import FAQSection from "@/components/home/FAQSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
 import GratitudeSection from "@/components/home/GratitudeSection";
 import PlatformVisionSection from "@/components/home/PlatformVisionSection";
 import ProgrammePreview from "@/components/home/ProgrammePreview";
 import SectionDivider from "@/components/ui/SectionDivider";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Accueil | Festival Talent 2027",
+  description:
+    "Festival Talent 2027 rassemble talents, pre-selections, Battle All Style, coachs, artistes confirmes, partenaires, tickets, medias et communaute autour d'une plateforme culturelle internationale.",
+  path: "/fr",
+});
 
 const homeProgrammeEvents = [
   {
@@ -78,9 +90,13 @@ export default function HomePage() {
 
         <PartnersSection />
 
+        <TicketsSection />
+
         <SectionDivider />
 
         <GallerySection />
+
+        <MediaSection />
 
         <FAQSection />
 
