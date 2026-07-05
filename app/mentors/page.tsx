@@ -130,6 +130,21 @@ export default function MentorsPage() {
       </section>
 
       <section className="relative px-6 pb-28 sm:px-10 lg:px-20">
+        <div className="mx-auto mb-10 max-w-5xl">
+          <PremiumCard tone="gold" className="p-8 text-center sm:p-10">
+            <HandHeart className="mx-auto text-yellow-300" size={34} />
+            <h2 className="mt-5 text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
+              Pourquoi l&apos;accompagnement humain compte
+            </h2>
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/68">
+              La scene revele le talent, mais l&apos;accompagnement construit la
+              vision. Les coachs et mentors aident les candidats a developper
+              confiance, discipline, leadership, communication et posture
+              professionnelle.
+            </p>
+          </PremiumCard>
+        </div>
+
         <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
           {pillars.map((pillar) => {
             const Icon = pillar.icon;

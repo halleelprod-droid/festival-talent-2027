@@ -4,8 +4,10 @@ import BattleDanceSection from "@/components/home/BattleDanceSection";
 import ActivitiesHighlightSection from "@/components/home/ActivitiesHighlightSection";
 import StaffSection from "@/components/home/StaffSection";
 import CoachesSection from "@/components/home/CoachesSection";
+import CommunitySection from "@/components/home/CommunitySection";
 import WhyFTSection from "@/components/home/WhyFTSection";
 import ArtistsSection from "@/components/home/ArtistsSection";
+import JuryComingSoonSection from "@/components/home/JuryComingSoonSection";
 import GallerySection from "@/components/home/GallerySection";
 import PartnersSection from "@/components/home/PartnersSection";
 import FAQSection from "@/components/home/FAQSection";
@@ -64,11 +66,15 @@ export default function HomePage() {
 
         <ArtistsSection />
 
+        <JuryComingSoonSection />
+
         <SectionDivider />
 
         <StaffSection />
 
         <CoachesSection />
+
+        <CommunitySection />
 
         <PartnersSection />
 

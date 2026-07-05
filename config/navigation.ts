@@ -10,6 +10,7 @@ export const primaryNavigationLinks = [
 export const moreNavigationLinks = [
   { label: "Plateforme", href: "/os" },
   { label: "Actualités", href: "/news" },
+  { label: "Communauté", href: "/communaute" },
   { label: "Mentors", href: "/mentors" },
   { label: "Équipe", href: "/team" },
   { label: "Espace candidat", href: "/candidat" },
@@ -21,6 +22,8 @@ export const moreNavigationLinks = [
 export const footerNavigationLinks = [
   { label: "Festival Talent OS", href: "/os" },
   { label: "Actualités", href: "/news" },
+  { label: "Communauté", href: "/communaute" },
+  { label: "Opportunités", href: "/opportunites" },
   { label: "Mentors & Coachs", href: "/mentors" },
   { label: "Équipe", href: "/team" },
   { label: "Espace candidat", href: "/candidat" },
