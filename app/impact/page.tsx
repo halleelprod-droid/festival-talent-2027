@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
-import { ImpactPageClient } from "@/components/experience/VisionImpactPages";
+import ImpactPageClient from "./ImpactPageClient";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Notre Impact | Festival Talent 2027",
+  title: "Impact | Festival Talent 2027",
   description:
-    "Objectifs d'impact Festival Talent : jeunes accompagnes, regions, disciplines, partenaires, benevoles et objectifs 2030.",
+    "Découvrez l’impact social, culturel et économique du Festival Talent 2027 pour la jeunesse, les régions, les talents et les partenaires.",
   path: "/impact",
 });
 

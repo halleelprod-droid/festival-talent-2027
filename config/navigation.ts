@@ -28,6 +28,7 @@ export const footerNavigationLinks = [
   { label: "Équipe", href: "/team" },
   { label: "Espace candidat", href: "/candidat" },
   { label: "Statistiques", href: "/stats" },
+  { label: "Impact", href: "/impact" },
   { label: "Awards", href: "/awards" },
   { label: "Hall of Fame", href: "/hall-of-fame" },
   { label: "Presse", href: "/presse" },
