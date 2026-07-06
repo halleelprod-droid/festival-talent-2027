@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/espace-talent", changeFrequency: "monthly", priority: 0.88 },
     { path: "/candidat", changeFrequency: "monthly", priority: 0.85 },
     { path: "/awards", changeFrequency: "monthly", priority: 0.86 },
+    { path: "/presse", changeFrequency: "monthly", priority: 0.86 },
     { path: "/communaute", changeFrequency: "weekly", priority: 0.9 },
     { path: "/opportunites", changeFrequency: "weekly", priority: 0.88 },
     { path: "/pourquoi-festival-talent", changeFrequency: "monthly", priority: 0.9 },
