@@ -1,0 +1,1436 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: home.spec.ts >> home page renders the hero and primary navigation
+- Location: e2e\home.spec.ts:8:5
+
+# Error details
+
+```
+Error: expect(locator).toContainText(expected) failed
+
+Locator: getByRole('heading', { level: 1 })
+Expected substring: "Révélons"
+Error: strict mode violation: getByRole('heading', { level: 1 }) resolved to 3 elements:
+    1) <h1 class="font-display mt-8 text-5xl uppercase leading-none tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl">…</h1> aka getByRole('heading', { name: 'Révélons les talents' })
+    2) <h1 class="mt-6 text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">…</h1> aka getByRole('heading', { name: 'Nos Coachs & Mentors' })
+    3) <h1 class="mt-6 text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">…</h1> aka getByRole('heading', { name: 'Une grande famille de talents' })
+
+Call log:
+  - Expect "toContainText" with timeout 5000ms
+  - waiting for getByRole('heading', { level: 1 })
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Instagram" [ref=e3] [cursor=pointer]:
+      - /url: https://instagram.com
+      - img [ref=e4]
+    - link "TikTok" [ref=e7] [cursor=pointer]:
+      - /url: https://tiktok.com
+      - img [ref=e8]
+    - link "YouTube" [ref=e11] [cursor=pointer]:
+      - /url: https://youtube.com
+      - img [ref=e12]
+    - link "Facebook" [ref=e14] [cursor=pointer]:
+      - /url: https://facebook.com
+      - img [ref=e15]
+  - button [ref=e21] [cursor=pointer]:
+    - img [ref=e24]
+  - banner [ref=e28]:
+    - generic [ref=e29]:
+      - link "FT2027" [ref=e30] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e33]: FT2027
+      - navigation [ref=e34]:
+        - link "Accueil" [ref=e36] [cursor=pointer]:
+          - /url: /fr
+        - link "Programme" [ref=e38] [cursor=pointer]:
+          - /url: /programme
+        - link "Activités" [ref=e40] [cursor=pointer]:
+          - /url: /activites
+        - link "Pré-sélections" [ref=e42] [cursor=pointer]:
+          - /url: /preselections
+        - link "Artistes" [ref=e44] [cursor=pointer]:
+          - /url: /artists
+        - link "Partenaires" [ref=e46] [cursor=pointer]:
+          - /url: /partners
+        - button "Plus" [ref=e48] [cursor=pointer]:
+          - text: Plus
+          - img [ref=e49]
+      - link "Réserver" [ref=e52] [cursor=pointer]:
+        - /url: /tickets
+        - button "Réserver" [ref=e53]
+  - generic [ref=e54]:
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]: Festival Talent 2027
+        - generic [ref=e61]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e62]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e63]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e64]:
+        - generic [ref=e65]: Festival Talent 2027
+        - generic [ref=e66]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e67]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e68]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e69]:
+        - generic [ref=e70]: Festival Talent 2027
+        - generic [ref=e71]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e72]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e73]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e74]:
+        - generic [ref=e75]: Festival Talent 2027
+        - generic [ref=e76]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e77]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e78]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e79]:
+        - generic [ref=e80]: Festival Talent 2027
+        - generic [ref=e81]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e82]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e83]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e84]:
+        - generic [ref=e85]: Festival Talent 2027
+        - generic [ref=e86]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e87]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e88]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e89]:
+        - generic [ref=e90]: Festival Talent 2027
+        - generic [ref=e91]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e92]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e93]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e94]:
+        - generic [ref=e95]: Festival Talent 2027
+        - generic [ref=e96]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e97]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e98]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e99]:
+        - generic [ref=e100]: Festival Talent 2027
+        - generic [ref=e101]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e102]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e103]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e104]:
+        - generic [ref=e105]: Festival Talent 2027
+        - generic [ref=e106]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e107]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e108]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e109]:
+        - generic [ref=e110]: Festival Talent 2027
+        - generic [ref=e111]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e112]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e113]: Union Europeenne - Premier partenaire officiel majeur
+      - generic [ref=e114]:
+        - generic [ref=e115]: Festival Talent 2027
+        - generic [ref=e116]: Paris - Rome - Janvier a avril 2027
+        - generic [ref=e117]: Pre-selections officielles avant janvier 2027
+        - generic [ref=e118]: Union Europeenne - Premier partenaire officiel majeur
+    - main [ref=e119]:
+      - region "ACTE 1 - Le rêve" [ref=e120]:
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - paragraph [ref=e123]: ACTE 1
+            - heading "Le rêve" [level=2] [ref=e124]
+          - paragraph [ref=e125]: "Tout commence par une conviction : un talent peut changer une trajectoire."
+      - generic [ref=e126]:
+        - img "Festival Talent" [ref=e128]
+        - generic [ref=e131]:
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - img [ref=e134]
+              - text: Festival Talent 2027
+            - heading "Révélons les talents" [level=1] [ref=e136]:
+              - text: Révélons
+              - generic [ref=e137]: les talents
+            - paragraph [ref=e138]: Festival Talent 2027 ouvre ses pré-sélections et lance le Battle All Style par zones. Une aventure culturelle et internationale entre le Sénégal, Paris, Rome et l’Italie.
+            - generic [ref=e139]:
+              - generic [ref=e140]: Samba Peuzzi, Morijah et Cysoul confirmés
+              - generic [ref=e141]: Union Européenne partenaire officiel majeur
+              - generic [ref=e142]: PIN EVENTS partenaire événementiel officiel
+              - generic [ref=e143]: Solos, groupes, tous styles, toutes zones
+            - generic [ref=e144]:
+              - link "S’inscrire aux pré-sélections" [ref=e145] [cursor=pointer]:
+                - /url: /preselections
+                - text: S’inscrire aux pré-sélections
+                - img [ref=e146]
+              - link "Voir le programme" [ref=e148] [cursor=pointer]:
+                - /url: /programme
+            - 'link "Infos & inscriptions WhatsApp : 781 948 606" [ref=e150] [cursor=pointer]':
+              - /url: https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20les%20pr%C3%A9-s%C3%A9lections%20et%20les%20Battles%20de%20Danse.
+              - text: "Infos & inscriptions WhatsApp : 781 948 606"
+              - img [ref=e151]
+          - generic [ref=e158]:
+            - paragraph [ref=e159]: Battle All Style par zones
+            - heading "500.000 FCFA à gagner" [level=2] [ref=e160]:
+              - text: "500.000"
+              - generic [ref=e161]: FCFA à gagner
+            - paragraph [ref=e162]: Solos, groupes, tous styles et toutes zones. Le gagnant ou le groupe gagnant remporte son voyage en Italie.
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - img [ref=e165]
+                - paragraph [ref=e168]: Zones
+                - paragraph [ref=e169]: 12 régions
+              - generic [ref=e170]:
+                - img [ref=e171]
+                - paragraph [ref=e176]: Catégories
+                - paragraph [ref=e177]: Solo / Groupe
+              - generic [ref=e178]:
+                - img [ref=e179]
+                - paragraph [ref=e183]: Artiste
+                - paragraph [ref=e184]: Samba Peuzzi
+              - generic [ref=e185]:
+                - img [ref=e186]
+                - paragraph [ref=e188]: Prix
+                - paragraph [ref=e189]: Italie
+            - link "Découvrir les battles" [ref=e190] [cursor=pointer]:
+              - /url: /programme
+              - text: Découvrir les battles
+              - img [ref=e191]
+        - generic [ref=e193]:
+          - generic [ref=e197]:
+            - img [ref=e198]
+            - paragraph [ref=e203]: Destination
+            - paragraph [ref=e204]: Paris & Rome
+          - generic [ref=e208]:
+            - img [ref=e209]
+            - paragraph [ref=e212]: Pré-sélections
+            - paragraph [ref=e213]: Ouvertes
+          - generic [ref=e217]:
+            - img [ref=e218]
+            - paragraph [ref=e224]: Battle All Style
+            - paragraph [ref=e225]: 500.000 FCFA
+          - generic [ref=e229]:
+            - img [ref=e230]
+            - paragraph [ref=e232]: Prix spécial
+            - paragraph [ref=e233]: Voyage en Italie
+      - region "ACTE 2 - La découverte" [ref=e234]:
+        - generic [ref=e235]:
+          - generic [ref=e236]:
+            - paragraph [ref=e237]: ACTE 2
+            - heading "La découverte" [level=2] [ref=e238]
+          - paragraph [ref=e239]: Le visiteur comprend pourquoi Festival Talent existe et comment un candidat entre dans le parcours.
+      - generic [ref=e242]:
+        - generic [ref=e243]:
+          - paragraph [ref=e244]: Why FT2027
+          - heading "More Than A Festival." [level=2] [ref=e245]:
+            - text: More Than
+            - text: A Festival.
+          - paragraph [ref=e246]: FT2027 est une expérience culturelle immersive pensée pour connecter les talents, les cultures et les nouvelles générations créatives.
+        - generic [ref=e247]:
+          - generic [ref=e252]:
+            - paragraph [ref=e255]: FT2027
+            - heading "Culture" [level=3] [ref=e256]
+            - paragraph [ref=e257]: Une rencontre entre traditions africaines et vision moderne internationale.
+          - generic [ref=e262]:
+            - paragraph [ref=e265]: FT2027
+            - heading "Jeunesse" [level=3] [ref=e266]
+            - paragraph [ref=e267]: Un festival pensé pour révéler les talents et créer des opportunités réelles.
+          - generic [ref=e272]:
+            - paragraph [ref=e275]: FT2027
+            - heading "Innovation" [level=3] [ref=e276]
+            - paragraph [ref=e277]: Expériences immersives, art digital, performances et technologies créatives.
+          - generic [ref=e282]:
+            - paragraph [ref=e285]: FT2027
+            - heading "Impact" [level=3] [ref=e286]
+            - paragraph [ref=e287]: Créer une plateforme culturelle durable pour le Sénégal et l’Afrique.
+      - generic [ref=e288]:
+        - generic [ref=e289]:
+          - generic [ref=e290]:
+            - paragraph [ref=e291]:
+              - img [ref=e292]
+              - text: Le parcours d'un talent
+            - heading "Une aventure pensee pour accompagner, pas seulement selectionner." [level=2] [ref=e295]
+            - paragraph [ref=e296]: "Festival Talent donne au candidat un chemin lisible : decouvrir, candidater, progresser, se produire, puis rejoindre une communaute qui continue apres la scene."
+          - generic [ref=e299]:
+            - article [ref=e300]:
+              - generic [ref=e301]:
+                - img [ref=e303]
+                - paragraph [ref=e306]: Etape 1
+                - heading "Je decouvre Festival Talent" [level=3] [ref=e307]
+            - article [ref=e308]:
+              - generic [ref=e309]:
+                - img [ref=e311]
+                - paragraph [ref=e314]: Etape 2
+                - heading "Je m'inscris" [level=3] [ref=e315]
+            - article [ref=e316]:
+              - generic [ref=e317]:
+                - img [ref=e319]
+                - paragraph [ref=e325]: Etape 3
+                - heading "Je participe aux preselections" [level=3] [ref=e326]
+            - article [ref=e327]:
+              - generic [ref=e328]:
+                - img [ref=e330]
+                - paragraph [ref=e335]: Etape 4
+                - heading "Je rencontre des coachs" [level=3] [ref=e336]
+            - article [ref=e337]:
+              - generic [ref=e338]:
+                - img [ref=e340]
+                - paragraph [ref=e345]: Etape 5
+                - heading "Je developpe mon talent" [level=3] [ref=e346]
+            - article [ref=e347]:
+              - generic [ref=e348]:
+                - img [ref=e350]
+                - paragraph [ref=e352]: Etape 6
+                - heading "Je participe a la grande finale" [level=3] [ref=e353]
+            - article [ref=e354]:
+              - generic [ref=e355]:
+                - img [ref=e357]
+                - paragraph [ref=e359]: Etape 7
+                - heading "Je rejoins la communaute Festival Talent" [level=3] [ref=e360]
+        - generic [ref=e362]:
+          - generic [ref=e363]:
+            - paragraph [ref=e364]:
+              - img [ref=e365]
+              - text: Apres le Festival...
+            - heading "L'aventure ne s'arrete pas apres la finale." [level=2] [ref=e370]
+            - paragraph [ref=e371]: Chez Festival Talent, l'aventure ne s'arrete pas apres la finale.
+            - paragraph [ref=e372]: Les candidats continuent a beneficier d'un reseau, d'opportunites, de formations et de rencontres professionnelles.
+          - generic [ref=e376]:
+            - generic [ref=e377]: Reseau
+            - generic [ref=e378]: Formation
+            - generic [ref=e379]: Opportunites
+            - generic [ref=e380]: Mentorat
+            - img [ref=e382]
+        - generic [ref=e385]:
+          - generic [ref=e386]:
+            - paragraph [ref=e387]:
+              - img [ref=e388]
+              - text: Nos domaines
+            - heading "Toutes les disciplines meritent une scene." [level=2] [ref=e390]
+          - generic [ref=e391]:
+            - article [ref=e392]:
+              - img [ref=e394]
+              - heading "Musique" [level=3] [ref=e398]
+            - article [ref=e399]:
+              - img [ref=e401]
+              - heading "Danse" [level=3] [ref=e403]
+            - article [ref=e404]:
+              - img [ref=e406]
+              - heading "Mode" [level=3] [ref=e408]
+            - article [ref=e409]:
+              - img [ref=e411]
+              - heading "Culture urbaine" [level=3] [ref=e417]
+            - article [ref=e418]:
+              - img [ref=e420]
+              - heading "Influence digitale" [level=3] [ref=e423]
+            - article [ref=e424]:
+              - img [ref=e426]
+              - heading "Innovation" [level=3] [ref=e429]
+            - article [ref=e430]:
+              - img [ref=e432]
+              - heading "Entrepreneuriat" [level=3] [ref=e435]
+            - article [ref=e436]:
+              - img [ref=e438]
+              - heading "Motors" [level=3] [ref=e442]
+            - article [ref=e443]:
+              - img [ref=e445]
+              - heading "Arts visuels" [level=3] [ref=e451]
+            - article [ref=e452]:
+              - img [ref=e454]
+              - heading "Creation de contenu" [level=3] [ref=e457]
+        - generic [ref=e458]:
+          - generic [ref=e459]:
+            - paragraph [ref=e460]:
+              - img [ref=e461]
+              - text: Notre impact demain
+            - heading "Des objectifs mesurables pour une ambition collective." [level=2] [ref=e464]
+          - generic [ref=e465]:
+            - article [ref=e466]:
+              - paragraph [ref=e467]: "0"
+              - paragraph [ref=e468]: Talents accompagnes
+            - article [ref=e469]:
+              - paragraph [ref=e470]: "0"
+              - paragraph [ref=e471]: Regions representees
+            - article [ref=e472]:
+              - paragraph [ref=e473]: "0"
+              - paragraph [ref=e474]: Partenaires
+            - article [ref=e475]:
+              - paragraph [ref=e476]: "0"
+              - paragraph [ref=e477]: Benevoles
+            - article [ref=e478]:
+              - paragraph [ref=e479]: "0"
+              - paragraph [ref=e480]: Coachs
+            - article [ref=e481]:
+              - paragraph [ref=e482]: "0"
+              - paragraph [ref=e483]: Visiteurs
+        - generic [ref=e484]:
+          - generic [ref=e485]:
+            - paragraph [ref=e486]:
+              - img [ref=e487]
+              - text: Ils construisent Festival Talent.
+            - heading "Une organisation humaine, lisible et evolutive." [level=2] [ref=e492]
+          - generic [ref=e493]:
+            - generic [ref=e494]:
+              - generic [ref=e495]:
+                - img [ref=e498]
+                - paragraph [ref=e502]: Fondatrice
+              - generic [ref=e503]:
+                - img [ref=e506]
+                - paragraph [ref=e510]: Direction generale
+              - generic [ref=e511]:
+                - img [ref=e514]
+                - paragraph [ref=e518]: Direction des partenariats
+              - generic [ref=e519]:
+                - img [ref=e522]
+                - paragraph [ref=e526]: Structures partenaires
+              - generic [ref=e527]:
+                - img [ref=e530]
+                - paragraph [ref=e534]: Coachs
+              - generic [ref=e535]:
+                - img [ref=e538]
+                - paragraph [ref=e542]: Benevoles
+              - generic [ref=e543]:
+                - img [ref=e546]
+                - paragraph [ref=e549]: Talents
+            - generic [ref=e550]:
+              - generic [ref=e551]: Zairah Diamant Noire
+              - generic [ref=e552]: Ibrahima Khalilou Danso
+              - generic [ref=e553]: Pierre Ndiaye
+              - generic [ref=e554]: PIN EVENTS
+              - generic [ref=e555]: Agence Diassnor
+              - generic [ref=e556]: Mister Moo
+              - generic [ref=e557]: Oldy Sow
+              - generic [ref=e558]: Talents Festival Talent
+        - generic [ref=e559]:
+          - generic [ref=e560]:
+            - paragraph [ref=e561]:
+              - img [ref=e562]
+              - text: Ils nous font confiance.
+            - heading "Des partenaires pour faire grandir l'ecosysteme." [level=2] [ref=e567]
+          - generic [ref=e568]:
+            - article [ref=e569]:
+              - img "Logo PIN EVENTS" [ref=e570]
+              - heading "PIN EVENTS" [level=3] [ref=e571]
+            - article [ref=e572]:
+              - img "Logo Agence Diassnor" [ref=e573]
+              - heading "Agence Diassnor" [level=3] [ref=e574]
+            - article [ref=e575]:
+              - generic [ref=e576]: Futurs partenaires
+              - heading "Futurs partenaires" [level=3] [ref=e577]
+        - generic [ref=e579]:
+          - img [ref=e580]
+          - heading "Et si le prochain talent decouvert... c'etait vous ?" [level=2] [ref=e583]:
+            - text: Et si le prochain talent decouvert...
+            - generic [ref=e584]: c'etait vous ?
+          - link "Je participe" [ref=e586] [cursor=pointer]:
+            - /url: /preselections
+            - text: Je participe
+            - img [ref=e587]
+      - generic [ref=e590]:
+        - generic [ref=e591]:
+          - paragraph [ref=e592]:
+            - img [ref=e593]
+            - text: Talent Stories
+          - heading "Des histoires qui inspirent." [level=2] [ref=e596]
+          - paragraph [ref=e597]: "Ces parcours fictifs illustrent une verite simple : un talent peut commencer petit, puis changer de dimension lorsqu'il rencontre le bon cadre."
+        - generic [ref=e598]:
+          - article [ref=e599]:
+            - img [ref=e601]
+            - paragraph [ref=e605]: Futur artiste
+            - heading "Une voix entendue pour la premiere fois" [level=3] [ref=e606]
+            - paragraph [ref=e607]: Il arrive avec une chanson en telephone, puis decouvre une scene, des retours, des coachs et une communaute qui l'aide a croire a son propre son.
+          - article [ref=e608]:
+            - img [ref=e610]
+            - paragraph [ref=e613]: Futur entrepreneur
+            - heading "Une idee locale qui peut devenir une activite" [level=3] [ref=e614]
+            - paragraph [ref=e615]: Elle porte une solution simple pour sa ville. Festival Talent lui donne un cadre, des rencontres et la confiance necessaire pour la presenter.
+          - article [ref=e616]:
+            - img [ref=e618]
+            - paragraph [ref=e620]: Future styliste
+            - heading "Un regard, une coupe, une identite" [level=3] [ref=e621]
+            - paragraph [ref=e622]: Elle transforme son inspiration en collection, rencontre des professionnels et apprend a raconter son univers avec exigence.
+          - article [ref=e623]:
+            - img [ref=e625]
+            - paragraph [ref=e627]: Futur danseur
+            - heading "Un talent de quartier qui represente sa zone" [level=3] [ref=e628]
+            - paragraph [ref=e629]: Il danse deja partout ou l'espace existe. Les preselections lui offrent une scene, une discipline et une premiere reconnaissance.
+      - region "ACTE 3 - Les opportunités" [ref=e630]:
+        - generic [ref=e631]:
+          - generic [ref=e632]:
+            - paragraph [ref=e633]: ACTE 3
+            - heading "Les opportunités" [level=2] [ref=e634]
+          - paragraph [ref=e635]: Les preselections, les activites et le programme transforment l'ambition en action.
+      - generic [ref=e637]:
+        - generic [ref=e638]:
+          - generic [ref=e639]:
+            - generic [ref=e640]:
+              - img [ref=e641]
+              - text: Pré-sélections officielles
+            - heading "Battle All Style par zones" [level=2] [ref=e644]:
+              - text: Battle All Style
+              - generic [ref=e645]: par zones
+            - paragraph [ref=e646]: Festival Talent lance le Battle All Style par zones pour révéler les meilleurs danseurs et groupes. Une opportunité unique de montrer ton talent, représenter ta zone et rejoindre l’aventure Festival Talent 2027.
+            - generic [ref=e647]:
+              - generic [ref=e648]:
+                - img [ref=e649]
+                - heading "500.000 FCFA" [level=3] [ref=e655]
+                - paragraph [ref=e656]: Cagnotte à gagner
+              - generic [ref=e657]:
+                - img [ref=e658]
+                - heading "Italie" [level=3] [ref=e660]
+                - paragraph [ref=e661]: Voyage pour le gagnant
+              - generic [ref=e662]:
+                - img [ref=e663]
+                - heading "2.000 FCFA" [level=3] [ref=e666]
+                - paragraph [ref=e667]: Par personne ou groupe
+              - generic [ref=e668]:
+                - img [ref=e669]
+                - heading "Solo / Groupe" [level=3] [ref=e674]
+                - paragraph [ref=e675]: Toutes catégories
+            - generic [ref=e676]:
+              - link "Remplir le formulaire" [ref=e677] [cursor=pointer]:
+                - /url: /preselections
+                - text: Remplir le formulaire
+                - img [ref=e678]
+              - link "Infos WhatsApp" [ref=e680] [cursor=pointer]:
+                - /url: https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20m'inscrire%20ou%20avoir%20plus%20d'informations%20sur%20les%20Battles%20de%20Danse%20par%20zones.
+          - generic [ref=e684]:
+            - img [ref=e686]
+            - paragraph [ref=e688]: À retenir
+            - heading "Ton talent peut t’emmener en Italie" [level=3] [ref=e689]
+            - paragraph [ref=e690]: Les gagnants seront valorisés dans le cadre du Festival Talent 2027, avec une exposition médiatique, des opportunités et un accès à une aventure internationale.
+            - list [ref=e691]:
+              - listitem [ref=e692]:
+                - img [ref=e693]
+                - generic [ref=e696]: Solos et groupes acceptés
+              - listitem [ref=e697]:
+                - img [ref=e698]
+                - generic [ref=e701]: Tous les styles de danse sont ouverts
+              - listitem [ref=e702]:
+                - img [ref=e703]
+                - generic [ref=e706]: Pré-sélections organisées par zones
+              - listitem [ref=e707]:
+                - img [ref=e708]
+                - generic [ref=e711]: Sélection finale autour du Monument de la Renaissance
+              - listitem [ref=e712]:
+                - img [ref=e713]
+                - generic [ref=e716]: Début prévu en septembre 2026
+              - listitem [ref=e717]:
+                - img [ref=e718]
+                - generic [ref=e721]: "Inscription & infos : WhatsApp 781 948 606"
+            - generic [ref=e722]:
+              - paragraph [ref=e723]: Départ officiel
+              - paragraph [ref=e724]: Septembre 2026
+        - generic [ref=e726]:
+          - img [ref=e728]
+          - generic [ref=e733]:
+            - paragraph [ref=e734]: Organisation du Battle
+            - heading "Agence Diassnor, partenaire Danse" [level=3] [ref=e735]
+            - paragraph [ref=e736]: Le Battle Dance du Festival Talent est organise en partenariat avec l'Agence Diassnor, structure specialisee dans le management artistique et l'evenementiel. Son expertise garantit une organisation professionnelle des preselections, des battles et de l'accompagnement des danseurs.
+        - generic [ref=e738]:
+          - generic [ref=e739]:
+            - paragraph [ref=e740]: D’autres pré-sélections arrivent
+            - heading "La danse ouvre la dynamique" [level=3] [ref=e741]
+            - paragraph [ref=e742]: "Les Battles de Danse par zones marquent une premiere phase des pre-selections Festival Talent 2027. D'autres pre-selections seront progressivement annoncees dans les autres secteurs : musique, mode, art, entrepreneuriat, technologie, culture urbaine, sports mecaniques, peinture/design, influence, theatre et lutte."
+          - generic [ref=e743]:
+            - generic [ref=e744]: Danse
+            - generic [ref=e745]: Musique
+            - generic [ref=e746]: Mode
+            - generic [ref=e747]: Art
+            - generic [ref=e748]: Entrepreneuriat
+            - generic [ref=e749]: Technologie
+            - generic [ref=e750]: Culture urbaine
+            - generic [ref=e751]: Sports mécaniques
+        - generic [ref=e752]:
+          - generic [ref=e753]:
+            - generic [ref=e754]:
+              - img [ref=e755]
+              - text: Toutes zones
+            - heading "Les zones concernées" [level=3] [ref=e758]
+          - generic [ref=e759]:
+            - generic [ref=e761]:
+              - img [ref=e763]
+              - generic [ref=e766]:
+                - paragraph [ref=e767]: Zone 01
+                - paragraph [ref=e768]: Dakar
+            - generic [ref=e770]:
+              - img [ref=e772]
+              - generic [ref=e775]:
+                - paragraph [ref=e776]: Zone 02
+                - paragraph [ref=e777]: Thiès
+            - generic [ref=e779]:
+              - img [ref=e781]
+              - generic [ref=e784]:
+                - paragraph [ref=e785]: Zone 03
+                - paragraph [ref=e786]: Saint-Louis
+            - generic [ref=e788]:
+              - img [ref=e790]
+              - generic [ref=e793]:
+                - paragraph [ref=e794]: Zone 04
+                - paragraph [ref=e795]: Diourbel
+            - generic [ref=e797]:
+              - img [ref=e799]
+              - generic [ref=e802]:
+                - paragraph [ref=e803]: Zone 05
+                - paragraph [ref=e804]: Kaolack
+            - generic [ref=e806]:
+              - img [ref=e808]
+              - generic [ref=e811]:
+                - paragraph [ref=e812]: Zone 06
+                - paragraph [ref=e813]: Ziguinchor
+            - generic [ref=e815]:
+              - img [ref=e817]
+              - generic [ref=e820]:
+                - paragraph [ref=e821]: Zone 07
+                - paragraph [ref=e822]: Tambacounda
+            - generic [ref=e824]:
+              - img [ref=e826]
+              - generic [ref=e829]:
+                - paragraph [ref=e830]: Zone 08
+                - paragraph [ref=e831]: Kolda
+            - generic [ref=e833]:
+              - img [ref=e835]
+              - generic [ref=e838]:
+                - paragraph [ref=e839]: Zone 09
+                - paragraph [ref=e840]: Matam
+            - generic [ref=e842]:
+              - img [ref=e844]
+              - generic [ref=e847]:
+                - paragraph [ref=e848]: Zone 10
+                - paragraph [ref=e849]: Fatick
+            - generic [ref=e851]:
+              - img [ref=e853]
+              - generic [ref=e856]:
+                - paragraph [ref=e857]: Zone 11
+                - paragraph [ref=e858]: Kédougou
+            - generic [ref=e860]:
+              - img [ref=e862]
+              - generic [ref=e865]:
+                - paragraph [ref=e866]: Zone 12
+                - paragraph [ref=e867]: Louga
+          - link "Voir le programme complet" [ref=e869] [cursor=pointer]:
+            - /url: /programme
+            - text: Voir le programme complet
+            - img [ref=e870]
+      - generic [ref=e873]:
+        - generic [ref=e874]:
+          - generic [ref=e875]:
+            - generic [ref=e876]:
+              - img [ref=e877]
+              - text: Activités phares
+            - heading "Plusieurs secteurs un même festival" [level=2] [ref=e881]:
+              - text: Plusieurs secteurs
+              - generic [ref=e882]: un même festival
+          - generic [ref=e883]:
+            - paragraph [ref=e884]: "Festival Talent 2027 ne se limite pas à une seule discipline. Le projet réunit plusieurs secteurs : danse, musique, mode, art, influence, sports mécaniques, nautisme, entrepreneuriat, culture urbaine et innovation."
+            - link "Découvrir toutes les activités" [ref=e885] [cursor=pointer]:
+              - /url: /activites
+              - text: Découvrir toutes les activités
+              - img [ref=e886]
+        - generic [ref=e888]:
+          - article [ref=e889]:
+            - img [ref=e891]
+            - heading "Battle All Style" [level=3] [ref=e897]
+            - paragraph [ref=e898]: Zones, solos, groupes et finale nationale.
+          - article [ref=e899]:
+            - img [ref=e901]
+            - heading "Peintres / Designer" [level=3] [ref=e907]
+            - paragraph [ref=e908]: Mise en lumière, ateliers et rencontres.
+          - article [ref=e909]:
+            - img [ref=e911]
+            - heading "Jet Ski" [level=3] [ref=e915]
+            - paragraph [ref=e916]: Animations nautiques autour de Saly.
+          - article [ref=e917]:
+            - img [ref=e919]
+            - heading "Karting" [level=3] [ref=e923]
+            - paragraph [ref=e924]: Courses, exposition et village partenaires.
+          - article [ref=e925]:
+            - img [ref=e927]
+            - heading "Fashion Week" [level=3] [ref=e929]
+            - paragraph [ref=e930]: Castings, ateliers design et défilés.
+          - article [ref=e931]:
+            - img [ref=e933]
+            - heading "Musique" [level=3] [ref=e937]
+            - paragraph [ref=e938]: Castings, bootcamps et concerts de sélection.
+          - article [ref=e939]:
+            - img [ref=e941]
+            - heading "Influenceurs" [level=3] [ref=e944]
+            - paragraph [ref=e945]: Formation, contenus et showcases influenceurs.
+          - article [ref=e946]:
+            - img [ref=e948]
+            - heading "Lutte sénégalaise" [level=3] [ref=e954]
+            - paragraph [ref=e955]: Tournois régionaux, finales et champions.
+      - generic [ref=e958]:
+        - generic [ref=e959]:
+          - text: Programme
+          - heading "L’expérience en live." [level=2] [ref=e960]:
+            - text: L’expérience
+            - text: en live.
+          - paragraph [ref=e961]: De janvier a avril 2027, pre-selections officielles, showcases et moments exclusifs relient Paris et Rome autour des talents retenus.
+        - generic [ref=e964]:
+          - generic [ref=e969]:
+            - generic [ref=e970]:
+              - text: Detection
+              - heading "Pre-selections officielles" [level=3] [ref=e971]
+              - paragraph [ref=e972]: Senegal et zones partenaires
+            - generic [ref=e973]:
+              - generic [ref=e974]: 1 septembre
+              - paragraph [ref=e975]: FT2027 LIVE EXPERIENCE
+          - generic [ref=e980]:
+            - generic [ref=e981]:
+              - text: Competition
+              - heading "Battles All Style" [level=3] [ref=e982]
+              - paragraph [ref=e983]: Zones regionales
+            - generic [ref=e984]:
+              - generic [ref=e985]: 15 septembre
+              - paragraph [ref=e986]: FT2027 LIVE EXPERIENCE
+          - generic [ref=e991]:
+            - generic [ref=e992]:
+              - text: International
+              - heading "Experience Italie" [level=3] [ref=e993]
+              - paragraph [ref=e994]: Italie
+            - generic [ref=e995]:
+              - generic [ref=e996]: 21 mars
+              - paragraph [ref=e997]: FT2027 LIVE EXPERIENCE
+          - generic [ref=e1002]:
+            - generic [ref=e1003]:
+              - text: Finale
+              - heading "Concert final" [level=3] [ref=e1004]
+              - paragraph [ref=e1005]: Casino de Paris
+            - generic [ref=e1006]:
+              - generic [ref=e1007]: 15 mai
+              - paragraph [ref=e1008]: FT2027 LIVE EXPERIENCE
+      - region "ACTE 4 - Les coachs" [ref=e1009]:
+        - generic [ref=e1010]:
+          - generic [ref=e1011]:
+            - paragraph [ref=e1012]: ACTE 4
+            - heading "Les coachs" [level=2] [ref=e1013]
+          - paragraph [ref=e1014]: L'accompagnement donne au talent des reperes, une exigence et une direction.
+      - generic [ref=e1019]:
+        - generic [ref=e1020]:
+          - paragraph [ref=e1021]: L'equipe officielle
+          - heading "L'équipe dirigeante du Festival Talent 2027" [level=2] [ref=e1022]:
+            - text: L'équipe dirigeante du
+            - generic [ref=e1023]: Festival Talent 2027
+          - paragraph [ref=e1024]: Des profils engagés dans la culture, l'événementiel, la communication, l'innovation et le développement des talents.
+        - generic [ref=e1025]:
+          - article [ref=e1026]:
+            - generic [ref=e1028]:
+              - generic [ref=e1029]:
+                - img "Zairah Diamant Noire" [ref=e1030]
+                - img [ref=e1033]
+              - generic [ref=e1036]:
+                - generic [ref=e1037]: Vision fondatrice
+                - generic [ref=e1038]:
+                  - generic [ref=e1039]: Direction
+                  - generic [ref=e1040]: Initiatrice du projet
+                - heading "Zairah Diamant Noire" [level=3] [ref=e1041]
+                - paragraph [ref=e1042]: Porte la vision fondatrice de Festival Talent 2027 et incarne l'ambition de reveler les talents, d'inspirer la jeunesse et de construire un evenement culturel majeur.
+          - article [ref=e1043]:
+            - generic [ref=e1045]:
+              - generic [ref=e1046]:
+                - generic [ref=e1048]: IKD
+                - img [ref=e1051]
+              - generic [ref=e1054]:
+                - generic [ref=e1055]:
+                  - generic [ref=e1056]: Direction
+                  - generic [ref=e1057]: Directeur Executif
+                - heading "Ibrahima Khalilou Danso" [level=3] [ref=e1058]
+                - paragraph [ref=e1059]: Assure la coordination generale, le pilotage operationnel et le suivi des grandes orientations du festival.
+          - article [ref=e1060]:
+            - generic [ref=e1062]:
+              - generic [ref=e1063]:
+                - img "Masseck Sy" [ref=e1064]
+                - img [ref=e1067]
+              - generic [ref=e1069]:
+                - generic [ref=e1070]:
+                  - generic [ref=e1071]: Direction
+                  - generic [ref=e1072]: Cofondateur
+                - heading "Masseck Sy" [level=3] [ref=e1073]
+                - paragraph [ref=e1074]: Participe a la vision strategique, au developpement institutionnel et a la construction globale de Festival Talent 2027.
+          - article [ref=e1075]:
+            - generic [ref=e1077]:
+              - generic [ref=e1078]:
+                - img "Pierre Ndiaye" [ref=e1079]
+                - img [ref=e1082]
+              - generic [ref=e1087]:
+                - generic [ref=e1088]:
+                  - generic [ref=e1089]: Partenariats
+                  - generic [ref=e1090]: Directeur des Partenariats et Relations Institutionnelles
+                - heading "Pierre Ndiaye" [level=3] [ref=e1091]
+                - paragraph [ref=e1092]: CEO de PIN EVENTS • Fondateur de DUNYA
+                - paragraph [ref=e1093]: Entrepreneur senegalais specialise dans l'evenementiel, la communication, l'influence digitale, les relations institutionnelles et le developpement de partenariats. Pierre Ndiaye accompagne Festival Talent 2027 dans la structuration des collaborations strategiques, la coordination evenementielle et le rayonnement institutionnel du projet.
+                - img "Logo PIN EVENTS" [ref=e1095]
+                - generic [ref=e1096]:
+                  - generic [ref=e1097]: CEO PIN EVENTS
+                  - generic [ref=e1098]: Fondateur DUNYA
+                  - generic [ref=e1099]: Festival KeuMeuFeu Wake UP
+                  - generic [ref=e1100]: Senegal TikTok Awards
+                  - generic [ref=e1101]: Gala Des Etoiles
+                  - generic [ref=e1102]: Management artistique
+                  - generic [ref=e1103]: Relations institutionnelles
+          - article [ref=e1104]:
+            - generic [ref=e1106]:
+              - generic [ref=e1107]:
+                - img "Mamadou Ngom" [ref=e1108]
+                - img [ref=e1111]
+              - generic [ref=e1118]:
+                - generic [ref=e1119]:
+                  - generic [ref=e1120]: Organisation
+                  - generic [ref=e1121]: Responsable Pole Regie
+                - heading "Mamadou Ngom" [level=3] [ref=e1122]
+                - paragraph [ref=e1123]: Coordonne la regie, l'organisation technique, les besoins terrain et la fluidite operationnelle des differentes activites.
+          - article [ref=e1124]:
+            - generic [ref=e1126]:
+              - generic [ref=e1127]:
+                - generic [ref=e1129]: IF
+                - img [ref=e1132]
+              - generic [ref=e1135]:
+                - generic [ref=e1136]:
+                  - generic [ref=e1137]: Digital
+                  - generic [ref=e1138]: Developpeur Web / Conception Digitale
+                - heading "Ibrahima Fall" [level=3] [ref=e1139]
+                - paragraph [ref=e1140]: Responsable de la conception, du deploiement et de l'experience digitale du site officiel Festival Talent 2027.
+          - article [ref=e1141]:
+            - generic [ref=e1143]:
+              - generic [ref=e1144]:
+                - img "Babacar Ndour" [ref=e1145]
+                - img [ref=e1148]
+              - generic [ref=e1151]:
+                - generic [ref=e1152]:
+                  - generic [ref=e1153]: Communication
+                  - generic [ref=e1154]: Responsable Communication
+                - heading "Babacar Ndour" [level=3] [ref=e1155]
+                - paragraph [ref=e1156]: Pilote la communication, l'image publique, les annonces officielles, les medias et la visibilite digitale du festival.
+          - article [ref=e1157]:
+            - generic [ref=e1159]:
+              - generic [ref=e1160]:
+                - img "Abdourahmane Ndiaye" [ref=e1161]
+                - img [ref=e1164]
+              - generic [ref=e1169]:
+                - generic [ref=e1170]:
+                  - generic [ref=e1171]: Entrepreneuriat
+                  - generic [ref=e1172]: Responsable Pole Entrepreneuriat
+                - heading "Abdourahmane Ndiaye" [level=3] [ref=e1173]
+                - paragraph [ref=e1174]: Coordonne le pole entrepreneuriat, accompagne les porteurs de projets et participe a la valorisation des jeunes entrepreneurs.
+          - article [ref=e1175]:
+            - generic [ref=e1177]:
+              - generic [ref=e1178]:
+                - img "DJ You" [ref=e1179]
+                - img [ref=e1182]
+              - generic [ref=e1185]:
+                - generic [ref=e1186]:
+                  - generic [ref=e1187]: Artistique
+                  - generic [ref=e1188]: Directeur Artistique
+                - heading "DJ You" [level=3] [ref=e1189]
+                - paragraph [ref=e1190]: Assure la direction artistique, accompagne la programmation creative et participe a la coherence musicale, scenique et culturelle de l'evenement.
+        - paragraph [ref=e1192]: "Une equipe portee par une meme ambition : reveler les talents, construire l'avenir et positionner Festival Talent comme un rendez-vous culturel majeur au Senegal et a l'international."
+      - generic [ref=e1194]:
+        - generic [ref=e1195]:
+          - paragraph [ref=e1196]:
+            - img [ref=e1197]
+            - text: Accompagnement humain
+          - heading "Nos Coachs & Mentors" [level=1] [ref=e1200]:
+            - text: Nos Coachs
+            - generic [ref=e1201]: "& Mentors"
+          - paragraph [ref=e1202]: Festival Talent 2027 accompagne les jeunes talents au-dela de la scene, avec un encadrement humain autour de la confiance, de la discipline, du leadership et du developpement personnel.
+        - generic [ref=e1203]:
+          - generic [ref=e1205]:
+            - img [ref=e1206]
+            - heading "Un accompagnement humain" [level=3] [ref=e1214]
+            - paragraph [ref=e1215]: Festival Talent 2027 ne se limite pas a la competition. Le projet accompagne les talents dans leur confiance, leur discipline, leur posture professionnelle, leur communication, leur leadership et leur vision d'avenir.
+            - paragraph [ref=e1216]: Les coachs de vie jouent un role essentiel dans la preparation mentale, la motivation, la confiance en soi et l'accompagnement des candidats tout au long du parcours Festival Talent.
+            - link "Decouvrir les mentors" [ref=e1218] [cursor=pointer]:
+              - /url: /mentors
+              - generic [ref=e1219]: Decouvrir les mentors
+              - img [ref=e1220]
+          - generic [ref=e1222]:
+            - article [ref=e1225]:
+              - generic [ref=e1226]:
+                - img "Mister Moo" [ref=e1227]
+                - generic [ref=e1229]:
+                  - img [ref=e1230]
+                  - text: Coach officiel
+              - generic [ref=e1234]:
+                - heading "Mister Moo" [level=3] [ref=e1235]
+                - paragraph [ref=e1236]: Coach de vie & Developpement personnel
+                - paragraph [ref=e1237]: Accompagne les talents dans leur posture mentale, leur confiance en soi et leur capacite a transformer une ambition en discipline quotidienne.
+                - generic [ref=e1238]:
+                  - generic [ref=e1239]: Confiance
+                  - generic [ref=e1240]: Leadership
+                  - generic [ref=e1241]: Vision
+            - article [ref=e1244]:
+              - generic [ref=e1245]:
+                - img "Oldy Sow" [ref=e1246]
+                - generic [ref=e1248]:
+                  - img [ref=e1249]
+                  - text: Coach officiel
+              - generic [ref=e1253]:
+                - heading "Oldy Sow" [level=3] [ref=e1254]
+                - paragraph [ref=e1255]: Coach de vie & Motivation
+                - paragraph [ref=e1256]: Aide les candidats a garder le cap, a renforcer leur motivation et a developper une expression plus claire, plus stable et plus professionnelle.
+                - generic [ref=e1257]:
+                  - generic [ref=e1258]: Motivation
+                  - generic [ref=e1259]: Discipline
+                  - generic [ref=e1260]: Prise de parole
+      - generic [ref=e1262]:
+        - generic [ref=e1263]:
+          - generic [ref=e1264]:
+            - paragraph [ref=e1265]:
+              - img [ref=e1266]
+              - text: Communaute
+            - heading "Une grande famille de talents" [level=1] [ref=e1271]:
+              - text: Une grande famille
+              - generic [ref=e1272]: de talents
+            - paragraph [ref=e1273]: Festival Talent 2027 reunit des jeunes talents, des coachs, des artistes, des partenaires et des professionnels engages pour construire un ecosysteme d'opportunites.
+          - link "Decouvrir la communaute" [ref=e1275] [cursor=pointer]:
+            - /url: /communaute
+            - generic [ref=e1276]: Decouvrir la communaute
+            - img [ref=e1277]
+        - generic [ref=e1279]:
+          - generic [ref=e1281]:
+            - img [ref=e1282]
+            - heading "Candidats" [level=3] [ref=e1287]
+            - paragraph [ref=e1288]: Des jeunes talents qui entrent dans un parcours d'expression, de progression et de visibilite.
+          - generic [ref=e1290]:
+            - img [ref=e1291]
+            - heading "Coachs & mentors" [level=3] [ref=e1294]
+            - paragraph [ref=e1295]: Un encadrement humain autour de la confiance, de la discipline et du leadership.
+          - generic [ref=e1297]:
+            - img [ref=e1298]
+            - heading "Artistes" [level=3] [ref=e1302]
+            - paragraph [ref=e1303]: Des artistes confirmes qui inspirent la nouvelle generation et amplifient la scene.
+          - generic [ref=e1305]:
+            - img [ref=e1306]
+            - heading "Partenaires" [level=3] [ref=e1311]
+            - paragraph [ref=e1312]: Des institutions, medias et entreprises engagees pour construire des opportunites durables.
+          - generic [ref=e1314]:
+            - img [ref=e1315]
+            - heading "Regions" [level=3] [ref=e1318]
+            - paragraph [ref=e1319]: Une dynamique ouverte aux zones, villes et territoires qui portent les talents de demain.
+          - generic [ref=e1321]:
+            - img [ref=e1322]
+            - heading "Opportunites" [level=3] [ref=e1324]
+            - paragraph [ref=e1325]: Pre-selections, scenes, collaborations, formation, accompagnement et ouverture internationale.
+      - region "ACTE 5 - Les artistes" [ref=e1326]:
+        - generic [ref=e1327]:
+          - generic [ref=e1328]:
+            - paragraph [ref=e1329]: ACTE 5
+            - heading "Les artistes" [level=2] [ref=e1330]
+          - paragraph [ref=e1331]: Les artistes confirmes donnent au projet son energie culturelle et sa projection.
+      - generic [ref=e1333]:
+        - generic [ref=e1334]:
+          - generic [ref=e1335]:
+            - img [ref=e1336]
+            - text: Artistes confirmés
+          - heading "Line-up officiel" [level=2] [ref=e1340]:
+            - text: Line-up
+            - generic [ref=e1341]: officiel
+          - paragraph [ref=e1342]: Festival Talent 2027 confirme officiellement Samba Peuzzi, Morijah et Cysoul. D’autres annonces pourront être publiées progressivement après validation de l’organisation.
+        - generic [ref=e1343]:
+          - article [ref=e1344]:
+            - generic [ref=e1345]:
+              - img "Samba Peuzzi" [ref=e1346]
+              - generic [ref=e1348]:
+                - img [ref=e1349]
+                - text: Confirmé
+              - generic [ref=e1352]:
+                - paragraph [ref=e1353]: Artiste confirmé
+                - heading "Samba Peuzzi" [level=3] [ref=e1354]
+            - generic [ref=e1355]:
+              - paragraph [ref=e1356]: Artiste confirmé pour Festival Talent 2027. Sa présence accompagne l’énergie du festival, les pré-sélections et la célébration des talents.
+              - generic [ref=e1357]:
+                - generic [ref=e1358]:
+                  - img [ref=e1359]
+                  - paragraph [ref=e1361]: Édition
+                  - paragraph [ref=e1362]: "2027"
+                - generic [ref=e1363]:
+                  - img [ref=e1364]
+                  - paragraph [ref=e1369]: Projet
+                  - paragraph [ref=e1370]: Paris & Rome
+          - article [ref=e1371]:
+            - generic [ref=e1372]:
+              - img "Morijah" [ref=e1373]
+              - generic [ref=e1375]:
+                - img [ref=e1376]
+                - text: Confirmé
+              - generic [ref=e1379]:
+                - paragraph [ref=e1380]: Artiste confirmée
+                - heading "Morijah" [level=3] [ref=e1381]
+            - generic [ref=e1382]:
+              - paragraph [ref=e1383]: Morijah rejoint officiellement Festival Talent 2027 avec une présence forte autour de la musique, de l’inspiration et de la jeunesse.
+              - generic [ref=e1384]:
+                - generic [ref=e1385]:
+                  - img [ref=e1386]
+                  - paragraph [ref=e1388]: Édition
+                  - paragraph [ref=e1389]: "2027"
+                - generic [ref=e1390]:
+                  - img [ref=e1391]
+                  - paragraph [ref=e1396]: Projet
+                  - paragraph [ref=e1397]: Paris & Rome
+          - article [ref=e1398]:
+            - generic [ref=e1399]:
+              - img "Cysoul" [ref=e1400]
+              - generic [ref=e1402]:
+                - img [ref=e1403]
+                - text: Confirmé
+              - generic [ref=e1406]:
+                - paragraph [ref=e1407]: Artiste confirmé
+                - heading "Cysoul" [level=3] [ref=e1408]
+            - generic [ref=e1409]:
+              - paragraph [ref=e1410]: Cysoul rejoint officiellement Festival Talent 2027 et apporte une dimension musicale internationale au projet.
+              - generic [ref=e1411]:
+                - generic [ref=e1412]:
+                  - img [ref=e1413]
+                  - paragraph [ref=e1415]: Édition
+                  - paragraph [ref=e1416]: "2027"
+                - generic [ref=e1417]:
+                  - img [ref=e1418]
+                  - paragraph [ref=e1423]: Projet
+                  - paragraph [ref=e1424]: Paris & Rome
+        - link "Voir tous les artistes" [ref=e1426] [cursor=pointer]:
+          - /url: /artists
+          - text: Voir tous les artistes
+          - img [ref=e1427]
+      - generic [ref=e1433]:
+        - generic [ref=e1434]:
+          - generic [ref=e1435]:
+            - img [ref=e1436]
+            - text: Annonce officielle a venir
+          - heading "Les jurys seront annonces progressivement" [level=2] [ref=e1439]
+          - paragraph [ref=e1440]: Les membres du jury seront communiques officiellement avant les grandes phases de selection. Ils accompagneront l'evaluation des talents selon les disciplines.
+        - generic [ref=e1441]:
+          - img [ref=e1443]
+          - link "Voir le programme" [ref=e1449] [cursor=pointer]:
+            - /url: /programme
+            - generic [ref=e1450]: Voir le programme
+            - img [ref=e1451]
+      - region "ACTE 6 - Les partenaires" [ref=e1456]:
+        - generic [ref=e1457]:
+          - generic [ref=e1458]:
+            - paragraph [ref=e1459]: ACTE 6
+            - heading "Les partenaires" [level=2] [ref=e1460]
+          - paragraph [ref=e1461]: Les partenaires rendent la plateforme credible, durable et capable de grandir.
+      - generic [ref=e1463]:
+        - generic [ref=e1464]:
+          - paragraph [ref=e1465]: Official Partners
+          - heading "Nos partenaires" [level=2] [ref=e1466]
+          - paragraph [ref=e1467]: Festival Talent 2027 rassemble institutions, medias, partenaires culturels et organisations autour de la jeunesse, de la creation et de l'innovation.
+        - generic [ref=e1468]:
+          - article [ref=e1469]:
+            - generic [ref=e1471]:
+              - img [ref=e1473]
+              - generic [ref=e1478]:
+                - paragraph [ref=e1479]: Partenaire Officiel Majeur
+                - heading "Union Européenne" [level=3] [ref=e1480]
+                - paragraph [ref=e1481]: L’Union Européenne accompagne Festival Talent 2027 dans sa vision de promotion des jeunes talents, de la culture, de l’innovation et de l’entrepreneuriat.
+          - article [ref=e1482]:
+            - generic [ref=e1484]:
+              - img [ref=e1486]
+              - generic [ref=e1489]:
+                - paragraph [ref=e1490]: Partenaire Média & Influence Officiel
+                - heading "Sen Influenceurs" [level=3] [ref=e1491]
+                - paragraph [ref=e1492]: Sen Influenceurs accompagne Festival Talent 2027 dans sa stratégie digitale, la communication d’influence, la promotion des talents et la couverture médiatique des activités.
+          - article [ref=e1493]:
+            - generic [ref=e1495]:
+              - img [ref=e1497]
+              - generic [ref=e1502]:
+                - paragraph [ref=e1503]: Partenaire Événementiel, Production & Relations Institutionnelles
+                - heading "PIN EVENTS" [level=3] [ref=e1504]
+                - img "Logo PIN EVENTS" [ref=e1506]
+                - paragraph [ref=e1507]: PIN EVENTS accompagne Festival Talent 2027 dans l’organisation des activités, la production événementielle, les partenariats stratégiques, les relations institutionnelles et les activations terrain.
+          - article [ref=e1508]:
+            - generic [ref=e1510]:
+              - img [ref=e1512]
+              - generic [ref=e1515]:
+                - paragraph [ref=e1516]: Partenaire Danse
+                - heading "Agence Diassnor" [level=3] [ref=e1517]
+                - generic [ref=e1519]: Agence Diassnor
+                - paragraph [ref=e1520]: Agence senegalaise specialisee dans le management artistique et l'evenementiel, Diassnor coordonne le pole Danse, les battles et l'accompagnement des danseurs.
+          - article [ref=e1521]:
+            - generic [ref=e1523]:
+              - img [ref=e1525]
+              - generic [ref=e1529]:
+                - paragraph [ref=e1530]: Partenaire Construction & Développement
+                - heading "Mano Perfetto" [level=3] [ref=e1531]
+                - paragraph [ref=e1532]: Mano Perfetto accompagne Festival Talent 2027 comme partenaire construction et développement.
+          - article [ref=e1533]:
+            - generic [ref=e1535]:
+              - img [ref=e1537]
+              - generic [ref=e1540]:
+                - paragraph [ref=e1541]: Partenaire Beauté & Lifestyle
+                - heading "H & Hair" [level=3] [ref=e1542]
+                - paragraph [ref=e1543]: H & Hair accompagne Festival Talent 2027 sur l’univers beauté, lifestyle et image.
+          - article [ref=e1544]:
+            - generic [ref=e1546]:
+              - img [ref=e1548]
+              - generic [ref=e1551]:
+                - paragraph [ref=e1552]: Partenaire Bien-être & Santé
+                - heading "Universal Selfcare" [level=3] [ref=e1553]
+                - paragraph [ref=e1554]: Universal Selfcare accompagne Festival Talent 2027 sur les dimensions bien-être, santé et selfcare.
+        - generic [ref=e1558]:
+          - img [ref=e1559]
+          - paragraph [ref=e1562]: Liste officielle des partenaires Festival Talent 2027
+        - generic [ref=e1567]:
+          - img [ref=e1568]
+          - paragraph [ref=e1571]: VAL2EVENTS
+      - region "ACTE 7 - La finale" [ref=e1572]:
+        - generic [ref=e1573]:
+          - generic [ref=e1574]:
+            - paragraph [ref=e1575]: ACTE 7
+            - heading "La finale" [level=2] [ref=e1576]
+          - paragraph [ref=e1577]: La scene finale devient le symbole d'un parcours, pas seulement d'une competition.
+      - generic [ref=e1579]:
+        - generic [ref=e1580]:
+          - generic [ref=e1581]:
+            - img [ref=e1582]
+            - text: Tickets & réservations
+          - heading "Deux accès, deux objectifs" [level=2] [ref=e1584]:
+            - text: Deux accès,
+            - generic [ref=e1585]: deux objectifs
+          - paragraph [ref=e1586]: Les tickets d’inscription au Battle All Style sont différents de la billetterie officielle du festival. Les inscriptions aux battles peuvent démarrer, tandis que la billetterie Festival Talent 2027 sera annoncée prochainement.
+        - generic [ref=e1587]:
+          - article [ref=e1588]:
+            - generic [ref=e1590]:
+              - img [ref=e1592]
+              - paragraph [ref=e1595]: Disponible pour les pré-sélections
+              - heading "Ticket Battle All Style" [level=3] [ref=e1596]
+              - generic [ref=e1597]:
+                - paragraph [ref=e1598]: Frais d’inscription
+                - paragraph [ref=e1599]: 2.000FCFA
+              - list [ref=e1600]:
+                - listitem [ref=e1601]:
+                  - img [ref=e1602]
+                  - generic [ref=e1605]: Inscription au Battle All Style par zones.
+                - listitem [ref=e1606]:
+                  - img [ref=e1607]
+                  - generic [ref=e1610]: Solos et groupes acceptés.
+                - listitem [ref=e1611]:
+                  - img [ref=e1612]
+                  - generic [ref=e1615]: 500.000 FCFA à gagner et voyage en Italie.
+              - generic [ref=e1616]:
+                - link "S’inscrire" [ref=e1617] [cursor=pointer]:
+                  - /url: /preselections
+                  - text: S’inscrire
+                  - img [ref=e1618]
+                - link "Infos WhatsApp" [ref=e1620] [cursor=pointer]:
+                  - /url: https://wa.me/221781948606?text=Bonjour%20Festival%20Talent%2C%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20les%20tickets%20d'inscription%20aux%20Battles%20de%20Danse.
+          - article [ref=e1621]:
+            - generic [ref=e1623]:
+              - img [ref=e1625]
+              - paragraph [ref=e1628]: Bientôt disponible
+              - heading "Billetterie Festival" [level=3] [ref=e1629]
+              - paragraph [ref=e1630]: La billetterie officielle de Festival Talent 2027 n’est pas encore ouverte. Les tarifs, catégories de billets et modalités d’accès seront communiqués officiellement.
+              - generic [ref=e1631]:
+                - generic [ref=e1632]:
+                  - img [ref=e1633]
+                  - paragraph [ref=e1636]: Alerte
+                  - paragraph [ref=e1637]: Ouverture bientôt
+                - generic [ref=e1638]:
+                  - img [ref=e1639]
+                  - paragraph [ref=e1641]: Édition
+                  - paragraph [ref=e1642]: "2027"
+              - link "Voir la page tickets" [ref=e1643] [cursor=pointer]:
+                - /url: /tickets
+                - text: Voir la page tickets
+                - img [ref=e1644]
+        - generic [ref=e1646]:
+          - img [ref=e1647]
+          - paragraph [ref=e1653]: Important
+          - paragraph [ref=e1654]: Le ticket d’inscription Battle All Style à 2.000 FCFA ne remplace pas le billet d’accès au Festival Talent 2027. La billetterie officielle du festival sera annoncée séparément.
+      - generic [ref=e1659]:
+        - generic [ref=e1660]:
+          - generic [ref=e1661]:
+            - img [ref=e1662]
+            - text: Galerie immersive
+          - heading "Moments Festival Talent" [level=2] [ref=e1665]:
+            - text: Moments
+            - generic [ref=e1666]: Festival Talent
+          - paragraph [ref=e1667]: Une selection visuelle des editions precedentes pour montrer l'energie, le public, les scenes et les coulisses de l'experience.
+        - generic [ref=e1668]:
+          - button "Ouvrir Performance live" [ref=e1669] [cursor=pointer]:
+            - img "Performance live" [ref=e1670]
+            - generic [ref=e1672]:
+              - generic [ref=e1673]: Scene
+              - generic [ref=e1674]:
+                - heading "Performance live" [level=3] [ref=e1675]
+                - img [ref=e1676]
+          - button "Ouvrir Public & energie" [ref=e1681] [cursor=pointer]:
+            - img "Public & energie" [ref=e1682]
+            - generic [ref=e1684]:
+              - generic [ref=e1685]: Ambiance
+              - generic [ref=e1686]:
+                - heading "Public & energie" [level=3] [ref=e1687]
+                - img [ref=e1688]
+          - button "Ouvrir Moment culturel" [ref=e1693] [cursor=pointer]:
+            - img "Moment culturel" [ref=e1694]
+            - generic [ref=e1696]:
+              - generic [ref=e1697]: Culture
+              - generic [ref=e1698]:
+                - heading "Moment culturel" [level=3] [ref=e1699]
+                - img [ref=e1700]
+          - button "Ouvrir Coulisses" [ref=e1705] [cursor=pointer]:
+            - img "Coulisses" [ref=e1706]
+            - generic [ref=e1708]:
+              - generic [ref=e1709]: Backstage
+              - generic [ref=e1710]:
+                - heading "Coulisses" [level=3] [ref=e1711]
+                - img [ref=e1712]
+          - button "Ouvrir Expression artistique" [ref=e1717] [cursor=pointer]:
+            - img "Expression artistique" [ref=e1718]
+            - generic [ref=e1720]:
+              - generic [ref=e1721]: Talent
+              - generic [ref=e1722]:
+                - heading "Expression artistique" [level=3] [ref=e1723]
+                - img [ref=e1724]
+          - button "Ouvrir Experience festival" [ref=e1729] [cursor=pointer]:
+            - img "Experience festival" [ref=e1730]
+            - generic [ref=e1732]:
+              - generic [ref=e1733]: Archive
+              - generic [ref=e1734]:
+                - heading "Experience festival" [level=3] [ref=e1735]
+                - img [ref=e1736]
+      - generic [ref=e1742]:
+        - generic [ref=e1743]:
+          - paragraph [ref=e1744]: Media Strategy
+          - heading "UNE VISIBILITÉ À GRANDE ÉCHELLE" [level=2] [ref=e1745]:
+            - text: UNE VISIBILITÉ
+            - text: À GRANDE ÉCHELLE
+          - paragraph [ref=e1746]: Festival Talent 2027 s’appuie sur une stratégie média moderne combinant réseaux sociaux, influenceurs, presse, production vidéo et couverture digitale pour maximiser l’impact des partenaires.
+        - generic [ref=e1747]:
+          - paragraph [ref=e1750]: Campagnes digitales
+          - paragraph [ref=e1753]: Influenceurs
+          - paragraph [ref=e1756]: Presse locale & internationale
+          - paragraph [ref=e1759]: TV / Radio
+          - paragraph [ref=e1762]: Contenus vidéo
+          - paragraph [ref=e1765]: Réseaux sociaux
+      - generic [ref=e1768]:
+        - generic [ref=e1769]:
+          - paragraph [ref=e1770]: FAQ
+          - heading "Questions Fréquentes." [level=2] [ref=e1771]:
+            - text: Questions
+            - text: Fréquentes.
+          - paragraph [ref=e1772]: Toutes les informations importantes concernant l’expérience FT2027.
+        - generic [ref=e1773]:
+          - generic [ref=e1774]:
+            - button "Ou se deroule FT2027 ?" [expanded] [ref=e1775] [cursor=pointer]:
+              - heading "Ou se deroule FT2027 ?" [level=3] [ref=e1776]
+              - img [ref=e1778]
+            - region [ref=e1779]:
+              - generic [ref=e1780]: Festival Talent 2027 prepare une tournee europeenne entre Paris et Rome, de janvier a avril 2027, precedee par des pre-selections officielles.
+          - button "Comment reserver ?" [ref=e1782] [cursor=pointer]:
+            - heading "Comment reserver ?" [level=3] [ref=e1783]
+            - img [ref=e1785]
+          - button "Comment devenir partenaire ?" [ref=e1787] [cursor=pointer]:
+            - heading "Comment devenir partenaire ?" [level=3] [ref=e1788]
+            - img [ref=e1790]
+      - generic [ref=e1793]:
+        - paragraph [ref=e1794]: Stay Updated
+        - heading "RESTEZ CONNECTÉ AU FESTIVAL" [level=2] [ref=e1795]:
+          - text: RESTEZ CONNECTÉ
+          - text: AU FESTIVAL
+        - paragraph [ref=e1796]: Recevez les annonces officielles, les informations artistes, partenaires, billetterie et opportunités autour de Festival Talent 2027.
+        - generic [ref=e1797]:
+          - textbox "Votre adresse email" [ref=e1798]
+          - button "S'inscrire" [ref=e1799] [cursor=pointer]: S'inscrire
+      - region "ACTE 8 - L'avenir" [ref=e1801]:
+        - generic [ref=e1802]:
+          - generic [ref=e1803]:
+            - paragraph [ref=e1804]: ACTE 8
+            - heading "L'avenir" [level=2] [ref=e1805]
+          - paragraph [ref=e1806]: Festival Talent prepare une marque culturelle, une communaute et une vision africaine.
+      - generic [ref=e1808]:
+        - generic [ref=e1809]:
+          - paragraph [ref=e1810]:
+            - img [ref=e1811]
+            - text: L'Afrique de demain.
+          - heading "Une vision qui part du Senegal et regarde plus loin." [level=2] [ref=e1816]
+          - paragraph [ref=e1817]: "Festival Talent ambitionne d'accompagner les talents du Senegal, puis de construire progressivement une dynamique ouverte a toute l'Afrique creative. C'est une vision, pas une annonce : elle se construira avec les partenaires, les regions, les talents et le temps."
+        - generic [ref=e1821]:
+          - img [ref=e1823]
+          - generic [ref=e1826]: Senegal
+          - generic [ref=e1827]: Regions
+          - generic [ref=e1828]: Diaspora
+          - generic [ref=e1829]: Afrique de l'Ouest
+          - generic [ref=e1830]: Afrique creative
+      - generic [ref=e1832]:
+        - generic [ref=e1833]:
+          - generic [ref=e1834]:
+            - paragraph [ref=e1835]: Vision plateforme
+            - 'heading "Au-delà du festival : une plateforme" [level=2] [ref=e1836]':
+              - text: "Au-delà du festival :"
+              - generic [ref=e1837]: une plateforme
+          - generic [ref=e1838]:
+            - paragraph [ref=e1839]: Festival Talent 2027 prépare une infrastructure numérique capable d’accompagner les candidats, partenaires, artistes, médias et équipes sur plusieurs éditions.
+            - link "Découvrir la vision" [ref=e1840] [cursor=pointer]:
+              - /url: /os
+              - text: Découvrir la vision
+              - img [ref=e1841]
+        - generic [ref=e1843]:
+          - generic [ref=e1845]:
+            - generic [ref=e1846]:
+              - img [ref=e1848]
+              - generic [ref=e1851]: Vision
+            - heading "Festival Talent OS" [level=3] [ref=e1852]
+            - paragraph [ref=e1853]: "Festival Talent OS est la vision long terme de la plateforme numérique Festival Talent : un système destiné à accompagner les candidats, partenaires, médias, équipes et organisateurs sur plusieurs éditions."
+          - generic [ref=e1855]:
+            - generic [ref=e1856]:
+              - img [ref=e1858]
+              - generic [ref=e1860]: Bientôt
+            - heading "Billetterie future" [level=3] [ref=e1861]
+            - paragraph [ref=e1862]: La billetterie officielle est préparée comme un futur espace de réservation, contrôle d'accès et tickets activités, sans paiement réel en V8.
+          - generic [ref=e1864]:
+            - generic [ref=e1865]:
+              - img [ref=e1867]
+              - generic [ref=e1870]: Préparation
+            - heading "Festival TV" [level=3] [ref=e1871]
+            - paragraph [ref=e1872]: Festival TV prépare un futur espace vidéo pour lives, replays, interviews, coulisses, performances, archives et couverture média.
+          - generic [ref=e1874]:
+            - generic [ref=e1875]:
+              - img [ref=e1877]
+              - generic [ref=e1880]: Futur
+            - heading "Académie" [level=3] [ref=e1881]
+            - paragraph [ref=e1882]: L'Académie Festival Talent prépare un futur cadre de masterclass, coaching, mentorat et formation progressive.
+          - generic [ref=e1884]:
+            - generic [ref=e1885]:
+              - img [ref=e1887]
+              - generic [ref=e1889]: Vision
+            - heading "Application mobile" [level=3] [ref=e1890]
+            - paragraph [ref=e1891]: L'application mobile est une vision future de la plateforme Festival Talent pour suivre candidats, programme, médias, actualités et billets futurs.
+          - generic [ref=e1893]:
+            - generic [ref=e1894]:
+              - img [ref=e1896]
+              - generic [ref=e1899]: Futur
+            - heading "IA Festival Talent" [level=3] [ref=e1900]
+            - paragraph [ref=e1901]: L'assistant IA Festival Talent sera développé progressivement pour orienter, informer et aider sans remplacer l'équipe officielle.
+      - generic [ref=e1903]:
+        - img [ref=e1905]
+        - paragraph [ref=e1907]: Reconnaissance éternelle
+        - generic [ref=e1908]:
+          - heading "Merci Seigneur" [level=2] [ref=e1909]:
+            - text: Merci
+            - generic [ref=e1910]: Seigneur
+          - generic:
+            - text: Merci
+            - generic: Seigneur
+        - paragraph [ref=e1911]: Toute la gloire revient à Dieu. Rien de grand ne s’élève sans Sa grâce, Sa lumière et Sa bénédiction.
+        - generic [ref=e1912]:
+          - generic [ref=e1913]:
+            - img [ref=e1914]
+            - paragraph [ref=e1917]: Grâce
+            - paragraph [ref=e1918]: Pour chaque porte ouverte, chaque rencontre et chaque opportunité.
+          - generic [ref=e1919]:
+            - img [ref=e1920]
+            - paragraph [ref=e1922]: Lumière
+            - paragraph [ref=e1923]: Pour guider le projet, les talents et toutes les personnes qui y croient.
+          - generic [ref=e1924]:
+            - img [ref=e1925]
+            - paragraph [ref=e1927]: Bénédiction
+            - paragraph [ref=e1928]: Que Festival Talent soit une source d’espoir, d’impact et d’élévation.
+        - generic [ref=e1929]:
+          - paragraph [ref=e1930]: Festival Talent 2027
+          - paragraph [ref=e1931]: Ce projet avance avec foi, vision et détermination.
+  - contentinfo [ref=e1935]:
+    - generic [ref=e1937]:
+      - generic [ref=e1938]:
+        - generic [ref=e1939]:
+          - link "FT2027" [ref=e1940] [cursor=pointer]:
+            - /url: /
+            - heading "FT2027" [level=2] [ref=e1943]
+          - paragraph [ref=e1944]: Festival Talent 2027 réunit musique, mode, culture, innovation et jeunesse dans une expérience immersive internationale.
+        - generic [ref=e1945]:
+          - paragraph [ref=e1946]: Navigation
+          - generic [ref=e1947]:
+            - link "Festival Talent OS" [ref=e1948] [cursor=pointer]:
+              - /url: /os
+            - link "Actualités" [ref=e1949] [cursor=pointer]:
+              - /url: /news
+            - link "Communauté" [ref=e1950] [cursor=pointer]:
+              - /url: /communaute
+            - link "Opportunités" [ref=e1951] [cursor=pointer]:
+              - /url: /opportunites
+            - link "Mentors & Coachs" [ref=e1952] [cursor=pointer]:
+              - /url: /mentors
+            - link "Équipe" [ref=e1953] [cursor=pointer]:
+              - /url: /team
+            - link "Espace candidat" [ref=e1954] [cursor=pointer]:
+              - /url: /candidat
+            - link "Statistiques" [ref=e1955] [cursor=pointer]:
+              - /url: /stats
+            - link "Contact" [ref=e1956] [cursor=pointer]:
+              - /url: /contact
+            - link "Activités" [ref=e1957] [cursor=pointer]:
+              - /url: /activites
+            - link "Pré-sélections" [ref=e1958] [cursor=pointer]:
+              - /url: /preselections
+            - link "Programme" [ref=e1959] [cursor=pointer]:
+              - /url: /programme
+            - link "Artistes" [ref=e1960] [cursor=pointer]:
+              - /url: /artists
+            - link "Partenaires" [ref=e1961] [cursor=pointer]:
+              - /url: /partners
+        - generic [ref=e1962]:
+          - paragraph [ref=e1963]: Partenaires
+          - generic [ref=e1964]:
+            - paragraph [ref=e1965]: Union Européenne - Partenaire Officiel Majeur
+            - paragraph [ref=e1966]: Sen Influenceurs - Partenaire Média & Influence Officiel
+            - paragraph [ref=e1967]: PIN EVENTS - Partenaire Événementiel, Production & Relations Institutionnelles
+            - paragraph [ref=e1968]: Val2Events - Partenaire associé
+        - generic [ref=e1969]:
+          - paragraph [ref=e1970]: Socials
+          - generic [ref=e1971]:
+            - link "Instagram" [ref=e1972] [cursor=pointer]:
+              - /url: https://instagram.com
+            - link "TikTok" [ref=e1973] [cursor=pointer]:
+              - /url: https://tiktok.com
+            - link "YouTube" [ref=e1974] [cursor=pointer]:
+              - /url: https://youtube.com
+            - link "Facebook" [ref=e1975] [cursor=pointer]:
+              - /url: https://facebook.com
+          - generic [ref=e1976]:
+            - paragraph [ref=e1977]: Plateforme
+            - generic [ref=e1978]:
+              - link "Festival Talent OS" [ref=e1979] [cursor=pointer]:
+                - /url: /os
+              - link "Billetterie future" [ref=e1980] [cursor=pointer]:
+                - /url: /billetterie
+              - link "Festival TV" [ref=e1981] [cursor=pointer]:
+                - /url: /tv
+              - link "Académie" [ref=e1982] [cursor=pointer]:
+                - /url: /academie
+              - link "Portail partenaires" [ref=e1983] [cursor=pointer]:
+                - /url: /portail-partenaires
+              - link "Application mobile" [ref=e1984] [cursor=pointer]:
+                - /url: /mobile
+              - link "IA Festival Talent" [ref=e1985] [cursor=pointer]:
+                - /url: /ia
+      - generic [ref=e1986]:
+        - paragraph [ref=e1987]: © 2027 Festival Talent. All rights reserved.
+        - generic [ref=e1988]:
+          - paragraph [ref=e1989]: Paris - Rome - Europe
+          - link "Admin" [ref=e1990] [cursor=pointer]:
+            - /url: /admin
+  - alert [ref=e1991]
+```
+
+# Test source
+
+```ts
+  1  | import { expect, test } from "@playwright/test";
+  2  | 
+  3  | test("redirects the root to the French home page", async ({ page }) => {
+  4  |   await page.goto("/");
+  5  |   await expect(page).toHaveURL(/\/fr$/);
+  6  | });
+  7  | 
+  8  | test("home page renders the hero and primary navigation", async ({ page }) => {
+  9  |   await page.goto("/fr");
+  10 | 
+> 11 |   await expect(page.getByRole("heading", { level: 1 })).toContainText(
+     |                                                         ^ Error: expect(locator).toContainText(expected) failed
+  12 |     "Révélons"
+  13 |   );
+  14 |   await expect(page.getByRole("navigation")).toBeVisible();
+  15 |   await expect(
+  16 |     page.getByRole("link", { name: /réserver/i }).first()
+  17 |   ).toBeVisible();
+  18 | });
+  19 | 
+```

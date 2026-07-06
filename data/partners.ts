@@ -2,6 +2,8 @@ export const partnersLogos = [
   { name: "Union Europeenne" },
   { name: "Sen Influenceurs" },
   { name: "PIN EVENTS", image: "/images/partners/pin-events.png" },
+  { name: "Agence Diassnor", image: "/images/partners/agence-diassnor.png" },
+  { name: "Centre Culturel Blaise Senghor", image: "/images/partners/blaise-senghor.png" },
   { name: "Mano Perfetto", image: "/images/partners/mano.jpeg" },
   { name: "Val2Events", image: "/images/partners/val2events.jpeg" },
   { name: "H & Hair", image: "/images/partners/h-hair.jpeg" },
@@ -30,6 +32,36 @@ export const officialPartners = [
     image: "/images/partners/pin-events.png",
     description:
       "Partenaire strategique pour la production evenementielle, les activations terrain, les partenariats et les relations institutionnelles.",
+  },
+  {
+    name: "Agence Diassnor",
+    slug: "diassnor",
+    label: "Partenaire Danse",
+    category: "Management artistique & Evenementiel",
+    sector: "Management artistique & Evenementiel",
+    responsibility:
+      "Responsable du Pole Danse : battles, preselections, organisation artistique et developpement des talents choregraphiques.",
+    badge: "Responsable du Pole Danse",
+    image: "/images/partners/agence-diassnor.png",
+    description:
+      "L'Agence Diassnor est une agence specialisee dans le management artistique et l'evenementiel. Dans le cadre de Festival Talent, elle pilote le Pole Danse et accompagne l'organisation des battles, des preselections et le developpement des talents choregraphiques.",
+    contact: {
+      email: "diassnor098@gmail.com",
+      phone: "+221 75 632 43 94",
+    },
+    href: "/partners/diassnor",
+  },
+  {
+    name: "Centre Culturel Blaise Senghor",
+    label: "Partenaire Danse",
+    category: "Partenaire Institutionnel",
+    sector: "Partenaire Institutionnel",
+    responsibility:
+      "Partenaire institutionnel et accompagnement du developpement de la danse.",
+    badge: "Partenaire Danse",
+    image: "/images/partners/blaise-senghor.png",
+    description:
+      "Le Centre Culturel Blaise Senghor accompagne Festival Talent dans le developpement du secteur Danse et contribue a la valorisation des arts choregraphiques ainsi qu'a l'encadrement des jeunes talents.",
   },
   {
     name: "Mano Perfetto",

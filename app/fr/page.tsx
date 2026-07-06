@@ -8,6 +8,10 @@ import StaffSection from "@/components/home/StaffSection";
 import CoachesSection from "@/components/home/CoachesSection";
 import CommunitySection from "@/components/home/CommunitySection";
 import WhyFTSection from "@/components/home/WhyFTSection";
+import HomeActTransition from "@/components/home/HomeActTransition";
+import TalentStoriesSection from "@/components/home/TalentStoriesSection";
+import AfricaTomorrowSection from "@/components/home/AfricaTomorrowSection";
+import TalentPlatformJourneySection from "@/components/home/TalentPlatformJourneySection";
 import ArtistsSection from "@/components/home/ArtistsSection";
 import JuryComingSoonSection from "@/components/home/JuryComingSoonSection";
 import GallerySection from "@/components/home/GallerySection";
@@ -66,9 +70,31 @@ export default function HomePage() {
       <AnnouncementBar />
 
       <main className="min-h-screen bg-black text-white">
+        <HomeActTransition
+          act="ACTE 1"
+          title="Le rêve"
+          description="Tout commence par une conviction : un talent peut changer une trajectoire."
+        />
+
         <HeroSection />
 
+        <HomeActTransition
+          act="ACTE 2"
+          title="La découverte"
+          description="Le visiteur comprend pourquoi Festival Talent existe et comment un candidat entre dans le parcours."
+        />
+
         <WhyFTSection />
+
+        <TalentPlatformJourneySection />
+
+        <TalentStoriesSection />
+
+        <HomeActTransition
+          act="ACTE 3"
+          title="Les opportunités"
+          description="Les preselections, les activites et le programme transforment l'ambition en action."
+        />
 
         <BattleDanceSection />
 
@@ -76,11 +102,11 @@ export default function HomePage() {
 
         <ProgrammePreview events={homeProgrammeEvents} />
 
-        <ArtistsSection />
-
-        <JuryComingSoonSection />
-
-        <SectionDivider />
+        <HomeActTransition
+          act="ACTE 4"
+          title="Les coachs"
+          description="L'accompagnement donne au talent des reperes, une exigence et une direction."
+        />
 
         <StaffSection />
 
@@ -88,7 +114,31 @@ export default function HomePage() {
 
         <CommunitySection />
 
+        <HomeActTransition
+          act="ACTE 5"
+          title="Les artistes"
+          description="Les artistes confirmes donnent au projet son energie culturelle et sa projection."
+        />
+
+        <ArtistsSection />
+
+        <JuryComingSoonSection />
+
+        <SectionDivider />
+
+        <HomeActTransition
+          act="ACTE 6"
+          title="Les partenaires"
+          description="Les partenaires rendent la plateforme credible, durable et capable de grandir."
+        />
+
         <PartnersSection />
+
+        <HomeActTransition
+          act="ACTE 7"
+          title="La finale"
+          description="La scene finale devient le symbole d'un parcours, pas seulement d'une competition."
+        />
 
         <TicketsSection />
 
@@ -101,6 +151,14 @@ export default function HomePage() {
         <FAQSection />
 
         <NewsletterSection />
+
+        <HomeActTransition
+          act="ACTE 8"
+          title="L'avenir"
+          description="Festival Talent prepare une marque culturelle, une communaute et une vision africaine."
+        />
+
+        <AfricaTomorrowSection />
 
         <PlatformVisionSection />
 

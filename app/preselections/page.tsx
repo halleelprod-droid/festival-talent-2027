@@ -5,6 +5,7 @@ import {
   BadgeCheck,
   Crown,
   Globe2,
+  Handshake,
   MapPin,
   Mic2,
   Plane,
@@ -152,6 +153,33 @@ export default function PreselectionsPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="overflow-hidden rounded-[3rem] border border-red-500/25 bg-red-500/[0.07] p-8 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10 lg:p-12">
+            <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-red-400/30 bg-black/40 text-red-300">
+                <Handshake size={30} />
+              </div>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.32em] text-red-300">
+                  Organisation du Battle
+                </p>
+                <h2 className="mt-4 text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
+                  Agence Diassnor coordonne le pole Danse
+                </h2>
+                <p className="mt-5 text-sm leading-7 text-white/65 sm:text-base sm:leading-8">
+                  Le Battle Dance du Festival Talent est organise en partenariat
+                  avec l&apos;Agence Diassnor, structure specialisee dans le
+                  management artistique et l&apos;evenementiel. Son expertise garantit
+                  une organisation professionnelle des preselections, des battles
+                  et de l&apos;accompagnement des danseurs.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

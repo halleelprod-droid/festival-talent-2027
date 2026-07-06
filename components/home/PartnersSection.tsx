@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Image from "next/image";
 import {
   BadgeCheck,
@@ -37,6 +39,22 @@ const officialPartners = [
     logo: "/images/partners/pin-events.png",
   },
   {
+    name: "Agence Diassnor",
+    label: "Responsable du Pole Danse",
+    description:
+      "Agence specialisee dans le management artistique et l'evenementiel, Diassnor pilote le Pole Danse, les battles, les preselections et l'accompagnement des danseurs.",
+    icon: Sparkles,
+    logo: "/images/partners/agence-diassnor.png",
+  },
+  {
+    name: "Centre Culturel Blaise Senghor",
+    label: "Partenaire Danse",
+    description:
+      "Partenaire institutionnel, le Centre Culturel Blaise Senghor contribue a la valorisation des arts choregraphiques et a l'encadrement des jeunes talents.",
+    icon: Building2,
+    logo: "/images/partners/blaise-senghor.png",
+  },
+  {
     name: "Mano Perfetto",
     label: "Partenaire Construction & Développement",
     description:
@@ -60,6 +78,10 @@ const officialPartners = [
 ];
 
 const associatedPartners = ["VAL2EVENTS"];
+
+function hasPublicAsset(src: string) {
+  return existsSync(join(process.cwd(), "public", src));
+}
 
 export default function PartnersSection() {
   return (
@@ -117,13 +139,19 @@ export default function PartnersSection() {
 
                     {"logo" in partner && partner.logo ? (
                       <div className="mt-4 inline-flex rounded-2xl border border-yellow-400/25 bg-black/40 p-3">
-                        <Image
-                          src={partner.logo}
-                          alt={`Logo ${partner.name}`}
-                          width={150}
-                          height={48}
-                          className="h-12 w-auto object-contain"
-                        />
+                        {hasPublicAsset(partner.logo) ? (
+                          <Image
+                            src={partner.logo}
+                            alt={`Logo ${partner.name}`}
+                            width={150}
+                            height={48}
+                            className="h-12 w-auto object-contain"
+                          />
+                        ) : (
+                          <span className="flex h-12 min-w-36 items-center justify-center text-center text-xs font-black uppercase tracking-[0.16em] text-yellow-300">
+                            {partner.name}
+                          </span>
+                        )}
                       </div>
                     ) : null}
 

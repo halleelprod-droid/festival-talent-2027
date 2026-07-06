@@ -15,6 +15,18 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/team",
 });
 
+const partnerStructures = [
+  {
+    name: "PIN EVENTS",
+    role: "Production evenementielle, partenariats et relations institutionnelles",
+    logo: "/images/partners/pin-events.png",
+  },
+  {
+    name: "Agence Diassnor",
+    role: "Gestion du pole Danse, battles et coordination artistique",
+  },
+];
+
 export default function TeamPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
@@ -144,6 +156,54 @@ export default function TeamPage() {
               </PremiumCard>
             );
           })}
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-28 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Structures partenaires"
+            icon={Handshake}
+            align="center"
+            className="max-w-4xl"
+            title="Organisation & terrain"
+            description="Festival Talent s'appuie sur des structures partenaires pour renforcer la production, les relations institutionnelles et la coordination artistique des disciplines."
+          />
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {partnerStructures.map((structure) => (
+              <PremiumCard key={structure.name} tone="gold" className="p-7">
+                <article className="flex h-full flex-col gap-6 sm:flex-row sm:items-center">
+                  <div className="flex h-24 w-32 shrink-0 items-center justify-center rounded-lg border border-yellow-400/25 bg-black/45 p-4">
+                    {structure.logo ? (
+                      <Image
+                        src={structure.logo}
+                        alt={`Logo ${structure.name}`}
+                        width={140}
+                        height={70}
+                        className="h-14 w-auto object-contain"
+                      />
+                    ) : (
+                      <span className="text-center text-xs font-black uppercase tracking-[0.16em] text-yellow-300">
+                        {structure.name}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.24em] text-yellow-300">
+                      Structure partenaire
+                    </p>
+                    <h2 className="mt-3 text-2xl font-black uppercase text-white">
+                      {structure.name}
+                    </h2>
+                    <p className="mt-3 text-sm leading-7 text-white/62">
+                      {structure.role}
+                    </p>
+                  </div>
+                </article>
+              </PremiumCard>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -54,7 +54,7 @@ export const platformItems: PlatformItem[] = [
     ],
     cta: {
       label: "Voir la billetterie",
-      href: "/billetterie",
+      href: "/tickets",
     },
   },
   {

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -134,6 +135,27 @@ const officialPartners = [
     logo: "/images/partners/pin-events.png",
   },
   {
+    icon: Sparkles,
+    label: "Partenaire Danse",
+    name: "Agence Diassnor",
+    sector: "Management Artistique & Evenementiel",
+    badge: "Responsable du Pole Danse",
+    description:
+      "L'Agence Diassnor pilote le Pole Danse et accompagne l'organisation des battles, des preselections et le developpement des talents choregraphiques.",
+    logo: "/images/partners/agence-diassnor.png",
+    href: "/partners/diassnor",
+  },
+  {
+    icon: Building2,
+    label: "Partenaire Institutionnel",
+    name: "Centre Culturel Blaise Senghor",
+    sector: "Partenaire Institutionnel",
+    badge: "Partenaire Danse",
+    logo: "/images/partners/blaise-senghor.png",
+    description:
+      "Le Centre Culturel Blaise Senghor accompagne Festival Talent dans le developpement du secteur Danse et contribue a la valorisation des arts choregraphiques ainsi qu'a l'encadrement des jeunes talents.",
+  },
+  {
     icon: Building2,
     label: "Partenaire Construction & Développement",
     name: "Mano Perfetto",
@@ -163,6 +185,49 @@ const officialPartners = [
     logo: "/images/partners/val2events.jpeg",
   },
 ];
+
+const dancePartners = [
+  {
+    name: "Agence Diassnor",
+    label: "Responsable du Pole Danse",
+    sector: "Management Artistique & Evenementiel",
+    description:
+      "Organisation artistique, management et coordination des competitions.",
+    logo: "/images/partners/agence-diassnor.png",
+    href: "/partners/diassnor",
+  },
+  {
+    name: "Centre Culturel Blaise Senghor",
+    label: "Partenaire Danse",
+    sector: "Partenaire Institutionnel",
+    description:
+      "Partenaire institutionnel et accompagnement du developpement de la danse.",
+    logo: "/images/partners/blaise-senghor.png",
+  },
+];
+
+function PartnerLogo({ src, name }: { src?: string; name: string }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (!src || hasError) {
+    return (
+      <div className="flex h-16 min-w-36 items-center justify-center rounded-lg border border-yellow-400/20 bg-black/55 px-4 text-center text-xs font-black uppercase tracking-[0.16em] text-yellow-300">
+        {name}
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={`Logo ${name}`}
+      width={160}
+      height={80}
+      className="h-12 w-auto object-contain"
+      onError={() => setHasError(true)}
+    />
+  );
+}
 
 export default function PartnersPageClient() {
   return (
@@ -273,6 +338,67 @@ export default function PartnersPageClient() {
       <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-red-500/30 bg-red-500/10 px-5 py-2 text-xs font-black uppercase tracking-[0.35em] text-red-300">
+              <Sparkles size={16} />
+              Partenaires Danse
+            </div>
+
+            <h2 className="mt-8 text-4xl font-black uppercase leading-none tracking-tight sm:text-5xl lg:text-7xl">
+              Deux structures pour
+              <span className="block bg-gradient-to-r from-red-300 via-yellow-400 to-yellow-700 bg-clip-text text-transparent">
+                accompagner la danse
+              </span>
+            </h2>
+          </div>
+
+          <div className="mt-16 grid gap-6 lg:grid-cols-2">
+            {dancePartners.map((partner, index) => (
+              <motion.article
+                key={partner.name}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.6 }}
+                className="rounded-[2rem] border border-red-500/25 bg-red-500/[0.07] p-8 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-yellow-400/45"
+              >
+                <div className="w-fit rounded-2xl border border-yellow-400/25 bg-black/40 p-3">
+                  <PartnerLogo src={partner.logo} name={partner.name} />
+                </div>
+
+                <span className="mt-6 inline-flex rounded-full border border-yellow-400/25 bg-yellow-400/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-yellow-300">
+                  {partner.label}
+                </span>
+
+                <h3 className="mt-5 text-3xl font-black uppercase text-white">
+                  {partner.name}
+                </h3>
+
+                <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-white/55">
+                  {partner.sector}
+                </p>
+
+                <p className="mt-5 text-sm leading-7 text-white/62">
+                  {partner.description}
+                </p>
+
+                {partner.href ? (
+                  <Link
+                    href={partner.href}
+                    className="mt-7 inline-flex items-center justify-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-6 py-4 text-xs font-black uppercase tracking-[0.22em] text-yellow-300 transition hover:bg-yellow-400 hover:text-black"
+                  >
+                    Decouvrir
+                    <ArrowRight size={15} />
+                  </Link>
+                ) : null}
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-4xl text-center">
             <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-5 py-2 text-xs font-black uppercase tracking-[0.35em] text-yellow-300">
               <BadgeCheck size={16} />
               Partenaires officiels
@@ -307,25 +433,41 @@ export default function PartnersPageClient() {
                     {partner.label}
                   </p>
 
+                  {"badge" in partner && partner.badge ? (
+                    <span className="mt-4 inline-flex rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-red-300">
+                      {partner.badge}
+                    </span>
+                  ) : null}
+
                   <h3 className="mt-4 text-3xl font-black uppercase text-white">
                     {partner.name}
                   </h3>
 
+                  {"sector" in partner && partner.sector ? (
+                    <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-white/55">
+                      {partner.sector}
+                    </p>
+                  ) : null}
+
                   {"logo" in partner && partner.logo ? (
                     <div className="mt-5 w-fit rounded-2xl border border-yellow-400/25 bg-black/40 p-3">
-                      <Image
-                        src={partner.logo}
-                        alt={`Logo ${partner.name}`}
-                        width={160}
-                        height={80}
-                        className="h-12 w-auto object-contain"
-                      />
+                      <PartnerLogo src={partner.logo} name={partner.name} />
                     </div>
                   ) : null}
 
                   <p className="mt-4 text-sm leading-7 text-white/60">
                     {partner.description}
                   </p>
+
+                  {"href" in partner && partner.href ? (
+                    <Link
+                      href={partner.href}
+                      className="mt-7 inline-flex items-center justify-center gap-3 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-6 py-4 text-xs font-black uppercase tracking-[0.22em] text-yellow-300 transition hover:bg-yellow-400 hover:text-black"
+                    >
+                      Decouvrir
+                      <ArrowRight size={15} />
+                    </Link>
+                  ) : null}
                 </motion.article>
               );
             })}
