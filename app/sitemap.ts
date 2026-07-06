@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/ia", changeFrequency: "monthly", priority: 0.7 },
     { path: "/vision", changeFrequency: "monthly", priority: 0.9 },
     { path: "/impact", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/histoire", changeFrequency: "monthly", priority: 0.9 },
     { path: "/espace-talent", changeFrequency: "monthly", priority: 0.88 },
     { path: "/candidat", changeFrequency: "monthly", priority: 0.85 },
     { path: "/awards", changeFrequency: "monthly", priority: 0.86 },

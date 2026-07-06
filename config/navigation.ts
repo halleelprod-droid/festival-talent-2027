@@ -29,6 +29,7 @@ export const footerNavigationLinks = [
   { label: "Espace candidat", href: "/candidat" },
   { label: "Statistiques", href: "/stats" },
   { label: "Impact", href: "/impact" },
+  { label: "Histoire", href: "/histoire" },
   { label: "Awards", href: "/awards" },
   { label: "Hall of Fame", href: "/hall-of-fame" },
   { label: "Presse", href: "/presse" },
