@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/seo";
 import PartnersPageClient from "./PartnersPageClient";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Partenaires et sponsors",
+  title: "Partenaires | Festival Talent 2027",
   description:
-    "Partenaires Festival Talent 2027 : Union Europeenne, Sen Influenceurs, PIN EVENTS, Agence Diassnor, Centre Culturel Blaise Senghor et partenaires officiels.",
+    "Construisons ensemble l'avenir des talents avec Festival Talent 2027 : partenaires institutionnels, bancaires, digitaux, medias, strategiques, artistiques et lifestyle.",
   path: "/partners",
 });
 
