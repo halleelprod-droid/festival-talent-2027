@@ -8,6 +8,8 @@ export const primaryNavigationLinks = [
 ];
 
 export const moreNavigationLinks = [
+  { label: "Institution", href: "/institution" },
+  { label: "Institution", href: "/institution" },
   { label: "Plateforme", href: "/os" },
   { label: "Actualités", href: "/news" },
   { label: "Communauté", href: "/communaute" },
@@ -20,6 +22,16 @@ export const moreNavigationLinks = [
 ];
 
 export const footerNavigationLinks = [
+  { label: "Institution", href: "/institution" },
+  { label: "Gouvernance", href: "/institution/gouvernance" },
+  { label: "Transparence", href: "/institution/transparence" },
+  { label: "Documents officiels", href: "/institution/documents-officiels" },
+  { label: "Contact institutionnel", href: "/institution/contact-institutionnel" },
+  { label: "Institution", href: "/institution" },
+  { label: "Gouvernance", href: "/institution/gouvernance" },
+  { label: "Transparence", href: "/institution/transparence" },
+  { label: "Documents officiels", href: "/institution/documents-officiels" },
+  { label: "Contact institutionnel", href: "/institution/contact-institutionnel" },
   { label: "Festival Talent OS", href: "/os" },
   { label: "Actualités", href: "/news" },
   { label: "Communauté", href: "/communaute" },

@@ -6,6 +6,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const routes = [
     { path: "/fr", changeFrequency: "weekly", priority: 1 },
+    { path: "/institution", changeFrequency: "monthly", priority: 0.92 },
+    { path: "/institution/gouvernance", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/institution/vision", changeFrequency: "monthly", priority: 0.88 },
+    { path: "/institution/impact", changeFrequency: "monthly", priority: 0.88 },
+    { path: "/institution/transparence", changeFrequency: "monthly", priority: 0.88 },
+    { path: "/institution/documents-officiels", changeFrequency: "monthly", priority: 0.84 },
+    { path: "/institution/partenaires", changeFrequency: "monthly", priority: 0.86 },
+    { path: "/institution/presse", changeFrequency: "monthly", priority: 0.84 },
+    { path: "/institution/contact-institutionnel", changeFrequency: "monthly", priority: 0.86 },
     { path: "/news", changeFrequency: "weekly", priority: 0.95 },
     { path: "/os", changeFrequency: "monthly", priority: 0.85 },
     { path: "/tv", changeFrequency: "monthly", priority: 0.75 },
