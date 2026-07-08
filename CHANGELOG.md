@@ -2,6 +2,32 @@
 
 Historique des évolutions notables. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/), une entrée par lot livré.
 
+## [v5 — organigramme officiel] — 2026-07
+
+### Ajouté
+- **Organigramme officiel** sur `/team` (`components/team/OrgChart.tsx`, données `data/organisation.ts`) : Direction Générale (Zairah Diamant Noire, Fondatrice & Présidente) au sommet, puis 5 directions — Partenariats & Relations Institutionnelles (Pierre Ndiaye / PIN EVENTS), Digitale (SIDRA), Média & Communication (HALLEEL), Danse (Agence Diassnor), Partenaire Institutionnel Danse (Centre Culturel Blaise Senghor). Animations légères (apparition en cascade, ligne de connexion animée).
+- **SIDRA** (Partenaire Digital Officiel) et **HALLEEL** (Partenaire Média & Communication) ajoutés aux partenaires officiels (`data/partners.ts`, page `/partners`, structures partenaires de `/team`). Logos à fournir par les intéressés.
+
+### Modifié
+- Titre de Zairah Diamant Noire : "Initiatrice du projet" → **"Fondatrice & Présidente"** (propagé via `data/staff.ts` : home + `/team`). Aucun membre ni partenaire supprimé.
+
+### Dette notée
+- `app/partners/PartnersPageClient.tsx` garde sa propre copie locale des partenaires au lieu de consommer `data/partners.ts` — consolidation à faire dans un lot dédié.
+
+## [v5 — lot billetterie & museum] — 2026-07
+
+### Ajouté
+- **Musée numérique `/museum`** : frise chronologique de l'édition 2027, affiches officielles (structure prête, visuels à venir), galerie photos d'archives, salle des trophées (à venir après la finale), vidéos d'archives, section lauréats reliée au Hall of Fame. Données dans `data/museum.ts`, ajouté au footer et au sitemap.
+- Tests E2E `/tickets` (8 pass, mentions "aucun paiement", redirect) et `/museum` (sections d'exposition) — suite Playwright à 6 tests.
+
+### Consolidé (billetterie)
+- La billetterie simulée `/tickets` (construite précédemment : 10 composants, 8 pass, comparatif, stepper, paiements "Bientôt", QR factice, maquette compte, FAQ, garde-fous) est vérifiée, alignée sur les conventions (`.font-display`, contrastes AA) et couverte par les E2E.
+- `/billetterie` (doublon) redirige de façon permanente vers `/tickets` (URL canonique unique) ; retiré du sitemap ; CTA plateforme repointé.
+- Suppression de l'orphelin `app/tickets/TicketsPageClient.tsx`.
+
+### Corrigé
+- **Régression accessibilité majeure** : `SectionHeader` rendait un `<h1>` en dur, produisant jusqu'à 8 h1 par page sur 14 pages. Prop `as?: "h1"|"h2"` ajoutée (défaut h1), 45 usages de section convertis en h2 — chaque page a de nouveau exactement un h1 (invariant protégé par les E2E). Titres `SectionHeader` passés en `.font-display` au passage.
+
 ## [v4] — 2026-07
 
 ### Gouvernance & documentation

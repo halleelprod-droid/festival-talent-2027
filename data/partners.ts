@@ -1,6 +1,8 @@
 export const partnersLogos = [
   { name: "Union Europeenne" },
   { name: "Sen Influenceurs" },
+  { name: "SIDRA" },
+  { name: "HALLEEL" },
   { name: "PIN EVENTS", image: "/images/partners/pin-events.png" },
   { name: "Agence Diassnor", image: "/images/partners/agence-diassnor.png" },
   { name: "Centre Culturel Blaise Senghor", image: "/images/partners/blaise-senghor.png" },
@@ -32,6 +34,24 @@ export const officialPartners = [
     image: "/images/partners/pin-events.png",
     description:
       "Partenaire strategique pour la production evenementielle, les activations terrain, les partenariats et les relations institutionnelles.",
+  },
+  {
+    name: "SIDRA",
+    label: "Partenaire Digital Officiel",
+    category: "Digital",
+    sector: "Direction Digitale",
+    badge: "Direction Digitale",
+    description:
+      "SIDRA accompagne Festival Talent dans la conception, le developpement, la maintenance, la securite, le referencement (SEO) et l'evolution de la plateforme numerique officielle.",
+  },
+  {
+    name: "HALLEEL",
+    label: "Partenaire Media & Communication",
+    category: "Media",
+    sector: "Direction Media & Communication",
+    badge: "Direction Media & Communication",
+    description:
+      "HALLEEL est en charge de la strategie de communication, de la production audiovisuelle, des contenus digitaux, des reseaux sociaux et de la couverture mediatique officielle du Festival Talent.",
   },
   {
     name: "Agence Diassnor",

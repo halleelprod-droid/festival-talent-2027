@@ -185,7 +185,7 @@ export default function HistoirePageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <PremiumCard className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Pourquoi"
               icon={Compass}
               title="Pourquoi Festival Talent ?"
@@ -207,7 +207,7 @@ export default function HistoirePageClient() {
           </PremiumCard>
 
           <PremiumCard className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Vision"
               icon={Lightbulb}
               title="La vision de l'initiatrice"
@@ -219,7 +219,7 @@ export default function HistoirePageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Promesse"
             icon={BadgeCheck}
             title="Notre promesse"
@@ -258,7 +258,7 @@ export default function HistoirePageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Parcours"
             icon={Footprints}
             title="Le parcours d'un talent"
@@ -304,7 +304,7 @@ export default function HistoirePageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <PremiumCard tone="gold" className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Collectif"
               icon={Users}
               title="Une aventure collective"

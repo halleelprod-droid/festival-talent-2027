@@ -1,89 +1,87 @@
-import { Crown, Sparkles, Star } from "lucide-react";
+const sacredNames = [
+  {
+    label: "ܐܠܗܐ",
+    caption: "Alāhā — araméen",
+    dir: "ltr",
+  },
+  {
+    label: "الله",
+    caption: "Allāh — arabe",
+    dir: "rtl",
+  },
+  {
+    label: "Dieu",
+    caption: "français",
+    dir: "ltr",
+  },
+] as const;
 
 export default function GratitudeSection() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-32 text-white sm:px-10 lg:px-20">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(234,179,8,0.22),transparent_34%),linear-gradient(to_bottom,#000,rgba(14,10,2,0.98),#000)]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-yellow-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-red-600/10 blur-3xl" />
+    <section
+      aria-labelledby="gratitude-title"
+      className="relative overflow-hidden bg-gradient-to-b from-black via-[#05060a] to-black px-6 py-24 text-white sm:px-10 lg:px-20"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.16),transparent_34%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-300/10 blur-3xl sm:h-[28rem] sm:w-[28rem]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-200/30 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl text-center">
-        <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-[2rem] border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 shadow-2xl shadow-yellow-900/30 backdrop-blur-xl">
-          <Crown size={46} />
-        </div>
-
-        <p className="mt-10 text-xs font-black uppercase tracking-[0.45em] text-yellow-300 sm:text-sm">
-          Reconnaissance éternelle
+      <div className="relative mx-auto max-w-5xl text-center">
+        <p className="text-xs font-black uppercase tracking-[0.32em] text-yellow-200/75">
+          À Dieu la gloire
         </p>
 
-        <div className="relative mx-auto mt-10 max-w-6xl">
-          <h2
-            className="font-display select-none text-6xl uppercase leading-none tracking-tight text-transparent sm:text-8xl lg:text-9xl"
-            style={{
-              WebkitTextStroke: "1px rgba(250, 204, 21, 0.65)",
-              textShadow:
-                "0 1px 0 #7c5a00, 0 2px 0 #6b4d00, 0 3px 0 #5a4100, 0 4px 0 #493500, 0 5px 0 #382800, 0 18px 35px rgba(0,0,0,0.85), 0 0 70px rgba(250,204,21,0.35)",
-            }}
-          >
-            Merci
-            <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-800 bg-clip-text text-transparent">
-              Seigneur
-            </span>
-          </h2>
+        <h2
+          id="gratitude-title"
+          className="mt-5 text-3xl font-light leading-tight text-white sm:text-5xl"
+        >
+          Toute la gloire revient au Créateur du ciel et de la terre.
+        </h2>
 
-          <div className="pointer-events-none absolute inset-0 -z-10 translate-x-3 translate-y-3 text-6xl font-black uppercase leading-none tracking-tight text-yellow-900/25 blur-[1px] sm:text-8xl lg:text-9xl">
-            Merci
-            <span className="block">Seigneur</span>
-          </div>
+        <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
+          {sacredNames.map((name) => (
+            <div
+              key={name.label}
+              className="rounded-lg border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 backdrop-blur-md transition duration-300 hover:border-yellow-200/35 hover:bg-yellow-200/[0.055]"
+            >
+              <p
+                dir={name.dir}
+                className="text-4xl font-semibold leading-none text-yellow-100 sm:text-5xl"
+              >
+                {name.label}
+              </p>
+              <p className="mt-4 text-sm font-medium text-white/68">
+                {name.caption}
+              </p>
+            </div>
+          ))}
         </div>
 
-        <p className="mx-auto mt-12 max-w-4xl text-xl font-bold leading-9 text-white/75 sm:text-2xl sm:leading-10">
-          Toute la gloire revient à Dieu. Rien de grand ne s’élève sans Sa
-          grâce, Sa lumière et Sa bénédiction.
+        <div
+          aria-hidden="true"
+          className="mx-auto my-14 h-px max-w-2xl bg-gradient-to-r from-transparent via-yellow-300/35 to-transparent"
+        />
+
+        <p className="mx-auto max-w-3xl whitespace-pre-line text-lg leading-8 text-white/76 sm:text-xl">
+          {
+            "Un seul Créateur.\nSource de toute sagesse, de tout talent et de toute grâce."
+          }
         </p>
 
-        <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-3">
-          <div className="rounded-[2rem] border border-yellow-400/20 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
-            <Sparkles className="mx-auto text-yellow-300" size={30} />
-            <p className="mt-5 text-xs font-black uppercase tracking-[0.28em] text-yellow-300">
-              Grâce
-            </p>
-            <p className="mt-3 text-sm leading-7 text-white/60">
-              Pour chaque porte ouverte, chaque rencontre et chaque opportunité.
-            </p>
-          </div>
+        <div
+          aria-hidden="true"
+          className="mx-auto my-14 h-px max-w-3xl bg-gradient-to-r from-transparent via-yellow-200/60 to-transparent"
+        />
 
-          <div className="rounded-[2rem] border border-yellow-400/20 bg-yellow-400/[0.08] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
-            <Star className="mx-auto text-yellow-300" size={30} />
-            <p className="mt-5 text-xs font-black uppercase tracking-[0.28em] text-yellow-300">
-              Lumière
-            </p>
-            <p className="mt-3 text-sm leading-7 text-white/60">
-              Pour guider le projet, les talents et toutes les personnes qui y
-              croient.
-            </p>
-          </div>
-
-          <div className="rounded-[2rem] border border-yellow-400/20 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
-            <Crown className="mx-auto text-yellow-300" size={30} />
-            <p className="mt-5 text-xs font-black uppercase tracking-[0.28em] text-yellow-300">
-              Bénédiction
-            </p>
-            <p className="mt-3 text-sm leading-7 text-white/60">
-              Que Festival Talent soit une source d’espoir, d’impact et
-              d’élévation.
-            </p>
-          </div>
-        </div>
-
-        <div className="mx-auto mt-14 max-w-3xl rounded-[2.5rem] border border-yellow-400/25 bg-black/45 p-8 shadow-2xl shadow-yellow-950/30 backdrop-blur-xl">
-          <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
-            Festival Talent 2027
+        <div className="mx-auto max-w-3xl">
+          <p className="text-sm font-black uppercase tracking-[0.36em] text-yellow-200">
+            Festival Talent
           </p>
-
-          <p className="mt-5 text-2xl font-black uppercase leading-tight text-white sm:text-3xl">
-            Ce projet avance avec foi, vision et détermination.
+          <p className="mt-6 whitespace-pre-line text-2xl font-light leading-relaxed text-white sm:text-3xl">
+            {"Révéler les talents.\nÉlever les générations.\nTransformer des vies."}
+          </p>
+          <p className="mt-10 text-sm italic leading-7 text-white/45">
+            À Dieu seul soit toute la gloire.
           </p>
         </div>
       </div>

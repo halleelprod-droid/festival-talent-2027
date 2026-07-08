@@ -213,7 +213,7 @@ export default function HallOfFamePageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <PremiumCard className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Pourquoi"
               icon={ShieldCheck}
               title="Pourquoi un Hall of Fame ?"
@@ -225,7 +225,7 @@ export default function HallOfFamePageClient() {
 
       <section id="categories" className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Categories"
             icon={Crown}
             title="Ceux que l'histoire retiendra"
@@ -281,7 +281,7 @@ export default function HallOfFamePageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Apres la victoire"
             icon={Rocket}
             title="Le parcours continue"

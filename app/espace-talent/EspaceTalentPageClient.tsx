@@ -315,7 +315,7 @@ export default function EspaceTalentPageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Parcours"
             icon={Rocket}
             title="Votre trajectoire"
@@ -361,7 +361,7 @@ export default function EspaceTalentPageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <PremiumCard tone="gold" className="p-7 sm:p-8">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Progression"
               icon={Award}
               title="Mes competences"
@@ -396,7 +396,7 @@ export default function EspaceTalentPageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
           <PremiumCard className="p-7 sm:p-8">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Badges"
               icon={Star}
               title="Mes recompenses"
@@ -420,7 +420,7 @@ export default function EspaceTalentPageClient() {
           </PremiumCard>
 
           <PremiumCard className="p-7 sm:p-8">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Calendrier"
               icon={CalendarDays}
               title="Mes prochains rendez-vous"
@@ -458,7 +458,7 @@ export default function EspaceTalentPageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <PremiumCard className="p-7 sm:p-8">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Messages"
               icon={Mail}
               title="Messages du Festival"
@@ -482,7 +482,7 @@ export default function EspaceTalentPageClient() {
           </PremiumCard>
 
           <PremiumCard className="p-7 sm:p-8">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Ouvertures"
               icon={Sparkles}
               title="Mes opportunites"
@@ -515,7 +515,7 @@ export default function EspaceTalentPageClient() {
       <section className="relative px-6 pb-28 pt-16 sm:px-10 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <PremiumCard tone="gold" className="p-7 sm:p-8">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Evolution"
               icon={Trophy}
               title="Mon evolution"

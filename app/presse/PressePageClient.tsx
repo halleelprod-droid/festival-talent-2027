@@ -169,7 +169,7 @@ export default function PressePageClient() {
 
       <section id="ressources" className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Kit media"
             icon={FileArchive}
             title="Ressources officielles"
@@ -208,7 +208,7 @@ export default function PressePageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Actualites presse"
             icon={Newspaper}
             title="Communiques recents"
@@ -242,7 +242,7 @@ export default function PressePageClient() {
       <section id="contacts-presse" className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <PremiumCard tone="gold" className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Contacts presse"
               icon={Mail}
               title="Contacter l'equipe media"
@@ -282,7 +282,7 @@ export default function PressePageClient() {
 
           <div className="grid gap-6">
             <PremiumCard className="p-8">
-              <SectionHeader
+              <SectionHeader as="h2"
                 eyebrow="Partenaires medias"
                 icon={Users}
                 title="Ils relaient l'histoire"
@@ -301,7 +301,7 @@ export default function PressePageClient() {
             </PremiumCard>
 
             <PremiumCard className="p-8">
-              <SectionHeader
+              <SectionHeader as="h2"
                 eyebrow="Regles d'utilisation"
                 icon={ShieldCheck}
                 title="Utilisation des ressources"

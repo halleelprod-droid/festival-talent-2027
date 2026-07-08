@@ -8,10 +8,12 @@ import {
   ArrowRight,
   BadgeCheck,
   Building2,
+  Camera,
   Crown,
   Gem,
   Globe2,
   Handshake,
+  Laptop,
   Megaphone,
   ShieldCheck,
   Sparkles,
@@ -133,6 +135,24 @@ const officialPartners = [
     description:
       "PIN EVENTS accompagne Festival Talent 2027 dans l’organisation des activités, la production événementielle, les partenariats stratégiques, les relations institutionnelles et les activations terrain.",
     logo: "/images/partners/pin-events.png",
+  },
+  {
+    icon: Laptop,
+    label: "Partenaire Digital Officiel",
+    name: "SIDRA",
+    sector: "Direction Digitale",
+    badge: "Direction Digitale",
+    description:
+      "SIDRA accompagne Festival Talent dans la conception, le développement, la maintenance, la sécurité, le référencement (SEO) et l'évolution de la plateforme numérique officielle.",
+  },
+  {
+    icon: Camera,
+    label: "Partenaire Média & Communication",
+    name: "HALLEEL",
+    sector: "Direction Média & Communication",
+    badge: "Direction Média & Communication",
+    description:
+      "HALLEEL est en charge de la stratégie de communication, de la production audiovisuelle, des contenus digitaux, des réseaux sociaux et de la couverture médiatique officielle du Festival Talent.",
   },
   {
     icon: Sparkles,

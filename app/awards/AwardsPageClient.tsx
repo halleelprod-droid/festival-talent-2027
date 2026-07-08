@@ -209,7 +209,7 @@ export default function AwardsPageClient() {
 
       <section id="categories" className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Categories"
             icon={Gem}
             title="Les distinctions"
@@ -248,7 +248,7 @@ export default function AwardsPageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Selection"
             icon={Medal}
             title="Processus de selection"
@@ -294,7 +294,7 @@ export default function AwardsPageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
           <PremiumCard className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Jury"
               icon={Users}
               title="Jury"
@@ -303,7 +303,7 @@ export default function AwardsPageClient() {
           </PremiumCard>
 
           <PremiumCard className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Laureats"
               icon={Crown}
               title="Laureats"

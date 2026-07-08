@@ -13,6 +13,7 @@ export default function CoachesSection() {
 
       <div className="relative mx-auto max-w-7xl">
         <SectionHeader
+          as="h2"
           eyebrow="Accompagnement humain"
           icon={Sparkles}
           title={

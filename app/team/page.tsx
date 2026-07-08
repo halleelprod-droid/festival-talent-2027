@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BadgeCheck, Building2, Handshake, Users } from "lucide-react";
+import { BadgeCheck, Building2, Handshake, Network, Users } from "lucide-react";
 
 import GradientButton from "@/components/ui/GradientButton";
 import PremiumCard from "@/components/ui/PremiumCard";
 import SectionHeader from "@/components/ui/SectionHeader";
+import OrgChart from "@/components/team/OrgChart";
 import { staffMembers } from "@/data/staff";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -22,8 +23,22 @@ const partnerStructures = [
     logo: "/images/partners/pin-events.png",
   },
   {
+    name: "SIDRA",
+    role: "Partenaire Digital Officiel : conception, developpement, maintenance, securite, SEO et evolution de la plateforme numerique officielle",
+  },
+  {
+    name: "HALLEEL",
+    role: "Partenaire Media & Communication : strategie de communication, production audiovisuelle, contenus digitaux, reseaux sociaux et couverture mediatique officielle",
+  },
+  {
     name: "Agence Diassnor",
     role: "Gestion du pole Danse, battles et coordination artistique",
+    logo: "/images/partners/agence-diassnor.png",
+  },
+  {
+    name: "Centre Culturel Blaise Senghor",
+    role: "Partenaire institutionnel Danse : valorisation des arts choregraphiques et encadrement des jeunes talents",
+    logo: "/images/partners/blaise-senghor.png",
   },
 ];
 
@@ -49,6 +64,28 @@ export default function TeamPage() {
             }
             description="Festival Talent 2027 s'appuie sur une equipe pluridisciplinaire pour structurer la vision, les partenariats, le digital, les medias, les activites et l'accompagnement des talents."
           />
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-28 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader as="h2"
+            eyebrow="Organigramme officiel"
+            icon={Network}
+            align="center"
+            className="max-w-4xl"
+            title={
+              <>
+                L&apos;organisation
+                <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
+                  du festival
+                </span>
+              </>
+            }
+            description="La Direction Generale pilote les directions specialisees : partenariats, digital, media & communication et danse."
+          />
+
+          <OrgChart />
         </div>
       </section>
 
@@ -161,7 +198,7 @@ export default function TeamPage() {
 
       <section className="relative px-6 pb-28 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Structures partenaires"
             icon={Handshake}
             align="center"

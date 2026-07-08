@@ -52,6 +52,7 @@ export default function CommunitySection() {
       <div className="relative mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <SectionHeader
+            as="h2"
             eyebrow="Communaute"
             icon={Users}
             title={

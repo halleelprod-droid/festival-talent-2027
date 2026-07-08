@@ -29,8 +29,8 @@ export type StaffMember = {
 export const staffMembers: StaffMember[] = [
   {
     name: "Zairah Diamant Noire",
-    role: "Initiatrice du projet",
-    department: "Direction",
+    role: "Fondatrice & Présidente",
+    department: "Direction Générale",
     description:
       "Porte la vision fondatrice de Festival Talent 2027 et incarne l'ambition de reveler les talents, d'inspirer la jeunesse et de construire un evenement culturel majeur.",
     icon: "gem",

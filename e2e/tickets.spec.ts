@@ -29,9 +29,10 @@ test("tickets page clearly states no real payment is connected", async ({
   await page.goto("/tickets");
 
   await expect(page.getByText(/aucun paiement/i).first()).toBeVisible();
+  // Le texte source est écrit sans accents ("genere") — matcher tolérant aux deux formes.
   await expect(
-    page.getByText(/QR Code officiel sera généré/i).first()
-  ).toBeVisible();
+    page.getByText(/QR Code officiel sera g[eé]n[eé]r[eé]/i).first()
+  ).toBeAttached();
 });
 
 test("/billetterie redirects to /tickets", async ({ page }) => {

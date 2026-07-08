@@ -8,6 +8,9 @@ type SectionHeaderProps = {
   icon?: LucideIcon;
   align?: "left" | "center";
   className?: string;
+  // "h1" uniquement pour le titre principal d'une page dédiée.
+  // Dans une section de page (home...), utiliser "h2" pour garder un seul h1 par page.
+  as?: "h1" | "h2";
 };
 
 export default function SectionHeader({
@@ -17,6 +20,7 @@ export default function SectionHeader({
   icon: Icon,
   align = "left",
   className = "",
+  as: HeadingTag = "h1",
 }: SectionHeaderProps) {
   const centered = align === "center";
 
@@ -31,9 +35,9 @@ export default function SectionHeader({
         {eyebrow}
       </p>
 
-      <h1 className="mt-6 text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">
+      <HeadingTag className="font-display mt-6 text-4xl uppercase leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">
         {title}
-      </h1>
+      </HeadingTag>
 
       {description && (
         <p

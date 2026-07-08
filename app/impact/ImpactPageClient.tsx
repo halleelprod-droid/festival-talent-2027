@@ -184,7 +184,7 @@ export default function ImpactPageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <PremiumCard className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Pourquoi"
               icon={BadgeCheck}
               title="Pourquoi l'impact compte"
@@ -196,7 +196,7 @@ export default function ImpactPageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Objectifs"
             icon={Rocket}
             title="Objectifs d'impact"
@@ -240,7 +240,7 @@ export default function ImpactPageClient() {
 
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader
+          <SectionHeader as="h2"
             eyebrow="Axes"
             icon={Lightbulb}
             title="Axes d'impact"
@@ -280,7 +280,7 @@ export default function ImpactPageClient() {
       <section className="relative px-6 py-16 sm:px-10 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <PremiumCard tone="gold" className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Regions"
               icon={MapPinned}
               title="Impact regional"
@@ -289,7 +289,7 @@ export default function ImpactPageClient() {
           </PremiumCard>
 
           <PremiumCard className="p-8 sm:p-10">
-            <SectionHeader
+            <SectionHeader as="h2"
               eyebrow="Partenaires"
               icon={Handshake}
               title="Impact partenaires"

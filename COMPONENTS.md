@@ -75,6 +75,20 @@ Wrappers d'apparition au scroll. **Toujours les utiliser** au lieu de dupliquer 
 
 `TourMap` — carte Mapbox isolée, chargée en `next/dynamic({ ssr: false })` par `ExperienceMap` (mapbox-gl = 1,7 Mo, jamais dans le bundle initial). Rend `null` sans `NEXT_PUBLIC_MAPBOX_TOKEN`.
 
+## Nouvelles primitives pages plateforme (`components/ui/`)
+
+- `SectionHeader` — header de page/section avec eyebrow icône. **Prop `as: 'h1' | 'h2'` (défaut h1)** : h1 uniquement pour le titre principal d'une page dédiée ; toute utilisation en section (home ou 2e+ occurrence sur une page) DOIT passer `as="h2"` — invariant "un h1 par page" protégé par les E2E.
+- `PremiumCard` — carte glass statique (sans motion), `tone: 'default' | 'gold'`.
+- `GradientButton` — CTA lien avec icône, `variant: 'gold' | 'outline'`.
+
+## Billetterie (`components/tickets/`, page `/tickets`)
+
+Billetterie **simulée** (Phase 1 UX/UI — aucun paiement, QR, PDF ni stockage réel ; garde-fous dans `lib/tickets/safety.ts`). 10 composants alimentés par `data/tickets.ts` (types dans `types/tickets.ts`) : `TicketHero`, `TicketPassGrid` (8 pass), `TicketComparison`, `TicketProcessStepper` (5 étapes), `TicketPaymentReadiness` (8 moyens "Bientôt/Prévu"), `TicketVisualPreview` (QR factice), `TicketAccountMockup`, `TicketFAQ`, `TicketFutureArchitecture`, `TicketIcon`. `/billetterie` redirige vers `/tickets`. Phases 2 (données/QR/PDF) et 3 (paiements) = contrats séparés — ne rien connecter sans décision explicite.
+
+## Museum (`app/museum/`)
+
+Musée numérique : frise chronologique, affiches, photos d'archives, trophées, vidéos, lauréats (à venir après la finale 2027) + lien Hall of Fame. Un seul PageClient (pattern des pages patrimoine), données dans `data/museum.ts`.
+
 ## Composants envisagés mais PAS créés (décision, pas oubli)
 
 `Modal`, `Drawer`, `Toast`, `Tooltip`, `Dropdown`, `Tabs`, `Carousel`, `Lightbox`, `Pagination`, `Breadcrumb`, `EmptyState`, `Skeleton`, `VideoPlayer`, `Timeline`, `Gallery`, `PartnerCard`, `StaffCard`, `ArtistCard`, `FAQItem`, `IconButton`, `Container` — **aucun cas d'usage réel dans le site actuel**. Les créer maintenant serait de l'abstraction prématurée (dette de maintenance sans bénéfice). Créer chacun **le jour où un vrai besoin apparaît**, en le documentant ici.
