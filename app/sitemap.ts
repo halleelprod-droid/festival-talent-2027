@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: "/fr", changeFrequency: "weekly", priority: 1 },
     { path: "/institution", changeFrequency: "monthly", priority: 0.92 },
+    { path: "/documents", changeFrequency: "monthly", priority: 0.88 },
     { path: "/institution/gouvernance", changeFrequency: "monthly", priority: 0.9 },
     { path: "/institution/vision", changeFrequency: "monthly", priority: 0.88 },
     { path: "/institution/impact", changeFrequency: "monthly", priority: 0.88 },
@@ -28,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/histoire", changeFrequency: "monthly", priority: 0.9 },
     { path: "/foundation", changeFrequency: "monthly", priority: 0.86 },
     { path: "/finance", changeFrequency: "monthly", priority: 0.84 },
+    { path: "/finance/banques", changeFrequency: "monthly", priority: 0.84 },
     { path: "/finance/banques-partenaires", changeFrequency: "monthly", priority: 0.76 },
     { path: "/finance/ouvrir-un-compte", changeFrequency: "monthly", priority: 0.76 },
     { path: "/connect", changeFrequency: "monthly", priority: 0.82 },
