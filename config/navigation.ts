@@ -9,6 +9,7 @@ export const primaryNavigationLinks = [
 
 export const moreNavigationLinks = [
   { label: "Institution", href: "/institution" },
+  { label: "Business Club", href: "/business-club" },
   { label: "Documents Officiels", href: "/documents" },
   { label: "Banques & Finance", href: "/finance/banques" },
   { label: "Plateforme", href: "/os" },
@@ -24,6 +25,7 @@ export const moreNavigationLinks = [
 
 export const footerNavigationLinks = [
   { label: "Institution", href: "/institution" },
+  { label: "Business Club", href: "/business-club" },
   { label: "Gouvernance", href: "/institution/gouvernance" },
   { label: "Transparence", href: "/institution/transparence" },
   { label: "Documents Officiels", href: "/documents" },
