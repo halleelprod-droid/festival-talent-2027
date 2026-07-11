@@ -52,7 +52,7 @@ const quickFacts = [
 
 export default function HeroSection() {
   return (
-    <section className="section-cinema hero-depth relative min-h-screen overflow-hidden bg-black px-6 pb-20 pt-36 text-white sm:px-10 lg:px-20 lg:pt-44">
+    <section className="section-cinema hero-depth relative min-h-[100svh] overflow-hidden bg-black px-4 pb-16 pt-28 text-white sm:px-6 sm:pb-20 sm:pt-36 lg:px-20 lg:pt-44">
       <div className="absolute inset-0">
         <Image
           src="/images/previous/scene.jpg"
@@ -81,7 +81,7 @@ export default function HeroSection() {
             Festival Talent 2027
           </div>
 
-          <h1 className="font-display mt-8 text-5xl uppercase leading-none tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl">
+          <h1 className="font-display mt-7 text-balance text-4xl uppercase leading-none tracking-tight sm:text-6xl lg:text-8xl xl:text-9xl">
             Révélons
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
               les talents
@@ -94,11 +94,11 @@ export default function HeroSection() {
             le Sénégal, Paris, Rome et l’Italie.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {quickFacts.map((fact) => (
               <span
                 key={fact}
-                className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-3 text-[11px] font-black uppercase tracking-[0.18em] text-white/70 backdrop-blur-xl"
+                className="break-words rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 text-[11px] font-black uppercase tracking-[0.12em] text-white/70 backdrop-blur-xl sm:rounded-full sm:tracking-[0.18em]"
               >
                 {fact}
               </span>

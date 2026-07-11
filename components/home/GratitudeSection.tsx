@@ -40,7 +40,7 @@ export default function GratitudeSection() {
     <section
       id="gratitude"
       aria-labelledby="gratitude-title"
-      className="relative isolate w-full overflow-hidden bg-black py-20 text-white sm:py-28 lg:py-36"
+      className="relative isolate w-full overflow-hidden bg-black py-16 text-white sm:py-20 lg:py-28"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.18),transparent_30%),radial-gradient(circle_at_top,rgba(30,64,175,0.18),transparent_38%),linear-gradient(to_bottom,#000,#030712_45%,#000)]" />
       <div className="pointer-events-none absolute left-1/2 top-28 h-80 w-80 -translate-x-1/2 rounded-full bg-yellow-200/10 blur-3xl motion-safe:animate-pulse motion-reduce:animate-none sm:h-[34rem] sm:w-[34rem]" />
@@ -56,7 +56,7 @@ export default function GratitudeSection() {
         />
       ))}
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-20">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-20">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.34em] text-yellow-200/75">
             Gratitude
@@ -104,7 +104,7 @@ export default function GratitudeSection() {
             <article
               key={tradition.label}
               data-premium-card
-              className="world-card rounded-2xl border border-white/10 bg-white/[0.045] p-7 text-center shadow-2xl shadow-black/25 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-200/35 hover:bg-yellow-200/[0.055]"
+              className="world-card min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-5 text-center shadow-2xl shadow-black/25 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-200/35 hover:bg-yellow-200/[0.055] sm:p-7"
             >
               <p className="text-xs font-black uppercase tracking-[0.26em] text-yellow-200/78">
                 {tradition.label}
@@ -112,7 +112,7 @@ export default function GratitudeSection() {
               <p
                 dir={tradition.dir}
                 lang="und"
-                className="mt-6 text-5xl font-semibold leading-none text-yellow-100 sm:text-6xl"
+                className="mt-6 overflow-hidden text-4xl font-semibold leading-tight text-yellow-100 sm:text-6xl"
               >
                 {tradition.script}
               </p>

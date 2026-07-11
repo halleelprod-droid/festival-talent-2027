@@ -451,3 +451,110 @@ body {
   background-image:
     url("https://grainy-gradients.vercel.app/noise.svg");
 }
+
+/* Mobile-first safety layer shared by every public route. */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid #f6d77a;
+  outline-offset: 3px;
+}
+
+@media (max-width: 639px) {
+  section {
+    overflow-x: clip;
+  }
+
+  section[class*="px-6"],
+  main[class*="px-6"] {
+    padding-inline: 1rem;
+  }
+
+  section[class*="py-24"],
+  section[class*="py-28"],
+  section[class*="py-32"] {
+    padding-block: 4rem;
+  }
+
+  [class*="rounded-[3rem]"] {
+    border-radius: 1.5rem;
+  }
+
+  [class*="p-8"] {
+    padding: 1.25rem;
+  }
+
+  h1 {
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  h2,
+  h3,
+  p,
+  a,
+  button {
+    overflow-wrap: break-word;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    min-width: 0;
+    font-size: 16px;
+  }
+
+  a[class*="rounded-full"],
+  button {
+    min-height: 44px;
+  }
+
+  .glass,
+  .premium-card,
+  [class*="backdrop-blur-2xl"] {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .world-card,
+  .world-card:hover,
+  .world-image,
+  .group:hover .world-image,
+  .world-card:hover .world-image {
+    transform: none;
+    will-change: auto;
+  }
+
+  .volumetric-light,
+  .stage-beam {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

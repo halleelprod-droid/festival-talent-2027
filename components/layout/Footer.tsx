@@ -19,7 +19,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t border-white/10 bg-black text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#C9A84C08,transparent_60%)]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}

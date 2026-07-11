@@ -148,7 +148,7 @@ const officialDancePartners = [
 
 export default function BattleDanceSection() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-28 text-white sm:px-10 lg:px-20">
+    <section className="relative overflow-hidden bg-black px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-20 lg:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(234,179,8,0.13),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(220,38,38,0.13),transparent_35%)]" />
       <div className="pointer-events-none absolute -left-40 top-32 h-96 w-96 rounded-full bg-yellow-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-red-600/10 blur-3xl" />
@@ -345,7 +345,7 @@ export default function BattleDanceSection() {
                         alt={event.logoAlt}
                         width={240}
                         height={120}
-                        className="h-full w-full object-contain"
+                        className="h-16 w-full max-w-full object-contain sm:h-20"
                         sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 90vw"
                       />
                     </div>

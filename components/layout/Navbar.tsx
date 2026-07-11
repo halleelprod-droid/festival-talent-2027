@@ -17,7 +17,6 @@ import {
 
 import {
   moreNavigationLinks,
-  navigationLinks,
   primaryNavigationLinks
 } from '@/config/navigation';
 
@@ -50,6 +49,13 @@ export default function Navbar() {
       );
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   return (
     <>
       {/* NAVBAR */}
@@ -68,7 +74,7 @@ export default function Navbar() {
         className={`
           fixed
           left-1/2
-          top-6
+          top-3
           z-[999]
           w-[95%]
           max-w-7xl
@@ -92,7 +98,7 @@ export default function Navbar() {
           }
         `}
       >
-        <div className="flex items-center justify-between px-8 py-5">
+        <div className="flex min-h-16 items-center justify-between px-4 py-2 sm:px-6 lg:px-8 lg:py-4">
           {/* LOGO */}
           <Link href="/">
             <div className="flex items-center gap-3">
@@ -292,16 +298,16 @@ export default function Navbar() {
               fixed
               inset-0
               z-[998]
-              flex
-              flex-col
-              items-center
-              justify-center
-              gap-10
+              overflow-y-auto
+              overscroll-contain
               bg-black
+              px-4
+              pb-8
+              pt-24
               lg:hidden
             "
           >
-            {navigationLinks.map((link) => (
+            {[...primaryNavigationLinks, ...moreNavigationLinks].map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -309,10 +315,17 @@ export default function Navbar() {
                   setOpen(false)
                 }
                 className="
-                  text-3xl
+                  flex
+                  min-h-11
+                  w-full
+                  max-w-md
+                  items-center
+                  rounded-xl
+                  px-4
+                  text-base
                   font-black
                   uppercase
-                  tracking-[0.2em]
+                  tracking-[0.12em]
                   text-white
                 "
               >
@@ -320,10 +333,11 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <Link href="/tickets">
+            <Link href="/tickets" onClick={() => setOpen(false)} className="w-full max-w-md">
               <button
                 className="
-                  mt-6
+                  mt-2
+                  w-full
                   rounded-full
                   bg-[#C9A84C]
                   px-10

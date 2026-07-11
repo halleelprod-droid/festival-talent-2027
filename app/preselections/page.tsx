@@ -374,7 +374,7 @@ export default function PreselectionsPage() {
                         alt={event.logoAlt}
                         width={240}
                         height={120}
-                        className="h-full w-full object-contain"
+                        className="h-16 w-full max-w-full object-contain sm:h-20"
                         sizes="(min-width: 1280px) 280px, (min-width: 640px) 45vw, 90vw"
                       />
                     </div>
