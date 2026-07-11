@@ -57,10 +57,10 @@ const disciplines = [
 
 const timeline = [
   {
-    date: "01 au 30 septembre 2026",
-    title: "Pré-sélections Danse",
+    date: "17 juillet au 26 septembre",
+    title: "Pré-sélections Battle Dance",
     description:
-      "Campagnes d’information, inscriptions, présélections dans 6 zones de Dakar, sélection des danseurs, préparation et coaching.",
+      "Présélections physiques à Saint-Louis, Mbour, Thiès et Dakar, candidatures vidéo en ligne pour les autres régions, puis Battle final à Dakar.",
     icon: CalendarDays,
   },
   {

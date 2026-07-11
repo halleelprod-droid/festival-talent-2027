@@ -3,6 +3,8 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
+  CalendarDays,
+  ClipboardCheck,
   Crown,
   Globe2,
   Handshake,
@@ -12,6 +14,7 @@ import {
   Sparkles,
   Trophy,
   Users,
+  Video,
   Wallet,
 } from "lucide-react";
 import PreselectionForm from "@/components/preselections/PreselectionForm";
@@ -87,6 +90,60 @@ const zones = [
   "Fatick",
   "Kédougou",
   "Louga",
+];
+
+const battlePhysicalSchedule = [
+  {
+    city: "Saint-Louis",
+    date: "Vendredi 17 juillet",
+    place: "Centre Culturel Le Château",
+    status: "Présélection physique",
+  },
+  {
+    city: "Mbour",
+    date: "Samedi 15 août",
+    place: "Lieu en validation",
+    status: "Validation du lieu en cours",
+  },
+  {
+    city: "Thiès",
+    date: "Samedi 29 août",
+    place: "Centre Culturel Régional de Thiès",
+    status: "Présélection physique",
+  },
+  {
+    city: "Dakar",
+    date: "Samedi 12 septembre",
+    place: "Centre Culturel Blaise Senghor",
+    status: "Présélection physique",
+  },
+];
+
+const battleOperationalDetails = [
+  {
+    icon: Users,
+    title: "Équipe régionale",
+    description:
+      "Le Battle All Style se joue en 3 vs 3 avec 1 danseur Popping, 1 danseur Afro et 1 danseur Hip-Hop.",
+  },
+  {
+    icon: Video,
+    title: "Vidéo en ligne",
+    description:
+      "Les candidats des autres régions peuvent envoyer une vidéo de 1 minute 30 du 20 juillet au 31 août à 00h.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Évaluation",
+    description:
+      "Ousmane Tall et Kara Bendo sont prévus pour les présélections physiques, les candidatures en ligne et la finale.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Finale",
+    description:
+      "La grande finale Battle Dance est prévue à Dakar le samedi 26 septembre, avec un juré Hip-Hop à confirmer.",
+  },
 ];
 
 export default function PreselectionsPage() {
@@ -264,6 +321,83 @@ export default function PreselectionsPage() {
                 })}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative px-6 pb-24 sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="rounded-[3rem] border border-white/10 bg-white/[0.04] p-8 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-10">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
+                <CalendarDays size={30} />
+              </div>
+              <p className="mt-7 text-xs font-black uppercase tracking-[0.32em] text-yellow-300">
+                Bilan d&apos;organisation
+              </p>
+              <h2 className="mt-5 text-4xl font-black uppercase leading-tight text-white sm:text-5xl">
+                Calendrier Battle Dance
+              </h2>
+              <p className="mt-6 text-base leading-8 text-white/65">
+                La phase présélection combine quatre rendez-vous physiques et
+                une réception de vidéos pour permettre aux talents des autres
+                régions du Sénégal de participer.
+              </p>
+
+              <div className="mt-8 rounded-[2rem] border border-white/10 bg-black/35 p-6">
+                <p className="text-xs font-black uppercase tracking-[0.26em] text-red-300">
+                  Point de vigilance
+                </p>
+                <p className="mt-3 text-sm leading-7 text-white/62">
+                  Le lieu de Mbour est indiqué comme étant en cours de
+                  validation. La communication officielle sera ajustée après
+                  confirmation.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {battlePhysicalSchedule.map((event) => (
+                <article
+                  key={event.city}
+                  className="rounded-[1.8rem] border border-white/10 bg-black/35 p-6 shadow-xl shadow-black/20 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-yellow-400/[0.06]"
+                >
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-yellow-300">
+                    {event.date} · 10h
+                  </p>
+                  <h3 className="mt-4 text-2xl font-black uppercase text-white">
+                    {event.city}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-white/62">
+                    {event.place}
+                  </p>
+                  <p className="mt-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-white/60">
+                    {event.status}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {battleOperationalDetails.map((detail) => {
+              const Icon = detail.icon;
+
+              return (
+                <article
+                  key={detail.title}
+                  className="rounded-[1.7rem] border border-white/10 bg-white/[0.04] p-6 shadow-xl shadow-black/20 backdrop-blur-xl"
+                >
+                  <Icon className="text-yellow-300" size={28} />
+                  <h3 className="mt-4 text-xl font-black uppercase text-white">
+                    {detail.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-white/58">
+                    {detail.description}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

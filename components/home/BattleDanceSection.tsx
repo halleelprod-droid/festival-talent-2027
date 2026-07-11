@@ -3,6 +3,8 @@ import {
   ArrowRight,
   BadgeCheck,
   Building2,
+  CalendarDays,
+  ClipboardCheck,
   Crown,
   Handshake,
   MapPin,
@@ -10,6 +12,7 @@ import {
   Sparkles,
   Trophy,
   Users,
+  Video,
   Wallet,
 } from "lucide-react";
 
@@ -58,9 +61,58 @@ const requirements = [
   "Solos et groupes acceptés",
   "Tous les styles de danse sont ouverts",
   "Pré-sélections organisées par zones",
-  "Sélection finale autour du Monument de la Renaissance",
-  "Début prévu en septembre 2026",
+  "Battle All Style 3 vs 3 : Popping, Afro et Hip-Hop",
+  "Candidatures physiques et en ligne selon les zones",
+  "Grande finale prévue à Dakar le 26 septembre",
   "Inscription & infos : WhatsApp 781 948 606",
+];
+
+const physicalPreselections = [
+  {
+    city: "Saint-Louis",
+    date: "Vendredi 17 juillet",
+    place: "Centre Culturel Le Château",
+    time: "10h",
+  },
+  {
+    city: "Mbour",
+    date: "Samedi 15 août",
+    place: "Lieu en validation",
+    time: "10h",
+  },
+  {
+    city: "Thiès",
+    date: "Samedi 29 août",
+    place: "Centre Culturel Régional de Thiès",
+    time: "10h",
+  },
+  {
+    city: "Dakar",
+    date: "Samedi 12 septembre",
+    place: "Centre Culturel Blaise Senghor",
+    time: "10h",
+  },
+];
+
+const operationalHighlights = [
+  {
+    icon: Users,
+    title: "Format 3 vs 3",
+    description:
+      "Chaque équipe régionale réunit 1 danseur Popping, 1 danseur Afro et 1 danseur Hip-Hop.",
+  },
+  {
+    icon: Video,
+    title: "Candidatures en ligne",
+    description:
+      "Les autres régions peuvent transmettre une vidéo de 1 minute 30 entre le 20 juillet et le 31 août.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Jury spécialisé",
+    description:
+      "Ousmane Tall et Kara Bendo assurent l'évaluation, avec un juré Hip-Hop à confirmer pour la finale.",
+  },
 ];
 
 const upcomingDisciplines = [
@@ -231,6 +283,67 @@ export default function BattleDanceSection() {
                 une organisation professionnelle des preselections, des battles
                 et de l&apos;accompagnement des danseurs.
               </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8 lg:p-10">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div>
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
+                <CalendarDays size={30} />
+              </div>
+              <p className="mt-6 text-xs font-black uppercase tracking-[0.32em] text-yellow-300">
+                Bilan d&apos;organisation
+              </p>
+              <h3 className="mt-4 text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
+                Phase présélection Battle Dance
+              </h3>
+              <p className="mt-5 text-sm leading-7 text-white/65 sm:text-base sm:leading-8">
+                Le Battle All Style 3 vs 3 oppose des équipes régionales issues
+                des présélections physiques dans quatre villes et des
+                candidatures en ligne pour les autres régions du Sénégal.
+              </p>
+
+              <div className="mt-8 grid gap-4">
+                {operationalHighlights.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={item.title}
+                      className="rounded-[1.5rem] border border-white/10 bg-black/35 p-5"
+                    >
+                      <Icon className="text-yellow-300" size={24} />
+                      <h4 className="mt-4 text-lg font-black uppercase text-white">
+                        {item.title}
+                      </h4>
+                      <p className="mt-2 text-sm leading-6 text-white/60">
+                        {item.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {physicalPreselections.map((event) => (
+                <article
+                  key={event.city}
+                  className="rounded-[1.6rem] border border-white/10 bg-black/35 p-6 transition duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-yellow-400/[0.06]"
+                >
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-yellow-300">
+                    {event.date} · {event.time}
+                  </p>
+                  <h4 className="mt-4 text-2xl font-black uppercase text-white">
+                    {event.city}
+                  </h4>
+                  <p className="mt-3 text-sm leading-7 text-white/60">
+                    {event.place}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
