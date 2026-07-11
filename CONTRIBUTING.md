@@ -4,7 +4,7 @@
 
 1. Lire [ARCHITECTURE.md](ARCHITECTURE.md) (décisions structurantes) et [STYLEGUIDE.md](STYLEGUIDE.md) (conventions).
 2. Vérifier [COMPONENTS.md](COMPONENTS.md) avant de créer un composant — il existe peut-être déjà.
-3. Le contenu éditorial (staff, partenaires, artistes) est verrouillé : voir CLAUDE.md/AGENTS.md pour les règles (ex. Kaayfecc supprimé, jamais "Samba Peuzzi seul artiste confirmé").
+3. Le contenu éditorial (staff, partenaires, artistes) est verrouillé : voir CLAUDE.md/AGENTS.md pour les règles officielles et ne jamais présenter "Samba Peuzzi" comme seul artiste confirmé.
 
 ## Workflow
 

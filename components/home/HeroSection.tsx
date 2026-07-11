@@ -52,7 +52,7 @@ const quickFacts = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black px-6 pb-20 pt-36 text-white sm:px-10 lg:px-20 lg:pt-44">
+    <section className="section-cinema hero-depth relative min-h-screen overflow-hidden bg-black px-6 pb-20 pt-36 text-white sm:px-10 lg:px-20 lg:pt-44">
       <div className="absolute inset-0">
         <Image
           src="/images/previous/scene.jpg"
@@ -68,6 +68,7 @@ export default function HeroSection() {
 
       <div className="pointer-events-none absolute -left-40 top-28 h-96 w-96 rounded-full bg-yellow-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-red-600/10 blur-3xl" />
+      <div className="volumetric-light motion-safe:animate-pulse" />
 
       <div className="relative mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
@@ -140,7 +141,7 @@ export default function HeroSection() {
           transition={{ delay: 0.15, duration: 0.7 }}
           className="relative"
         >
-          <div className="relative overflow-hidden rounded-[3rem] border border-yellow-400/25 bg-black/45 p-6 shadow-2xl shadow-black/50 backdrop-blur-2xl sm:p-8">
+          <div data-premium-card className="world-card relative overflow-hidden rounded-[3rem] border border-yellow-400/25 bg-black/45 p-6 shadow-2xl shadow-black/50 backdrop-blur-2xl sm:p-8">
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl" />
             <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-red-600/10 blur-3xl" />
 

@@ -76,7 +76,7 @@ export default function GallerySection() {
   }, [activeIndex]);
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-28 text-white sm:px-10 lg:px-20">
+    <section className="section-cinema relative overflow-hidden bg-black px-6 py-28 text-white sm:px-10 lg:px-20">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(234,179,8,0.13),transparent_35%),linear-gradient(to_bottom,#000,rgba(12,9,2,0.98),#000)]" />
 
       <div className="relative mx-auto max-w-7xl">
@@ -107,9 +107,10 @@ export default function GallerySection() {
             return (
               <button
                 key={item.src}
+                data-premium-card
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] text-left shadow-2xl shadow-black/30 transition duration-300 hover:-translate-y-1 hover:border-yellow-400/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300 ${
+                className={`world-card group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] text-left shadow-2xl shadow-black/30 transition duration-300 hover:-translate-y-1 hover:border-yellow-400/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300 ${
                   isFeatured ? "sm:col-span-2 sm:row-span-2" : ""
                 }`}
                 aria-label={`Ouvrir ${item.title}`}
@@ -124,7 +125,7 @@ export default function GallerySection() {
                       ? "(max-width: 1024px) 100vw, 50vw"
                       : "(max-width: 1024px) 50vw, 25vw"
                   }
-                  className="object-cover transition duration-700 group-hover:scale-110"
+                  className="world-image object-cover"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />

@@ -3,7 +3,8 @@
 import {
   motion,
   useScroll,
-  useSpring
+  useSpring,
+  useTransform
 } from 'framer-motion';
 
 export default function ScrollProgress() {
@@ -16,6 +17,11 @@ export default function ScrollProgress() {
       damping: 30,
       restDelta: 0.001
     }
+  );
+  const lightY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ['8vh', '82vh']
   );
 
   return (
@@ -53,6 +59,27 @@ export default function ScrollProgress() {
           origin-left
           bg-[#C9A84C]/20
           blur-xl
+        "
+      />
+
+      <motion.div
+        aria-hidden="true"
+        style={{
+          y: lightY
+        }}
+        className="
+          pointer-events-none
+          fixed
+          right-[-90px]
+          top-0
+          z-[80]
+          hidden
+          h-48
+          w-48
+          rounded-full
+          bg-[#C9A84C]/12
+          blur-3xl
+          lg:block
         "
       />
     </>

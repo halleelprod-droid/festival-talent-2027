@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/fr", changeFrequency: "weekly", priority: 1 },
     { path: "/business-club", changeFrequency: "monthly", priority: 0.9 },
     { path: "/institution", changeFrequency: "monthly", priority: 0.92 },
+    { path: "/gouvernance", changeFrequency: "monthly", priority: 0.86 },
+    { path: "/transparence", changeFrequency: "monthly", priority: 0.86 },
     { path: "/documents", changeFrequency: "monthly", priority: 0.88 },
     { path: "/institution/gouvernance", changeFrequency: "monthly", priority: 0.9 },
     { path: "/institution/vision", changeFrequency: "monthly", priority: 0.88 },

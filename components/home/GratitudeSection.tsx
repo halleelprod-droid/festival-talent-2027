@@ -73,7 +73,7 @@ export default function GratitudeSection() {
         </div>
 
         <div className="mx-auto mt-14 max-w-6xl [perspective:1400px]">
-          <figure className="relative overflow-hidden rounded-2xl border border-yellow-200/25 bg-white/[0.035] p-3 shadow-[0_0_80px_rgba(234,179,8,0.16)] backdrop-blur-xl sm:p-4 [transform-style:preserve-3d]">
+          <figure data-premium-card className="world-card relative overflow-hidden rounded-2xl border border-yellow-200/25 bg-white/[0.035] p-3 shadow-[0_0_80px_rgba(234,179,8,0.16)] backdrop-blur-xl sm:p-4 [transform-style:preserve-3d]">
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-35" />
             <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
             <Image
@@ -82,7 +82,7 @@ export default function GratitudeSection() {
               width={1800}
               height={1100}
               sizes="(max-width: 768px) 100vw, 1100px"
-              className="h-auto w-full rounded-xl object-contain [transform:translateZ(18px)] motion-reduce:transform-none"
+              className="world-image h-auto w-full rounded-xl object-contain [transform:translateZ(18px)] motion-reduce:transform-none"
             />
             <figcaption className="sr-only">
               Visuel 3D inclusif célébrant la gratitude envers le Créateur dans
@@ -103,7 +103,8 @@ export default function GratitudeSection() {
           {traditions.map((tradition) => (
             <article
               key={tradition.label}
-              className="rounded-2xl border border-white/10 bg-white/[0.045] p-7 text-center shadow-2xl shadow-black/25 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-200/35 hover:bg-yellow-200/[0.055]"
+              data-premium-card
+              className="world-card rounded-2xl border border-white/10 bg-white/[0.045] p-7 text-center shadow-2xl shadow-black/25 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-200/35 hover:bg-yellow-200/[0.055]"
             >
               <p className="text-xs font-black uppercase tracking-[0.26em] text-yellow-200/78">
                 {tradition.label}

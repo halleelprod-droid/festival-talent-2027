@@ -105,7 +105,7 @@ export default function Navbar() {
           </Link>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-4 xl:gap-5 lg:flex">
             {primaryNavigationLinks.map((link) => (
               <motion.div
                 key={link.label}
@@ -117,7 +117,7 @@ export default function Navbar() {
                   href={link.href}
                   className="
                     relative
-                    text-sm
+                    text-xs
                     uppercase
                     tracking-[0.25em]
                     text-zinc-300
@@ -142,7 +142,7 @@ export default function Navbar() {
                   inline-flex
                   items-center
                   gap-2
-                  text-sm
+                  text-xs
                   uppercase
                   tracking-[0.25em]
                   text-zinc-300

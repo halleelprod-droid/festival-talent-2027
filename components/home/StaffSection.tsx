@@ -101,10 +101,11 @@ const staffIcons: Record<StaffIconKey, LucideIcon> = {
   },
   {
     name: "Ibrahima Fall",
-    role: "Développeur Web / Conception Digitale",
+    role: "Directeur Digital & Innovation",
+    subtitle: "Fondateur de SIDRA & HALLEEL",
     department: "Digital",
     description:
-      "Responsable de la conception, du deploiement et de l'experience digitale du site officiel Festival Talent 2027.",
+      "Pilote la direction digitale, l'innovation, la sécurité, l'expérience utilisateur et l'évolution de la plateforme officielle Festival Talent.",
     icon: MonitorSmartphone,
     initials: "IF",
   },

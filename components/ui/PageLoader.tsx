@@ -10,18 +10,35 @@ import {
   useState
 } from 'react';
 
+const loadingMessages = [
+  'Révéler les talents…',
+  'Créer des opportunités…',
+  'Transformer des vies…'
+];
+
 export default function PageLoader() {
   const [loading, setLoading] =
     useState(true);
+  const [messageIndex, setMessageIndex] =
+    useState(0);
 
   useEffect(() => {
     const timer =
       setTimeout(() => {
         setLoading(false);
-      }, 2200);
+      }, 1800);
 
-    return () =>
+    const interval =
+      setInterval(() => {
+        setMessageIndex((current) =>
+          (current + 1) % loadingMessages.length
+        );
+      }, 560);
+
+    return () => {
       clearTimeout(timer);
+      clearInterval(interval);
+    };
   }, []);
 
   return (
@@ -70,6 +87,7 @@ export default function PageLoader() {
                 duration: 1
               }}
               className="
+                relative
                 text-6xl
                 font-black
                 uppercase
@@ -78,6 +96,7 @@ export default function PageLoader() {
                 md:text-8xl
               "
             >
+              <span className="absolute -inset-8 -z-10 rounded-full bg-[#C9A84C]/10 blur-3xl" />
               FT
               <span className="text-[#C9A84C]">
                 2027
@@ -106,25 +125,27 @@ export default function PageLoader() {
 
             {/* TEXT */}
             <motion.p
+              key={messageIndex}
               initial={{
-                opacity: 0
+                opacity: 0,
+                y: 8
               }}
               animate={{
-                opacity: 1
+                opacity: 1,
+                y: 0
               }}
               transition={{
-                delay: 1,
-                duration: 1
+                duration: 0.35
               }}
               className="
                 mt-6
                 text-xs
                 uppercase
                 tracking-[0.45em]
-                text-zinc-400
+                text-zinc-300
               "
             >
-              Festival Talent International
+              {loadingMessages[messageIndex]}
             </motion.p>
           </div>
         </motion.div>

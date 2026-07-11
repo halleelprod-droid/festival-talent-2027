@@ -42,6 +42,8 @@ export default function CursorGlow() {
     x: 0,
     y: 0
   });
+  const [active, setActive] =
+    useState(false);
 
   const enabled = useSyncExternalStore(
     subscribe,
@@ -55,6 +57,23 @@ export default function CursorGlow() {
     const moveCursor = (
       e: MouseEvent
     ) => {
+      const target = e.target instanceof Element ? e.target : null;
+      const card = target?.closest('[data-premium-card]');
+
+      setActive(Boolean(card));
+
+      if (card instanceof HTMLElement) {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty(
+          '--cursor-x',
+          `${((e.clientX - rect.left) / rect.width) * 100}%`
+        );
+        card.style.setProperty(
+          '--cursor-y',
+          `${((e.clientY - rect.top) / rect.height) * 100}%`
+        );
+      }
+
       setPosition({
         x: e.clientX,
         y: e.clientY
@@ -80,8 +99,9 @@ export default function CursorGlow() {
       {/* MAIN GLOW */}
       <motion.div
         animate={{
-          x: position.x - 120,
-          y: position.y - 120
+          x: position.x - (active ? 170 : 120),
+          y: position.y - (active ? 170 : 120),
+          scale: active ? 1.18 : 1
         }}
         transition={{
           type: 'spring',
@@ -101,13 +121,18 @@ export default function CursorGlow() {
           bg-[#C9A84C]/10
           blur-3xl
         "
+        style={{
+          width: active ? 340 : 240,
+          height: active ? 340 : 240
+        }}
       />
 
       {/* SMALL DOT */}
       <motion.div
         animate={{
           x: position.x - 6,
-          y: position.y - 6
+          y: position.y - 6,
+          scale: active ? 2.35 : 1
         }}
         transition={{
           type: 'spring',
@@ -123,8 +148,11 @@ export default function CursorGlow() {
           h-3
           w-3
           rounded-full
+          border
+          border-[#f6df9b]/70
           bg-[#C9A84C]
           shadow-[0_0_20px_rgba(201,168,76,0.9)]
+          mix-blend-screen
         "
       />
     </>

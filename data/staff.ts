@@ -93,10 +93,11 @@ export const staffMembers: StaffMember[] = [
   },
   {
     name: "Ibrahima Fall",
-    role: "Developpeur Web / Conception Digitale",
+    role: "Directeur Digital & Innovation",
+    subtitle: "Fondateur de SIDRA & HALLEEL",
     department: "Digital",
     description:
-      "Responsable de la conception, du deploiement et de l'experience digitale du site officiel Festival Talent 2027.",
+      "Pilote la direction digitale, l'innovation, la securite, l'experience utilisateur et l'evolution de la plateforme officielle Festival Talent.",
     icon: "monitor",
     initials: "IF",
   },

@@ -85,7 +85,7 @@ function hasPublicAsset(src: string) {
 
 export default function PartnersSection() {
   return (
-    <section className="relative border-t border-white/10 bg-black px-6 py-32 text-white">
+    <section className="section-cinema relative border-t border-white/10 bg-black px-6 py-32 text-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.14),transparent_35%)]" />
 
       <div className="relative mx-auto max-w-7xl">
@@ -105,7 +105,8 @@ export default function PartnersSection() {
             return (
               <article
                 key={partner.name}
-                className={`group relative overflow-hidden rounded-[2rem] border p-8 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 ${
+                data-premium-card
+                className={`world-card group relative overflow-hidden rounded-[2rem] border p-8 shadow-2xl shadow-black/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 ${
                   partner.featured
                     ? "border-blue-400/40 bg-blue-500/10 hover:bg-blue-500/15 lg:col-span-3"
                     : "border-yellow-400/25 bg-yellow-400/[0.06] hover:border-yellow-400/45"
