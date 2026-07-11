@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
@@ -73,6 +74,8 @@ const physicalPreselections = [
     date: "Vendredi 17 juillet",
     place: "Centre Culturel Le Château",
     time: "10h",
+    logo: "/images/venues/centre-culturel-le-chateau.jpeg",
+    logoAlt: "Logo du Centre Culturel Le Château",
   },
   {
     city: "Mbour",
@@ -85,6 +88,8 @@ const physicalPreselections = [
     date: "Samedi 29 août",
     place: "Centre Culturel Régional de Thiès",
     time: "10h",
+    logo: "/images/venues/centre-culturel-regional-thies.jpeg",
+    logoAlt: "Logo du Centre Culturel Régional de Thiès",
   },
   {
     city: "Dakar",
@@ -333,6 +338,18 @@ export default function BattleDanceSection() {
                   key={event.city}
                   className="rounded-[1.6rem] border border-white/10 bg-black/35 p-6 transition duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-yellow-400/[0.06]"
                 >
+                  {"logo" in event && event.logo ? (
+                    <div className="mb-5 flex h-24 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white p-3">
+                      <Image
+                        src={event.logo}
+                        alt={event.logoAlt}
+                        width={240}
+                        height={120}
+                        className="h-full w-full object-contain"
+                        sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 90vw"
+                      />
+                    </div>
+                  ) : null}
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-yellow-300">
                     {event.date} · {event.time}
                   </p>
