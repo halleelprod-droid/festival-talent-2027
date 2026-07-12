@@ -21,7 +21,7 @@ export default function SoundToggle() {
 
   useEffect(() => {
     audioRef.current = new Audio(
-      'https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3'
+      '/audio/le-monde-se-rassemble.mp3'
     );
 
     if (audioRef.current) {
@@ -52,6 +52,8 @@ export default function SoundToggle() {
           scale: 0.94
         }}
         onClick={toggleSound}
+        aria-label={enabled ? 'Couper le son d’ambiance' : 'Activer le son d’ambiance'}
+        aria-pressed={enabled}
         className="group relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-black/40 backdrop-blur-2xl"
       >
         {/* GLOW */}
