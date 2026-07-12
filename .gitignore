@@ -12,6 +12,10 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/logs/*.log
 
 # next.js
 /.next/
@@ -42,5 +46,3 @@ yarn-error.log*
 next-env.d.ts
 
 /app/generated/prisma
-
-.vercel

@@ -23,6 +23,10 @@ export default function PreselectionForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    if (loading) {
+      return;
+    }
+
     setLoading(true);
     setSuccess("");
     setError("");
@@ -59,11 +63,11 @@ export default function PreselectionForm() {
       .insert(payload);
 
     if (insertError) {
-  console.error(insertError);
-  setError(`Erreur Supabase : ${insertError.message}`);
-  setLoading(false);
-  return;
-}
+      console.error(insertError);
+      setError(`Erreur Supabase : ${insertError.message}`);
+      setLoading(false);
+      return;
+    }
 
     const whatsappMessage = encodeURIComponent(
       `Bonjour Festival Talent, je viens de remplir le formulaire de pré-sélection.\n\nNom : ${payload.full_name}\nTéléphone : ${payload.phone}\nVille : ${payload.city}\nDiscipline : ${payload.discipline}`
@@ -85,34 +89,49 @@ export default function PreselectionForm() {
     >
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+          <label
+            htmlFor="ft-full_name"
+            className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+          >
             Nom complet *
           </label>
           <input
+            id="ft-full_name"
             name="full_name"
             required
+            aria-required="true"
             className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
             placeholder="Ex : Mamadou Diop"
           />
         </div>
 
         <div>
-          <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+          <label
+            htmlFor="ft-phone"
+            className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+          >
             Téléphone *
           </label>
           <input
+            id="ft-phone"
             name="phone"
+            type="tel"
             required
+            aria-required="true"
             className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
             placeholder="Ex : 77 000 00 00"
           />
         </div>
 
         <div>
-          <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+          <label
+            htmlFor="ft-email"
+            className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+          >
             Email
           </label>
           <input
+            id="ft-email"
             name="email"
             type="email"
             className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
@@ -121,10 +140,14 @@ export default function PreselectionForm() {
         </div>
 
         <div>
-          <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+          <label
+            htmlFor="ft-age"
+            className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+          >
             Âge
           </label>
           <input
+            id="ft-age"
             name="age"
             type="number"
             min="10"
@@ -135,24 +158,34 @@ export default function PreselectionForm() {
         </div>
 
         <div>
-          <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+          <label
+            htmlFor="ft-city"
+            className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+          >
             Ville *
           </label>
           <input
+            id="ft-city"
             name="city"
             required
+            aria-required="true"
             className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
             placeholder="Ex : Dakar"
           />
         </div>
 
         <div>
-          <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+          <label
+            htmlFor="ft-discipline"
+            className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+          >
             Discipline *
           </label>
           <select
+            id="ft-discipline"
             name="discipline"
             required
+            aria-required="true"
             defaultValue=""
             className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition focus:border-yellow-400/50"
           >
@@ -170,10 +203,14 @@ export default function PreselectionForm() {
       </div>
 
       <div className="mt-5">
-        <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+        <label
+          htmlFor="ft-experience"
+          className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+        >
           Expérience / parcours
         </label>
         <textarea
+          id="ft-experience"
           name="experience"
           rows={4}
           className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
@@ -182,10 +219,14 @@ export default function PreselectionForm() {
       </div>
 
       <div className="mt-5">
-        <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+        <label
+          htmlFor="ft-portfolio_link"
+          className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+        >
           Lien vidéo / portfolio
         </label>
         <input
+          id="ft-portfolio_link"
           name="portfolio_link"
           className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
           placeholder="Lien TikTok, Instagram, YouTube, Drive, portfolio..."
@@ -193,10 +234,14 @@ export default function PreselectionForm() {
       </div>
 
       <div className="mt-5">
-        <label className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
+        <label
+          htmlFor="ft-message"
+          className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
+        >
           Message complémentaire
         </label>
         <textarea
+          id="ft-message"
           name="message"
           rows={4}
           className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
@@ -205,13 +250,21 @@ export default function PreselectionForm() {
       </div>
 
       {error && (
-        <p className="mt-5 rounded-2xl border border-red-400/30 bg-red-500/10 px-5 py-4 text-sm text-red-200">
+        <p
+          role="alert"
+          aria-live="assertive"
+          className="mt-5 rounded-2xl border border-red-400/30 bg-red-500/10 px-5 py-4 text-sm text-red-200"
+        >
           {error}
         </p>
       )}
 
       {success && (
-        <div className="mt-5 rounded-2xl border border-green-400/30 bg-green-500/10 px-5 py-4 text-sm text-green-200">
+        <div
+          role="status"
+          aria-live="polite"
+          className="mt-5 rounded-2xl border border-green-400/30 bg-green-500/10 px-5 py-4 text-sm text-green-200"
+        >
           <p>{success}</p>
 
           {whatsappUrl && (
@@ -230,6 +283,7 @@ export default function PreselectionForm() {
       <button
         type="submit"
         disabled={loading}
+        aria-busy={loading}
         className="mt-7 w-full rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 px-8 py-5 text-xs font-black uppercase tracking-[0.25em] text-black transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {loading ? "Envoi en cours..." : "Envoyer ma candidature"}
