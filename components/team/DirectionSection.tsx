@@ -42,7 +42,7 @@ export default function DirectionSection({
           </p>
         </header>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {directionMembers.map((member, index) => (
             <motion.article
               key={member.name}

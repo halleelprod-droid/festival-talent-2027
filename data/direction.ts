@@ -20,6 +20,15 @@ export const directionMembers: DirectionMember[] = [
     image: "/images/staff/zairah-diamant-noire.jpg",
   },
   {
+    name: "Masseck Sy",
+    role: "Cofondateur",
+    biography:
+      "Masseck Sy contribue à la structuration, au développement et à l’orientation stratégique de Festival Talent en qualité de cofondateur.",
+    expertise: ["Structuration", "Développement", "Stratégie"],
+    initials: "MS",
+    image: "/images/staff/masseck-sy.jpg",
+  },
+  {
     name: "Pierre Ndiaye",
     role: "Directeur des Partenariats & Relations Institutionnelles",
     subtitles: ["CEO PIN EVENTS"],
