@@ -4,7 +4,8 @@ export type OrganisationPoleIconKey =
   | "laptop"
   | "camera"
   | "music"
-  | "landmark";
+  | "landmark"
+  | "users";
 
 export type OrganisationPole = {
   title: string;
@@ -45,6 +46,15 @@ export const organisationPoles: OrganisationPole[] = [
     description:
       "SIDRA accompagne Festival Talent dans la conception, le développement, la maintenance, la sécurité, le référencement (SEO) et l'évolution de la plateforme numérique officielle.",
     icon: "laptop",
+    level: "direction",
+  },
+  {
+    title: "Direction des Ressources Humaines",
+    holder: "Jocelyne Vickie BITEKE",
+    role: "Directrice des Ressources Humaines",
+    description:
+      "Structure les ressources humaines, coordonne les équipes, accompagne les collaborateurs et organise les processus administratifs internes de Festival Talent.",
+    icon: "users",
     level: "direction",
   },
   {

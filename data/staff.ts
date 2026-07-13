@@ -48,6 +48,26 @@ export const staffMembers: StaffMember[] = [
     initials: "IKD",
   },
   {
+    name: "Jocelyne Vickie BITEKE",
+    role: "Directrice des Ressources Humaines",
+    department: "Direction",
+    description:
+      "Jocelyne Vickie BITEKE accompagne Festival Talent dans la structuration des ressources humaines, la coordination des équipes et l'organisation administrative. Son expérience couvre l'assistanat de direction, le management, les ressources humaines et la coordination d'équipes.",
+    icon: "briefcase",
+    initials: "JB",
+    achievements: [
+      "Gestion des ressources humaines",
+      "Coordination des équipes",
+      "Organisation administrative",
+      "Accompagnement des collaborateurs",
+      "Structuration des processus internes",
+      "Développement d'une culture d'excellence",
+      "5 ans - Fondation Saint Martin",
+      "2 ans - Cabinet de financement",
+      "1 an - Responsable Logistique BTP",
+    ],
+  },
+  {
     name: "Masseck Sy",
     role: "Cofondateur",
     department: "Direction",

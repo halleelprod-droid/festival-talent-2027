@@ -50,6 +50,13 @@ export const governanceMembers = [
     bio: "Zairah Diamant Noire impulse Festival Talent comme une plateforme de révélation, d'accompagnement et d'élévation des talents. Sa vision place la jeunesse, l'espoir et l'excellence au centre du projet.",
   },
   {
+    name: "Jocelyne Vickie BITEKE",
+    role: "Directrice des Ressources Humaines",
+    mission:
+      "Piloter la gestion des ressources humaines, coordonner les équipes, structurer les processus internes et développer une culture d'excellence au sein de Festival Talent.",
+    bio: "Jocelyne Vickie BITEKE accompagne Festival Talent dans la structuration des ressources humaines, la coordination des équipes et l'organisation administrative. Son parcours comprend cinq années de coordination à la Fondation Saint Martin, deux années dans un cabinet de financement et une année comme Responsable Logistique dans le secteur du BTP.",
+  },
+  {
     name: "Pierre Ndiaye",
     role: "Directeur des Partenariats & Relations Institutionnelles",
     subtitle: "CEO PIN EVENTS",

@@ -61,7 +61,7 @@ const structuredData = [
     "@type": "Organization",
     name: "Festival Talent",
     url: siteUrl,
-    logo: `${siteUrl}/images/festival-talent-logo.png`,
+    logo: `${siteUrl}/images/festival-talent-logo.webp`,
   },
 ];
 

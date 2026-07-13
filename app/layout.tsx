@@ -28,7 +28,7 @@ const structuredData = {
       "@id": `${siteUrl}/#organization`,
       name: siteName,
       url: siteUrl,
-      logo: `${siteUrl}/images/festival-talent-logo.png`,
+      logo: `${siteUrl}/images/festival-talent-logo.webp`,
       sameAs: [],
     },
     {
@@ -124,7 +124,7 @@ export const metadata: Metadata = {
     siteName,
     images: [
       {
-        url: "/images/festival-talent-logo.png",
+        url: "/images/festival-talent-logo.webp",
         width: 1200,
         height: 630,
         alt: "Festival Talent 2027",
@@ -138,7 +138,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteName,
     description: defaultDescription,
-    images: ["/images/festival-talent-logo.png"],
+    images: ["/images/festival-talent-logo.webp"],
   },
 
   robots: {

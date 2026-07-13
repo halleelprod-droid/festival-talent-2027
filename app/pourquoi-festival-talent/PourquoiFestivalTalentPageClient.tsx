@@ -147,7 +147,7 @@ export default function PourquoiFestivalTalentPageClient() {
             <div className="relative">
               <div className="mx-auto flex aspect-square max-w-sm items-center justify-center rounded-lg border border-white/10 bg-black/45 p-10">
                 <Image
-                  src="/images/festival-talent-logo.png"
+                  src="/images/festival-talent-logo.webp"
                   alt="Logo Festival Talent"
                   width={360}
                   height={360}

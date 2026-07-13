@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, type PointerEvent } from "react";
+import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -21,6 +22,27 @@ const particles = [
   { left: "70%", bottom: "9%", size: 4, duration: 21, delay: 9 },
   { left: "79%", bottom: "16%", size: 2, duration: 17, delay: 3 },
   { left: "89%", bottom: "6%", size: 3, duration: 22, delay: 6 },
+] as const;
+
+const sacredInitials = [
+  {
+    src: "/images/gratitude/yhwh-hebrew-floral.jpeg",
+    alt: "Nom sacré en hébreu orné de fleurs",
+    label: "Nom sacré en hébreu",
+    position: "lg:translate-y-4 lg:-rotate-[1.5deg]",
+  },
+  {
+    src: "/images/gratitude/allah-arabic-floral.jpeg",
+    alt: "Nom sacré en arabe orné de fleurs",
+    label: "Nom sacré en arabe",
+    position: "lg:[transform:translateZ(22px)]",
+  },
+  {
+    src: "/images/gratitude/yhwh-floral.jpeg",
+    alt: "Nom sacré d’une tradition ancienne orné de fleurs",
+    label: "Nom sacré dans la tradition ancienne",
+    position: "lg:translate-y-4 lg:rotate-[1.5deg]",
+  },
 ] as const;
 
 const paragraphs = [
@@ -91,13 +113,82 @@ export default function GratitudeSection() {
           >
             Reconnaissance éternelle
           </motion.p>
+          <motion.p
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.7 }}
+            transition={{ delay: 0.08, duration: 0.9 }}
+            className="mx-auto mt-4 max-w-2xl text-pretty text-sm font-light leading-6 text-white/55 sm:text-base"
+          >
+            Une seule lumière, invoquée à travers les langues et les traditions.
+          </motion.p>
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.1, duration: 1 }}
+            className="relative mx-auto mt-10 max-w-5xl [perspective:1200px]"
+            aria-labelledby="sacred-names-title"
+          >
+            <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-32 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-[#e8ca75]/10 blur-2xl sm:h-40" />
+            <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-[-2.5rem] h-10 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#f6d77a]/55 to-transparent" />
+            <p id="sacred-names-title" className="mb-7 text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-[#ead99f]/70 sm:text-xs">
+              Les noms du Très-Haut
+            </p>
+            <div className="relative grid justify-items-center gap-8 lg:grid-cols-3 lg:items-center lg:gap-7 [transform-style:preserve-3d]">
+              {sacredInitials.map((initial, index) => (
+                <motion.figure
+                  key={initial.src}
+                  initial={reduceMotion ? false : { opacity: 0, y: 28, scale: 0.96 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.45 }}
+                  transition={{ delay: 0.15 + index * 0.14, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  className={`group relative w-full max-w-[300px] [transform-style:preserve-3d] ${initial.position}`}
+                >
+                  <motion.div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -inset-3 rounded-[2rem] border border-[#e8ca75]/12 opacity-70 [transform:rotateX(68deg)_translateZ(-14px)] sm:-inset-4"
+                    animate={reduceMotion ? undefined : { opacity: [0.35, 0.7, 0.35], scale: [0.98, 1.02, 0.98] }}
+                    transition={{ duration: 7 + index, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <motion.div
+                    animate={reduceMotion ? undefined : { y: [0, index % 2 === 0 ? -5 : -7, 0] }}
+                    transition={{ duration: 7 + index * 0.8, repeat: Infinity, ease: "easeInOut" }}
+                    whileHover={reduceMotion ? undefined : { y: -7, rotateX: -1.5, rotateY: index === 0 ? 1.5 : index === 2 ? -1.5 : 0 }}
+                    className="relative rounded-[1.4rem] border border-[#e8ca75]/35 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(13,7,20,0.88))] p-2 shadow-[0_24px_70px_rgba(0,0,0,0.52),0_0_35px_rgba(201,168,76,0.1),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-[border-color,box-shadow] duration-700 hover:border-[#f6d77a]/65 hover:shadow-[0_28px_80px_rgba(0,0,0,0.58),0_0_42px_rgba(201,168,76,0.18)] sm:rounded-[1.7rem] sm:p-2.5"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1rem] bg-[#eadcc8] sm:rounded-[1.25rem]">
+                      <Image
+                        src={initial.src}
+                        alt={initial.alt}
+                        fill
+                        sizes="(max-width: 1023px) 300px, 30vw"
+                        className="object-contain saturate-[0.88] contrast-[0.94] transition duration-1000 motion-safe:group-hover:scale-[1.015] motion-reduce:transition-none"
+                      />
+                      <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(20,8,28,0.24)_100%),linear-gradient(180deg,rgba(255,244,207,0.05),rgba(14,7,20,0.12))]" />
+                      <motion.span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -inset-y-8 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/16 to-transparent blur-sm motion-reduce:hidden"
+                        animate={{ left: ["-45%", "125%"] }}
+                        transition={{ duration: 8, delay: index * 1.4, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
+                      />
+                      <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-[#fff4ce]/20" />
+                    </div>
+                  </motion.div>
+                  <figcaption className="mx-auto mt-5 max-w-[17rem] text-[0.62rem] font-light uppercase leading-5 tracking-[0.22em] text-[#ead99f]/80 sm:text-[0.68rem]">
+                    {initial.label}
+                  </figcaption>
+                </motion.figure>
+              ))}
+            </div>
+          </motion.div>
           <motion.h2
             id="gratitude-title"
             initial={reduceMotion ? false : { opacity: 0, filter: "blur(14px)", y: 20 }}
             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ delay: 0.15, duration: 1.25, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 text-balance text-5xl font-black uppercase leading-none tracking-[-0.045em] text-white sm:text-7xl lg:text-8xl"
+            className="mt-8 text-balance text-5xl font-black uppercase leading-none tracking-[-0.045em] text-white sm:mt-10 sm:text-7xl lg:text-8xl"
           >
             À <span className="bg-gradient-to-b from-white via-[#fff4ce] to-[#b99032] bg-clip-text text-transparent">Dieu</span>
           </motion.h2>

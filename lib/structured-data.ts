@@ -10,7 +10,7 @@ export function organizationJsonLd() {
     "@id": `${siteUrl}/#organization`,
     name: siteName,
     url: siteUrl,
-    logo: `${siteUrl}/images/festival-talent-logo.png`,
+    logo: `${siteUrl}/images/festival-talent-logo.webp`,
   };
 }
 

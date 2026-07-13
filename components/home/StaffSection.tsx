@@ -17,6 +17,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Badge from "@/components/ui/Badge";
+import DirectionSection from "@/components/team/DirectionSection";
+import { directionMemberNames } from "@/data/direction";
 import {
   staffMembers as centralizedStaffMembers,
   type StaffIconKey,
@@ -113,8 +115,19 @@ export default function StaffSection() {
           description="Des profils engagés dans la culture, l'événementiel, la communication, l'innovation et le développement des talents."
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {centralizedStaffMembers.map((member, index) => {
+        <DirectionSection className="mt-16" />
+
+        <div className="mt-20 text-center">
+          <p className="text-xs font-black uppercase tracking-[0.28em] text-yellow-300">
+            Équipe opérationnelle
+          </p>
+          <h3 className="font-display mt-4 text-3xl uppercase text-white sm:text-5xl">
+            Les autres responsables
+          </h3>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {centralizedStaffMembers.filter((member) => !directionMemberNames.has(member.name)).map((member, index) => {
             const Icon = staffIcons[member.icon];
 
             return (

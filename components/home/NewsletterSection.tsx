@@ -67,6 +67,7 @@ export default function NewsletterSection() {
           <input
             type="email"
             required
+            aria-label="Votre adresse email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Votre adresse email"
@@ -84,6 +85,8 @@ export default function NewsletterSection() {
 
         {message && (
           <p
+            role={status === "error" ? "alert" : "status"}
+            aria-live={status === "error" ? "assertive" : "polite"}
             className={`mt-6 text-sm ${
               status === "error" ? "text-red-400" : "text-[#C9A84C]"
             }`}

@@ -8,6 +8,7 @@ import {
   Landmark,
   Laptop,
   Music2,
+  Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
@@ -25,6 +26,7 @@ const iconMap: Record<OrganisationPoleIconKey, LucideIcon> = {
   camera: Camera,
   music: Music2,
   landmark: Landmark,
+  users: Users,
 };
 
 export default function OrgChart() {
