@@ -1,3 +1,8 @@
+import {
+  platformImpactStatistics,
+  type ImpactStatistic,
+} from "@/data/statistics";
+
 export type SponsorPartner = {
   name: string;
   category: string;
@@ -11,10 +16,7 @@ export type SponsorPack = {
   benefits: string[];
 };
 
-export type SponsorImpactGoal = {
-  value: number;
-  label: string;
-};
+export type SponsorImpactGoal = ImpactStatistic;
 
 export const sponsorPartners: SponsorPartner[] = [
   { name: "Union Europeenne", category: "Institutionnel" },
@@ -27,13 +29,8 @@ export const sponsorPartners: SponsorPartner[] = [
   { name: "H & Hair", category: "Beaute & lifestyle", logo: "/images/partners/h-hair.jpeg" },
 ];
 
-export const sponsorImpactGoals: SponsorImpactGoal[] = [
-  { value: 1000, label: "Talents" },
-  { value: 14, label: "Regions" },
-  { value: 100, label: "Coachs" },
-  { value: 50, label: "Partenaires" },
-  { value: 100000, label: "Visiteurs" },
-];
+export const sponsorImpactGoals: SponsorImpactGoal[] =
+  platformImpactStatistics.filter((statistic) => statistic.key !== "volunteers");
 
 export const sponsorPacks: SponsorPack[] = [
   {

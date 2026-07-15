@@ -105,7 +105,7 @@ function CtaLink({
 function AnimatedCounter({ goal }: { goal: SponsorImpactGoal }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(goal.value);
 
   useEffect(() => {
     if (!inView) {

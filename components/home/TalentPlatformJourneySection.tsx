@@ -32,6 +32,11 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+import {
+  platformImpactStatistics,
+  type ImpactStatistic,
+} from "@/data/statistics";
+
 type TimelineStep = {
   title: string;
   icon: LucideIcon;
@@ -42,12 +47,6 @@ type TimelineStep = {
 type Discipline = {
   name: string;
   icon: LucideIcon;
-};
-
-type ImpactGoal = {
-  value: number;
-  suffix?: string;
-  label: string;
 };
 
 const talentJourney: TimelineStep[] = [
@@ -108,15 +107,6 @@ const domains: Discipline[] = [
   { name: "Creation de contenu", icon: Camera },
 ];
 
-const impactGoals: ImpactGoal[] = [
-  { value: 1000, label: "Talents accompagnes" },
-  { value: 14, label: "Regions representees" },
-  { value: 50, label: "Partenaires" },
-  { value: 500, label: "Benevoles" },
-  { value: 100, label: "Coachs" },
-  { value: 100000, label: "Visiteurs" },
-];
-
 const organization = [
   "Fondatrice",
   "Direction generale",
@@ -159,10 +149,10 @@ function SectionEyebrow({
   );
 }
 
-function AnimatedCounter({ goal }: { goal: ImpactGoal }) {
+function AnimatedCounter({ goal }: { goal: ImpactStatistic }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [displayValue, setDisplayValue] = useState(0);
+  const [displayValue, setDisplayValue] = useState(goal.value);
 
   useEffect(() => {
     if (!isInView) {
@@ -364,7 +354,7 @@ export default function TalentPlatformJourneySection() {
         </div>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {impactGoals.map((goal, index) => (
+            {platformImpactStatistics.map((goal, index) => (
             <motion.article
               key={goal.label}
               initial={{ opacity: 0, y: 24 }}
