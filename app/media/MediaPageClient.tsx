@@ -228,7 +228,7 @@ export default function MediaPageClient() {
                 />
               </div>
 
-              <div className="absolute left-6 top-6 hidden items-center gap-3 rounded-full border border-yellow-400/30 bg-black/60 px-5 py-3 text-xs font-black uppercase tracking-[0.25em] text-yellow-300 backdrop-blur-md sm:flex">
+              <div className="absolute left-3 top-3 flex min-h-11 items-center gap-2 rounded-full border border-yellow-400/30 bg-black/70 px-3 py-2 text-[0.62rem] font-black uppercase tracking-[0.16em] text-yellow-300 backdrop-blur-md sm:left-6 sm:top-6 sm:gap-3 sm:px-5 sm:py-3 sm:text-xs sm:tracking-[0.25em]">
                 <Play size={15} />
                 Contenu historique
               </div>

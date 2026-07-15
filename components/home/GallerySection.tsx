@@ -174,7 +174,7 @@ export default function GallerySection() {
                 (activeIndex - 1 + galleryItems.length) % galleryItems.length
               )
             }
-            className="absolute left-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:border-yellow-400/40 hover:text-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300 sm:flex"
+            className="absolute bottom-5 left-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/65 text-white transition hover:border-yellow-400/40 hover:text-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300 sm:bottom-auto sm:left-5 sm:top-1/2 sm:h-12 sm:w-12 sm:-translate-y-1/2 sm:bg-white/10"
             aria-label="Image precedente"
           >
             <ChevronLeft size={24} />
@@ -207,7 +207,7 @@ export default function GallerySection() {
             onClick={() =>
               setActiveIndex((activeIndex + 1) % galleryItems.length)
             }
-            className="absolute right-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:border-yellow-400/40 hover:text-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300 sm:flex"
+            className="absolute bottom-5 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/65 text-white transition hover:border-yellow-400/40 hover:text-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300 sm:bottom-auto sm:right-5 sm:top-1/2 sm:h-12 sm:w-12 sm:-translate-y-1/2 sm:bg-white/10"
             aria-label="Image suivante"
           >
             <ChevronRight size={24} />

@@ -48,12 +48,8 @@ export const footerNavigationGroups: FooterNavigationGroup[] = [
   {
     title: "Organisation",
     links: [
-      { label: "Institution", href: "/institution" },
-      { label: "Gouvernance", href: "/institution/gouvernance" },
-      { label: "Transparence", href: "/institution/transparence" },
       { label: "Équipe", href: "/team" },
       { label: "Mentors & Coachs", href: "/mentors" },
-      { label: "Impact", href: "/impact" },
     ],
   },
   {
@@ -84,6 +80,15 @@ export const footerNavigationGroups: FooterNavigationGroup[] = [
       { label: "Documents Officiels", href: "/documents" },
       { label: "Vision", href: "/vision" },
       { label: "Histoire", href: "/histoire" },
+    ],
+  },
+  {
+    title: "Institution",
+    links: [
+      { label: "Institution", href: "/institution" },
+      { label: "Gouvernance", href: "/institution/gouvernance" },
+      { label: "Transparence", href: "/institution/transparence" },
+      { label: "Impact", href: "/impact" },
     ],
   },
   {

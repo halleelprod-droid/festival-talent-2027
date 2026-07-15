@@ -502,7 +502,7 @@ export default function ProgrammePage() {
 
                     <div className="sm:hidden">
                       <p className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300">
-                        Étape {String(index + 1).padStart(2, "0")}
+                        Étape {String(index + 1).padStart(2, "0")} — {item.date}
                       </p>
                       <h3 className="mt-2 text-2xl font-black uppercase text-white">
                         {item.title}
