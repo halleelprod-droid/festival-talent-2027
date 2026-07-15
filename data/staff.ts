@@ -39,15 +39,6 @@ export const staffMembers: StaffMember[] = [
     featured: true,
   },
   {
-    name: "Ibrahima Khalilou Danso",
-    role: "Directeur Executif",
-    department: "Direction",
-    description:
-      "Assure la coordination generale, le pilotage operationnel et le suivi des grandes orientations du festival.",
-    icon: "briefcase",
-    initials: "IKD",
-  },
-  {
     name: "Jocelyne Vickie BITEKE",
     role: "Directrice des Ressources Humaines",
     department: "Direction",
@@ -140,15 +131,5 @@ export const staffMembers: StaffMember[] = [
     icon: "rocket",
     image: "/images/staff/abdourahmane-ndiaye.jpg",
     initials: "AN",
-  },
-  {
-    name: "DJ You",
-    role: "Directeur Artistique",
-    department: "Artistique",
-    description:
-      "Assure la direction artistique, accompagne la programmation creative et participe a la coherence musicale, scenique et culturelle de l'evenement.",
-    icon: "music",
-    image: "/images/staff/dj-you.jpg",
-    initials: "DY",
   },
 ];

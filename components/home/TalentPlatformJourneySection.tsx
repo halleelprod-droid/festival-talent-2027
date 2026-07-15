@@ -119,7 +119,6 @@ const organization = [
 
 const builders = [
   "Zairah Diamant Noire",
-  "Ibrahima Khalilou Danso",
   "Pierre Ndiaye",
   "PIN EVENTS",
   "Agence Diassnor",

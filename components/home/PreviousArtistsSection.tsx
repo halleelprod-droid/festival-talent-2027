@@ -12,11 +12,6 @@ export default function PreviousArtistsSection() {
       role: "Live band & showcase",
       image: "/images/previous/zairah.jpg",
     },
-    {
-      name: "DJ YOU",
-      role: "DJ set officiel",
-      image: "/images/previous/djyou.jpg",
-    },
   ];
 
   return (
@@ -39,7 +34,7 @@ export default function PreviousArtistsSection() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
           {artists.map((artist) => (
             <div
               key={artist.name}
