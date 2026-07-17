@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, type PointerEvent } from "react";
+import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -23,27 +24,24 @@ const particles = [
   { left: "89%", bottom: "6%", size: 3, duration: 22, delay: 6 },
 ] as const;
 
-const sacredNames = [
+const sacredInitials = [
   {
-    script: "יהוה",
-    transliteration: "YHWH",
-    language: "Hébreu",
-    lang: "he",
-    direction: "rtl" as const,
+    src: "/images/gratitude/yhwh-hebrew-floral.jpeg",
+    alt: "Nom sacré en hébreu orné de fleurs",
+    label: "Nom sacré en hébreu",
+    position: "lg:translate-y-4 lg:-rotate-[1.5deg]",
   },
   {
-    script: "ܐܠܗܐ",
-    transliteration: "Alāhā",
-    language: "Araméen",
-    lang: "syc",
-    direction: "rtl" as const,
+    src: "/images/gratitude/allah-arabic-floral.jpeg",
+    alt: "Nom sacré en arabe orné de fleurs",
+    label: "Nom sacré en arabe",
+    position: "lg:[transform:translateZ(22px)]",
   },
   {
-    script: "الله",
-    transliteration: "Allāh",
-    language: "Arabe",
-    lang: "ar",
-    direction: "rtl" as const,
+    src: "/images/gratitude/yhwh-floral.jpeg",
+    alt: "Nom sacré YHWH orné de fleurs",
+    label: "Nom sacré YHWH",
+    position: "lg:translate-y-4 lg:rotate-[1.5deg]",
   },
 ] as const;
 
@@ -137,34 +135,50 @@ export default function GratitudeSection() {
             <p id="sacred-names-title" className="mb-7 text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-[#ead99f]/70 sm:text-xs">
               Les noms du Très-Haut
             </p>
-            <div className="relative grid justify-items-stretch gap-5 sm:grid-cols-3 sm:gap-6 [transform-style:preserve-3d]">
-              {sacredNames.map((name, index) => (
-                <motion.article
-                  key={name.transliteration}
+            <div className="relative grid justify-items-center gap-8 lg:grid-cols-3 lg:items-center lg:gap-7 [transform-style:preserve-3d]">
+              {sacredInitials.map((initial, index) => (
+                <motion.figure
+                  key={initial.src}
                   initial={reduceMotion ? false : { opacity: 0, y: 28, scale: 0.96 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.45 }}
                   transition={{ delay: 0.15 + index * 0.14, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="group relative min-h-52 w-full overflow-hidden rounded-[1.7rem] border border-[#e8ca75]/30 bg-[linear-gradient(145deg,rgba(255,255,255,0.07),rgba(13,7,20,0.88))] px-5 py-7 shadow-[0_24px_70px_rgba(0,0,0,0.52),0_0_35px_rgba(201,168,76,0.1),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md sm:min-h-60 sm:px-6 sm:py-8"
+                  className={`group relative w-full max-w-[300px] [transform-style:preserve-3d] ${initial.position}`}
                 >
                   <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-[18%] top-0 h-px bg-gradient-to-r from-transparent via-[#f6d77a] to-transparent"
+                    className="pointer-events-none absolute -inset-3 rounded-[2rem] border border-[#e8ca75]/12 opacity-70 [transform:rotateX(68deg)_translateZ(-14px)] sm:-inset-4"
                     animate={reduceMotion ? undefined : { opacity: [0.35, 0.7, 0.35], scale: [0.98, 1.02, 0.98] }}
                     transition={{ duration: 7 + index, repeat: Infinity, ease: "easeInOut" }}
                   />
-                  <motion.p
-                    lang={name.lang}
-                    dir={name.direction}
-                    animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
-                    transition={{ duration: 7 + index, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative font-serif text-5xl leading-none text-[#fff4ce] drop-shadow-[0_0_22px_rgba(246,215,122,0.32)] sm:text-6xl"
+                  <motion.div
+                    animate={reduceMotion ? undefined : { y: [0, index % 2 === 0 ? -5 : -7, 0] }}
+                    transition={{ duration: 7 + index * 0.8, repeat: Infinity, ease: "easeInOut" }}
+                    whileHover={reduceMotion ? undefined : { y: -7, rotateX: -1.5, rotateY: index === 0 ? 1.5 : index === 2 ? -1.5 : 0 }}
+                    className="relative rounded-[1.4rem] border border-[#e8ca75]/35 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(13,7,20,0.88))] p-2 shadow-[0_24px_70px_rgba(0,0,0,0.52),0_0_35px_rgba(201,168,76,0.1),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-[border-color,box-shadow] duration-700 hover:border-[#f6d77a]/65 hover:shadow-[0_28px_80px_rgba(0,0,0,0.58),0_0_42px_rgba(201,168,76,0.18)] sm:rounded-[1.7rem] sm:p-2.5"
                   >
-                    {name.script}
-                  </motion.p>
-                  <p className="mt-7 text-lg font-semibold tracking-[0.18em] text-white">{name.transliteration}</p>
-                  <p className="mt-3 text-[0.65rem] font-light uppercase tracking-[0.3em] text-[#ead99f]/70">{name.language}</p>
-                </motion.article>
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1rem] bg-[#eadcc8] sm:rounded-[1.25rem]">
+                      <Image
+                        src={initial.src}
+                        alt={initial.alt}
+                        fill
+                        sizes="(max-width: 1023px) 300px, 30vw"
+                        className="object-contain saturate-[0.88] contrast-[0.94] transition duration-1000 motion-safe:group-hover:scale-[1.015] motion-reduce:transition-none"
+                      />
+                      <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(20,8,28,0.24)_100%),linear-gradient(180deg,rgba(255,244,207,0.05),rgba(14,7,20,0.12))]" />
+                      <motion.span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -inset-y-8 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/16 to-transparent blur-sm motion-reduce:hidden"
+                        animate={{ left: ["-45%", "125%"] }}
+                        transition={{ duration: 8, delay: index * 1.4, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
+                      />
+                      <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-[#fff4ce]/20" />
+                    </div>
+                  </motion.div>
+                  <figcaption className="mx-auto mt-5 max-w-[17rem] text-[0.62rem] font-light uppercase leading-5 tracking-[0.22em] text-[#ead99f]/80 sm:text-[0.68rem]">
+                    {initial.label}
+                  </figcaption>
+                </motion.figure>
               ))}
             </div>
           </motion.div>
