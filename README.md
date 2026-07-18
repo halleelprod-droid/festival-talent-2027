@@ -10,7 +10,7 @@ Ce repo est traité comme une **plateforme pluriannuelle** (éditions 2027 → 2
 |---|---|
 | Framework | Next.js 16 (App Router, Turbopack) |
 | UI | React 19, TypeScript strict, Tailwind CSS 4, Framer Motion |
-| Données | Supabase (pré-sélections, newsletter) |
+| Données | PostgreSQL + Drizzle ORM |
 | Email | Resend (confirmation newsletter) |
 | Carte | Mapbox GL (`react-map-gl`, chargée en dynamic import) |
 | Tests | Vitest + React Testing Library (unit), Playwright (E2E) |
@@ -46,7 +46,8 @@ components/
   ui/           Primitives du Design System + effets (voir COMPONENTS.md)
 config/         Constantes de configuration (navigation, réseaux sociaux)
 data/           Contenu statique par domaine (artistes, staff via sections, programme, FAQ...)
-lib/            Logique partagée (seo.ts : métadonnées ; supabase.ts : client)
+lib/            Logique partagée (SEO et utilitaires)
+src/db/         Connexion PostgreSQL server-only et schéma Drizzle
 messages/       Fichiers de traduction FR/EN/IT (i18n non activé — voir ROADMAP.md)
 public/         Images, vidéos, logos partenaires
 __tests__/      Tests unitaires Vitest
@@ -58,7 +59,8 @@ e2e/            Tests E2E Playwright
 - [ARCHITECTURE.md](ARCHITECTURE.md) — décisions structurantes, conventions, roadmap technique
 - [COMPONENTS.md](COMPONENTS.md) — bibliothèque de composants et leur API
 - [STYLEGUIDE.md](STYLEGUIDE.md) — conventions de nommage, style, animations
-- [DATABASE.md](DATABASE.md) — schéma Supabase, RLS
+- [DATABASE.md](DATABASE.md) — schéma PostgreSQL et migrations
+- [docs/CANDIDATE_DATE_OF_BIRTH_MIGRATION.md](docs/CANDIDATE_DATE_OF_BIRTH_MIGRATION.md) — `date_of_birth` remplace `age` (âge calculé, jamais stocké)
 - [DEPLOYMENT.md](DEPLOYMENT.md) — variables d'environnement, process Vercel
 - [ROADMAP.md](ROADMAP.md) — vision produit 2027 → 2030
 - [CONTRIBUTING.md](CONTRIBUTING.md) — workflow de contribution
@@ -67,6 +69,6 @@ e2e/            Tests E2E Playwright
 ## Règles non négociables
 
 - `npm run build` et `npm run lint` verts après **chaque** modification.
-- Ne jamais casser : Supabase, le formulaire de pré-sélections, les routes existantes, les variables d'environnement, le déploiement Vercel.
+- Ne jamais exposer PostgreSQL au navigateur ni casser le formulaire de pré-sélections, les routes existantes ou le déploiement Vercel.
 - Une seule balise `<h1>` par page.
 - Contenu éditorial verrouillé (staff, partenaires, artistes confirmés) : ne pas modifier sans validation de l'équipe — voir CLAUDE.md / AGENTS.md.

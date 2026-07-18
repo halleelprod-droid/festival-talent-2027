@@ -8,7 +8,7 @@ export const publicContact = {
 } as const;
 
 export const protectedFiles = [
-  "lib/supabase.ts",
+  "src/db/index.ts",
   "components/preselections/PreselectionForm.tsx",
   ".env.local",
 ] as const;

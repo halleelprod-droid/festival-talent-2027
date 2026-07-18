@@ -1,30 +1,12 @@
-# Plan de securisation admin
+# Authentification administrateur
 
-Ce document prepare la securisation future de `/admin` sans activer d'acces aux donnees reelles dans la V6.
+L’administration utilise Auth.js avec sessions JWT sécurisées côté serveur. Les comptes applicatifs et rôles vivent dans `admin_users`; les empreintes bcrypt sont isolées dans `admin_credentials`. Il n’existe aucune inscription publique.
 
-## Objectif
+```bash
+ADMIN_PASSWORD='mot-de-passe-long' npm run admin:create -- --email=admin@example.org --name='Nom Admin' --role=super_admin
+```
 
-Proteger le dashboard admin avant toute lecture de la table `preselections`.
+Les routes `/admin` et `/api/admin/*` sont protégées par `proxy.ts`, et chaque route sensible refait un contrôle serveur de session et de rôle.
 
-## Etapes recommandees
 
-1. Activer Supabase Auth pour les comptes administrateurs.
-2. Ajouter un role admin dans les metadata utilisateur ou dans une table dediee.
-3. Proteger `/admin` cote serveur avec une verification de session.
-4. Mettre en place des policies RLS strictes sur `preselections`.
-5. Lire les statistiques uniquement depuis du code serveur authentifie.
-6. Utiliser la service role key uniquement cote serveur, jamais dans un composant client, jamais dans le navigateur, jamais dans une variable `NEXT_PUBLIC_*`.
-7. Ajouter une page de connexion admin separee avec redirection apres auth.
-8. Journaliser les acces sensibles et limiter les exports de donnees.
-
-## Regles de securite
-
-- Ne jamais exposer les donnees candidates publiquement.
-- Ne jamais importer une cle service role dans du code client.
-- Ne jamais contourner RLS depuis une route publique.
-- Ne jamais afficher telephone, email, message ou portfolio sans auth admin.
-- Garder `lib/supabase.ts` pour le client public existant sans le casser.
-
-## V6
-
-La V6 affiche un dashboard visuel preparatoire avec donnees mockees. Les fonctions dans `services/preselections.ts` sont volontairement serveur-only et retournent des valeurs neutres tant que l'auth admin n'est pas active.
+> **Modèle candidat** : `date_of_birth` remplace `age` (source de vérité ; âge calculé dynamiquement, aucune date fabriquée). Détails dans [DATABASE.md](../DATABASE.md#date-de-naissance-remplace-lâge).

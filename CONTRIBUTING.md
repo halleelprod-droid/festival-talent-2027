@@ -23,7 +23,7 @@
 - [ ] Pas de valeur dorée en dur (`#C9A84C`) dans du nouveau code → tokens (`text-gold`...)
 - [ ] Librairie lourde ajoutée → `next/dynamic`, jamais dans le chemin LCP
 - [ ] Décision structurante prise ? → documentée dans ARCHITECTURE.md
-- [ ] Table Supabase modifiée ? → DATABASE.md mis à jour
+- [ ] Schéma PostgreSQL/Drizzle modifié ? → migration générée et DATABASE.md mis à jour
 - [ ] Entrée ajoutée dans CHANGELOG.md
 
 ## Questions d'arbitrage (si la réponse est non, ne pas faire la modification)
@@ -32,4 +32,4 @@ Cette modification améliore-t-elle réellement le produit ? Est-elle cohérente
 
 ## Ce qu'il ne faut jamais casser
 
-Supabase (formulaire de pré-sélections en premier lieu), les routes existantes, les variables d'environnement, le déploiement Vercel, le build.
+PostgreSQL/Drizzle (formulaire de pré-sélections en premier lieu), les routes existantes, les variables d'environnement, le déploiement Vercel et le build.

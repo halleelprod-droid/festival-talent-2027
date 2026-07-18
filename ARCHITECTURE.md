@@ -9,7 +9,7 @@ Règle de base : une modification n'est acceptée que si elle améliore au moins
 - Next.js 16 (App Router, Turbopack), React 19, TypeScript strict, Tailwind 4.
 - Home réelle : `app/fr/page.tsx` (Server Component, importe ~29 sections client depuis `components/home/`).
 - Chrome global (Navbar, Footer, particules, curseur, transitions, scroll fluide) centralisé dans `components/providers/SiteChrome.tsx`, monté une fois dans `app/layout.tsx`.
-- Seul Supabase est branché en données réelles (`preselections`, `newsletter_subscribers`). Sanity et Prisma ont été retirés du repo (2026-07) faute de cas d'usage réel — à réintroduire proprement le jour où un besoin concret (CMS, billetterie) se présente, pas avant. `styled-components` et `dotenv` retirés à la même occasion (zéro usage détecté).
+- PostgreSQL et Drizzle portent les données réelles (`preselection_registrations`, `newsletter_subscribers`) derrière les routes serveur. Sanity et Prisma ont été retirés du repo (2026-07) faute de cas d'usage réel — à réintroduire proprement le jour où un besoin concret (CMS, billetterie) se présente, pas avant. `styled-components` et `dotenv` ont été retirés à la même occasion (zéro usage détecté).
 - Bundle : `mapbox-gl` et `gsap` sont retirés/différés du chargement initial (`next/dynamic`). Toute nouvelle dépendance lourde (>50 Ko) doit suivre le même principe : ne jamais bloquer le LCP.
 
 ## Conventions établies
@@ -58,7 +58,7 @@ Chaque phase est livrable indépendamment et n'exige pas d'avoir fait la précé
 1. **Design System** — ✅ fondations + migration ciblée livrées (2026-07, cf. section dédiée ci-dessus). Reste : migrer les ~20 sections non converties, et évaluer si `PartnerCard`/`ArtistCard`/`StaffCard`/`FAQItem`/`Timeline`/`Gallery` deviennent pertinents une fois plus de sections migrées (pas de pattern répété suffisant aujourd'hui pour les justifier).
 2. **A11y AA complet** — audit clavier bout en bout, focus visibles, formulaires, au-delà des correctifs ciblés déjà faits (FAQ, menu mobile).
 3. **SEO structuré par page** — JSON-LD/Breadcrumbs sur activités, artistes, partenaires, tickets, FAQ (aujourd'hui centralisé sur layout + home uniquement).
-4. **Sécurité** — audit ciblé : RLS Supabase, validation des inputs (formulaires), headers.
+4. **Sécurité** — audit ciblé : rôles Auth.js, validation des entrées (formulaires), accès PostgreSQL côté serveur et headers.
 5. **Narration home** — réordonnancement réfléchi des sections, une fois le Design System en place (sinon on réordonne des blocs visuellement incohérents entre eux).
 6. **Architecture Admin** (lecture/gestion candidats, partenaires, programme) — nécessite une décision d'authentification au préalable.
 7. **Architecture Billetterie** (préparée, non activée) — modèles de données tickets/QR/paiement.
@@ -72,5 +72,5 @@ Chaque phase est livrable indépendamment et n'exige pas d'avoir fait la précé
 
 ## Décisions en attente (pas de choix arbitraire sans validation)
 
-- Authentification pour l'admin : Supabase Auth, Clerk, autre ?
+- Authentification admin : Auth.js v5 avec comptes et rôles PostgreSQL.
 - Vulnérabilité npm audit (high) sur Next.js 16.2.4, fix disponible en 16.2.10 — bump à valider séparément (phase Sécurité), pas fait en silence dans ce lot.

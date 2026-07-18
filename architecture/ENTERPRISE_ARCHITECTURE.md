@@ -61,8 +61,8 @@ Fondations attendues :
 - audit logs
 - validation
 - rate limiting
-- RLS Supabase
-- service role uniquement cote serveur
+- rôles Auth.js et autorisations côté serveur
+- accès PostgreSQL uniquement côté serveur
 
 ## Cloud
 

@@ -41,6 +41,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# fichiers privés de revue des dates de naissance (données personnelles — ne jamais committer)
+birth-date-review.csv
+birth-date-review-map.csv
+birth-date-review-errors.csv
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

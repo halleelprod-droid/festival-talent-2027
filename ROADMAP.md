@@ -4,7 +4,7 @@ Vision : passer d'un site événementiel à la **plateforme culturelle de réfé
 
 ## Versioning
 
-- **v3** — site vitrine initial (sections home, formulaire pré-sélections Supabase).
+- **v3** — site vitrine initial (sections home et premier formulaire de pré-sélections).
 - **v4** *(livrée, 2026-07)* — activation premium : chrome global, design system (fondations), newsletter réelle, compteur live, carte Mapbox, typographie Inter/Anton, perf (bundle −1,9 Mo), A11y ciblée, tests scaffoldés, docs. Détail dans [CHANGELOG.md](CHANGELOG.md).
 - **v5** *(en cours de cadrage)* — voir "Édition 2027" ci-dessous.
 - **v6+** — plateforme multi-éditions.
@@ -22,7 +22,7 @@ Priorités produit, dans l'ordre :
 ## Édition 2028 (v6)
 
 - **Architecture multi-éditions** : les contenus 2027 (artistes, programme, partenaires) deviennent des données datées ; une édition = une configuration, pas un fork du code. C'est LA condition du "sans réécriture jusqu'en 2035".
-- **Dashboard admin** (validation candidatures, gestion partenaires/artistes/programme) — précédé du choix d'auth (Supabase Auth pressenti, non tranché).
+- **Dashboard admin** (validation candidatures, gestion partenaires/artistes/programme) — Auth.js v5 et rôles PostgreSQL en place, extensions métier à poursuivre.
 - **Billetterie réelle** : tickets, QR codes, paiement (prestataire à choisir : Wave/Orange Money indispensables pour le marché sénégalais, + carte internationale), contrôle d'accès.
 - **Portail partenaires** (espace privé, stats de visibilité).
 

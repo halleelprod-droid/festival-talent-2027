@@ -3,7 +3,7 @@ export const ticketingSafetyRules = [
   "Aucun QR Code reel n'est genere.",
   "Aucune transaction n'est effectuee.",
   "Aucun billet PDF reel n'est emis.",
-  "Aucune donnee ticketing n'est stockee dans Supabase.",
+  "Aucune donnee ticketing reelle n'est encore persistee.",
 ] as const;
 
 export function getTicketingSafetyNotice() {

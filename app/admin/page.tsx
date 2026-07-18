@@ -1,209 +1,53 @@
 import type { Metadata } from "next";
-import {
-  BarChart3,
-  Building2,
-  ChartNoAxesCombined,
-  Clock3,
-  LockKeyhole,
-  MapPin,
-  ShieldCheck,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { Download, LogOut, ShieldCheck } from "lucide-react";
 
-import Badge from "@/components/ui/Badge";
-import GradientButton from "@/components/ui/GradientButton";
-import PremiumCard from "@/components/ui/PremiumCard";
-import SectionHeader from "@/components/ui/SectionHeader";
-import { buildPageMetadata } from "@/lib/seo";
+import { auth, signOut } from "@/auth";
+import { getDashboardData, type CandidateFilters } from "@/src/services/admin/dashboard";
 
-export const metadata: Metadata = {
-  ...buildPageMetadata({
-    title: "Dashboard admin",
-    description:
-      "Dashboard preparatoire Festival Talent 2027 pour la future gestion securisee des candidatures et statistiques.",
-    path: "/admin",
-  }),
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
-  },
-};
+export const metadata: Metadata = { title: "Administration | Festival Talent", robots: { index: false, follow: false } };
+export const dynamic = "force-dynamic";
 
-const dashboardCards = [
-  {
-    title: "Candidatures reçues",
-    value: "Bientôt",
-    label: "Compteur sécurisé",
-    icon: Users,
-    tone: "gold",
-  },
-  {
-    title: "Disciplines",
-    value: "8+",
-    label: "Vue préparatoire",
-    icon: BarChart3,
-    tone: "default",
-  },
-  {
-    title: "Villes",
-    value: "Zones",
-    label: "Agrégation future",
-    icon: MapPin,
-    tone: "default",
-  },
-  {
-    title: "Pré-sélections",
-    value: "2026-27",
-    label: "Suivi opérationnel",
-    icon: Building2,
-    tone: "default",
-  },
-  {
-    title: "Statistiques à venir",
-    value: "V7",
-    label: "Après auth admin",
-    icon: ChartNoAxesCombined,
-    tone: "gold",
-  },
-] as const;
+export default async function AdminDashboardPage({ searchParams }: { searchParams: Promise<CandidateFilters> }) {
+  const session = await auth();
+  if (!session?.user) redirect("/admin/login");
+  const filters = await searchParams;
+  const data = await getDashboardData(filters);
+  const cards = [
+    ["Candidats", data.stats.candidates], ["Inscriptions", data.stats.registrations], ["Villes", data.stats.cities],
+    ["Disciplines", data.stats.disciplines], ["Téléphones valides", data.stats.validPhones], ["Invalides", data.stats.invalidPhones],
+    ["Doublons à revoir", data.stats.duplicates], ["Confirmations envoyées", data.stats.sent], ["Échecs", data.stats.failed],
+  ];
+  const totalPages = Math.max(1, Math.ceil(data.total / data.pageSize));
+  const canExport = session.user.role === "super_admin" || session.user.role === "admin";
 
-const pipelineSteps = [
-  "Authentification admin",
-  "Rôles et permissions",
-  "Lecture serveur uniquement",
-  "Exports contrôlés",
-];
+  async function logout() { "use server"; await signOut({ redirectTo: "/admin/login" }); }
 
-export default function AdminDashboardPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(234,179,8,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(185,28,28,0.16),transparent_30%),linear-gradient(to_bottom,#000,rgba(12,9,4,0.98),#000)]" />
+    <main className="min-h-screen bg-black px-5 pb-24 pt-28 text-white sm:px-10 lg:px-16">
+      <div className="mx-auto max-w-7xl">
+        <header className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div><p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.25em] text-yellow-300"><ShieldCheck size={16} /> Administration sécurisée</p><h1 className="mt-3 text-4xl font-black uppercase">Candidatures 2027</h1><p className="mt-2 text-sm text-white/55">{session.user.name} · {session.user.role}</p></div>
+          <div className="flex gap-3">{canExport && <Link href="/api/admin/candidates/export" className="inline-flex items-center gap-2 rounded-full border border-yellow-400/30 px-5 py-3 text-sm"><Download size={16} /> Export CSV</Link>}<form action={logout}><button className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm"><LogOut size={16} /> Quitter</button></form></div>
+        </header>
 
-      <section className="relative px-6 pb-16 pt-32 sm:px-10 lg:px-20 lg:pt-40">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            eyebrow="Admin préparatoire"
-            icon={ShieldCheck}
-            align="center"
-            className="max-w-5xl"
-            title={
-              <>
-                Dashboard
-                <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-red-500 bg-clip-text text-transparent">
-                  Festival Talent
-                </span>
-              </>
-            }
-            description="Un espace visuel pour préparer la future gestion des candidatures, disciplines, villes, pré-sélections et statistiques sans exposer de données privées."
-          />
-
-          <div className="mt-10 flex justify-center">
-            <Badge icon={LockKeyhole} color="red" size="md">
-              Données réelles non exposées
-            </Badge>
+        <section aria-label="Statistiques" className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">{cards.map(([label, value]) => <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"><p className="text-xs uppercase tracking-wider text-white/45">{label}</p><p className="mt-3 text-3xl font-black text-yellow-300">{value}</p></div>)}</section>
+        <section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.035] p-5 sm:p-7">
+          <form className="grid gap-3 md:grid-cols-4">
+            <input name="q" defaultValue={filters.q} placeholder="Nom ou ville" className="rounded-xl border border-white/10 bg-black/60 px-4 py-3" />
+            <select name="status" defaultValue={filters.status || ""} className="rounded-xl border border-white/10 bg-black px-4 py-3"><option value="">Tous les statuts</option>{data.statuses.map((item) => <option key={item.status} value={item.status}>{item.status} ({item.value})</option>)}</select>
+            <select name="discipline" defaultValue={filters.discipline || ""} className="rounded-xl border border-white/10 bg-black px-4 py-3"><option value="">Toutes les disciplines</option>{data.disciplineOptions.map((item) => <option key={item.slug} value={item.slug}>{item.name}</option>)}</select>
+            <button className="rounded-xl bg-yellow-400 px-5 py-3 font-black uppercase text-black">Filtrer</button>
+          </form>
+          <div className="mt-7 overflow-x-auto">
+            <table className="w-full min-w-[900px] text-left text-sm"><thead className="text-xs uppercase tracking-wider text-white/45"><tr><th className="pb-4">Candidat</th><th>Contact</th><th>Naissance</th><th title="Âge à la date de référence du festival">Âge*</th><th>Ville</th><th>Discipline</th><th>Statut</th><th>Date</th></tr></thead><tbody>{data.candidates.map((candidate) => <tr key={candidate.id} className="border-t border-white/8"><td className="py-4 font-bold">{candidate.name}</td><td>{candidate.phone}</td><td>{candidate.dateOfBirth ? candidate.dateOfBirth : <span className="text-yellow-300/80" title="Date de naissance à compléter">À revoir</span>}</td><td>{candidate.calculatedAge ?? "—"}</td><td>{candidate.city || "—"}</td><td>{candidate.discipline || "—"}</td><td>{candidate.status}</td><td>{candidate.submittedAt.toLocaleDateString("fr-FR")}</td></tr>)}</tbody></table>
+            <p className="mt-3 text-xs text-white/40">* Âge calculé au {data.ageReferenceDate}, date de référence provisoire de l’édition (jamais stocké). « À revoir » signale une date de naissance manquante à compléter manuellement.</p>
           </div>
-        </div>
-      </section>
-
-      <section className="relative px-6 pb-16 sm:px-10 lg:px-20">
-        <div className="mx-auto max-w-7xl">
-          <PremiumCard tone="gold" className="p-7 sm:p-9">
-            <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div>
-                <LockKeyhole className="text-yellow-300" size={34} />
-                <h2 className="mt-5 text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
-                  Accès sécurisé à venir
-                </h2>
-              </div>
-
-              <p className="text-base leading-8 text-white/68">
-                L&apos;accès aux données réelles sera sécurisé dans une prochaine
-                version. Cette page utilise uniquement des cartes mockées et ne
-                lit aucune information privée de la table `preselections`.
-              </p>
-            </div>
-          </PremiumCard>
-        </div>
-      </section>
-
-      <section className="relative px-6 pb-16 sm:px-10 lg:px-20">
-        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 xl:grid-cols-5">
-          {dashboardCards.map((card) => {
-            const Icon = card.icon;
-
-            return (
-              <PremiumCard
-                key={card.title}
-                tone={card.tone}
-                className="p-6 transition duration-300 hover:-translate-y-1"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-yellow-400/30 bg-yellow-400/10 text-yellow-300">
-                  <Icon size={24} />
-                </div>
-
-                <p className="mt-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/45">
-                  {card.title}
-                </p>
-                <p className="mt-3 text-3xl font-black uppercase text-white">
-                  {card.value}
-                </p>
-                <p className="mt-2 text-sm text-white/55">{card.label}</p>
-              </PremiumCard>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="relative px-6 pb-28 sm:px-10 lg:px-20">
-        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <PremiumCard className="p-7 sm:p-9">
-            <div className="flex items-center gap-4">
-              <Clock3 className="text-yellow-300" size={30} />
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-yellow-300">
-                  Roadmap admin
-                </p>
-                <h2 className="mt-2 text-2xl font-black uppercase text-white">
-                  Gestion des inscriptions
-                </h2>
-              </div>
-            </div>
-
-            <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              {pipelineSteps.map((step) => (
-                <div
-                  key={step}
-                  className="rounded-lg border border-white/10 bg-black/35 p-4 text-sm font-bold uppercase tracking-[0.14em] text-white/70"
-                >
-                  {step}
-                </div>
-              ))}
-            </div>
-          </PremiumCard>
-
-          <PremiumCard tone="gold" className="p-7 sm:p-9">
-            <Sparkles className="text-yellow-300" size={30} />
-            <h2 className="mt-5 text-2xl font-black uppercase text-white">
-              Version préparatoire
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-white/62">
-              La V6 prépare l&apos;interface et les services, mais la connexion
-              aux données réelles attendra l&apos;authentification admin, les rôles
-              et les règles RLS.
-            </p>
-            <div className="mt-7">
-              <GradientButton href="/stats" variant="outline" icon={BarChart3}>
-                Voir les stats publiques
-              </GradientButton>
-            </div>
-          </PremiumCard>
-        </div>
-      </section>
+          {!data.candidates.length && <p className="py-10 text-center text-white/50">Aucun résultat.</p>}
+          <nav aria-label="Pagination" className="mt-6 flex items-center justify-between text-sm"><span>Page {data.page} sur {totalPages}</span><div className="flex gap-2">{data.page > 1 && <Link href={{ query: { ...filters, page: data.page - 1 } }} className="rounded-full border border-white/15 px-4 py-2">Précédent</Link>}{data.page < totalPages && <Link href={{ query: { ...filters, page: data.page + 1 } }} className="rounded-full border border-white/15 px-4 py-2">Suivant</Link>}</div></nav>
+        </section>
+      </div>
     </main>
   );
 }

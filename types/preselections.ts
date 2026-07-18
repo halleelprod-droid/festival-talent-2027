@@ -3,7 +3,7 @@ export type PreselectionCandidate = {
   full_name: string;
   phone: string;
   email?: string | null;
-  age?: number | null;
+  dateOfBirth?: string | null;
   city: string;
   discipline: string;
   experience?: string | null;

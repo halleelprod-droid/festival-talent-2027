@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "message_logs_registration_channel_type_idx" ON "message_logs" USING btree ("registration_id","channel","message_type") WHERE "message_logs"."registration_id" IS NOT NULL;

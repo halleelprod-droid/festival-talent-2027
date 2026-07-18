@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-import { supabase } from '@/lib/supabase';
+import { getDb } from '@/src/db';
+import { newsletterSubscribers } from '@/src/db/schema';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -44,31 +45,18 @@ export async function POST(
       );
     }
 
-    const { error } = await supabase
-      .from('newsletter_subscribers')
-      .insert({ email });
+    const inserted = await getDb().insert(newsletterSubscribers)
+      .values({ email: email.trim().toLowerCase() })
+      .onConflictDoNothing()
+      .returning({ id: newsletterSubscribers.id });
+    const alreadyRegistered = inserted.length === 0;
 
-    if (error && error.code !== '23505') {
-      console.error('Newsletter insert failed:', error);
-
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            'Erreur serveur'
-        },
-        {
-          status: 500
-        }
-      );
-    }
-
-    await sendConfirmationEmail(email);
+    if (!alreadyRegistered) await sendConfirmationEmail(email);
 
     return NextResponse.json({
       success: true,
       message:
-        error?.code === '23505'
+        alreadyRegistered
           ? 'Vous êtes déjà inscrit'
           : 'Inscription réussie'
     });

@@ -55,5 +55,5 @@ Les endpoints proteges retournent uniquement un statut preparatoire tant que l'a
 2. Remplacer les cartes/boutons locaux par le design system.
 3. Ajouter schemas et validators par domaine.
 4. Ajouter tests unitaires par module.
-5. Connecter Supabase uniquement cote serveur avec politiques RLS.
+5. Connecter PostgreSQL uniquement côté serveur avec Auth.js et des rôles explicites.
 6. Ajouter cache, analytics, notifications et observabilite.

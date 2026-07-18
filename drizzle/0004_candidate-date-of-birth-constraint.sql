@@ -1,0 +1,2 @@
+ALTER TABLE "candidates" DROP CONSTRAINT "candidates_dob_reasonable";--> statement-breakpoint
+ALTER TABLE "candidates" ADD CONSTRAINT "candidates_dob_reasonable" CHECK ("candidates"."date_of_birth" IS NULL OR "candidates"."date_of_birth" >= '1900-01-01');

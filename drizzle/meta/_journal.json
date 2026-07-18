@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1784328023514,
+      "tag": "0000_festival-talent-core",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1784328197160,
+      "tag": "0001_candidate-age-constraint",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1784328342091,
+      "tag": "0002_message-idempotency",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1784328343091,
+      "tag": "0003_candidate-date-of-birth",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1784386087832,
+      "tag": "0004_candidate-date-of-birth-constraint",
+      "breakpoints": true
+    }
+  ]
+}

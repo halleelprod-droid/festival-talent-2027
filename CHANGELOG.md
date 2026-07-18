@@ -2,6 +2,17 @@
 
 Historique des évolutions notables. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/), une entrée par lot livré.
 
+## [modèle candidat — date de naissance] — 2026-07
+
+### Modifié (breaking, base de données)
+- `candidates.age` **remplacé** par `candidates.date_of_birth` (type SQL `date`), désormais seule donnée de naissance persistée. Migration `drizzle/0003_candidate-date-of-birth.sql` (Stratégie A : aucune donnée réelle importée). L’âge est calculé dynamiquement, jamais stocké.
+- Nouveau `src/lib/candidate-date-of-birth.ts` (`calculateAgeOnDate`, `isValidCivilDate`, `isCandidateAgeEligible`, comparaison année/mois/jour sans fuseau) et `src/config/edition.ts` (date de référence d’éligibilité centralisée = début d’édition `2027-01-01`, bornes 6–100 provisoires).
+- Migration corrective locale `drizzle/0004_candidate-date-of-birth-constraint.sql` : la borne supérieure statique `2100` est retirée ; la date future est refusée dans la couche applicative.
+- Formulaire de pré-sélection : champ `<input type="date">` « Date de naissance » (remplace le champ âge) ; validation Zod format `AAAA-MM-JJ` + date réelle ; route API recalcule l’éligibilité côté serveur (jamais de confiance à un âge client).
+- Import CSV : détection multi-alias `date_of_birth`, 3 cas (date valide / âge seul → `missing_date_of_birth` / incohérence → `age_date_of_birth_mismatch`) — **aucune date fabriquée** ; dry-run enrichi (dates valides/invalides/manquantes/futures, hors bornes, incohérences, signaux de revue) sans donnée personnelle.
+- Admin : tableau affiche l’âge calculé (jamais persisté) ; export CSV audité ajoute `date_of_birth` + `calculated_age`, gating rôle inchangé.
+- Tests : nouveau `__tests__/candidate-date-of-birth.test.ts` (20 cas : dates limites, bissextiles, anniversaire, éligibilité, cas CSV, absence dans SMS/logs, export protégé) ; `postgres-migration.test.ts` mis à jour.
+
 ## [v5 — organigramme officiel] — 2026-07
 
 ### Ajouté

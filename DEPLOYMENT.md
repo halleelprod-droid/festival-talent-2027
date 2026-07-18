@@ -1,34 +1,9 @@
 # Déploiement
 
-Le site est conçu pour **Vercel** (framework preset Next.js, zéro configuration de build spécifique — `vercel.json` présent à la racine).
+Le site cible Vercel et une base PostgreSQL standard (Neon, Railway, Render ou auto-hébergée).
 
-## Variables d'environnement
+Variables obligatoires : `DATABASE_URL`, `AUTH_SECRET`, `AUTH_URL`, `INTERNAL_API_SECRET`. Variables de messagerie : `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM_NUMBER`, `CRON_SECRET`. Garder `MESSAGING_ENABLED=false` jusqu’à validation opérationnelle.
 
-| Variable | Fichier local | Rôle | État |
-|---|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | `.env.local` | URL du projet Supabase | **Requis** — le build échoue sans (throw dans `lib/supabase.ts`) |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `.env.local` | Clé anonyme Supabase (publique par design, protégée par RLS) | **Requis** |
-| `RESEND_API_KEY` | `.env` | Envoi de l'email de confirmation newsletter | Optionnel — sans clé, l'inscription fonctionne mais aucun email n'est envoyé (dégradation silencieuse volontaire) |
-| `NEXT_PUBLIC_MAPBOX_TOKEN` | `.env` | Carte interactive Paris–Rome | Optionnel — sans token, `TourMap` rend `null` et la section retombe sur la grille statique |
+Avant déploiement : sauvegarder la base, appliquer `npm run db:migrate`, exécuter les tests, le lint et le build, puis vérifier qu’aucun secret n’est suivi. Les migrations doivent être appliquées avant le trafic applicatif. Le domaine canonique reste `https://festivaltalentofficial.com`.
 
-Sur Vercel : Settings → Environment Variables, renseigner les 4 pour Production (et Preview si souhaité). Après modification d'une variable, redéployer.
-
-## Checklist avant déploiement
-
-1. `npm run build` vert en local.
-2. `npm run lint` : 0 erreur, 0 warning.
-3. `npx vitest run` : tests unitaires verts.
-4. `npm run test:e2e` : E2E verts (optionnel en urgence, obligatoire pour un changement de layout/navigation).
-5. Vérifier qu'aucun secret n'est commité (`.env*` sont dans `.gitignore`).
-
-## Monitoring
-
-`@vercel/analytics` et `@vercel/speed-insights` sont montés dans `app/layout.tsx`. Les données apparaissent dans le dashboard Vercel (onglets Analytics / Speed Insights) **uniquement en production sur Vercel** — silencieux en local, aucun impact de perf.
-
-## Domaine
-
-`lib/seo.ts` déclare `siteUrl = https://festivaltalentofficial.com` — c'est la base du sitemap, du canonical et des JSON-LD. Si le domaine change, c'est le **seul** endroit à modifier.
-
-## Rollback
-
-Vercel garde chaque déploiement : Dashboard → Deployments → "..." → Promote to Production sur un déploiement antérieur. Aucune migration de base à rejouer (le schéma Supabase est géré à la main, voir DATABASE.md).
+Les migrations `0003` et `0004` remplacent `age` par `date_of_birth` et corrigent sa contrainte durable. Aucune migration n’est appliquée automatiquement. Avant l’import historique, collecter les dates manquantes via le flux de revue local (`birth-dates:generate-review`, `birth-dates:validate-review`, puis `birth-dates:update` en dry-run) ; les lignes sans date valide sont bloquées. Détails : [docs/CANDIDATE_BIRTH_DATE_REVIEW.md](docs/CANDIDATE_BIRTH_DATE_REVIEW.md) et [docs/CANDIDATE_DATE_OF_BIRTH_MIGRATION.md](docs/CANDIDATE_DATE_OF_BIRTH_MIGRATION.md).

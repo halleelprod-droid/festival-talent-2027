@@ -1,0 +1,1 @@
+ALTER TABLE "candidates" ADD CONSTRAINT "candidates_age_reasonable" CHECK ("candidates"."age" IS NULL OR ("candidates"."age" BETWEEN 6 AND 100));

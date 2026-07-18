@@ -319,7 +319,7 @@ export default function EspaceTalentPageClient() {
             eyebrow="Parcours"
             icon={Rocket}
             title="Votre trajectoire"
-            description="Une timeline fictive pour prefigurer le suivi candidat : chaque etape pourra plus tard etre alimentee par Supabase, Firebase ou PostgreSQL."
+            description="Une timeline fictive pour prefigurer le suivi candidat : chaque etape pourra plus tard etre alimentee par la plateforme PostgreSQL securisee."
           />
 
           <div className="mt-10 grid gap-4 lg:grid-cols-7">
@@ -545,12 +545,12 @@ export default function EspaceTalentPageClient() {
             </h2>
             <p className="mt-5 text-sm leading-8 text-white/62">
               Cette interface ne contient aucune donnee reelle et aucun acces
-              prive. Elle prepare simplement une future integration avec
-              Supabase, Firebase ou PostgreSQL, avec authentification, statuts,
+              prive. Elle prepare simplement une future integration PostgreSQL,
+              avec authentification, statuts,
               notifications et documents securises.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {["Supabase", "Firebase", "PostgreSQL"].map((source) => (
+              {["PostgreSQL", "Auth.js", "Drizzle ORM"].map((source) => (
                 <div
                   key={source}
                   className="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-center text-xs font-black uppercase tracking-[0.16em] text-white/72"
