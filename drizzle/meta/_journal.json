@@ -36,6 +36,13 @@
       "when": 1784386087832,
       "tag": "0004_candidate-date-of-birth-constraint",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1784392983826,
+      "tag": "0005_message-dispatch-automation",
+      "breakpoints": true
     }
   ]
 }

@@ -61,6 +61,7 @@ e2e/            Tests E2E Playwright
 - [STYLEGUIDE.md](STYLEGUIDE.md) — conventions de nommage, style, animations
 - [DATABASE.md](DATABASE.md) — schéma PostgreSQL et migrations
 - [docs/CANDIDATE_DATE_OF_BIRTH_MIGRATION.md](docs/CANDIDATE_DATE_OF_BIRTH_MIGRATION.md) — `date_of_birth` remplace `age` (âge calculé, jamais stocké)
+- [docs/PRESELECTION_MESSAGING.md](docs/PRESELECTION_MESSAGING.md) — file de confirmations, callback Twilio, reprises, consentement et activation progressive
 - [DEPLOYMENT.md](DEPLOYMENT.md) — variables d'environnement, process Vercel
 - [ROADMAP.md](ROADMAP.md) — vision produit 2027 → 2030
 - [CONTRIBUTING.md](CONTRIBUTING.md) — workflow de contribution

@@ -1,10 +1,27 @@
 export function extractFirstName(fullName: unknown) {
   if (typeof fullName !== "string") return null;
-  return fullName.trim().split(/\s+/)[0]?.slice(0, 50) || null;
+  const first = fullName.trim().split(/\s+/)[0]?.replace(/[^\p{L}'’\-]/gu, "").slice(0, 40);
+  return first || null;
 }
 
-export function buildPreselectionConfirmation(fullName: unknown) {
-  const firstName = extractFirstName(fullName);
+function safeLabel(value: unknown, fallback: string): string {
+  if (typeof value !== "string") return fallback;
+  const normalized = value
+    .replace(/[^\p{L}\p{N} '&’()\-]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 60);
+  return normalized || fallback;
+}
+
+export function buildPreselectionConfirmation(input: {
+  fullName: unknown;
+  discipline: unknown;
+  registrationReference: string;
+}) {
+  const firstName = extractFirstName(input.fullName);
   const greeting = firstName ? `Bonjour ${firstName}` : "Bonjour";
-  return `${greeting}, votre inscription aux présélections du Festival Talent 2027 a bien été enregistrée. Nous vous contacterons prochainement pour la suite. Festival Talent.`;
+  const discipline = safeLabel(input.discipline, "votre catégorie");
+  const reference = safeLabel(input.registrationReference, "FT-2027");
+  return `Festival Talent 2027\n\n${greeting}, votre inscription aux présélections en catégorie ${discipline} a bien été enregistrée.\n\nRéférence : ${reference}\n\nNous vous contacterons prochainement pour les détails des présélections.\n\nFestival Talent 2027`;
 }

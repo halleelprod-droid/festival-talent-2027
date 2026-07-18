@@ -176,7 +176,11 @@ describe("import CSV — cas date de naissance", () => {
 
 describe("confidentialité", () => {
   it("la date de naissance n'apparaît pas dans le SMS de confirmation", () => {
-    const message = buildPreselectionConfirmation("Awa Ndiaye");
+    const message = buildPreselectionConfirmation({
+      fullName: "Awa Ndiaye",
+      discipline: "Danse",
+      registrationReference: "FT27-TEST",
+    });
     expect(message).not.toMatch(/\d{4}-\d{2}-\d{2}/);
     expect(message).not.toMatch(/naissance/i);
   });
@@ -191,7 +195,7 @@ describe("confidentialité", () => {
     const route = readFileSync("app/api/preselections/route.ts", "utf8");
     // La réponse ne contient que { ok: ... } — jamais le candidat ni sa date.
     expect(route).not.toMatch(/NextResponse\.json\(\{[^}]*dateOfBirth/);
-    expect(route).toContain("NextResponse.json({ ok: true }");
+    expect(route).toContain("NextResponse.json({ ok: true, success: true, confirmationQueued:");
   });
 
   it("l'export admin est protégé et calcule l'âge à l'export", () => {

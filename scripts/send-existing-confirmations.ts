@@ -1,24 +1,37 @@
+// Campagne historique séparée du flux temps réel.
+// DRY-RUN par défaut ; aucun fournisseur sans --execute --confirm-send et
+// MESSAGING_ENABLED=true. Les sorties contiennent uniquement des compteurs.
+
 import { and, eq, inArray } from "drizzle-orm";
+
 import { getDb } from "@/src/db/connection";
 import { candidates, messageLogs } from "@/src/db/schema";
-import { processConfirmation } from "@/src/services/messaging/confirmation";
+import { dispatchConfiguredConfirmations } from "@/src/services/messaging/confirmation";
 
 async function main() {
-const execute = process.argv.includes("--execute");
-const limit = Math.min(100, Math.max(1, Number(process.argv.find((arg) => arg.startsWith("--limit="))?.slice(8) || 10)));
-if (execute && !process.argv.includes("--confirm-send")) throw new Error("--execute requires --confirm-send");
-if (execute && process.env.MESSAGING_ENABLED !== "true") throw new Error("MESSAGING_ENABLED must be true");
-const rows = await getDb().select({ id: messageLogs.id, status: messageLogs.status }).from(messageLogs).innerJoin(candidates, eq(candidates.id, messageLogs.candidateId)).where(and(eq(candidates.phoneValid, true), inArray(messageLogs.status, ["queued", "failed"]), eq(messageLogs.messageType, "preselection_confirmation"))).limit(limit);
-console.log(JSON.stringify({ mode: execute ? "execute" : "dry-run", eligible: rows.length, limit }, null, 2));
-if (execute) {
-  let sent = 0, failed = 0;
-  for (const row of rows) {
-    if (row.status === "failed") await getDb().update(messageLogs).set({ status: "queued", errorCode: null, errorMessage: null }).where(eq(messageLogs.id, row.id));
-    const result = await processConfirmation(row.id);
-    if (result.status === "sent") sent += 1; else if (result.status === "failed") failed += 1;
-  }
-  console.log(JSON.stringify({ completed: true, sent, failed }, null, 2));
-}
+  const execute = process.argv.includes("--execute");
+  const confirmed = process.argv.includes("--confirm-send");
+  const limit = Math.min(100, Math.max(1, Number(process.argv.find((value) => value.startsWith("--limit="))?.slice(8) || 10)));
+  if (execute !== confirmed) throw new Error("both_flags_required");
+  if (execute && process.env.MESSAGING_ENABLED !== "true") throw new Error("messaging_disabled");
+
+  const rows = await getDb().select({ id: messageLogs.id }).from(messageLogs)
+    .innerJoin(candidates, eq(candidates.id, messageLogs.candidateId))
+    .where(and(
+      eq(candidates.phoneValid, true),
+      inArray(messageLogs.status, ["pending", "retry_scheduled"]),
+      eq(messageLogs.messageType, "preselection_confirmation"),
+    )).limit(limit);
+
+  console.log(JSON.stringify({ mode: execute ? "execute" : "dry-run", eligible: rows.length, limit }, null, 2));
+  if (!execute) return;
+  const result = await dispatchConfiguredConfirmations(limit);
+  console.log(JSON.stringify({ completed: result.status === "completed", summary: result.status === "completed" ? result.summary : null }, null, 2));
 }
 
-main().catch((error) => { console.error(error instanceof Error ? error.message : "Batch failed"); process.exitCode = 1; });
+main().catch((error) => {
+  const message = error instanceof Error ? error.message : "";
+  const safeCode = ["both_flags_required", "messaging_disabled"].includes(message) ? message : "historical_confirmation_failed";
+  console.error(safeCode);
+  process.exitCode = 1;
+});

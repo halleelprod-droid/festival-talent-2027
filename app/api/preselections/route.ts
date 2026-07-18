@@ -1,11 +1,12 @@
 import { after, NextResponse } from "next/server";
 import { and, count, eq, gt } from "drizzle-orm";
 import { getDb } from "@/src/db";
-import { candidateConsents, candidates, disciplines, editions, messageLogs, preselectionRegistrations, rateLimitEvents } from "@/src/db/schema";
+import { auditLogs, candidateConsents, candidates, disciplines, editions, messageLogs, preselectionRegistrations, rateLimitEvents } from "@/src/db/schema";
 import { hashSensitiveValue } from "@/src/lib/security";
 import { isCandidateAgeEligible } from "@/src/lib/candidate-date-of-birth";
-import { processConfirmation } from "@/src/services/messaging/confirmation";
+import { dispatchConfiguredConfirmations } from "@/src/services/messaging/confirmation";
 import { normalizeSenegalPhone } from "@/src/services/messaging/phone";
+import { buildConfirmationQueueRecord } from "@/src/services/messaging/queue";
 import { preselectionInputSchema } from "@/src/validation/preselection";
 
 const slugify = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -31,7 +32,14 @@ export async function POST(request: Request) {
       await tx.insert(rateLimitEvents).values({ scope: "public-preselection", keyHash: ipHash });
       const [existing] = await tx.select({ id: preselectionRegistrations.id }).from(preselectionRegistrations)
         .where(eq(preselectionRegistrations.submissionKey, parsed.data.submission_key)).limit(1);
-      if (existing) return "accepted" as const;
+      if (existing) {
+        const [existingMessage] = await tx.select({ status: messageLogs.status }).from(messageLogs)
+          .where(eq(messageLogs.registrationId, existing.id)).limit(1);
+        return {
+          state: "accepted" as const,
+          confirmationQueued: existingMessage?.status === "pending" || existingMessage?.status === "retry_scheduled",
+        };
+      }
 
       const [edition] = await tx.insert(editions).values({ name: "Festival Talent 2027", year: 2027, status: "active" })
         .onConflictDoUpdate({ target: editions.year, set: { name: "Festival Talent 2027", updatedAt: new Date() } }).returning({ id: editions.id });
@@ -51,20 +59,37 @@ export async function POST(request: Request) {
       const userAgent = request.headers.get("user-agent")?.slice(0, 500);
       await tx.insert(candidateConsents).values([
         { candidateId: candidate.id, consentType: "privacy_policy", granted: true, consentTextVersion: "2027-01", ipHash, userAgent, grantedAt: new Date() },
-        { candidateId: candidate.id, consentType: "marketing_sms", granted: parsed.data.message_consent, consentTextVersion: "2027-01", ipHash, userAgent, grantedAt: parsed.data.message_consent ? new Date() : null },
+        { candidateId: candidate.id, consentType: "transactional_registration_confirmation", granted: true, consentTextVersion: "2027-01", ipHash, userAgent, grantedAt: new Date() },
+        { candidateId: candidate.id, consentType: "marketing", granted: parsed.data.message_consent, consentTextVersion: "2027-01", ipHash, userAgent, grantedAt: parsed.data.message_consent ? new Date() : null },
       ]);
-      if (phone.valid) {
-        const [message] = await tx.insert(messageLogs).values({ candidateId: candidate.id, registrationId: registration.id, channel: "sms", provider: "twilio", messageType: "preselection_confirmation" }).returning({ id: messageLogs.id });
+      const queueRecord = buildConfirmationQueueRecord({
+        candidateId: candidate.id,
+        registrationId: registration.id,
+        recipientNormalized: phone.normalized,
+        phoneValid: phone.valid,
+        transactionalConsentGranted: true,
+      });
+      const [message] = await tx.insert(messageLogs).values(queueRecord)
+        .onConflictDoNothing({ target: messageLogs.idempotencyKey })
+        .returning({ id: messageLogs.id, status: messageLogs.status });
+      if (message) {
+        await tx.insert(auditLogs).values({
+          action: message.status === "suppressed" ? "preselection_confirmation_suppressed" : "preselection_confirmation_queued",
+          entityType: "message_log",
+          entityId: message.id,
+          metadata: { channel: "sms", messageType: queueRecord.messageType, templateVersion: queueRecord.templateVersion },
+        });
+      }
+      if (message?.status === "pending") {
         queuedMessageId = message.id;
       }
-      return "accepted" as const;
+      return { state: "accepted" as const, confirmationQueued: message?.status === "pending" };
     });
-    if (result === "rate_limited") return NextResponse.json({ ok: false }, { status: 429 });
+    if (result === "rate_limited") return NextResponse.json({ ok: false, success: false }, { status: 429 });
     if (queuedMessageId && process.env.MESSAGING_ENABLED === "true") {
-      const id = queuedMessageId;
-      after(async () => { await processConfirmation(id); });
+      after(async () => { await dispatchConfiguredConfirmations(1).catch(() => undefined); });
     }
-    return NextResponse.json({ ok: true }, { status: 201 });
+    return NextResponse.json({ ok: true, success: true, confirmationQueued: result.confirmationQueued }, { status: 201 });
   } catch {
     return NextResponse.json({ ok: false }, { status: 500 });
   }

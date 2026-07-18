@@ -6,9 +6,10 @@ import { z } from "zod";
 import { getDb } from "@/src/db";
 import { rateLimitEvents } from "@/src/db/schema";
 import { hashSensitiveValue } from "@/src/lib/security";
-import { processConfirmation } from "@/src/services/messaging/confirmation";
+import { dispatchConfiguredConfirmations } from "@/src/services/messaging/confirmation";
+import { MAX_DISPATCH_BATCH_SIZE } from "@/src/services/messaging/constants";
 
-const inputSchema = z.object({ messageId: z.string().uuid() });
+const inputSchema = z.object({ limit: z.number().int().min(1).max(MAX_DISPATCH_BATCH_SIZE).default(10) }).default({ limit: 10 });
 
 function validSecret(received: string | null) {
   const expected = process.env.INTERNAL_API_SECRET;
@@ -23,13 +24,13 @@ export async function POST(request: Request) {
   if (!validSecret(request.headers.get("x-internal-secret"))) return NextResponse.json({ ok: false }, { status: 401 });
   const parsed = inputSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false }, { status: 400 });
+  if (process.env.MESSAGING_ENABLED !== "true") return NextResponse.json({ ok: true, status: "disabled" });
   const keyHash = hashSensitiveValue(request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "internal");
   const since = new Date(Date.now() - 60_000);
   const db = getDb();
   const [attempts] = await db.select({ value: count() }).from(rateLimitEvents).where(and(eq(rateLimitEvents.scope, "internal-messaging"), eq(rateLimitEvents.keyHash, keyHash), gt(rateLimitEvents.createdAt, since)));
   if ((attempts?.value ?? 0) >= 30) return NextResponse.json({ ok: false }, { status: 429 });
   await db.insert(rateLimitEvents).values({ scope: "internal-messaging", keyHash });
-  if (process.env.MESSAGING_ENABLED !== "true") return NextResponse.json({ ok: true, status: "disabled" });
-  const result = await processConfirmation(parsed.data.messageId);
-  return NextResponse.json({ ok: true, status: result.status });
+  const result = await dispatchConfiguredConfirmations(parsed.data.limit);
+  return NextResponse.json({ ok: true, ...result });
 }

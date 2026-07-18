@@ -27,10 +27,14 @@ export const registrationStatus = pgEnum("registration_status", [
 ]);
 export const consentType = pgEnum("consent_type", [
   "transactional_sms", "marketing_sms", "whatsapp", "email_marketing", "privacy_policy",
+  "transactional_registration_confirmation", "operational_preselection_updates", "marketing",
 ]);
 export const messageChannel = pgEnum("message_channel", ["sms", "whatsapp", "email"]);
 export const messageStatus = pgEnum("message_status", [
-  "queued", "processing", "sent", "delivered", "failed", "cancelled",
+  // `queued` est conservé pour compatibilité avec les anciennes lignes ; la
+  // migration 0005 les convertit vers `pending`, désormais statut canonique.
+  "queued", "pending", "processing", "accepted", "sent", "delivered",
+  "retry_scheduled", "failed", "undelivered", "suppressed", "cancelled",
 ]);
 export const adminRole = pgEnum("admin_role", [
   "super_admin", "admin", "communications", "jury", "viewer",
@@ -127,24 +131,26 @@ export const messageLogs = pgTable("message_logs", {
   channel: messageChannel("channel").notNull(),
   provider: varchar("provider", { length: 50 }).notNull(),
   messageType: varchar("message_type", { length: 100 }).notNull(),
+  templateVersion: varchar("template_version", { length: 100 }).default("preselection-confirmation-v1").notNull(),
+  recipientNormalized: varchar("recipient_normalized", { length: 32 }),
+  idempotencyKey: varchar("idempotency_key", { length: 255 }).notNull(),
   providerMessageId: varchar("provider_message_id", { length: 160 }),
-  status: messageStatus("status").default("queued").notNull(),
-  errorCode: varchar("error_code", { length: 100 }),
-  errorMessage: text("error_message"),
-  attempts: integer("attempts").default(0).notNull(),
-  queuedAt: timestamp("queued_at", { withTimezone: true }).defaultNow().notNull(),
+  status: messageStatus("status").default("pending").notNull(),
+  attemptCount: integer("attempt_count").default(0).notNull(),
+  lastAttemptAt: timestamp("last_attempt_at", { withTimezone: true }),
+  nextAttemptAt: timestamp("next_attempt_at", { withTimezone: true }),
+  failureCode: varchar("failure_code", { length: 100 }),
+  failureCategory: varchar("failure_category", { length: 50 }),
   sentAt: timestamp("sent_at", { withTimezone: true }),
   deliveredAt: timestamp("delivered_at", { withTimezone: true }),
   failedAt: timestamp("failed_at", { withTimezone: true }),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  ...timestamps,
 }, (table) => [
-  index("message_logs_queue_idx").on(table.status, table.queuedAt),
-  uniqueIndex("message_logs_success_once_idx")
-    .on(table.registrationId, table.channel, table.messageType)
-    .where(sql`${table.status} IN ('sent', 'delivered')`),
-  uniqueIndex("message_logs_registration_channel_type_idx")
-    .on(table.registrationId, table.channel, table.messageType)
-    .where(sql`${table.registrationId} IS NOT NULL`),
+  index("message_logs_queue_idx").on(table.status, table.nextAttemptAt, table.createdAt),
+  uniqueIndex("message_logs_idempotency_key_idx").on(table.idempotencyKey),
+  uniqueIndex("message_logs_provider_message_id_idx")
+    .on(table.providerMessageId)
+    .where(sql`${table.providerMessageId} IS NOT NULL`),
 ]);
 
 export const adminUsers = pgTable("admin_users", {

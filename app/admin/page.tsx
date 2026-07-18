@@ -17,7 +17,15 @@ export default async function AdminDashboardPage({ searchParams }: { searchParam
   const cards = [
     ["Candidats", data.stats.candidates], ["Inscriptions", data.stats.registrations], ["Villes", data.stats.cities],
     ["Disciplines", data.stats.disciplines], ["Téléphones valides", data.stats.validPhones], ["Invalides", data.stats.invalidPhones],
-    ["Doublons à revoir", data.stats.duplicates], ["Confirmations envoyées", data.stats.sent], ["Échecs", data.stats.failed],
+    ["Doublons à revoir", data.stats.duplicates],
+    ["Confirmations en attente", data.stats.confirmationsPending],
+    ["En traitement", data.stats.confirmationsProcessing],
+    ["Acceptées fournisseur", data.stats.confirmationsAccepted],
+    ["Envoyées", data.stats.confirmationsSent],
+    ["Livrées", data.stats.confirmationsDelivered],
+    ["À réessayer", data.stats.confirmationsRetryScheduled],
+    ["Échecs", data.stats.confirmationsFailed],
+    ["Supprimées", data.stats.confirmationsSuppressed],
   ];
   const totalPages = Math.max(1, Math.ceil(data.total / data.pageSize));
   const canExport = session.user.role === "super_admin" || session.user.role === "admin";
