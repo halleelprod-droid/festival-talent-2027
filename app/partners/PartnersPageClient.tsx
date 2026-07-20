@@ -19,6 +19,7 @@ import {
   ShieldCheck,
   Sparkles,
   Store,
+  Swords,
   Users,
 } from "lucide-react";
 
@@ -166,6 +167,21 @@ const partnerCategories = [
       },
     ],
     icon: Store,
+  },
+  {
+    title: "🤼 Partenaires Lutte & Sports",
+    description:
+      "Encadrement, valorisation et développement des talents de la lutte sénégalaise et des disciplines sportives.",
+    partners: [
+      {
+        name: "Keebaro Entertainment",
+        label: "Partenaire Officiel Lutte",
+        description:
+          "Partenaire officiel du secteur Lutte : organisation, valorisation et encadrement des talents de la lutte sénégalaise.",
+        image: "/images/partners/keebaro-entertainment.png",
+      },
+    ],
+    icon: Swords,
   },
 ] as const;
 

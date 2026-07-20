@@ -9,6 +9,7 @@ import {
   Handshake,
   Megaphone,
   Sparkles,
+  Swords,
 } from "lucide-react";
 
 import GlassCard from "@/components/ui/GlassCard";
@@ -74,6 +75,14 @@ const officialPartners = [
     description:
       "Universal Selfcare accompagne Festival Talent 2027 sur les dimensions bien-être, santé et selfcare.",
     icon: Gem,
+  },
+  {
+    name: "Keebaro Entertainment",
+    label: "Partenaire Officiel Lutte",
+    description:
+      "Keebaro Entertainment accompagne Festival Talent 2027 en tant que partenaire officiel du secteur Lutte, contribuant a l'organisation, la valorisation et l'encadrement des talents de la lutte senegalaise.",
+    icon: Swords,
+    logo: "/images/partners/keebaro-entertainment.png",
   },
 ];
 
