@@ -19,7 +19,7 @@ ALTER TYPE "consent_type" ADD VALUE IF NOT EXISTS 'marketing';--> statement-brea
 
 ALTER TABLE "message_logs" RENAME COLUMN "attempts" TO "attempt_count";--> statement-breakpoint
 ALTER TABLE "message_logs" RENAME COLUMN "error_code" TO "failure_code";--> statement-breakpoint
-ALTER TABLE "message_logs" RENAME COLUMN "queued_at" TO "created_at";--> statement-breakpoint
+ALTER TABLE "message_logs" DROP COLUMN "queued_at";--> statement-breakpoint
 ALTER TABLE "message_logs" DROP COLUMN "error_message";--> statement-breakpoint
 ALTER TABLE "message_logs" ADD COLUMN "template_version" varchar(100) DEFAULT 'preselection-confirmation-v1' NOT NULL;--> statement-breakpoint
 ALTER TABLE "message_logs" ADD COLUMN "recipient_normalized" varchar(32);--> statement-breakpoint

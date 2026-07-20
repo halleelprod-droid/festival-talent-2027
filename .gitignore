@@ -46,6 +46,11 @@ birth-date-review.csv
 birth-date-review-map.csv
 birth-date-review-errors.csv
 
+# sauvegardes PostgreSQL locales (les migrations .sql restent suivies)
+*.dump
+*.backup
+*.sql.gz
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

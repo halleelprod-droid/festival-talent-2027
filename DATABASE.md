@@ -10,6 +10,16 @@ npm run import:preselections -- --dry-run
 
 Le navigateur ne se connecte jamais à PostgreSQL. Les écritures publiques passent par des routes validées avec Zod ; les lectures privées exigent une session Auth.js et un rôle. Voir `docs/SUPABASE_EXIT_AUDIT.md` pour l’architecture historique remplacée.
 
+## Environnement PostgreSQL local Windows
+
+Le poste de développement utilise PostgreSQL 18 sur `localhost:5432`. Le serveur n'est pas exposé sur le réseau. Les bases locales sont `festival_talent_dev`, `festival_talent_test` et `festival_talent_restore_test`.
+
+- `festival_owner_local` possède les objets et sert uniquement aux migrations et aux opérations d'administration locales contrôlées ;
+- `festival_app_local` est le compte normal de l'application et dispose des droits CRUD nécessaires ;
+- `festival_backup_local` est limité à la lecture pour les sauvegardes.
+
+Les mots de passe et URL complètes restent uniquement dans l'environnement local ignoré par Git. Pour le détail de l'installation, de pgAdmin et des commandes d'exploitation, voir [docs/LOCAL_POSTGRESQL_WINDOWS.md](docs/LOCAL_POSTGRESQL_WINDOWS.md).
+
 ## Date de naissance (remplace l’âge)
 
 Depuis la migration `drizzle/0003_candidate-date-of-birth.sql`, la colonne `candidates.date_of_birth` (type SQL `date`, sans heure ni fuseau) est **la seule donnée de naissance persistée**. L’ancienne colonne `age` a été retirée.
