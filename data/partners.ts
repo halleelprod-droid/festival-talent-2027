@@ -10,6 +10,7 @@ export const partnersLogos = [
   { name: "Val2Events", image: "/images/partners/val2events.jpeg" },
   { name: "H & Hair", image: "/images/partners/h-hair.jpeg" },
   { name: "Universal Selfcare", image: "/images/partners/universal.jpeg" },
+  { name: "Keebaro Entertainment", image: "/images/partners/keebaro-entertainment.png" },
 ];
 
 export const officialPartners = [
@@ -114,6 +115,16 @@ export const officialPartners = [
     image: "/images/partners/val2events.jpeg",
     description:
       "Partenaire associe aux experiences evenementielles et a la dynamique terrain du festival.",
+  },
+  {
+    name: "Keebaro Entertainment",
+    label: "Partenaire Officiel Lutte",
+    category: "Lutte",
+    sector: "Lutte Senegalaise",
+    badge: "Partenaire Officiel Lutte",
+    image: "/images/partners/keebaro-entertainment.png",
+    description:
+      "Keebaro Entertainment accompagne Festival Talent 2027 en tant que partenaire officiel du secteur Lutte, contribuant a l'organisation, la valorisation et l'encadrement des talents de la lutte senegalaise.",
   },
 ];
 
