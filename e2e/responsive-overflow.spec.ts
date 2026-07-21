@@ -1,8 +1,13 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { expect, test } from "@playwright/test";
 
-// Horizontal-overflow detector across the required mobile viewports + a desktop
-// non-regression control. Uses ONLY public French routes and synthetic checks —
-// no candidate data. Animations are neutralised for stability (no false positives).
+// Exhaustive horizontal-overflow detector across every public route (real paths,
+// NOT the /fr-prefixed 404s) at the required mobile viewports + desktop controls.
+// Uses ONLY public routes and synthetic checks — no candidate data. Animations
+// are neutralised for stability (no false positives).
+
+const ROUTES: string[] = JSON.parse(readFileSync(join(__dirname, "routes.public.json"), "utf8"));
 
 const VIEWPORTS = [
   { w: 320, h: 568 },
@@ -12,26 +17,46 @@ const VIEWPORTS = [
   { w: 412, h: 915 },
   { w: 430, h: 932 },
   { w: 768, h: 1024 },
+  { w: 1024, h: 768 },
   { w: 1440, h: 900 }, // desktop non-regression control
-];
-
-// Core public routes (French). Admin is checked separately with synthetic data.
-const ROUTES = [
-  "/fr",
-  "/fr/candidat",
-  "/fr/programme",
-  "/fr/artists",
-  "/fr/institution/partenaires",
-  "/fr/institution/gouvernance",
-  "/fr/billetterie",
-  "/fr/contact",
-  "/fr/media",
-  "/fr/mentors",
 ];
 
 const STABILISE_CSS = `*,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;transition-duration:0s!important;transition-delay:0s!important;scroll-behavior:auto!important}`;
 
-test.describe("no horizontal overflow", () => {
+async function collect(page: import("@playwright/test").Page) {
+  return page.evaluate(() => {
+    const de = document.documentElement;
+    const vw = de.clientWidth;
+    const clippedByAncestor = (el: HTMLElement) => {
+      let p = el.parentElement;
+      while (p && p !== document.documentElement) {
+        const ox = getComputedStyle(p).overflowX;
+        if (ox === "hidden" || ox === "clip" || ox === "auto" || ox === "scroll") return true;
+        p = p.parentElement;
+      }
+      return false;
+    };
+    const offenders: { tag: string; cls: string; right: number; left: number; scroll: boolean }[] = [];
+    for (const el of Array.from(document.body.querySelectorAll<HTMLElement>("*"))) {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) continue;
+      const style = getComputedStyle(el);
+      if (style.visibility === "hidden" || style.display === "none") continue;
+      const decorative = el.getAttribute("aria-hidden") === "true" && style.pointerEvents === "none";
+      if (decorative || clippedByAncestor(el)) continue;
+      // Visible element extending beyond the viewport, or scrolling its own content.
+      const overflowsViewport = r.right > vw + 1 || r.left < -1;
+      const selfScroll = el.scrollWidth > el.clientWidth + 1 && (style.overflowX === "visible");
+      if (overflowsViewport || selfScroll) {
+        offenders.push({ tag: el.tagName.toLowerCase(), cls: (el.className || "").toString().slice(0, 90), right: Math.round(r.right), left: Math.round(r.left), scroll: selfScroll });
+      }
+    }
+    return { scrollWidth: de.scrollWidth, clientWidth: vw, offenders: offenders.slice(0, 12) };
+  });
+}
+
+test.describe("no horizontal overflow (all public routes)", () => {
+  test.describe.configure({ timeout: 60_000, retries: 1 });
   for (const route of ROUTES) {
     for (const vp of VIEWPORTS) {
       test(`${route} @ ${vp.w}x${vp.h}`, async ({ page }) => {
@@ -41,45 +66,16 @@ test.describe("no horizontal overflow", () => {
           s.textContent = css;
           document.documentElement.appendChild(s);
         }, STABILISE_CSS);
-        await page.goto(route, { waitUntil: "networkidle" });
+        await page.goto(route, { waitUntil: "load" });
+        await page.waitForTimeout(250);
 
-        // Page-level horizontal scroll is the hard failure.
-        const metrics = await page.evaluate(() => {
-          const de = document.documentElement;
-          const vw = de.clientWidth;
-          // An element is not a *visible* overflow if an ancestor clips the x axis
-          // (overflow-x hidden/clip/auto/scroll) — e.g. intentional marquees/carousels.
-          const clippedByAncestor = (el: HTMLElement) => {
-            let p = el.parentElement;
-            while (p && p !== document.documentElement) {
-              const ox = getComputedStyle(p).overflowX;
-              if (ox === "hidden" || ox === "clip" || ox === "auto" || ox === "scroll") return true;
-              p = p.parentElement;
-            }
-            return false;
-          };
-          const offenders: { tag: string; cls: string; right: number; left: number }[] = [];
-          for (const el of Array.from(document.body.querySelectorAll<HTMLElement>("*"))) {
-            const r = el.getBoundingClientRect();
-            if (r.width === 0 || r.height === 0) continue;
-            const style = getComputedStyle(el);
-            if (style.visibility === "hidden" || style.display === "none") continue;
-            // Ignore marked decorations and anything an ancestor actually clips.
-            const decorative = el.getAttribute("aria-hidden") === "true" && style.pointerEvents === "none";
-            if (decorative || clippedByAncestor(el)) continue;
-            if (r.right > vw + 1 || r.left < -1) {
-              offenders.push({ tag: el.tagName.toLowerCase(), cls: (el.className || "").toString().slice(0, 80), right: Math.round(r.right), left: Math.round(r.left) });
-            }
-          }
-          return { scrollWidth: de.scrollWidth, clientWidth: vw, offenders: offenders.slice(0, 10) };
-        });
-
-        if (metrics.scrollWidth > metrics.clientWidth + 1 || metrics.offenders.length > 0) {
-          console.log(`OVERFLOW ${route} @ ${vp.w}: scrollW=${metrics.scrollWidth} clientW=${metrics.clientWidth}`);
-          for (const o of metrics.offenders) console.log(`   <${o.tag} class="${o.cls}"> right=${o.right} left=${o.left}`);
+        const m = await collect(page);
+        if (m.scrollWidth > m.clientWidth + 1 || m.offenders.length > 0) {
+          console.log(`OVERFLOW ${route} @ ${vp.w}: scrollW=${m.scrollWidth} clientW=${m.clientWidth}`);
+          for (const o of m.offenders) console.log(`   <${o.tag} class="${o.cls}"> right=${o.right} left=${o.left}${o.scroll ? " [self-scroll]" : ""}`);
         }
-        expect(metrics.scrollWidth, `horizontal scroll on ${route} @ ${vp.w}px`).toBeLessThanOrEqual(metrics.clientWidth + 1);
-        expect(metrics.offenders, `overflowing non-decorative elements on ${route} @ ${vp.w}px`).toHaveLength(0);
+        expect(m.scrollWidth, `page horizontal scroll on ${route} @ ${vp.w}px`).toBeLessThanOrEqual(m.clientWidth + 1);
+        expect(m.offenders, `overflowing non-decorative elements on ${route} @ ${vp.w}px`).toHaveLength(0);
       });
     }
   }

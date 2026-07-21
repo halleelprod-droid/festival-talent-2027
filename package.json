@@ -16,7 +16,8 @@
     "birth-dates:validate-review": "tsx scripts/validate-birth-date-review.ts",
     "birth-dates:update": "tsx scripts/update-candidate-birth-dates.ts",
     "admin:create": "tsx scripts/create-admin.ts",
-    "messages:confirmations": "tsx scripts/send-existing-confirmations.ts"
+    "messages:confirmations": "tsx scripts/send-existing-confirmations.ts",
+    "export:preselections": "tsx scripts/export-preselections.ts"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
