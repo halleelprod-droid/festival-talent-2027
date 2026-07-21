@@ -98,6 +98,7 @@ export default function CursorGlow() {
     <>
       {/* MAIN GLOW */}
       <motion.div
+        aria-hidden="true"
         animate={{
           x: position.x - (active ? 170 : 120),
           y: position.y - (active ? 170 : 120),
@@ -129,6 +130,7 @@ export default function CursorGlow() {
 
       {/* SMALL DOT */}
       <motion.div
+        aria-hidden="true"
         animate={{
           x: position.x - 6,
           y: position.y - 6,
