@@ -17,6 +17,9 @@
     "birth-dates:update": "tsx scripts/update-candidate-birth-dates.ts",
     "preselections:generate-review": "tsx scripts/generate-preselection-review.ts",
     "preselections:validate-review": "tsx scripts/validate-preselection-review.ts",
+    "preselections:review-ui": "tsx scripts/preselection-review-server.ts",
+    "preselections:review-ui:check": "tsx scripts/preselection-review-server.ts --check",
+    "preselections:review-ui:e2e": "playwright test -c playwright.review-ui.config.ts",
     "admin:create": "tsx scripts/create-admin.ts",
     "messages:confirmations": "tsx scripts/send-existing-confirmations.ts",
     "export:preselections": "tsx scripts/export-preselections.ts"
