@@ -85,7 +85,7 @@ export default function PreselectionForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-[2rem] border border-yellow-400/20 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8"
+      className="w-full min-w-0 rounded-[2rem] border border-yellow-400/20 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8"
     >
       <div className="grid gap-5 md:grid-cols-2">
         <div>
@@ -203,7 +203,7 @@ export default function PreselectionForm() {
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 min-w-0">
         <label
           htmlFor="ft-experience"
           className="text-xs font-black uppercase tracking-[0.25em] text-yellow-300"
@@ -229,34 +229,43 @@ export default function PreselectionForm() {
         <input
           id="ft-portfolio_link"
           name="portfolio_link"
-          className="mt-3 w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
+          data-testid="portfolio-input"
+          className="mt-3 box-border w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-black/50 px-5 py-4 text-white outline-none transition placeholder:text-white/30 focus:border-yellow-400/50"
           placeholder="Lien TikTok, Instagram, YouTube, Drive, portfolio..."
         />
       </div>
 
-      <div className="mt-6 rounded-2xl border border-white/10 bg-black/35 p-5">
-        <label htmlFor="ft-message-consent" className="flex cursor-pointer items-start gap-4">
+      <div
+        data-testid="consent-marketing-card"
+        className="mt-6 w-full min-w-0 rounded-2xl border border-white/10 bg-black/35 p-4 sm:p-5"
+      >
+        <label htmlFor="ft-message-consent" className="flex w-full min-w-0 cursor-pointer items-start gap-3">
           <input
             id="ft-message-consent"
             name="message_consent"
             type="checkbox"
             className="mt-1 h-5 w-5 shrink-0 accent-yellow-400"
           />
-          <span className="text-sm leading-6 text-white/75">
-            J’accepte de recevoir par SMS ou WhatsApp les informations relatives
-            aux présélections et au Festival Talent 2027.
+          <span data-testid="consent-marketing-text" className="min-w-0 flex-1">
+            <span className="block whitespace-normal break-words text-sm leading-6 text-white/75">
+              J’accepte de recevoir par SMS ou WhatsApp les informations relatives
+              aux présélections et au Festival Talent 2027.
+            </span>
+            <span className="mt-2 block whitespace-normal break-words text-xs leading-5 text-white/45">
+              Ce consentement concerne les informations futures. Le message de
+              confirmation de l’inscription reste strictement lié à ta candidature.
+            </span>
           </span>
         </label>
-        <p className="mt-3 pl-9 text-xs leading-5 text-white/45">
-          Ce consentement concerne les informations futures. Le message de
-          confirmation de l’inscription reste strictement lié à ta candidature.
-        </p>
       </div>
 
-      <div className="mt-4 rounded-2xl border border-white/10 bg-black/35 p-5">
-        <label htmlFor="ft-privacy-consent" className="flex cursor-pointer items-start gap-4">
+      <div
+        data-testid="consent-data-card"
+        className="mt-4 w-full min-w-0 rounded-2xl border border-white/10 bg-black/35 p-4 sm:p-5"
+      >
+        <label htmlFor="ft-privacy-consent" className="flex w-full min-w-0 cursor-pointer items-start gap-3">
           <input id="ft-privacy-consent" name="privacy_consent" type="checkbox" required className="mt-1 h-5 w-5 shrink-0 accent-yellow-400" />
-          <span className="text-sm leading-6 text-white/75">J’accepte le traitement de mes données pour gérer ma candidature aux présélections.</span>
+          <span data-testid="consent-data-text" className="min-w-0 flex-1 whitespace-normal break-words text-sm leading-6 text-white/75">J’accepte le traitement de mes données pour gérer ma candidature aux présélections.</span>
         </label>
       </div>
 

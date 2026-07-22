@@ -19,7 +19,7 @@ test.describe("inscription form @ 320px (synthetic long strings)", () => {
       s.textContent = css;
       document.documentElement.appendChild(s);
     }, STABILISE_CSS);
-    await page.goto("/candidat", { waitUntil: "load" });
+    await page.goto("/preselections", { waitUntil: "load" });
     await page.waitForTimeout(250);
 
     // Fill every visible text-like input / textarea with long synthetic content.

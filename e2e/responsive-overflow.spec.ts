@@ -80,3 +80,69 @@ test.describe("no horizontal overflow (all public routes)", () => {
     }
   }
 });
+
+test.describe("preselection form internal containment", () => {
+  test.describe.configure({ timeout: 60_000, retries: 1 });
+
+  test("keeps consent text inside its cards on narrow mobile screens", async ({ page }) => {
+    for (const vp of VIEWPORTS.filter(({ w }) => w <= 430 || w === 1440)) {
+      await page.setViewportSize({ width: vp.w, height: vp.h });
+      await page.goto("/preselections", { waitUntil: "load" });
+
+      const marketingCard = page.getByTestId("consent-marketing-card");
+      await marketingCard.waitFor({ state: "visible" });
+
+      const result = await page.evaluate(() => {
+        const tolerance = 2;
+        const viewportWidth = document.documentElement.clientWidth;
+        const inspectCard = (cardTestId: string, textTestId: string) => {
+          const card = document.querySelector<HTMLElement>(`[data-testid="${cardTestId}"]`);
+          const text = document.querySelector<HTMLElement>(`[data-testid="${textTestId}"]`);
+          if (!card || !text) return null;
+          const cardRect = card.getBoundingClientRect();
+          const textRect = text.getBoundingClientRect();
+          const visibleDescendantOutside = Array.from(card.querySelectorAll<HTMLElement>("*")).some((element) => {
+            const style = getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+            if (style.display === "none" || style.visibility === "hidden" || rect.width === 0 || rect.height === 0) return false;
+            return rect.left < cardRect.left - tolerance || rect.right > cardRect.right + tolerance;
+          });
+          return {
+            cardLeft: cardRect.left,
+            cardRight: cardRect.right,
+            textLeft: textRect.left,
+            textRight: textRect.right,
+            cardScrollWidth: card.scrollWidth,
+            cardClientWidth: card.clientWidth,
+            visibleDescendantOutside,
+          };
+        };
+        const portfolio = document.querySelector<HTMLElement>('[data-testid="portfolio-input"]');
+        const submit = document.querySelector<HTMLElement>('button[type="submit"]');
+        const portfolioRect = portfolio?.getBoundingClientRect();
+        const submitRect = submit?.getBoundingClientRect();
+        return {
+          viewportWidth,
+          marketing: inspectCard("consent-marketing-card", "consent-marketing-text"),
+          data: inspectCard("consent-data-card", "consent-data-text"),
+          portfolioLeft: portfolioRect?.left,
+          portfolioRight: portfolioRect?.right,
+          submitLeft: submitRect?.left,
+          submitRight: submitRect?.right,
+        };
+      });
+
+      for (const card of [result.marketing, result.data]) {
+        expect(card, `consent card exists @ ${vp.w}px`).not.toBeNull();
+        expect(card!.textLeft, `consent text left edge @ ${vp.w}px`).toBeGreaterThanOrEqual(card!.cardLeft - 2);
+        expect(card!.textRight, `consent text right edge @ ${vp.w}px`).toBeLessThanOrEqual(card!.cardRight + 2);
+        expect(card!.cardScrollWidth, `consent card internal scroll @ ${vp.w}px`).toBeLessThanOrEqual(card!.cardClientWidth + 2);
+        expect(card!.visibleDescendantOutside, `consent descendant outside card @ ${vp.w}px`).toBe(false);
+      }
+      expect(result.portfolioLeft, `portfolio input left edge @ ${vp.w}px`).toBeGreaterThanOrEqual(-2);
+      expect(result.portfolioRight, `portfolio input right edge @ ${vp.w}px`).toBeLessThanOrEqual(result.viewportWidth + 2);
+      expect(result.submitLeft, `submit button left edge @ ${vp.w}px`).toBeGreaterThanOrEqual(-2);
+      expect(result.submitRight, `submit button right edge @ ${vp.w}px`).toBeLessThanOrEqual(result.viewportWidth + 2);
+    }
+  });
+});
