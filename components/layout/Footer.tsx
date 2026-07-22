@@ -103,7 +103,7 @@ export default function Footer() {
 
             <div className="flex flex-wrap items-center gap-5 text-sm text-zinc-500">
               <p>© 2027 Festival Talent. Tous droits réservés.</p>
-              <p>Paris - Rome - Europe</p>
+              <p>Saison nationale 2026–2027 · Sénégal</p>
               <Link
                 href={adminFooterLink.href}
                 className="text-zinc-600 transition hover:text-zinc-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A84C]"

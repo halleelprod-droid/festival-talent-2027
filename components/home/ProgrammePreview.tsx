@@ -18,7 +18,7 @@ export default function ProgrammePreview({
   events
 }: ProgrammePreviewProps) {
   return (
-    <section className="relative overflow-hidden bg-[#050505] py-40 text-[#F5F0E8]">
+    <section id="programme" className="relative overflow-hidden bg-[#050505] py-24 text-[#F5F0E8] lg:py-32">
       {/* BG */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#C9A84C10,transparent_60%)]" />
 
@@ -43,15 +43,15 @@ export default function ProgrammePreview({
             Programme
           </span>
 
-          <h2 className="mt-8 text-5xl font-black leading-[0.9] tracking-[-0.05em] md:text-7xl lg:text-[8rem]">
+          <h2 className="mt-6 text-balance text-4xl font-black leading-[0.95] tracking-[-0.04em] sm:text-5xl md:text-6xl lg:text-7xl">
             L’expérience
             <br />
             en live.
           </h2>
 
           <p className="mt-10 max-w-2xl text-lg leading-relaxed text-zinc-300">
-            De janvier a avril 2027, pre-selections officielles, showcases et
-            moments exclusifs relient Paris et Rome autour des talents retenus.
+            De septembre 2026 à février 2027, finales nationales, showcases et
+            temps forts relient les scènes du Sénégal autour des talents révélés.
           </p>
         </motion.div>
 
@@ -77,7 +77,8 @@ export default function ProgrammePreview({
                   duration: 1
                 }}
                 viewport={{ once: true }}
-                className="relative md:pl-20"
+                id={event._id}
+                className="relative scroll-mt-28 md:pl-20"
               >
                 {/* DOT */}
                 <div className="absolute left-[18px] top-10 hidden h-4 w-4 rounded-full bg-[#C9A84C] shadow-[0_0_20px_rgba(201,168,76,0.8)] md:block" />
@@ -106,19 +107,11 @@ export default function ProgrammePreview({
                     {/* RIGHT */}
                     <div className="flex flex-col items-start lg:items-end">
                       <span className="text-2xl font-black">
-                        {new Date(
-                          event.date
-                        ).toLocaleDateString(
-                          'fr-FR',
-                          {
-                            day: 'numeric',
-                            month: 'long'
-                          }
-                        )}
+                        {event.date}
                       </span>
 
                       <p className="mt-2 uppercase tracking-[0.3em] text-xs text-zinc-400">
-                        FT2027 LIVE EXPERIENCE
+                        Saison 2026–2027
                       </p>
                     </div>
                   </div>

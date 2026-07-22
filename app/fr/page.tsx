@@ -23,46 +23,30 @@ import NewsletterSection from "@/components/home/NewsletterSection";
 import GratitudeSection from "@/components/home/GratitudeSection";
 import PlatformVisionSection from "@/components/home/PlatformVisionSection";
 import ProgrammePreview from "@/components/home/ProgrammePreview";
+import FeaturedArtistSection from "@/components/home/FeaturedArtistSection";
+import SambaJourneySection from "@/components/home/SambaJourneySection";
+import FestivalLegacySection from "@/components/home/FestivalLegacySection";
+import EditionsTransition from "@/components/home/EditionsTransition";
+import InfluencerVillaSection from "@/components/home/InfluencerVillaSection";
+import FinalCTA from "@/components/home/FinalCTA";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { buildPageMetadata } from "@/lib/seo";
+import { seasonEvents } from "@/data/season-2026-2027";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Accueil | Festival Talent 2027",
+  title: "Festival Talent 2026–2027 | Deuxième édition avec Samba Peuzzi",
   description:
-    "Festival Talent 2027 rassemble talents, pre-selections, Battle All Style, coachs, artistes confirmes, partenaires, tickets, medias et communaute autour d'une plateforme culturelle internationale.",
+    "Découvrez la deuxième édition du Festival Talent, une saison nationale dédiée à la danse, la peinture, la lutte, la création digitale, la musique, le karting et le Jet-Ski, avec Samba Peuzzi comme artiste phare.",
   path: "/fr",
 });
 
-const homeProgrammeEvents = [
-  {
-    _id: "preselections",
-    title: "Pre-selections officielles",
-    location: "Senegal et zones partenaires",
-    date: "2026-09-01",
-    category: "Detection",
-  },
-  {
-    _id: "battles",
-    title: "Battles All Style",
-    location: "Zones regionales",
-    date: "2026-09-15",
-    category: "Competition",
-  },
-  {
-    _id: "italie",
-    title: "Experience Italie",
-    location: "Italie",
-    date: "2027-03-21",
-    category: "International",
-  },
-  {
-    _id: "final",
-    title: "Concert final",
-    location: "Casino de Paris",
-    date: "2027-05-15",
-    category: "Finale",
-  },
-];
+const homeProgrammeEvents = seasonEvents.map((event) => ({
+  _id: event.id,
+  title: event.title,
+  location: event.location,
+  date: event.date,
+  category: event.discipline,
+}));
 
 export default function HomePage() {
   return (
@@ -77,6 +61,8 @@ export default function HomePage() {
         />
 
         <HeroSection />
+
+        <FeaturedArtistSection />
 
         <HomeActTransition
           act="ACTE 2"
@@ -98,9 +84,13 @@ export default function HomePage() {
 
         <BattleDanceSection />
 
+        <ProgrammePreview events={homeProgrammeEvents} />
+
+        <SambaJourneySection />
+
         <ActivitiesHighlightSection />
 
-        <ProgrammePreview events={homeProgrammeEvents} />
+        <InfluencerVillaSection />
 
         <HomeActTransition
           act="ACTE 4"
@@ -123,6 +113,10 @@ export default function HomePage() {
         <ArtistsSection />
 
         <JuryComingSoonSection />
+
+        <FestivalLegacySection />
+
+        <EditionsTransition />
 
         <SectionDivider />
 
@@ -165,6 +159,8 @@ export default function HomePage() {
         <GratitudeSection />
 
         <SectionDivider />
+
+        <FinalCTA />
       </main>
     </>
   );

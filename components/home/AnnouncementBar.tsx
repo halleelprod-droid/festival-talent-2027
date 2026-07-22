@@ -20,7 +20,7 @@ export default function AnnouncementBar() {
               </span>
 
               <span className="text-sm uppercase tracking-[0.3em] text-zinc-400">
-                Paris - Rome - Janvier a avril 2027
+                Deuxieme edition - Saison nationale 2026-2027
               </span>
 
               <span className="text-sm uppercase tracking-[0.3em] text-zinc-400">

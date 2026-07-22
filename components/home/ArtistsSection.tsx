@@ -119,7 +119,7 @@ export default function ArtistsSection() {
                       Projet
                     </p>
                     <p className="mt-1 text-sm font-black uppercase text-white">
-                      Paris & Rome
+                      Sénégal
                     </p>
                   </div>
                 </div>
