@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowDown,
   Building2,
@@ -110,7 +110,6 @@ function Tags({ items }: { items: readonly string[] }) {
 }
 
 export default function LeadershipOverview() {
-  const reduceMotion = useReducedMotion();
 
   return (
     <div className="relative px-4 pb-28 sm:px-6 lg:px-20">
@@ -120,7 +119,7 @@ export default function LeadershipOverview() {
         <div id="operations-title"><LevelHeader level="Niveau 2" title="Directions Opérationnelles" /></div>
         <div className="grid gap-5 md:grid-cols-3">
           {operationalDirections.map((entity, index) => (
-            <motion.article key={entity.name} initial={reduceMotion ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08, duration: 0.6 }} className="flex min-h-[25rem] flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-7 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
+            <motion.article key={entity.name} initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08, duration: 0.6 }} className="flex min-h-[25rem] flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-7 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
               <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full border border-yellow-300/30 bg-black/45 p-4 text-yellow-200 shadow-[0_0_35px_rgba(234,179,8,0.12)]">
                 {"image" in entity && entity.image ? <Image src={entity.image} alt={`Logo ${entity.name}`} width={80} height={80} className="h-16 w-16 object-contain" /> : <Building2 size={34} aria-hidden="true" />}
               </div>
@@ -137,7 +136,7 @@ export default function LeadershipOverview() {
         <div id="coaches-title"><LevelHeader level="Niveau 3" title="Coachs & Mentors" /></div>
         <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-2">
           {lifeCoaches.map((coach, index) => (
-            <motion.article key={coach.name} initial={reduceMotion ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1, duration: 0.6 }} className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-7 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
+            <motion.article key={coach.name} initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1, duration: 0.6 }} className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-7 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
               <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-yellow-300/30 bg-black/45">
                 {coach.image ? <Image src={coach.image} alt={coach.name} fill sizes="128px" className="object-cover object-top" /> : <span className="flex h-full items-center justify-center text-3xl font-black text-yellow-200">{coach.initials}</span>}
               </div>
@@ -154,7 +153,7 @@ export default function LeadershipOverview() {
         <div id="partners-title"><LevelHeader level="Niveau 4" title="Partenaires Institutionnels" /></div>
         <div className="grid gap-5 md:grid-cols-3">
           {institutionalPartners.map((partner, index) => (
-            <motion.article key={partner.name} initial={reduceMotion ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08, duration: 0.6 }} className="flex min-h-80 flex-col items-center rounded-3xl border border-yellow-300/20 bg-yellow-300/[0.05] p-7 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
+            <motion.article key={partner.name} initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08, duration: 0.6 }} className="flex min-h-80 flex-col items-center rounded-3xl border border-yellow-300/20 bg-yellow-300/[0.05] p-7 text-center shadow-2xl shadow-black/30 backdrop-blur-xl">
               <div className="flex h-24 w-24 items-center justify-center rounded-full border border-yellow-300/30 bg-black/45 p-4 text-yellow-200">
                 {"image" in partner && partner.image ? <Image src={partner.image} alt={`Logo ${partner.name}`} width={80} height={80} className="h-16 w-16 object-contain" /> : <HeartHandshake size={34} aria-hidden="true" />}
               </div>

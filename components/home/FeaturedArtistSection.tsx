@@ -2,18 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { sambaJourneyEvents } from "@/data/season-2026-2027";
 
 export default function FeaturedArtistSection() {
-  const reduceMotion = useReducedMotion();
   return (
     <section aria-labelledby="featured-artist-title" className="section-cinema relative overflow-hidden bg-[#070604] px-5 py-16 text-white sm:px-6 sm:py-20 lg:px-20 lg:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(201,168,76,.22),transparent_32%)]" />
       <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:gap-12 lg:items-center">
         {/* Intro : badge, titre, texte court */}
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="lg:col-start-1 lg:row-start-1"

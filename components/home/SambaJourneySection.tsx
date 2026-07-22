@@ -18,7 +18,7 @@ export default function SambaJourneySection() {
           <span aria-hidden="true" className="pointer-events-none absolute left-[10%] right-[10%] top-5 hidden h-px bg-gradient-to-r from-transparent via-yellow-300 to-transparent lg:block" />
           <span aria-hidden="true" className="pointer-events-none absolute bottom-6 left-[27px] top-6 w-px bg-gradient-to-b from-yellow-300/70 via-white/15 to-transparent lg:hidden" />
           {sambaJourneyEvents.map((event, index) => (
-            <motion.li key={event.id} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: reduceMotion ? 0 : index * .08 }} className="relative rounded-3xl border border-white/10 bg-white/[.04] p-6 pl-16 lg:pl-6">
+            <motion.li key={event.id} initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: reduceMotion ? 0 : index * .08 }} className="relative rounded-3xl border border-white/10 bg-white/[.04] p-6 pl-16 lg:pl-6">
               <span className="absolute left-3 top-6 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-yellow-300 font-black text-black lg:static lg:mb-5">{index + 1}</span>
               <p className="text-[11px] font-black uppercase tracking-[.2em] text-yellow-200">{ACTS[index]}</p>
               <p className="mt-3 font-black text-yellow-300">{event.date}</p>

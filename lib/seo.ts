@@ -5,7 +5,7 @@ export const siteUrl = "https://festivaltalentofficial.com";
 export const siteName = "Festival Talent 2027";
 
 export const defaultDescription =
-  "Festival Talent 2027 prepare une tournee europeenne entre Paris et Rome, de janvier a avril 2027, precedee par des pre-selections officielles en danse, musique, mode, art, entrepreneuriat, technologie, culture urbaine et sports mecaniques. L'Union Europeenne est le premier partenaire officiel majeur.";
+  "Festival Talent 2027 : la saison nationale sénégalaise 2026-2027 dédiée à la révélation des talents en danse, peinture, lutte traditionnelle, création digitale, musique, karting et Jet-Ski, avec Samba Peuzzi comme artiste phare. L'Union Européenne est le premier partenaire officiel majeur.";
 
 const defaultImage = "/images/festival-talent-logo.webp";
 
