@@ -23,6 +23,39 @@ const VIEWPORTS = [
 
 const STABILISE_CSS = `*,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;transition-duration:0s!important;transition-delay:0s!important;scroll-behavior:auto!important}`;
 
+async function openStablePage(page: import("@playwright/test").Page, route: string) {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript((css) => {
+    const style = document.createElement("style");
+    style.dataset.playwrightStability = "true";
+    style.textContent = css;
+    document.documentElement.appendChild(style);
+  }, STABILISE_CSS);
+  const response = await page.goto(route, { waitUntil: "commit" });
+  expect(response, `navigation response for ${route}`).not.toBeNull();
+  expect(response!.status(), `HTTP status for ${route}`).toBeLessThan(400);
+
+  // Alias routes such as /billetterie and /gouvernance redirect after the first
+  // response. Wait on browser lifecycle signals until one document survives a
+  // complete load + font + two-frame cycle; do not use an arbitrary timeout.
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    try {
+      await page.waitForLoadState("load");
+      const urlBeforeRender = page.url();
+      await page.locator("body").waitFor({ state: "visible" });
+      await page.evaluate(async () => {
+        await document.fonts?.ready;
+        await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      });
+      if (page.url() === urlBeforeRender) return;
+    } catch (error) {
+      if (page.isClosed()) throw error;
+      // A redirect destroyed this document; the next iteration waits for its successor.
+    }
+  }
+  throw new Error(`page_did_not_reach_stable_document:${route}`);
+}
+
 async function collect(page: import("@playwright/test").Page) {
   return page.evaluate(() => {
     const de = document.documentElement;
@@ -56,18 +89,12 @@ async function collect(page: import("@playwright/test").Page) {
 }
 
 test.describe("no horizontal overflow (all public routes)", () => {
-  test.describe.configure({ timeout: 60_000, retries: 1 });
+  test.describe.configure({ mode: "serial", timeout: 90_000 });
   for (const route of ROUTES) {
     for (const vp of VIEWPORTS) {
       test(`${route} @ ${vp.w}x${vp.h}`, async ({ page }) => {
         await page.setViewportSize({ width: vp.w, height: vp.h });
-        await page.addInitScript((css) => {
-          const s = document.createElement("style");
-          s.textContent = css;
-          document.documentElement.appendChild(s);
-        }, STABILISE_CSS);
-        await page.goto(route, { waitUntil: "load" });
-        await page.waitForTimeout(250);
+        await openStablePage(page, route);
 
         const m = await collect(page);
         if (m.scrollWidth > m.clientWidth + 1 || m.offenders.length > 0) {
@@ -82,12 +109,12 @@ test.describe("no horizontal overflow (all public routes)", () => {
 });
 
 test.describe("preselection form internal containment", () => {
-  test.describe.configure({ timeout: 60_000, retries: 1 });
+  test.describe.configure({ timeout: 90_000 });
 
   test("keeps consent text inside its cards on narrow mobile screens", async ({ page }) => {
     for (const vp of VIEWPORTS.filter(({ w }) => w <= 430 || w === 1440)) {
       await page.setViewportSize({ width: vp.w, height: vp.h });
-      await page.goto("/preselections", { waitUntil: "load" });
+      await openStablePage(page, "/preselections");
 
       const marketingCard = page.getByTestId("consent-marketing-card");
       await marketingCard.waitFor({ state: "visible" });

@@ -10,17 +10,24 @@ const LONG_EMAIL = "candidat-mobile-extremement-long@example.invalid";
 const STABILISE_CSS = `*,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;transition-duration:0s!important;transition-delay:0s!important}`;
 
 test.describe("inscription form @ 320px (synthetic long strings)", () => {
-  test.describe.configure({ timeout: 60_000, retries: 1 });
+  test.describe.configure({ timeout: 90_000 });
 
   test("no overflow with long synthetic input", async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 568 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.addInitScript((css) => {
       const s = document.createElement("style");
       s.textContent = css;
       document.documentElement.appendChild(s);
     }, STABILISE_CSS);
-    await page.goto("/preselections", { waitUntil: "load" });
-    await page.waitForTimeout(250);
+    const response = await page.goto("/preselections", { waitUntil: "domcontentloaded" });
+    expect(response).not.toBeNull();
+    expect(response!.status()).toBeLessThan(400);
+    await page.locator("body").waitFor({ state: "visible" });
+    await page.evaluate(async () => {
+      await document.fonts?.ready;
+      await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    });
 
     // Fill every visible text-like input / textarea with long synthetic content.
     const inputs = page.locator('input[type="text"], input[type="email"], input[type="tel"], input:not([type]), textarea');
@@ -32,7 +39,7 @@ test.describe("inscription form @ 320px (synthetic long strings)", () => {
       const value = type === "email" ? LONG_EMAIL : LONG_NAME;
       await el.fill(value).catch(() => {});
     }
-    await page.waitForTimeout(150);
+    await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
 
     const m = await page.evaluate(() => {
       const de = document.documentElement;
