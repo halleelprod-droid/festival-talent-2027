@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { extname, relative, resolve, sep } from "node:path";
 
 // One row per preselection registration. NON-sensitive columns only:
 // no secrets, tokens, password hashes, ipHash, userAgent or raw legacy payload.
@@ -62,6 +63,56 @@ export interface ExportSummary {
   source: string;
   sha256: string;
   csv_file?: string;
+}
+
+const LOCAL_DATABASE_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]", "::1"]);
+
+export function validateExportDatabaseUrl(rawUrl: string | undefined, allowRemote = false) {
+  if (!rawUrl) throw new Error("database_url_missing");
+
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    throw new Error("database_url_invalid");
+  }
+
+  if (url.protocol !== "postgres:" && url.protocol !== "postgresql:") {
+    throw new Error("database_protocol_invalid");
+  }
+  if (!allowRemote && !LOCAL_DATABASE_HOSTS.has(url.hostname.toLowerCase())) {
+    throw new Error("remote_database_refused");
+  }
+  if (!url.pathname || url.pathname === "/") throw new Error("database_name_missing");
+
+  return url;
+}
+
+function isInside(parent: string, candidate: string) {
+  const rel = relative(resolve(parent), resolve(candidate));
+  return rel === "" || (!rel.startsWith(`..${sep}`) && rel !== "..");
+}
+
+export function resolveExportPaths(outputPath: string, repositoryRoot: string) {
+  const csvPath = resolve(outputPath);
+  if (extname(csvPath).toLowerCase() !== ".csv") throw new Error("output_must_be_csv");
+  if (isInside(repositoryRoot, csvPath)) throw new Error("repository_output_refused");
+
+  return {
+    csvPath,
+    summaryPath: csvPath.replace(/\.csv$/i, ".summary.json"),
+  };
+}
+
+export function parseExportArguments(args: string[]) {
+  const dryRun = args.includes("--dry-run");
+  const allowRemote = args.includes("--allow-remote");
+  const inline = args.find((arg) => arg.startsWith("--output=") || arg.startsWith("--out="));
+  const outputIndex = args.findIndex((arg) => arg === "--output" || arg === "--out");
+  const output = inline?.slice(inline.indexOf("=") + 1) || (outputIndex >= 0 ? args[outputIndex + 1] : undefined);
+
+  if (outputIndex >= 0 && (!output || output.startsWith("--"))) throw new Error("output_path_missing");
+  return { dryRun, allowRemote, output };
 }
 
 /** Anonymised summary — counts and hash only, never candidate data. */

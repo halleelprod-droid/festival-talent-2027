@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { EXPORT_COLUMNS, buildCsv, buildSummary, sha256, type ExportRow } from "@/src/export/preselections";
+import {
+  EXPORT_COLUMNS,
+  buildCsv,
+  buildSummary,
+  parseExportArguments,
+  resolveExportPaths,
+  sha256,
+  validateExportDatabaseUrl,
+  type ExportRow,
+} from "@/src/export/preselections";
 
 // SYNTHETIC rows only — never real candidate data.
 const synthetic: ExportRow[] = [
@@ -81,5 +90,25 @@ describe("preselection export (pure logic)", () => {
 
   it("hash changes when content changes", () => {
     expect(sha256(buildCsv(synthetic))).not.toBe(sha256(buildCsv([synthetic[0]])));
+  });
+
+  it("accepts local PostgreSQL URLs and rejects remote hosts by default", () => {
+    expect(validateExportDatabaseUrl("postgresql://user:synthetic@localhost:5432/festival_talent_test").hostname).toBe("localhost");
+    expect(() => validateExportDatabaseUrl("postgresql://user:synthetic@database.example.invalid/festival_talent_test")).toThrow("remote_database_refused");
+    expect(validateExportDatabaseUrl("postgresql://user:synthetic@database.example.invalid/festival_talent_test", true).hostname).toBe("database.example.invalid");
+  });
+
+  it("refuses repository outputs and derives an anonymised summary path", () => {
+    const repository = "C:\\workspace\\festival-talent-2027";
+    expect(() => resolveExportPaths("C:\\workspace\\festival-talent-2027\\private.csv", repository)).toThrow("repository_output_refused");
+    expect(resolveExportPaths("C:\\FestivalTalentData\\exports-private\\safe.csv", repository).summaryPath).toBe("C:\\FestivalTalentData\\exports-private\\safe.summary.json");
+    expect(() => resolveExportPaths("C:\\FestivalTalentData\\exports-private\\safe.json", repository)).toThrow("output_must_be_csv");
+  });
+
+  it("parses dry-run, output and explicit remote flags", () => {
+    expect(parseExportArguments(["--dry-run"])).toEqual({ dryRun: true, allowRemote: false, output: undefined });
+    expect(parseExportArguments(["--output", "C:\\private\\export.csv"])).toEqual({ dryRun: false, allowRemote: false, output: "C:\\private\\export.csv" });
+    expect(parseExportArguments(["--output=C:\\private\\export.csv", "--allow-remote"])).toEqual({ dryRun: false, allowRemote: true, output: "C:\\private\\export.csv" });
+    expect(() => parseExportArguments(["--output", "--dry-run"])).toThrow("output_path_missing");
   });
 });
