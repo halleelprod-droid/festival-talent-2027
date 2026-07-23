@@ -103,11 +103,7 @@ export default function PartnersSection() {
                         {hasPublicAsset(partner.image) ? (
                           <Image
                             src={partner.image}
-                            alt={
-                              whiteLogo
-                                ? `Logo de ${partner.name}, partenaire technique des activités nautiques du Festival Talent`
-                                : `Logo ${partner.name}`
-                            }
+                            alt={partner.logoAlt ?? `Logo ${partner.name}`}
                             width={whiteLogo ? 190 : 150}
                             height={whiteLogo ? 268 : 48}
                             className={

@@ -9,6 +9,7 @@ interface EventItem {
   date: string;
   category: string;
   partner?: string;
+  partners?: string[];
 }
 
 interface ProgrammePreviewProps {
@@ -104,9 +105,12 @@ export default function ProgrammePreview({
                         {event.location}
                       </p>
 
-                      {event.partner ? (
+                      {event.partner || (event.partners && event.partners.length) ? (
                         <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">
-                          En partenariat avec {event.partner}
+                          En partenariat avec{" "}
+                          {event.partners && event.partners.length
+                            ? event.partners.join(" et ")
+                            : event.partner}
                         </p>
                       ) : null}
                     </div>

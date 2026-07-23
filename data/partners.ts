@@ -12,6 +12,8 @@ export const partnersLogos = [
   { name: "Universal Selfcare", image: "/images/partners/universal.jpeg" },
   { name: "Keebaro Entertainment", image: "/images/partners/keebaro-entertainment.png" },
   { name: "XTREM JET SÉNÉGAL WATERSPORTS", image: "/images/partners/xtrem-jet-senegal-watersports.jpeg" },
+  { name: "Collectif des Danseurs Urbains de Thiès", image: "/images/partners/cdut-thies.jpeg" },
+  { name: "Maison des Cultures Urbaines de Dakar", image: "/images/partners/mcu-dakar.jpeg" },
 ];
 
 // Source de vérité UNIQUE des partenaires. `group` pilote le regroupement de la
@@ -36,6 +38,9 @@ export type OfficialPartner = {
   shortName?: string;
   featured?: boolean;
   whiteLogo?: boolean;
+  // Texte alternatif dédié au logo (sinon `Logo {name}` par défaut). Indispensable
+  // pour décrire précisément chaque logo à fond blanc.
+  logoAlt?: string;
   website?: string | null;
   href?: string;
   contact?: { email: string; phone: string };
@@ -177,8 +182,39 @@ export const officialPartners: OfficialPartner[] = [
     badge: "Partenaire technique",
     image: "/images/partners/xtrem-jet-senegal-watersports.jpeg",
     whiteLogo: true,
+    logoAlt: "Logo de XTREM JET SÉNÉGAL WATERSPORTS, partenaire technique des activités nautiques du Festival Talent",
     description:
       "Partenaire technique du Festival Talent pour la finale de Jet-Ski, la croisiere et les experiences nautiques organisees a Saly.",
+    website: null,
+  },
+  {
+    name: "Collectif des Danseurs Urbains de Thiès",
+    shortName: "CDUT",
+    label: "Partenaire danse — Thiès",
+    category: "Danse et cultures urbaines",
+    group: "artistique",
+    sector: "Danse et cultures urbaines",
+    badge: "Partenaire danse",
+    image: "/images/partners/cdut-thies.jpeg",
+    whiteLogo: true,
+    logoAlt: "Logo du Collectif des Danseurs Urbains de Thiès, partenaire danse du Festival Talent",
+    description:
+      "Le Collectif des Danseurs Urbains de Thiès accompagne le Festival Talent dans la mobilisation et la valorisation des danseurs urbains.",
+    website: null,
+  },
+  {
+    name: "Maison des Cultures Urbaines de Dakar",
+    shortName: "MCU Dakar",
+    label: "Partenaire culturel — Dakar",
+    category: "Cultures urbaines",
+    group: "institutionnel",
+    sector: "Cultures urbaines",
+    badge: "Partenaire culturel",
+    image: "/images/partners/mcu-dakar.jpeg",
+    whiteLogo: true,
+    logoAlt: "Logo de la Maison des Cultures Urbaines de Dakar, partenaire culturel du Festival Talent",
+    description:
+      "La Maison des Cultures Urbaines de Dakar accompagne le développement et la valorisation des cultures urbaines dans le cadre du Festival Talent.",
     website: null,
   },
 ];

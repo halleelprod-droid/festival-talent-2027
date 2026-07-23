@@ -37,6 +37,7 @@ type CategoryPartner = {
   image?: string;
   href?: string;
   whiteBg?: boolean;
+  logoAlt?: string;
 };
 
 type PartnerCategory = {
@@ -136,6 +137,7 @@ const partnerCategories: PartnerCategory[] = (() => {
         image: partner.image,
         href: partner.href,
         whiteBg: partner.whiteLogo,
+        logoAlt: partner.logoAlt,
       }));
     return partners.length ? { ...GROUP_META[group], partners } : null;
   }).filter((category): category is PartnerCategory => category !== null);
@@ -188,7 +190,7 @@ const contactFields = [
   { id: "project", label: "Projet", type: "text" },
 ] as const;
 
-function PartnerLogo({ src, name, whiteBg }: { src?: string; name: string; whiteBg?: boolean }) {
+function PartnerLogo({ src, name, whiteBg, logoAlt }: { src?: string; name: string; whiteBg?: boolean; logoAlt?: string }) {
   const [hasError, setHasError] = useState(false);
 
   if (!src || hasError) {
@@ -205,7 +207,7 @@ function PartnerLogo({ src, name, whiteBg }: { src?: string; name: string; white
       <div className="flex min-h-24 items-center justify-center rounded-xl border border-white/15 bg-white p-3">
         <Image
           src={src}
-          alt={`Logo de ${name}, partenaire technique des activités nautiques du Festival Talent`}
+          alt={logoAlt ?? `Logo ${name}`}
           width={190}
           height={268}
           className="h-24 w-auto max-w-full object-contain"
@@ -345,6 +347,7 @@ export default function PartnersPageClient() {
                             src={"image" in partner ? partner.image : undefined}
                             name={partner.name}
                             whiteBg={"whiteBg" in partner && partner.whiteBg}
+                            logoAlt={partner.logoAlt}
                           />
                         </div>
                         <p className="mt-4 text-sm leading-7 text-white/58">

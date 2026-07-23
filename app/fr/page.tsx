@@ -47,6 +47,7 @@ const homeProgrammeEvents = seasonEvents.map((event) => ({
   date: event.date,
   category: event.discipline,
   partner: event.partner,
+  partners: event.partners,
 }));
 
 export default function HomePage() {

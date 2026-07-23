@@ -7,6 +7,7 @@ export type SeasonEvent = {
   withSamba?: boolean;
   note?: string;
   partner?: string;
+  partners?: string[];
 };
 
 export const seasonEvents: SeasonEvent[] = [
@@ -18,6 +19,7 @@ export const seasonEvents: SeasonEvent[] = [
   { id: "mega-concert", date: "26 décembre 2026", title: "Méga concert", discipline: "Musique", location: "Esplanade du Grand Théâtre", withSamba: true, note: "Guests annoncés : Samba Peuzzi et Ibro Nadio." },
   { id: "karting-saly", date: "Janvier 2027", title: "Compétition de karting", discipline: "Karting", location: "Saly" },
   { id: "jet-ski-saly", date: "Février 2027", title: "Finale de Jet-Ski et croisière", discipline: "Sports nautiques", location: "Saly", note: "Croisière prévue dans l’après-midi.", partner: "XTREM JET SÉNÉGAL WATERSPORTS" },
+  { id: "battle-saly", date: "Date à confirmer", title: "Battles de danse à Saly", discipline: "Danse", location: "Plage du Royal Saly, Saly", note: "Étape de danse organisée à Saly. Date à confirmer.", partners: ["CDUT", "MCU Dakar"] },
 ];
 
 export const sambaJourneyEvents = seasonEvents.filter((event) => event.withSamba);
