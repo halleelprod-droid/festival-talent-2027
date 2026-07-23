@@ -20,6 +20,7 @@ import {
   Sparkles,
   Store,
   Users,
+  Waves,
 } from "lucide-react";
 
 const partnerCategories = [
@@ -167,6 +168,22 @@ const partnerCategories = [
     ],
     icon: Store,
   },
+  {
+    title: "🌊 Sports nautiques",
+    description:
+      "Jet-Ski, croisière et expériences nautiques du Festival Talent organisées à Saly.",
+    partners: [
+      {
+        name: "XTREM JET SÉNÉGAL WATERSPORTS",
+        label: "Partenaire technique — Sports nautiques",
+        description:
+          "Partenaire des expériences nautiques du Festival Talent à Saly : finale de Jet-Ski et croisière officielle.",
+        image: "/images/partners/xtrem-jet-senegal-watersports.jpeg",
+        whiteBg: true,
+      },
+    ],
+    icon: Waves,
+  },
 ] as const;
 
 const bankReasons = [
@@ -213,13 +230,29 @@ const contactFields = [
   { id: "project", label: "Projet", type: "text" },
 ] as const;
 
-function PartnerLogo({ src, name }: { src?: string; name: string }) {
+function PartnerLogo({ src, name, whiteBg }: { src?: string; name: string; whiteBg?: boolean }) {
   const [hasError, setHasError] = useState(false);
 
   if (!src || hasError) {
     return (
       <div className="flex h-14 min-w-32 items-center justify-center rounded-lg border border-yellow-400/20 bg-black/60 px-4 text-center text-[10px] font-black uppercase tracking-[0.16em] text-yellow-200">
         {name}
+      </div>
+    );
+  }
+
+  // Logo à fond blanc : carte blanche bordée + object-contain, sans recadrage.
+  if (whiteBg) {
+    return (
+      <div className="flex min-h-24 items-center justify-center rounded-xl border border-white/15 bg-white p-3">
+        <Image
+          src={src}
+          alt={`Logo de ${name}, partenaire technique des activités nautiques du Festival Talent`}
+          width={190}
+          height={268}
+          className="h-24 w-auto max-w-full object-contain"
+          onError={() => setHasError(true)}
+        />
       </div>
     );
   }
@@ -353,6 +386,7 @@ export default function PartnersPageClient() {
                           <PartnerLogo
                             src={"image" in partner ? partner.image : undefined}
                             name={partner.name}
+                            whiteBg={"whiteBg" in partner && partner.whiteBg}
                           />
                         </div>
                         <p className="mt-4 text-sm leading-7 text-white/58">

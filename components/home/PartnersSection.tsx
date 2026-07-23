@@ -9,6 +9,7 @@ import {
   Handshake,
   Megaphone,
   Sparkles,
+  Waves,
 } from "lucide-react";
 
 import GlassCard from "@/components/ui/GlassCard";
@@ -75,6 +76,15 @@ const officialPartners = [
       "Universal Selfcare accompagne Festival Talent 2027 sur les dimensions bien-être, santé et selfcare.",
     icon: Gem,
   },
+  {
+    name: "XTREM JET SÉNÉGAL WATERSPORTS",
+    label: "Partenaire technique — Sports nautiques",
+    description:
+      "Partenaire des expériences nautiques du Festival Talent à Saly : finale de Jet-Ski et croisière officielle.",
+    icon: Waves,
+    logo: "/images/partners/xtrem-jet-senegal-watersports.jpeg",
+    whiteLogo: true,
+  },
 ];
 
 const associatedPartners = ["VAL2EVENTS"];
@@ -101,6 +111,7 @@ export default function PartnersSection() {
         <div className="mt-12 grid gap-5 lg:mt-20 lg:grid-cols-3">
           {officialPartners.map((partner) => {
             const Icon = partner.icon;
+            const whiteLogo = "whiteLogo" in partner && partner.whiteLogo;
 
             return (
               <article
@@ -139,14 +150,28 @@ export default function PartnersSection() {
                     </h3>
 
                     {"logo" in partner && partner.logo ? (
-                      <div className="mt-4 inline-flex rounded-2xl border border-yellow-400/25 bg-black/40 p-3">
+                      <div
+                        className={`mt-4 inline-flex items-center justify-center rounded-2xl border p-3 ${
+                          whiteLogo
+                            ? "min-h-32 border-white/15 bg-white"
+                            : "border-yellow-400/25 bg-black/40"
+                        }`}
+                      >
                         {hasPublicAsset(partner.logo) ? (
                           <Image
                             src={partner.logo}
-                            alt={`Logo ${partner.name}`}
-                            width={150}
-                            height={48}
-                            className="h-16 w-full max-w-full object-contain sm:h-20"
+                            alt={
+                              whiteLogo
+                                ? `Logo de ${partner.name}, partenaire technique des activités nautiques du Festival Talent`
+                                : `Logo ${partner.name}`
+                            }
+                            width={whiteLogo ? 190 : 150}
+                            height={whiteLogo ? 268 : 48}
+                            className={
+                              whiteLogo
+                                ? "h-24 w-auto max-w-full object-contain sm:h-28"
+                                : "h-16 w-full max-w-full object-contain sm:h-20"
+                            }
                           />
                         ) : (
                           <span className="flex h-12 min-w-36 items-center justify-center text-center text-xs font-black uppercase tracking-[0.16em] text-yellow-300">

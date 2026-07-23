@@ -6,6 +6,7 @@ export type SeasonEvent = {
   location: string;
   withSamba?: boolean;
   note?: string;
+  partner?: string;
 };
 
 export const seasonEvents: SeasonEvent[] = [
@@ -16,7 +17,7 @@ export const seasonEvents: SeasonEvent[] = [
   { id: "showcase-influenceurs", date: "Fin novembre 2026", title: "Showcase des influenceurs", discipline: "Création digitale", location: "Grand Théâtre National" },
   { id: "mega-concert", date: "26 décembre 2026", title: "Méga concert", discipline: "Musique", location: "Esplanade du Grand Théâtre", withSamba: true, note: "Guests annoncés : Samba Peuzzi et Ibro Nadio." },
   { id: "karting-saly", date: "Janvier 2027", title: "Compétition de karting", discipline: "Karting", location: "Saly" },
-  { id: "jet-ski-saly", date: "Février 2027", title: "Finale de Jet-Ski et croisière", discipline: "Sports nautiques", location: "Saly", note: "Croisière prévue dans l’après-midi." },
+  { id: "jet-ski-saly", date: "Février 2027", title: "Finale de Jet-Ski et croisière", discipline: "Sports nautiques", location: "Saly", note: "Croisière prévue dans l’après-midi.", partner: "XTREM JET SÉNÉGAL WATERSPORTS" },
 ];
 
 export const sambaJourneyEvents = seasonEvents.filter((event) => event.withSamba);

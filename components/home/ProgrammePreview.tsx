@@ -8,6 +8,7 @@ interface EventItem {
   location: string;
   date: string;
   category: string;
+  partner?: string;
 }
 
 interface ProgrammePreviewProps {
@@ -102,6 +103,12 @@ export default function ProgrammePreview({
                       <p className="mt-4 text-zinc-400">
                         {event.location}
                       </p>
+
+                      {event.partner ? (
+                        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">
+                          En partenariat avec {event.partner}
+                        </p>
+                      ) : null}
                     </div>
 
                     {/* RIGHT */}

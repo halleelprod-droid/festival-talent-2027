@@ -11,6 +11,7 @@ export const partnersLogos = [
   { name: "H & Hair", image: "/images/partners/h-hair.jpeg" },
   { name: "Universal Selfcare", image: "/images/partners/universal.jpeg" },
   { name: "Keebaro Entertainment", image: "/images/partners/keebaro-entertainment.png" },
+  { name: "XTREM JET SÉNÉGAL WATERSPORTS", image: "/images/partners/xtrem-jet-senegal-watersports.jpeg" },
 ];
 
 export const officialPartners = [
@@ -125,6 +126,18 @@ export const officialPartners = [
     image: "/images/partners/keebaro-entertainment.png",
     description:
       "Keebaro Entertainment accompagne Festival Talent 2027 en tant que partenaire officiel du secteur Lutte, contribuant a l'organisation, la valorisation et l'encadrement des talents de la lutte senegalaise.",
+  },
+  {
+    name: "XTREM JET SÉNÉGAL WATERSPORTS",
+    shortName: "XTREM JET SÉNÉGAL",
+    label: "Partenaire technique - Sports nautiques",
+    category: "Sports nautiques",
+    sector: "Activites nautiques",
+    badge: "Partenaire technique",
+    image: "/images/partners/xtrem-jet-senegal-watersports.jpeg",
+    description:
+      "Partenaire technique du Festival Talent pour la finale de Jet-Ski, la croisiere et les experiences nautiques organisees a Saly.",
+    website: null,
   },
 ];
 
