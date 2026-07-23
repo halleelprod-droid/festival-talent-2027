@@ -14,11 +14,40 @@ export const partnersLogos = [
   { name: "XTREM JET SÉNÉGAL WATERSPORTS", image: "/images/partners/xtrem-jet-senegal-watersports.jpeg" },
 ];
 
-export const officialPartners = [
+// Source de vérité UNIQUE des partenaires. `group` pilote le regroupement de la
+// page /partners ; `featured` met en avant un partenaire majeur sur l'accueil ;
+// `whiteLogo` force une carte blanche pour un logo à fond blanc. Aucune autre
+// surface ne doit redéclarer un tableau local de partenaires.
+export type PartnerGroup =
+  | "institutionnel" | "digital" | "media-comm" | "strategique" | "artistique"
+  | "media-influence" | "lutte" | "nautique" | "lifestyle";
+
+export type OfficialPartner = {
+  name: string;
+  label: string;
+  category: string;
+  group: PartnerGroup;
+  description: string;
+  image?: string;
+  sector?: string;
+  badge?: string;
+  slug?: string;
+  responsibility?: string;
+  shortName?: string;
+  featured?: boolean;
+  whiteLogo?: boolean;
+  website?: string | null;
+  href?: string;
+  contact?: { email: string; phone: string };
+};
+
+export const officialPartners: OfficialPartner[] = [
   {
     name: "Union Europeenne",
     label: "Partenaire Officiel Majeur",
     category: "Institutionnel",
+    group: "institutionnel",
+    featured: true,
     description:
       "Partenaire majeur du rayonnement international et de l'impact jeunesse de Festival Talent 2027.",
   },
@@ -26,6 +55,7 @@ export const officialPartners = [
     name: "Sen Influenceurs",
     label: "Partenaire Media & Influence Officiel",
     category: "Media",
+    group: "media-influence",
     description:
       "Partenaire media officiel pour la visibilite digitale, la couverture des annonces et la mise en avant des talents.",
   },
@@ -33,6 +63,7 @@ export const officialPartners = [
     name: "PIN EVENTS",
     label: "Partenaire Evenementiel, Production & Relations Institutionnelles",
     category: "Production",
+    group: "strategique",
     image: "/images/partners/pin-events.png",
     description:
       "Partenaire strategique pour la production evenementielle, les activations terrain, les partenariats et les relations institutionnelles.",
@@ -41,6 +72,7 @@ export const officialPartners = [
     name: "SIDRA",
     label: "Partenaire Digital Officiel",
     category: "Digital",
+    group: "digital",
     sector: "Direction Digitale",
     badge: "Direction Digitale",
     description:
@@ -50,6 +82,7 @@ export const officialPartners = [
     name: "HALLEEL",
     label: "Partenaire Media & Communication",
     category: "Media",
+    group: "media-comm",
     sector: "Direction Media & Communication",
     badge: "Direction Media & Communication",
     description:
@@ -60,6 +93,7 @@ export const officialPartners = [
     slug: "diassnor",
     label: "Partenaire Danse",
     category: "Management artistique & Evenementiel",
+    group: "artistique",
     sector: "Management artistique & Evenementiel",
     responsibility:
       "Responsable du Pole Danse : battles, preselections, organisation artistique et developpement des talents choregraphiques.",
@@ -77,6 +111,7 @@ export const officialPartners = [
     name: "Centre Culturel Blaise Senghor",
     label: "Partenaire Danse",
     category: "Partenaire Institutionnel",
+    group: "institutionnel",
     sector: "Partenaire Institutionnel",
     responsibility:
       "Partenaire institutionnel et accompagnement du developpement de la danse.",
@@ -89,6 +124,7 @@ export const officialPartners = [
     name: "Mano Perfetto",
     label: "Partenaire Construction & Developpement",
     category: "Developpement",
+    group: "lifestyle",
     image: "/images/partners/mano.jpeg",
     description:
       "Partenaire associe au developpement, a la structuration et aux besoins operationnels du projet.",
@@ -97,6 +133,7 @@ export const officialPartners = [
     name: "H & Hair",
     label: "Partenaire Beaute & Lifestyle",
     category: "Lifestyle",
+    group: "lifestyle",
     image: "/images/partners/h-hair.jpeg",
     description:
       "Partenaire lifestyle autour de l'image, de la beaute, des talents et des experiences public.",
@@ -105,6 +142,7 @@ export const officialPartners = [
     name: "Universal Selfcare",
     label: "Partenaire Bien-etre & Sante",
     category: "Bien-etre",
+    group: "lifestyle",
     image: "/images/partners/universal.jpeg",
     description:
       "Partenaire dedie a l'accompagnement, au soin et au bien-etre dans l'ecosysteme Festival Talent.",
@@ -113,6 +151,7 @@ export const officialPartners = [
     name: "Val2Events",
     label: "Partenaire associe",
     category: "Evenementiel",
+    group: "strategique",
     image: "/images/partners/val2events.jpeg",
     description:
       "Partenaire associe aux experiences evenementielles et a la dynamique terrain du festival.",
@@ -121,6 +160,7 @@ export const officialPartners = [
     name: "Keebaro Entertainment",
     label: "Partenaire Officiel Lutte",
     category: "Lutte",
+    group: "lutte",
     sector: "Lutte Senegalaise",
     badge: "Partenaire Officiel Lutte",
     image: "/images/partners/keebaro-entertainment.png",
@@ -132,9 +172,11 @@ export const officialPartners = [
     shortName: "XTREM JET SÉNÉGAL",
     label: "Partenaire technique - Sports nautiques",
     category: "Sports nautiques",
+    group: "nautique",
     sector: "Activites nautiques",
     badge: "Partenaire technique",
     image: "/images/partners/xtrem-jet-senegal-watersports.jpeg",
+    whiteLogo: true,
     description:
       "Partenaire technique du Festival Talent pour la finale de Jet-Ski, la croisiere et les experiences nautiques organisees a Saly.",
     website: null,

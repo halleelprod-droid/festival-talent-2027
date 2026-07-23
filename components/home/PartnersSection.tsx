@@ -3,91 +3,34 @@ import { join } from "node:path";
 import Image from "next/image";
 import {
   BadgeCheck,
-  Building2,
   Gem,
   Globe2,
   Handshake,
+  Laptop,
   Megaphone,
   Sparkles,
+  Swords,
   Waves,
+  type LucideIcon,
 } from "lucide-react";
 
 import GlassCard from "@/components/ui/GlassCard";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { officialPartners, type PartnerGroup } from "@/data/partners";
 
-const officialPartners = [
-  {
-    name: "Union Européenne",
-    label: "Partenaire Officiel Majeur",
-    description:
-      "L’Union Européenne accompagne Festival Talent 2027 dans sa vision de promotion des jeunes talents, de la culture, de l’innovation et de l’entrepreneuriat.",
-    icon: Globe2,
-    featured: true,
-  },
-  {
-    name: "Sen Influenceurs",
-    label: "Partenaire Média & Influence Officiel",
-    description:
-      "Sen Influenceurs accompagne Festival Talent 2027 dans sa stratégie digitale, la communication d’influence, la promotion des talents et la couverture médiatique des activités.",
-    icon: Megaphone,
-  },
-  {
-    name: "PIN EVENTS",
-    label: "Partenaire Événementiel, Production & Relations Institutionnelles",
-    description:
-      "PIN EVENTS accompagne Festival Talent 2027 dans l’organisation des activités, la production événementielle, les partenariats stratégiques, les relations institutionnelles et les activations terrain.",
-    icon: Handshake,
-    logo: "/images/partners/pin-events.png",
-  },
-  {
-    name: "Agence Diassnor",
-    label: "Responsable du Pole Danse",
-    description:
-      "Agence specialisee dans le management artistique et l'evenementiel, Diassnor pilote le Pole Danse, les battles, les preselections et l'accompagnement des danseurs.",
-    icon: Sparkles,
-    logo: "/images/partners/agence-diassnor.png",
-  },
-  {
-    name: "Centre Culturel Blaise Senghor",
-    label: "Partenaire Danse",
-    description:
-      "Partenaire institutionnel, le Centre Culturel Blaise Senghor contribue a la valorisation des arts choregraphiques et a l'encadrement des jeunes talents.",
-    icon: Building2,
-    logo: "/images/partners/blaise-senghor.png",
-  },
-  {
-    name: "Mano Perfetto",
-    label: "Partenaire Construction & Développement",
-    description:
-      "Mano Perfetto accompagne Festival Talent 2027 comme partenaire construction et développement.",
-    icon: Building2,
-  },
-  {
-    name: "H & Hair",
-    label: "Partenaire Beauté & Lifestyle",
-    description:
-      "H & Hair accompagne Festival Talent 2027 sur l’univers beauté, lifestyle et image.",
-    icon: Sparkles,
-  },
-  {
-    name: "Universal Selfcare",
-    label: "Partenaire Bien-être & Santé",
-    description:
-      "Universal Selfcare accompagne Festival Talent 2027 sur les dimensions bien-être, santé et selfcare.",
-    icon: Gem,
-  },
-  {
-    name: "XTREM JET SÉNÉGAL WATERSPORTS",
-    label: "Partenaire technique — Sports nautiques",
-    description:
-      "Partenaire des expériences nautiques du Festival Talent à Saly : finale de Jet-Ski et croisière officielle.",
-    icon: Waves,
-    logo: "/images/partners/xtrem-jet-senegal-watersports.jpeg",
-    whiteLogo: true,
-  },
-];
-
-const associatedPartners = ["VAL2EVENTS"];
+// Icône d'accueil par groupe (présentation uniquement — la donnée partenaire
+// reste unique dans data/partners.ts).
+const GROUP_ICON: Record<PartnerGroup, LucideIcon> = {
+  institutionnel: Globe2,
+  digital: Laptop,
+  "media-comm": Megaphone,
+  strategique: Handshake,
+  artistique: Sparkles,
+  "media-influence": Megaphone,
+  lutte: Swords,
+  nautique: Waves,
+  lifestyle: Gem,
+};
 
 function hasPublicAsset(src: string) {
   return existsSync(join(process.cwd(), "public", src));
@@ -110,8 +53,8 @@ export default function PartnersSection() {
 
         <div className="mt-12 grid gap-5 lg:mt-20 lg:grid-cols-3">
           {officialPartners.map((partner) => {
-            const Icon = partner.icon;
-            const whiteLogo = "whiteLogo" in partner && partner.whiteLogo;
+            const Icon = GROUP_ICON[partner.group] ?? BadgeCheck;
+            const whiteLogo = partner.whiteLogo === true;
 
             return (
               <article
@@ -149,7 +92,7 @@ export default function PartnersSection() {
                       {partner.name}
                     </h3>
 
-                    {"logo" in partner && partner.logo ? (
+                    {partner.image ? (
                       <div
                         className={`mt-4 inline-flex items-center justify-center rounded-2xl border p-3 ${
                           whiteLogo
@@ -157,9 +100,9 @@ export default function PartnersSection() {
                             : "border-yellow-400/25 bg-black/40"
                         }`}
                       >
-                        {hasPublicAsset(partner.logo) ? (
+                        {hasPublicAsset(partner.image) ? (
                           <Image
-                            src={partner.logo}
+                            src={partner.image}
                             alt={
                               whiteLogo
                                 ? `Logo de ${partner.name}, partenaire technique des activités nautiques du Festival Talent`
@@ -197,17 +140,6 @@ export default function PartnersSection() {
             Liste officielle des partenaires Festival Talent 2027
           </p>
         </GlassCard>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {associatedPartners.map((partner) => (
-            <GlassCard key={partner} className="p-5 text-center">
-              <BadgeCheck className="mx-auto text-yellow-300" size={22} />
-              <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-white/75">
-                {partner}
-              </p>
-            </GlassCard>
-          ))}
-        </div>
       </div>
     </section>
   );
