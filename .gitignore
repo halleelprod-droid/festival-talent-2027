@@ -51,6 +51,9 @@ birth-date-review-errors.csv
 *.backup
 *.sql.gz
 
+# artefacts vidéo (captures, WebM, MP4 — jamais committés)
+/artifacts/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
