@@ -11,7 +11,7 @@ import {
 const artists = [
   {
     name: "Samba Peuzzi",
-    image: "/images/previous/scene.jpg",
+    image: "/images/artists/samba-peuzzi-guitare.jpg",
     role: "Artiste confirmé",
     description:
       "Artiste confirmé pour Festival Talent 2027. Sa présence accompagne l’énergie du festival, les pré-sélections et la célébration des talents.",
@@ -77,6 +77,11 @@ export default function ArtistsSection() {
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition duration-700 group-hover:scale-110"
+                  style={
+                    artist.name === "Samba Peuzzi"
+                      ? { objectPosition: "center top" }
+                      : undefined
+                  }
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />

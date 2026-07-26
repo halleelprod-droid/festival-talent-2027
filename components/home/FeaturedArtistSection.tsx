@@ -26,7 +26,7 @@ export default function FeaturedArtistSection() {
         <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-yellow-300/20 bg-black/40 sm:aspect-[3/4] lg:aspect-auto lg:min-h-[560px]">
             <span aria-hidden="true" className="absolute -left-3 top-0 z-0 font-display text-[9rem] leading-none text-white/[.06] sm:text-[14rem] lg:text-[20rem]">02</span>
-            <Image src="/images/artists/samba-peuzzi-hero.webp" alt="Samba Peuzzi, artiste phare de la deuxième édition du Festival Talent" fill sizes="(max-width: 1024px) 100vw, 48vw" quality={80} className="z-10 object-cover" style={{ objectPosition: "50% 12%" }} />
+            <Image src="/images/artists/samba-peuzzi-guitare.jpg" alt="Samba Peuzzi, artiste phare de la deuxième édition du Festival Talent" fill sizes="(max-width: 1024px) 100vw, 48vw" quality={80} className="z-10 object-cover" style={{ objectPosition: "center top" }} />
           </div>
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {sambaJourneyEvents.map((event) => (
