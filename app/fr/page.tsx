@@ -13,6 +13,7 @@ import TalentStoriesSection from "@/components/home/TalentStoriesSection";
 import AfricaTomorrowSection from "@/components/home/AfricaTomorrowSection";
 import TalentPlatformJourneySection from "@/components/home/TalentPlatformJourneySection";
 import ArtistsSection from "@/components/home/ArtistsSection";
+import FinalConcertGuests from "@/components/guests/FinalConcertGuests";
 import JuryComingSoonSection from "@/components/home/JuryComingSoonSection";
 import GallerySection from "@/components/home/GallerySection";
 import PartnersSection from "@/components/home/PartnersSection";
@@ -113,6 +114,8 @@ export default function HomePage() {
         />
 
         <ArtistsSection />
+
+        <FinalConcertGuests />
 
         <JuryComingSoonSection />
 

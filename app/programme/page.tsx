@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 import { buildPageMetadata } from "@/lib/seo";
+import FinalConcertGuests from "@/components/guests/FinalConcertGuests";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Programme | Festival Talent 2027",
@@ -575,6 +576,8 @@ export default function ProgrammePage() {
           </div>
         </div>
       </section>
+
+      <FinalConcertGuests />
 
       <section className="relative px-6 pb-28 pt-10 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-6xl overflow-hidden rounded-[3rem] border border-yellow-400/25 bg-yellow-400/[0.08] p-8 text-center shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-12">
