@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 import AnnouncementBar from "@/components/home/AnnouncementBar";
-import HeroSection from "@/components/home/HeroSection";
+import InternationalHeroSection from "@/components/home/InternationalHeroSection";
+import { DestinationsSection, DisciplinesSection, InternationalProgrammeSection, ManifestoSection, TalentJourneySection } from "@/components/home/InternationalSections";
 import BattleDanceSection from "@/components/home/BattleDanceSection";
 import ActivitiesHighlightSection from "@/components/home/ActivitiesHighlightSection";
 import StaffSection from "@/components/home/StaffSection";
@@ -35,9 +36,9 @@ import { buildPageMetadata } from "@/lib/seo";
 import { seasonEvents } from "@/data/season-2026-2027";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Festival Talent 2026–2027 | Deuxième édition avec Samba Peuzzi",
+  title: "Festival Talent 2027 | Sénégal, Paris et Rome",
   description:
-    "Découvrez la deuxième édition du Festival Talent, une saison nationale dédiée à la danse, la peinture, la lutte, la création digitale, la musique, le karting et le Jet-Ski, avec Samba Peuzzi comme artiste phare.",
+    "Festival Talent 2027 est une édition internationale dédiée à la musique, la danse, la mode, la technologie, le cinéma, l'entrepreneuriat et aux cultures créatives, avec des événements prévus au Sénégal, à Paris et à Rome.",
   path: "/fr",
 });
 
@@ -57,13 +58,12 @@ export default function HomePage() {
       <AnnouncementBar />
 
       <main className="min-h-screen bg-black text-white">
-        <HomeActTransition
-          act="ACTE 1"
-          title="Le rêve"
-          description="Tout commence par une conviction : un talent peut changer une trajectoire."
-        />
-
-        <HeroSection />
+        <InternationalHeroSection />
+        <ManifestoSection />
+        <DestinationsSection />
+        <DisciplinesSection />
+        <TalentJourneySection />
+        <InternationalProgrammeSection />
 
         <FeaturedArtistSection />
 

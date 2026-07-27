@@ -140,10 +140,21 @@ export default function LeadershipOverview() {
               <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border border-yellow-300/30 bg-black/45">
                 {coach.image ? <Image src={coach.image} alt={coach.name} fill sizes="128px" className="object-cover object-top" /> : <span className="flex h-full items-center justify-center text-3xl font-black text-yellow-200">{coach.initials}</span>}
               </div>
+              {coach.status && <span className="mx-auto mt-5 inline-flex rounded-full border border-yellow-300/30 bg-yellow-300/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.14em] text-yellow-200">{coach.status}</span>}
               <h3 className="mt-6 text-2xl font-black uppercase text-white">{coach.name}</h3>
               <p className="mt-3 text-xs font-black uppercase tracking-[0.15em] text-yellow-300">{coach.role}</p>
               <p className="mt-5 text-sm leading-7 text-white/62">{coach.description}</p>
               <Tags items={coach.focus} />
+              {coach.tiktok && (
+                <a
+                  href={coach.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-auto mt-6 inline-flex rounded-full border border-yellow-300/30 px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-yellow-200 transition hover:bg-yellow-300/10"
+                >
+                  TikTok
+                </a>
+              )}
             </motion.article>
           ))}
         </div>

@@ -99,7 +99,7 @@ export default function MentorsPage() {
                 <div className="flex flex-col p-7 sm:p-8">
                   <span className="inline-flex w-fit items-center gap-2 rounded-full border border-yellow-400/25 bg-yellow-400/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-yellow-300">
                     <Sparkles size={13} />
-                    Coach & mentor
+                    {coach.status ?? "Coach & mentor"}
                   </span>
 
                   <h2 className="mt-6 text-3xl font-black uppercase text-white">
@@ -122,6 +122,16 @@ export default function MentorsPage() {
                       </span>
                     ))}
                   </div>
+                  {coach.tiktok && (
+                    <a
+                      href={coach.tiktok}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex w-fit items-center rounded-full border border-yellow-300/30 px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-yellow-200 transition hover:bg-yellow-300/10"
+                    >
+                      TikTok
+                    </a>
+                  )}
                 </div>
               </article>
             </PremiumCard>

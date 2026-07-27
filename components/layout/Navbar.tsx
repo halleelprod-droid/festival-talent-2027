@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 
 import {
+  destinationNavigationLinks,
+  disciplineNavigationLinks,
   moreNavigationLinks,
   primaryNavigationLinks
 } from '@/config/navigation';
@@ -29,6 +31,8 @@ export default function Navbar() {
 
   const [moreOpen, setMoreOpen] =
     useState(false);
+  const [destinationOpen, setDestinationOpen] = useState(false);
+  const [disciplineOpen, setDisciplineOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -136,6 +140,17 @@ export default function Navbar() {
               </motion.div>
             ))}
 
+            {[{ label: "Destinations", links: destinationNavigationLinks, open: destinationOpen, setOpen: setDestinationOpen }, { label: "Disciplines", links: disciplineNavigationLinks, open: disciplineOpen, setOpen: setDisciplineOpen }].map((group) => (
+              <div className="relative" key={group.label}>
+                <button type="button" onClick={() => group.setOpen(!group.open)} aria-expanded={group.open} className="inline-flex items-center gap-1 text-xs uppercase tracking-[.2em] text-zinc-300 transition hover:text-white">
+                  {group.label}<ChevronDown size={13} className={`transition ${group.open ? "rotate-180" : ""}`} />
+                </button>
+                <AnimatePresence>{group.open && <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} className="absolute left-0 top-9 z-10 w-56 rounded-2xl border border-white/10 bg-black/95 p-2 shadow-2xl backdrop-blur-xl">
+                  {group.links.map((link) => <Link key={link.href} href={link.href} onClick={() => group.setOpen(false)} className="block rounded-xl px-4 py-3 text-xs font-black uppercase tracking-[.14em] text-zinc-300 transition hover:bg-white/[.06] hover:text-yellow-300">{link.label}</Link>)}
+                </motion.div>}</AnimatePresence>
+              </div>
+            ))}
+
             <div className="relative">
               <button
                 type="button"
@@ -163,7 +178,7 @@ export default function Navbar() {
                 />
               </button>
 
-              <AnimatePresence>
+          <AnimatePresence>
                 {moreOpen && (
                   <motion.div
                     id="desktop-more-menu"
@@ -332,6 +347,11 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            <p className="mt-5 px-4 text-xs font-black uppercase tracking-[.2em] text-yellow-300">Destinations</p>
+            {destinationNavigationLinks.map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="flex min-h-11 w-full max-w-md items-center rounded-xl px-4 text-sm text-white/75">{link.label}</Link>)}
+            <p className="mt-5 px-4 text-xs font-black uppercase tracking-[.2em] text-yellow-300">Disciplines</p>
+            {disciplineNavigationLinks.map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="flex min-h-11 w-full max-w-md items-center rounded-xl px-4 text-sm text-white/75">{link.label}</Link>)}
 
             <Link href="/tickets" onClick={() => setOpen(false)} className="w-full max-w-md">
               <button

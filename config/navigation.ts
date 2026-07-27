@@ -10,16 +10,32 @@ export type FooterNavigationGroup = {
 
 export const primaryNavigationLinks: NavigationLink[] = [
   { label: "Accueil", href: "/fr" },
+  { label: "Édition 2027", href: "/edition-2027" },
   { label: "Programme", href: "/programme" },
-  { label: "Activités", href: "/activites" },
   { label: "Pré-sélections", href: "/preselections" },
-  { label: "Artistes", href: "/artists" },
-  { label: "Partenaires", href: "/partners" },
-  { label: "Média", href: "/media" },
-  { label: "Tickets", href: "/tickets" },
+];
+
+export const destinationNavigationLinks: NavigationLink[] = [
+  { label: "Sénégal", href: "/destinations/senegal" },
+  { label: "Paris", href: "/destinations/paris" },
+  { label: "Rome", href: "/destinations/rome" },
+];
+
+export const disciplineNavigationLinks: NavigationLink[] = [
+  { label: "Musique", href: "/disciplines#musique" },
+  { label: "Danse", href: "/disciplines#danse" },
+  { label: "Mode", href: "/disciplines#mode" },
+  { label: "Cinéma et création", href: "/disciplines#cinema" },
+  { label: "Technologie", href: "/disciplines#technologie" },
+  { label: "Entrepreneuriat", href: "/disciplines#entrepreneuriat" },
+  { label: "Automobile", href: "/disciplines#automobile" },
+  { label: "Gastronomie", href: "/disciplines#gastronomie" },
 ];
 
 export const moreNavigationLinks: NavigationLink[] = [
+  { label: "Artistes & invités", href: "/artists" },
+  { label: "Coachs & mentors", href: "/mentors" },
+  { label: "Partenaires", href: "/partners" },
   { label: "Institution", href: "/institution" },
   { label: "Business Club", href: "/business-club" },
   { label: "Documents Officiels", href: "/documents" },
