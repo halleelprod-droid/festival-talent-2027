@@ -16,6 +16,7 @@ import {
   Landmark,
   Laptop,
   Megaphone,
+  Plane,
   ShieldCheck,
   Sparkles,
   Store,
@@ -102,12 +103,18 @@ const GROUP_META: Record<PartnerGroup, { title: string; description: string; ico
       "Beauté, image, soin, bien-être, hospitalité et expérience premium des publics.",
     icon: Store,
   },
+  transport: {
+    title: "✈️ Partenaire Aérien",
+    description:
+      "Déplacements officiels et rayonnement international du Festival Talent entre le Sénégal, Paris et Rome.",
+    icon: Plane,
+  },
 };
 
 // Ordre d'affichage des groupes ; le placeholder bancaire (non-partenaire) est
 // inséré juste après l'institutionnel.
 const GROUP_ORDER: PartnerGroup[] = [
-  "institutionnel", "digital", "media-comm", "strategique",
+  "institutionnel", "transport", "digital", "media-comm", "strategique",
   "artistique", "media-influence", "lutte", "nautique", "lifestyle",
 ];
 

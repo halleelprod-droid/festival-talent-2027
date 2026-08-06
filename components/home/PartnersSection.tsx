@@ -8,6 +8,7 @@ import {
   Handshake,
   Laptop,
   Megaphone,
+  Plane,
   Sparkles,
   Swords,
   Waves,
@@ -30,6 +31,7 @@ const GROUP_ICON: Record<PartnerGroup, LucideIcon> = {
   lutte: Swords,
   nautique: Waves,
   lifestyle: Gem,
+  transport: Plane,
 };
 
 function hasPublicAsset(src: string) {

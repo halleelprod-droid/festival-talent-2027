@@ -14,6 +14,7 @@ export const partnersLogos = [
   { name: "XTREM JET SÉNÉGAL WATERSPORTS", image: "/images/partners/xtrem-jet-senegal-watersports.jpeg" },
   { name: "Collectif des Danseurs Urbains de Thiès", image: "/images/partners/cdut-thies.jpeg" },
   { name: "Maison des Cultures Urbaines de Dakar", image: "/images/partners/mcu-dakar.jpeg" },
+  { name: "Air France", image: "/images/partners/air-france.png" },
 ];
 
 // Source de vérité UNIQUE des partenaires. `group` pilote le regroupement de la
@@ -22,7 +23,7 @@ export const partnersLogos = [
 // surface ne doit redéclarer un tableau local de partenaires.
 export type PartnerGroup =
   | "institutionnel" | "digital" | "media-comm" | "strategique" | "artistique"
-  | "media-influence" | "lutte" | "nautique" | "lifestyle";
+  | "media-influence" | "lutte" | "nautique" | "lifestyle" | "transport";
 
 export type OfficialPartner = {
   name: string;
@@ -216,6 +217,19 @@ export const officialPartners: OfficialPartner[] = [
     description:
       "La Maison des Cultures Urbaines de Dakar accompagne le développement et la valorisation des cultures urbaines dans le cadre du Festival Talent.",
     website: null,
+  },
+  {
+    name: "Air France",
+    label: "Partenaire Aérien Officiel",
+    category: "Transport aérien",
+    group: "transport",
+    sector: "Transport aérien",
+    badge: "Partenaire Aérien Officiel",
+    image: "/images/partners/air-france.png",
+    whiteLogo: true,
+    logoAlt: "Logo Air France, partenaire aérien officiel du Festival Talent",
+    description:
+      "Air France est la Compagnie Aérienne Officielle du Festival Talent 2027, aux côtés du projet pour ses déplacements et son rayonnement international entre le Sénégal, Paris et Rome.",
   },
 ];
 
