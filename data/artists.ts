@@ -4,7 +4,7 @@ export const confirmedArtists = [
     name: "Samba Peuzzi",
     category: "Urban Senegal",
     country: "Senegal",
-    image: "/images/previous/scene.jpg",
+    image: "/images/artists/samba-peuzzi-guitare.jpg",
     description:
       "Samba Peuzzi porte l'energie urbaine senegalaise sur la scene FT2027.",
     role: "Artiste confirme",

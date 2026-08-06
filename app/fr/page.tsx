@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 import AnnouncementBar from "@/components/home/AnnouncementBar";
-import HeroSection from "@/components/home/HeroSection";
+import InternationalHeroSection from "@/components/home/InternationalHeroSection";
+import { DestinationsSection, DisciplinesSection, InternationalProgrammeSection, ManifestoSection, TalentJourneySection } from "@/components/home/InternationalSections";
 import BattleDanceSection from "@/components/home/BattleDanceSection";
 import ActivitiesHighlightSection from "@/components/home/ActivitiesHighlightSection";
 import StaffSection from "@/components/home/StaffSection";
@@ -13,6 +14,7 @@ import TalentStoriesSection from "@/components/home/TalentStoriesSection";
 import AfricaTomorrowSection from "@/components/home/AfricaTomorrowSection";
 import TalentPlatformJourneySection from "@/components/home/TalentPlatformJourneySection";
 import ArtistsSection from "@/components/home/ArtistsSection";
+import FinalConcertGuests from "@/components/guests/FinalConcertGuests";
 import JuryComingSoonSection from "@/components/home/JuryComingSoonSection";
 import GallerySection from "@/components/home/GallerySection";
 import PartnersSection from "@/components/home/PartnersSection";
@@ -23,46 +25,32 @@ import NewsletterSection from "@/components/home/NewsletterSection";
 import GratitudeSection from "@/components/home/GratitudeSection";
 import PlatformVisionSection from "@/components/home/PlatformVisionSection";
 import ProgrammePreview from "@/components/home/ProgrammePreview";
+import FeaturedArtistSection from "@/components/home/FeaturedArtistSection";
+import SambaJourneySection from "@/components/home/SambaJourneySection";
+import FestivalLegacySection from "@/components/home/FestivalLegacySection";
+import EditionsTransition from "@/components/home/EditionsTransition";
+import InfluencerVillaSection from "@/components/home/InfluencerVillaSection";
+import FinalCTA from "@/components/home/FinalCTA";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { buildPageMetadata } from "@/lib/seo";
+import { seasonEvents } from "@/data/season-2026-2027";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Accueil | Festival Talent 2027",
+  title: "Festival Talent 2027 | Sénégal, Paris et Rome",
   description:
-    "Festival Talent 2027 rassemble talents, pre-selections, Battle All Style, coachs, artistes confirmes, partenaires, tickets, medias et communaute autour d'une plateforme culturelle internationale.",
+    "Festival Talent 2027 est une édition internationale dédiée à la musique, la danse, la mode, la technologie, le cinéma, l'entrepreneuriat et aux cultures créatives, avec des événements prévus au Sénégal, à Paris et à Rome.",
   path: "/fr",
 });
 
-const homeProgrammeEvents = [
-  {
-    _id: "preselections",
-    title: "Pre-selections officielles",
-    location: "Senegal et zones partenaires",
-    date: "2026-09-01",
-    category: "Detection",
-  },
-  {
-    _id: "battles",
-    title: "Battles All Style",
-    location: "Zones regionales",
-    date: "2026-09-15",
-    category: "Competition",
-  },
-  {
-    _id: "italie",
-    title: "Experience Italie",
-    location: "Italie",
-    date: "2027-03-21",
-    category: "International",
-  },
-  {
-    _id: "final",
-    title: "Concert final",
-    location: "Casino de Paris",
-    date: "2027-05-15",
-    category: "Finale",
-  },
-];
+const homeProgrammeEvents = seasonEvents.map((event) => ({
+  _id: event.id,
+  title: event.title,
+  location: event.location,
+  date: event.date,
+  category: event.discipline,
+  partner: event.partner,
+  partners: event.partners,
+}));
 
 export default function HomePage() {
   return (
@@ -70,13 +58,14 @@ export default function HomePage() {
       <AnnouncementBar />
 
       <main className="min-h-screen bg-black text-white">
-        <HomeActTransition
-          act="ACTE 1"
-          title="Le rêve"
-          description="Tout commence par une conviction : un talent peut changer une trajectoire."
-        />
+        <InternationalHeroSection />
+        <ManifestoSection />
+        <DestinationsSection />
+        <DisciplinesSection />
+        <TalentJourneySection />
+        <InternationalProgrammeSection />
 
-        <HeroSection />
+        <FeaturedArtistSection />
 
         <HomeActTransition
           act="ACTE 2"
@@ -98,9 +87,13 @@ export default function HomePage() {
 
         <BattleDanceSection />
 
+        <ProgrammePreview events={homeProgrammeEvents} />
+
+        <SambaJourneySection />
+
         <ActivitiesHighlightSection />
 
-        <ProgrammePreview events={homeProgrammeEvents} />
+        <InfluencerVillaSection />
 
         <HomeActTransition
           act="ACTE 4"
@@ -122,7 +115,13 @@ export default function HomePage() {
 
         <ArtistsSection />
 
+        <FinalConcertGuests />
+
         <JuryComingSoonSection />
+
+        <FestivalLegacySection />
+
+        <EditionsTransition />
 
         <SectionDivider />
 
@@ -165,6 +164,8 @@ export default function HomePage() {
         <GratitudeSection />
 
         <SectionDivider />
+
+        <FinalCTA />
       </main>
     </>
   );

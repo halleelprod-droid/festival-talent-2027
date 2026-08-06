@@ -57,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/mentors", changeFrequency: "monthly", priority: 0.85 },
     { path: "/team", changeFrequency: "monthly", priority: 0.85 },
     { path: "/contact", changeFrequency: "monthly", priority: 0.85 },
+    { path: "/international-interest", changeFrequency: "monthly", priority: 0.86 },
     { path: "/activites", changeFrequency: "weekly", priority: 0.85 },
     { path: "/tickets", changeFrequency: "weekly", priority: 0.85 },
     { path: "/museum", changeFrequency: "monthly", priority: 0.75 },

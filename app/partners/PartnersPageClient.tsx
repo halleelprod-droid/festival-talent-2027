@@ -16,174 +16,142 @@ import {
   Landmark,
   Laptop,
   Megaphone,
+  Plane,
   ShieldCheck,
   Sparkles,
   Store,
   Swords,
   Users,
+  Waves,
+  type LucideIcon,
 } from "lucide-react";
 
-const partnerCategories = [
-  {
+import { officialPartners, type PartnerGroup } from "@/data/partners";
+
+// Présentation des catégories (titres, blurb, icône). Les PARTENAIRES eux-mêmes
+// proviennent exclusivement de data/partners.ts (source unique), regroupés par
+// `group`. Aucun tableau local de partenaires ici.
+type CategoryPartner = {
+  name: string;
+  label: string;
+  description: string;
+  image?: string;
+  href?: string;
+  whiteBg?: boolean;
+  logoAlt?: string;
+};
+
+type PartnerCategory = {
+  title: string;
+  description: string;
+  partners: CategoryPartner[];
+  icon: LucideIcon;
+};
+
+const GROUP_META: Record<PartnerGroup, { title: string; description: string; icon: LucideIcon }> = {
+  institutionnel: {
     title: "🏛 Partenaires Institutionnels",
     description:
       "Institutions publiques, organisations internationales et structures culturelles engagées pour la jeunesse.",
-    partners: [
-      {
-        name: "Union Européenne",
-        label: "Partenaire officiel majeur",
-        description:
-          "Un partenaire de référence pour l'impact jeunesse, la culture, l'innovation et l'entrepreneuriat.",
-      },
-      {
-        name: "Centre Culturel Blaise Senghor",
-        label: "Partenaire Danse",
-        description:
-          "Accompagnement institutionnel du développement de la danse et de la valorisation des arts chorégraphiques.",
-        image: "/images/partners/blaise-senghor.png",
-      },
-    ],
     icon: Landmark,
   },
-  {
-    title: "🏦 Partenaires Bancaires & Finance",
-    description:
-      "Un espace préparé pour les futurs partenaires bancaires, l'éducation financière et l'accompagnement des projets.",
-    partners: [
-      {
-        name: "Partenaire bancaire à venir",
-        label: "Architecture prête",
-        description:
-          "Festival Talent prépare un cadre de mise en relation responsable, sans proposer directement de services bancaires.",
-      },
-    ],
-    icon: Banknote,
-  },
-  {
+  digital: {
     title: "💻 Partenaires Digitaux",
     description:
       "Technologie, plateforme, sécurité, référencement, maintenance et innovation numérique.",
-    partners: [
-      {
-        name: "SIDRA",
-        label: "Partenaire digital officiel",
-        description:
-          "Accompagnement de la plateforme numérique, du SEO, de la maintenance et de l'évolution technique.",
-      },
-    ],
     icon: Laptop,
   },
-  {
+  "media-comm": {
     title: "🎥 Média & Communication",
     description:
       "Production audiovisuelle, stratégie de communication, contenus, couverture et relations médias.",
-    partners: [
-      {
-        name: "HALLEEL",
-        label: "Direction Média & Communication",
-        description:
-          "Stratégie de communication, contenus digitaux, audiovisuel et couverture média officielle.",
-      },
-    ],
     icon: Camera,
   },
-  {
+  strategique: {
     title: "🤝 Partenaires Stratégiques",
     description:
       "Production, relations institutionnelles, activations terrain et structuration du projet.",
-    partners: [
-      {
-        name: "PIN EVENTS",
-        label: "Partenaire stratégique",
-        description:
-          "Production événementielle, partenariats, relations institutionnelles et activations terrain.",
-        image: "/images/partners/pin-events.png",
-      },
-      {
-        name: "Val2Events",
-        label: "Partenaire associé",
-        description:
-          "Contribution à la dynamique événementielle et partenariale de Festival Talent.",
-        image: "/images/partners/val2events.jpeg",
-      },
-    ],
     icon: Handshake,
   },
-  {
+  artistique: {
     title: "💃 Partenaires Artistiques",
     description:
       "Encadrement artistique, disciplines, battles, présélections et accompagnement des talents.",
-    partners: [
-      {
-        name: "Agence Diassnor",
-        label: "Responsable du Pôle Danse",
-        description:
-          "Management artistique, coordination des battles, présélections et développement des talents chorégraphiques.",
-        image: "/images/partners/agence-diassnor.png",
-        href: "/partners/diassnor",
-      },
-    ],
     icon: Sparkles,
   },
-  {
+  "media-influence": {
     title: "📺 Partenaires Média",
     description:
       "Influence, diffusion, amplification digitale et visibilité des talents.",
-    partners: [
-      {
-        name: "Sen Influenceurs",
-        label: "Partenaire média officiel",
-        description:
-          "Couverture digitale, communication d'influence, promotion des talents et relais des temps forts.",
-      },
-    ],
     icon: Megaphone,
   },
-  {
-    title: "🛍 Lifestyle & Bien-être",
-    description:
-      "Beauté, image, soin, bien-être, hospitalité et expérience premium des publics.",
-    partners: [
-      {
-        name: "H & Hair",
-        label: "Beauté & Lifestyle",
-        description:
-          "Accompagnement de l'univers image, beauté et lifestyle autour des talents.",
-        image: "/images/partners/h-hair.jpeg",
-      },
-      {
-        name: "Universal Selfcare",
-        label: "Bien-être & Santé",
-        description:
-          "Partenaire dédié au soin, au bien-être et à l'accompagnement humain dans l'écosystème.",
-        image: "/images/partners/universal.jpeg",
-      },
-      {
-        name: "Mano Perfetto",
-        label: "Développement",
-        description:
-          "Partenaire associé au développement, à la structuration et aux besoins opérationnels.",
-        image: "/images/partners/mano.jpeg",
-      },
-    ],
-    icon: Store,
-  },
-  {
+  lutte: {
     title: "🤼 Partenaires Lutte & Sports",
     description:
       "Encadrement, valorisation et développement des talents de la lutte sénégalaise et des disciplines sportives.",
-    partners: [
-      {
-        name: "Keebaro Entertainment",
-        label: "Partenaire Officiel Lutte",
-        description:
-          "Partenaire officiel du secteur Lutte : organisation, valorisation et encadrement des talents de la lutte sénégalaise.",
-        image: "/images/partners/keebaro-entertainment.png",
-      },
-    ],
     icon: Swords,
   },
-] as const;
+  nautique: {
+    title: "🌊 Sports nautiques",
+    description:
+      "Jet-Ski, croisière et expériences nautiques du Festival Talent organisées à Saly.",
+    icon: Waves,
+  },
+  lifestyle: {
+    title: "🛍 Lifestyle & Bien-être",
+    description:
+      "Beauté, image, soin, bien-être, hospitalité et expérience premium des publics.",
+    icon: Store,
+  },
+  transport: {
+    title: "✈️ Partenaire Aérien",
+    description:
+      "Déplacements officiels et rayonnement international du Festival Talent entre le Sénégal, Paris et Rome.",
+    icon: Plane,
+  },
+};
+
+// Ordre d'affichage des groupes ; le placeholder bancaire (non-partenaire) est
+// inséré juste après l'institutionnel.
+const GROUP_ORDER: PartnerGroup[] = [
+  "institutionnel", "transport", "digital", "media-comm", "strategique",
+  "artistique", "media-influence", "lutte", "nautique", "lifestyle",
+];
+
+const bankCategory: PartnerCategory = {
+  title: "🏦 Partenaires Bancaires & Finance",
+  description:
+    "Un espace préparé pour les futurs partenaires bancaires, l'éducation financière et l'accompagnement des projets.",
+  partners: [
+    {
+      name: "Partenaire bancaire à venir",
+      label: "Architecture prête",
+      description:
+        "Festival Talent prépare un cadre de mise en relation responsable, sans proposer directement de services bancaires.",
+    },
+  ],
+  icon: Banknote,
+};
+
+const partnerCategories: PartnerCategory[] = (() => {
+  const derived = GROUP_ORDER.map((group): PartnerCategory | null => {
+    const partners = officialPartners
+      .filter((partner) => partner.group === group)
+      .map((partner): CategoryPartner => ({
+        name: partner.name,
+        label: partner.label,
+        description: partner.description,
+        image: partner.image,
+        href: partner.href,
+        whiteBg: partner.whiteLogo,
+        logoAlt: partner.logoAlt,
+      }));
+    return partners.length ? { ...GROUP_META[group], partners } : null;
+  }).filter((category): category is PartnerCategory => category !== null);
+
+  const [first, ...rest] = derived;
+  return first ? [first, bankCategory, ...rest] : [bankCategory, ...rest];
+})();
 
 const bankReasons = [
   {
@@ -229,13 +197,29 @@ const contactFields = [
   { id: "project", label: "Projet", type: "text" },
 ] as const;
 
-function PartnerLogo({ src, name }: { src?: string; name: string }) {
+function PartnerLogo({ src, name, whiteBg, logoAlt }: { src?: string; name: string; whiteBg?: boolean; logoAlt?: string }) {
   const [hasError, setHasError] = useState(false);
 
   if (!src || hasError) {
     return (
       <div className="flex h-14 min-w-32 items-center justify-center rounded-lg border border-yellow-400/20 bg-black/60 px-4 text-center text-[10px] font-black uppercase tracking-[0.16em] text-yellow-200">
         {name}
+      </div>
+    );
+  }
+
+  // Logo à fond blanc : carte blanche bordée + object-contain, sans recadrage.
+  if (whiteBg) {
+    return (
+      <div className="flex min-h-24 items-center justify-center rounded-xl border border-white/15 bg-white p-3">
+        <Image
+          src={src}
+          alt={logoAlt ?? `Logo ${name}`}
+          width={190}
+          height={268}
+          className="h-24 w-auto max-w-full object-contain"
+          onError={() => setHasError(true)}
+        />
       </div>
     );
   }
@@ -369,6 +353,8 @@ export default function PartnersPageClient() {
                           <PartnerLogo
                             src={"image" in partner ? partner.image : undefined}
                             name={partner.name}
+                            whiteBg={"whiteBg" in partner && partner.whiteBg}
+                            logoAlt={partner.logoAlt}
                           />
                         </div>
                         <p className="mt-4 text-sm leading-7 text-white/58">

@@ -17,7 +17,7 @@ export const directionMembers: DirectionMember[] = [
       "Initiatrice du Festival Talent et porteuse de la vision du projet.",
     expertise: ["Vision", "Leadership", "Culture"],
     initials: "ZDN",
-    image: "/images/staff/zairah-diamant-noire.jpg",
+    image: "/images/founder/fondatrice-officielle.jpeg",
   },
   {
     name: "Masseck Sy",

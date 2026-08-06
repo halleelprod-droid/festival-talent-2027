@@ -43,11 +43,12 @@ export default function FounderSection() {
 
             <div className="relative overflow-hidden rounded-[40px] border border-white/10">
               <Image
-                src="/images/previous/zairah.jpg"
-                alt="Fondatrice FT2027"
-                width={900}
-                height={1200}
-                className="h-[700px] w-full object-cover"
+                src="/images/founder/fondatrice-officielle.jpeg"
+                alt="Portrait officiel de la fondatrice du Festival Talent"
+                width={1280}
+                height={913}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-[520px] w-full object-cover object-[50%_20%] sm:h-[600px] lg:h-[700px]"
               />
 
               {/* OVERLAY */}

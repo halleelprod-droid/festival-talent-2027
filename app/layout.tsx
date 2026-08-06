@@ -20,6 +20,17 @@ const anton = Anton({
   display: "swap",
 });
 
+// Seuls les événements à date confirmée sont structurés (date au jour, sans
+// heure inventée). Les temps forts encore annoncés par mois (Villa, karting,
+// Jet-Ski…) restent éditoriaux et ne sont pas balisés comme Event daté. Aucun
+// artiste n'est marqué comme confirmé dans les données structurées.
+const seasonSchedule = [
+  { name: "Finale nationale du Battle de danse", startDate: "2026-09-26", place: "Monument de la Renaissance Africaine" },
+  { name: "Finale nationale des peintres", startDate: "2026-10-24", place: "Centre culturel Douta Seck" },
+  { name: "Finale de lutte traditionnelle", startDate: "2026-11-22", place: "Plage de Malibu" },
+  { name: "Méga concert", startDate: "2026-12-26", place: "Esplanade du Grand Théâtre National" },
+];
+
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -31,43 +42,23 @@ const structuredData = {
       logo: `${siteUrl}/images/festival-talent-logo.webp`,
       sameAs: [],
     },
-    {
+    ...seasonSchedule.map((event) => ({
       "@type": "Event",
-      name: siteName,
-      description: defaultDescription,
-      startDate: "2027-01-01",
-      endDate: "2027-04-30",
+      name: `${siteName} — ${event.name}`,
+      startDate: event.startDate,
       eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
       eventStatus: "https://schema.org/EventScheduled",
-      location: [
-        {
-          "@type": "Place",
-          name: "Paris",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Paris",
-            addressCountry: "FR",
-          },
+      location: {
+        "@type": "Place",
+        name: event.place,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Dakar",
+          addressCountry: "SN",
         },
-        {
-          "@type": "Place",
-          name: "Rome",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Rome",
-            addressCountry: "IT",
-          },
-        },
-      ],
-      organizer: {
-        "@id": `${siteUrl}/#organization`,
       },
-      offers: {
-        "@type": "Offer",
-        url: `${siteUrl}/tickets`,
-        availability: "https://schema.org/InStock",
-      },
-    },
+      organizer: { "@id": `${siteUrl}/#organization` },
+    })),
   ],
 };
 
@@ -82,17 +73,17 @@ export const metadata: Metadata = {
   keywords: [
     "Festival Talent 2027",
     "Festival Talent",
-    "Paris",
-    "Rome",
+    "Senegal",
+    "Dakar",
     "pre-selections officielles",
-    "tournee europeenne",
     "Union Europeenne",
     "Samba Peuzzi",
-    "Morijah",
-    "Cysoul",
+    "Dip Doundou Guiss",
     "Battle All Style",
+    "Battle de danse",
+    "lutte traditionnelle",
+    "Villa des influenceurs",
     "Activites Festival Talent",
-    "Casino de Paris",
   ],
   authors: [{ name: "Festival Talent" }],
   creator: "Festival Talent",

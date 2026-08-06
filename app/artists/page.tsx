@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { buildPageMetadata } from "@/lib/seo";
+import FinalConcertGuests from "@/components/guests/FinalConcertGuests";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Artistes | Festival Talent 2027",
@@ -25,7 +26,7 @@ export const metadata: Metadata = buildPageMetadata({
 const confirmedArtists = [
   {
     name: "Samba Peuzzi",
-    image: "/images/previous/scene.jpg",
+    image: "/images/artists/samba-peuzzi-guitare.jpg",
     role: "Artiste confirmé",
     description:
       "Samba Peuzzi est officiellement confirmé pour Festival Talent 2027. Sa présence accompagne l’énergie du projet, les pré-sélections, les Battles de Danse par zones et la célébration des jeunes talents.",
@@ -128,6 +129,11 @@ export default function ArtistsPage() {
                   priority={artist.name === "Samba Peuzzi"}
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition duration-700 group-hover:scale-110"
+                  style={
+                    artist.name === "Samba Peuzzi"
+                      ? { objectPosition: "center top" }
+                      : undefined
+                  }
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
@@ -179,6 +185,8 @@ export default function ArtistsPage() {
           ))}
         </div>
       </section>
+
+      <FinalConcertGuests />
 
       <section className="relative px-6 py-24 sm:px-10 lg:px-20">
         <div className="mx-auto max-w-7xl">

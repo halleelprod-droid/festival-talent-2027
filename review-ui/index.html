@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Revue présélections — local privé</title>
+<style nonce="__NONCE__">
+  :root {
+    --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --line:#2a2f3a; --txt:#e7e9ee;
+    --muted:#9aa3b2; --accent:#4a90d9; --ok:#3fb950; --warn:#d29922; --bad:#f85149; --focus:#7cb7ff;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); color:var(--txt); font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  body { padding:0; overflow-x:hidden; }
+  h1,h2,h3 { margin:0 0 .4em; }
+  a { color:var(--accent); }
+  button { font:inherit; cursor:pointer; border:1px solid var(--line); background:var(--panel2); color:var(--txt); border-radius:8px; padding:.5em .8em; min-height:40px; }
+  button:hover { border-color:var(--accent); }
+  button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  button.danger { border-color:var(--bad); color:#ffb4ad; }
+  button:disabled { opacity:.45; cursor:not-allowed; }
+  input,select,textarea { font:inherit; background:var(--panel); color:var(--txt); border:1px solid var(--line); border-radius:8px; padding:.5em; width:100%; min-height:40px; }
+  textarea { min-height:72px; resize:vertical; }
+  label { display:block; font-size:.82rem; color:var(--muted); margin:.6em 0 .2em; }
+  header { position:sticky; top:0; z-index:5; background:var(--panel); border-bottom:1px solid var(--line); padding:.7rem 1rem; }
+  .row { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+  .grow { flex:1 1 auto; min-width:0; }
+  .stats { display:flex; flex-wrap:wrap; gap:.4rem .8rem; font-size:.85rem; color:var(--muted); }
+  .stats b { color:var(--txt); }
+  .bar { height:8px; background:var(--panel2); border-radius:6px; overflow:hidden; margin-top:.5rem; }
+  .bar > i { display:block; height:100%; background:var(--ok); width:0; transition:width .2s; }
+  main { padding:1rem; max-width:1100px; margin:0 auto; }
+  .tabs { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.8rem; }
+  .tabs button[aria-selected="true"] { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .filters { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom:.6rem; }
+  .filters button[aria-pressed="true"] { border-color:var(--accent); color:var(--focus); }
+  .badge { display:inline-block; font-size:.72rem; padding:.1em .5em; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+  .badge.warn { color:var(--warn); border-color:var(--warn); }
+  .badge.bad { color:var(--bad); border-color:var(--bad); }
+  .badge.ok { color:var(--ok); border-color:var(--ok); }
+  table { width:100%; border-collapse:collapse; }
+  th,td { text-align:left; padding:.5rem; border-bottom:1px solid var(--line); font-size:.9rem; }
+  tr.item { cursor:pointer; }
+  tr.item:hover td { background:var(--panel2); }
+  .cards { display:none; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:.8rem; margin-bottom:.6rem; }
+  .drawer { position:fixed; inset:0; background:rgba(0,0,0,.5); display:none; z-index:10; }
+  .drawer.open { display:block; }
+  .sheet { position:absolute; right:0; top:0; bottom:0; width:min(560px,100%); background:var(--panel); border-left:1px solid var(--line); padding:1rem; overflow:auto; }
+  .field { background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:.4rem .6rem; font-size:.88rem; word-break:break-word; }
+  .kv { display:grid; grid-template-columns:auto 1fr; gap:.3rem .8rem; font-size:.86rem; }
+  .kv dt { color:var(--muted); }
+  .kv dd { margin:0; word-break:break-word; }
+  .warnbox { border:1px solid var(--warn); color:var(--warn); border-radius:8px; padding:.5rem; font-size:.85rem; margin-top:.4rem; }
+  .actions { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.8rem; }
+  .dupgroup { border:1px solid var(--line); border-radius:12px; padding:.8rem; margin-bottom:1rem; background:var(--panel); }
+  .dupcols { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+  .muted { color:var(--muted); }
+  .savebar { font-size:.82rem; }
+  .hidden { display:none !important; }
+  @media (max-width:640px) {
+    table { display:none; }
+    .cards { display:block; }
+    .dupcols { grid-template-columns:1fr; }
+    main { padding:.7rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="row">
+    <div class="grow"><strong>Revue présélections</strong> <span class="badge">local · 127.0.0.1 · privé</span></div>
+    <div class="savebar muted" id="saveStatus">chargement…</div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="bar"><i id="progress"></i></div>
+</header>
+<main>
+  <nav class="tabs" id="tabs" role="tablist">
+    <button role="tab" data-tab="list" aria-selected="true">Inscriptions</button>
+    <button role="tab" data-tab="duplicates" aria-selected="false">Doublons</button>
+    <button role="tab" data-tab="contact" aria-selected="false">À contacter</button>
+    <button role="tab" data-tab="responses" aria-selected="false">Import réponses</button>
+    <button role="tab" data-tab="validation" aria-selected="false">Validation</button>
+  </nav>
+
+  <section id="view-list">
+    <div class="filters" id="filters" role="group" aria-label="Filtres"></div>
+    <div class="row" style="margin-bottom:.6rem">
+      <input class="grow" id="search" type="search" placeholder="Rechercher (nom, source_id, téléphone, e-mail)…" aria-label="Recherche locale" />
+    </div>
+    <table aria-label="Inscriptions">
+      <thead><tr><th>#</th><th>Nom</th><th>Discipline</th><th>DOB</th><th>Tél.</th><th>État</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="view-duplicates" class="hidden"></section>
+  <section id="view-contact" class="hidden"></section>
+
+  <section id="view-responses" class="hidden">
+    <h2>Import de réponses manuelles</h2>
+    <p class="muted">Clé obligatoire : <code>review_id</code>. Colonnes : review_id, date_of_birth, phone_corrected, review_notes.</p>
+    <label for="respText">Coller le CSV des réponses</label>
+    <textarea id="respText" placeholder="review_id,date_of_birth,phone_corrected,review_notes"></textarea>
+    <div class="actions">
+      <button id="respPreview">Aperçu</button>
+      <button id="respApply" class="primary" disabled>Appliquer</button>
+    </div>
+    <div id="respResult" class="muted" style="margin-top:.6rem"></div>
+  </section>
+
+  <section id="view-validation" class="hidden">
+    <h2>Validation</h2>
+    <div class="actions">
+      <button id="btnValidate" class="primary">Valider la revue</button>
+      <button id="btnImportReady" disabled>Générer le fichier import-ready</button>
+    </div>
+    <pre id="validationOut" class="field" style="margin-top:.8rem; white-space:pre-wrap"></pre>
+    <div id="importReadyOut" class="muted" style="margin-top:.6rem"></div>
+  </section>
+</main>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Fiche inscription">
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script nonce="__NONCE__">
+const TOKEN = "__TOKEN__";
+const REF_DATE = "2027-01-01", MIN_AGE = 6, MAX_AGE = 100, AGE_TOL = 1;
+const state = { columns:[], rows:[], version:"", dashboard:{}, filter:"all", search:"", editing:null };
+
+const $ = (s, r=document) => r.querySelector(s);
+const el = (t, props={}, kids=[]) => { const n=document.createElement(t); Object.assign(n, props); for(const k of [].concat(kids)) if(k!=null) n.append(k); return n; };
+const esc = (s) => String(s==null?"":s);
+
+async function api(path, opts={}) {
+  const res = await fetch(path, { headers:{ "content-type":"application/json", "x-review-token":TOKEN }, ...opts });
+  const data = await res.json().catch(()=>({}));
+  return { status:res.status, data };
+}
+
+function parseCivil(v){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v||"").trim()); if(!m) return null; const y=+m[1],mo=+m[2],d=+m[3];
+  const leap=(y%4===0&&y%100!==0)||y%400===0; const dim=[31,leap?29:28,31,30,31,30,31,31,30,31,30,31]; if(mo<1||mo>12||d<1||d>dim[mo-1]) return null; return {y,mo,d}; }
+function ageAt(dob, ref){ const b=parseCivil(dob), r=parseCivil(ref); if(!b||!r) return null; let a=r.y-b.y; if(r.mo<b.mo||(r.mo===b.mo&&r.d<b.d)) a-=1; return a; }
+function isFuture(dob){ return new Date(dob) > new Date(); }
+
+// --- rendering ---
+function statusOf(row){
+  const dob=(row.date_of_birth||"").trim(), ph=(row.phone_status||"").trim(), dec=(row.review_decision||"").trim(), dup=(row.duplicate_group_id||"").trim();
+  const problems=[]; if(!dob) problems.push("dob"); if(ph&&ph!=="valid"&&ph!=="confirmed_valid"&&!(ph==="corrected")) problems.push("phone"); if(row.phone_status==="invalid"||row.phone_status==="unreachable"||row.phone_status==="needs_contact") problems.push("phone"); if(dup&&!dec) problems.push("dup");
+  return { problems, dec, dup };
+}
+function matchesFilter(row){
+  const f=state.filter; const s=statusOf(row);
+  if(f==="all") return true;
+  if(f==="dob") return !(row.date_of_birth||"").trim();
+  if(f==="phone") return (row.phone_status||"")!=="valid";
+  if(f==="dup") return !!(row.duplicate_group_id||"").trim();
+  if(f==="multi") return s.problems.length>1;
+  if(f==="approved") return (row.review_decision||"")==="approved";
+  if(f==="rejected") return (row.review_decision||"")==="rejected";
+  if(f==="hold") return (row.review_decision||"")==="hold";
+  if(f==="ready") return (row.review_decision||"")==="approved" && !!(row.date_of_birth||"").trim();
+  return true;
+}
+function matchesSearch(row){
+  const q=state.search.trim().toLowerCase(); if(!q) return true;
+  return ["full_name","source_id","phone_original","phone_normalized","email"].some(k=>String(row[k]||"").toLowerCase().includes(q));
+}
+function decisionBadge(row){
+  const d=(row.review_decision||"").trim();
+  if(d==="approved") return el("span",{className:"badge ok"},"approved");
+  if(d==="rejected") return el("span",{className:"badge bad"},"rejected");
+  if(d==="hold") return el("span",{className:"badge warn"},"hold");
+  return el("span",{className:"badge"},"pending");
+}
+
+function renderStats(){
+  const d=state.dashboard;
+  $("#stats").replaceChildren(
+    ...[["total",d.total],["DOB restantes",d.dobRemaining],["tél. à revoir",d.phonesToReview],["groupes doublon",d.duplicateGroups],
+       ["approuvées",d.approved],["rejetées",d.rejected],["en attente",d.hold],["prêtes",d.ready]]
+      .map(([k,v])=>el("span",{},[k+" : ",el("b",{},String(v??0))])));
+  $("#progress").style.width=(state.dashboard.progressPct||0)+"%";
+}
+function renderList(){
+  const list=state.rows.filter(r=>matchesFilter(r)&&matchesSearch(r));
+  const tbody=$("#rows"); tbody.replaceChildren();
+  const cards=$("#cards"); cards.replaceChildren();
+  list.forEach((row,i)=>{
+    const dob=(row.date_of_birth||"").trim();
+    const tr=el("tr",{className:"item"},[
+      el("td",{},String(i+1)), el("td",{},esc(row.full_name)), el("td",{},esc(row.discipline)),
+      el("td",{},dob||"—"), el("td",{},esc(row.phone_status||"")), el("td",{})
+    ]);
+    tr.lastChild.append(decisionBadge(row));
+    tr.addEventListener("click",()=>openDrawer(row.review_id));
+    tbody.append(tr);
+    const c=el("div",{className:"card"},[
+      el("div",{className:"row"},[el("strong",{className:"grow"},esc(row.full_name)), decisionBadge(row)]),
+      el("div",{className:"muted"},esc(row.discipline)+" · "+(dob||"DOB —")+" · "+esc(row.phone_status||"")),
+      el("button",{className:"primary",style:"margin-top:.5rem"},"Ouvrir la fiche")
+    ]);
+    c.lastChild.addEventListener("click",()=>openDrawer(row.review_id));
+    cards.append(c);
+  });
+  if(!list.length){ tbody.append(el("tr",{},el("td",{colSpan:6,className:"muted"},"Aucune ligne"))); cards.append(el("div",{className:"muted"},"Aucune ligne")); }
+}
+
+// --- detail drawer ---
+function openDrawer(reviewId){
+  const row=state.rows.find(r=>r.review_id===reviewId); if(!row) return;
+  state.editing=reviewId;
+  const sheet=$("#sheet");
+  const age=ageAt(row.date_of_birth, REF_DATE), legacy=row.age_legacy?Number(row.age_legacy):null;
+  sheet.replaceChildren(
+    el("div",{className:"row"},[el("h2",{className:"grow"},esc(row.full_name)), el("button",{id:"closeDrawer"},"Fermer")]),
+    dl(row),
+    labeled("Date de naissance (YYYY-MM-DD)", input("dobInput","date",row.date_of_birth||"")),
+    el("div",{id:" ageInfo",className:"muted",style:"font-size:.85rem"}),
+    el("div",{id:"dobWarn"}),
+    labeled("Statut téléphone", select("phoneStatus",["valid","confirmed_valid","corrected","unreachable","invalid","needs_contact"],row.phone_status||"valid")),
+    labeled("Téléphone normalisé / corrigé", input("phoneNorm","text",row.phone_normalized||"")),
+    labeled("Décision", select("decision",["","approved","hold","rejected"],row.review_decision||"")),
+    labeled("Notes", textarea("notes",row.review_notes||"")),
+    el("div",{className:"actions"},[
+      btn("saveNext","Enregistrer et suivant","primary"),
+      btn("saveOnly","Enregistrer",""),
+      btn("holdBtn","Mettre en attente",""),
+      btn("rejectBtn","Rejeter","danger"),
+      btn("prevBtn","Précédent",""),
+    ])
+  );
+  $("#drawer").classList.add("open");
+  $("#closeDrawer").addEventListener("click",closeDrawer);
+  const refreshAge=()=>{
+    const dob=$("#dobInput").value.trim();
+    const info=sheet.querySelector('[id=" ageInfo"]'); const warn=$("#dobWarn"); warn.replaceChildren();
+    if(!dob){ info.textContent="Âge historique : "+(legacy??"—"); return; }
+    const a=ageAt(dob,REF_DATE);
+    if(a===null||parseCivil(dob)===null){ info.textContent="Date invalide"; warn.append(el("div",{className:"warnbox"},"Date impossible ou format incorrect.")); return; }
+    if(isFuture(dob)){ warn.append(el("div",{className:"warnbox"},"Date future refusée.")); }
+    if(a<MIN_AGE||a>MAX_AGE){ warn.append(el("div",{className:"warnbox"},"Âge hors bornes techniques ("+MIN_AGE+"–"+MAX_AGE+").")); }
+    const diff=(legacy!=null)?Math.abs(a-legacy):0;
+    info.textContent="Âge recalculé (2027-01-01) : "+a+"  ·  âge historique : "+(legacy??"—")+(legacy!=null?("  ·  écart : "+diff):"");
+    if(legacy!=null && diff>AGE_TOL){ warn.append(el("div",{className:"warnbox"},"Écart d'âge > "+AGE_TOL+" (age_mismatch) : une note humaine est requise et la ligne doit être approuvée explicitement.")); }
+  };
+  $("#dobInput").addEventListener("input",refreshAge); refreshAge();
+  $("#saveNext").addEventListener("click",()=>saveDrawer(true));
+  $("#saveOnly").addEventListener("click",()=>saveDrawer(false));
+  $("#holdBtn").addEventListener("click",()=>{ $("#decision").value="hold"; saveDrawer(false); });
+  $("#rejectBtn").addEventListener("click",()=>{ $("#decision").value="rejected"; saveDrawer(false); });
+  $("#prevBtn").addEventListener("click",()=>navRelative(-1));
+}
+function dl(row){
+  const rows=[["Identité",row.full_name],["Téléphone original",row.phone_original],["Téléphone normalisé",row.phone_normalized],
+    ["E-mail",row.email],["Âge historique",row.age_legacy],["Discipline",row.discipline],["Créé le",row.created_at],
+    ["source_id",row.source_id],["Groupe doublon",row.duplicate_group_id],["Signal",row.duplicate_reason]];
+  const d=el("dl",{className:"kv"});
+  for(const [k,v] of rows){ d.append(el("dt",{},k), el("dd",{},esc(v)||"—")); }
+  return d;
+}
+function labeled(text,control){ const id=control.id; return el("div",{},[el("label",{htmlFor:id},text),control]); }
+function input(id,type,value){ return el("input",{id,type,value:esc(value)}); }
+function textarea(id,value){ return el("textarea",{id,value:esc(value)}); }
+function select(id,opts,value){ const s=el("select",{id}); for(const o of opts){ const op=el("option",{value:o},o===""?"—":o); if(o===value) op.selected=true; s.append(op);} return s; }
+function btn(id,text,cls){ return el("button",{id,className:cls},text); }
+
+function closeDrawer(){ $("#drawer").classList.remove("open"); state.editing=null; }
+async function saveDrawer(next){
+  const id=state.editing; if(!id) return;
+  const edits={ [id]: {
+    date_of_birth:$("#dobInput").value.trim(),
+    phone_status:$("#phoneStatus").value,
+    phone_normalized:$("#phoneNorm").value.trim(),
+    review_decision:$("#decision").value,
+    review_notes:$("#notes").value,
+  }};
+  await persist(edits);
+  if(next) navRelative(1); else closeDrawer();
+}
+function navRelative(delta){
+  const list=state.rows.filter(r=>matchesFilter(r)&&matchesSearch(r));
+  const idx=list.findIndex(r=>r.review_id===state.editing);
+  const target=list[idx+delta];
+  if(target) openDrawer(target.review_id); else closeDrawer();
+}
+
+// --- persistence ---
+async function persist(edits){
+  setSave("enregistrement…");
+  const { status, data } = await api("/api/save",{ method:"POST", body:JSON.stringify({ version:state.version, edits }) });
+  if(status===409){ setSave("conflit de version — rechargement"); await load(); return; }
+  if(status!==200){ setSave("échec d'enregistrement"); return; }
+  state.version=data.version; state.dashboard=data.dashboard||state.dashboard;
+  // Applique localement les éditions pour un rendu immédiat.
+  for(const [rid,patch] of Object.entries(edits)){ const r=state.rows.find(x=>x.review_id===rid); if(r) Object.assign(r,patch); }
+  setSave("Sauvegarde réussie · "+new Date().toLocaleTimeString());
+  renderStats(); renderList(); renderDuplicates(); renderContact();
+}
+function setSave(t){ $("#saveStatus").textContent=t; }
+
+// --- duplicates ---
+function renderDuplicates(){
+  const view=$("#view-duplicates"); const groups={};
+  for(const r of state.rows){ const g=(r.duplicate_group_id||"").trim(); if(g){ (groups[g]=groups[g]||[]).push(r); } }
+  view.replaceChildren(el("h2",{},"Arbitrage des doublons"));
+  const keys=Object.keys(groups).sort();
+  if(!keys.length){ view.append(el("p",{className:"muted"},"Aucun doublon.")); return; }
+  for(const g of keys){
+    const members=groups[g].sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at)));
+    const box=el("div",{className:"dupgroup"},[el("div",{className:"row"},[el("strong",{className:"grow"},g),el("span",{className:"badge"},esc(members[0].duplicate_reason))])]);
+    const cols=el("div",{className:"dupcols"});
+    for(const m of members){ cols.append(el("div",{className:"field"},[
+      el("div",{},[el("strong",{},esc(m.full_name))]), el("div",{className:"muted"},"créé : "+esc(m.created_at)),
+      el("div",{className:"muted"},"tél : "+esc(m.phone_original)), el("div",{className:"muted"},"email : "+esc(m.email)),
+      el("div",{},[decisionBadge(m)])
+    ])); }
+    box.append(cols);
+    const sel=select("dupdec_"+g,["","same_person_keep_oldest","same_person_keep_latest","same_person_merge_manually","distinct_people","invalid_duplicate","unresolved"],"");
+    const note=input("dupnote_"+g,"text","");
+    box.append(labeled("Décision du groupe",sel), labeled("Note (obligatoire pour fusion/suppression logique)",note),
+      el("div",{className:"actions"},[btn("dupapply_"+g,"Appliquer au groupe","primary")]));
+    box.querySelector("#dupapply_"+g).addEventListener("click",()=>applyGroupDecision(g,members,sel.value,note.value));
+    view.append(box);
+  }
+}
+function applyGroupDecision(g,members,decision,note){
+  if(!decision||decision==="unresolved"){ setSave("décision doublon manquante"); return; }
+  if((decision==="same_person_merge_manually"||decision==="invalid_duplicate")&&!note.trim()){ setSave("note requise pour cette décision"); return; }
+  const sorted=[...members].sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at)));
+  const keep = decision==="same_person_keep_latest" ? sorted[sorted.length-1]
+             : decision==="same_person_keep_oldest" ? sorted[0] : null;
+  const edits={};
+  for(const m of sorted){
+    let dec="hold";
+    if(decision==="distinct_people"||decision==="invalid_duplicate") dec="approved";
+    else if(decision==="same_person_merge_manually") dec="hold";
+    else dec = (m===keep) ? "approved" : "rejected";
+    edits[m.review_id]={ review_decision:dec, review_notes:("dup:"+decision+(note.trim()?(" — "+note.trim()):"")) };
+  }
+  persist(edits);
+}
+
+// --- contact ---
+function renderContact(){
+  const view=$("#view-contact");
+  const list=state.rows.filter(r=>!(r.date_of_birth||"").trim() || r.phone_status==="needs_contact" || !(r.review_decision||"").trim());
+  view.replaceChildren(el("h2",{},"À contacter"), el("p",{className:"muted"},"Contact strictement opérationnel. Aucun envoi automatique."));
+  if(!list.length){ view.append(el("p",{className:"muted"},"Personne à contacter.")); return; }
+  for(const r of list){
+    const card=el("div",{className:"card"},[
+      el("div",{className:"row"},[el("strong",{className:"grow"},esc(r.full_name)),el("span",{className:"badge"},(r.date_of_birth?"":"DOB manquante"))]),
+      el("div",{className:"muted"},"tél : "+esc(r.phone_original)),
+      el("div",{className:"actions"},[btn("num_"+r.review_id,"Copier le numéro",""),btn("msg_"+r.review_id,"Copier le message","primary")])
+    ]);
+    card.querySelector("#num_"+r.review_id).addEventListener("click",()=>copyText(r.phone_original||""));
+    card.querySelector("#msg_"+r.review_id).addEventListener("click",async()=>{
+      const { data } = await api("/api/contact-message",{ method:"POST", body:JSON.stringify({ fullName:r.full_name }) });
+      copyText(data.message||"");
+    });
+    view.append(card);
+  }
+}
+function copyText(t){ navigator.clipboard && navigator.clipboard.writeText(t); setSave("copié localement"); }
+
+// --- responses ---
+function initResponses(){
+  $("#respPreview").addEventListener("click",async()=>{
+    const rows=parseRespCsv($("#respText").value);
+    const { data } = await api("/api/apply-responses",{ method:"POST", body:JSON.stringify({ rows, confirm:false }) });
+    const p=data.preview||{};
+    $("#respResult").textContent="Aperçu — applicables : "+(p.applicableCount||0)+" · inconnus : "+(p.unknownIds||0)+" · DOB invalides : "+(p.invalidDob||0)+" · tél invalides : "+(p.invalidPhone||0);
+    $("#respApply").disabled=!(p.applicableCount>0);
+  });
+  $("#respApply").addEventListener("click",async()=>{
+    if(!confirm("Appliquer les réponses au fichier local ?")) return;
+    const rows=parseRespCsv($("#respText").value);
+    const { data } = await api("/api/apply-responses",{ method:"POST", body:JSON.stringify({ rows, confirm:true }) });
+    $("#respResult").textContent="Appliqué : "+(data.applied||0);
+    await load();
+  });
+}
+function parseRespCsv(text){
+  const lines=String(text).split(/\r?\n/).filter(l=>l.trim().length);
+  if(!lines.length) return [];
+  const header=lines[0].split(",").map(s=>s.replace(/^﻿/,"").trim());
+  return lines.slice(1).map(line=>{ const cells=splitLine(line); const o={}; header.forEach((h,i)=>o[h]=(cells[i]||"").trim()); return o; });
+}
+function splitLine(line){ const out=[]; let c="",q=false; for(let i=0;i<line.length;i++){ const ch=line[i]; if(ch==='"'&&q&&line[i+1]==='"'){c+='"';i++;} else if(ch==='"'){q=!q;} else if(ch===','&&!q){out.push(c);c="";} else c+=ch; } out.push(c); return out; }
+
+// --- validation ---
+function initValidation(){
+  $("#btnValidate").addEventListener("click",async()=>{
+    const { data } = await api("/api/validate",{ method:"POST", body:"{}" });
+    $("#validationOut").textContent=JSON.stringify({ ...data.counters, unresolved:data.unresolved },null,2);
+    const c=data.counters||{}; const blockGen = data.unresolved>0 || c.pendingDob>0 || c.phoneUnresolved>0 || c.duplicatePending>0 || (c.ready||0)===0;
+    $("#btnImportReady").disabled=blockGen;
+  });
+  $("#btnImportReady").addEventListener("click",async()=>{
+    const { status, data } = await api("/api/import-ready",{ method:"POST", body:"{}" });
+    if(status===200 && data.emitted){ $("#importReadyOut").textContent="Import-ready créé — lignes : "+data.rows+" · SHA-256 : "+data.sha256; }
+    else { $("#importReadyOut").textContent="Non généré ("+(data.reason||"bloqué")+")"; }
+  });
+}
+
+// --- tabs & filters ---
+function initTabs(){
+  $("#tabs").addEventListener("click",(e)=>{ const b=e.target.closest("button[data-tab]"); if(!b) return;
+    for(const t of $("#tabs").children) t.setAttribute("aria-selected", String(t===b));
+    for(const v of ["list","duplicates","contact","responses","validation"]) $("#view-"+v).classList.toggle("hidden", v!==b.dataset.tab);
+    if(b.dataset.tab==="duplicates") renderDuplicates(); if(b.dataset.tab==="contact") renderContact();
+  });
+}
+function initFilters(){
+  const defs=[["all","toutes"],["dob","DOB manquante"],["phone","tél invalide"],["dup","doublon"],["multi","plusieurs"],["approved","approuvée"],["rejected","rejetée"],["hold","attente"],["ready","prête"]];
+  const c=$("#filters"); c.replaceChildren();
+  for(const [k,label] of defs){ const b=el("button",{},label); b.setAttribute("aria-pressed",String(k==="all")); b.addEventListener("click",()=>{ state.filter=k; for(const x of c.children) x.setAttribute("aria-pressed",String(x===b)); renderList(); }); c.append(b); }
+  $("#search").addEventListener("input",(e)=>{ state.search=e.target.value; renderList(); });
+}
+
+// --- boot ---
+async function load(){
+  const { data } = await api("/api/data");
+  state.columns=data.columns||[]; state.rows=data.rows||[]; state.version=data.version||""; state.dashboard=data.dashboard||{};
+  renderStats(); renderList(); renderDuplicates(); renderContact();
+  setSave("état enregistré");
+}
+window.addEventListener("beforeunload",(e)=>{ /* pas de données non sauvegardées côté navigateur : tout est persisté à chaque action */ });
+document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeDrawer(); });
+$("#drawer").addEventListener("click",(e)=>{ if(e.target.id==="drawer") closeDrawer(); });
+initTabs(); initFilters(); initValidation(); initResponses(); load();
+</script>
+</body>
+</html>

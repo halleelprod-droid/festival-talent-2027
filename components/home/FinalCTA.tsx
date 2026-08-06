@@ -103,9 +103,9 @@ export default function FinalCTA() {
             text-zinc-400
           "
         >
-          Rejoignez FT2027 entre Paris et Rome pour suivre une tournee
-          europeenne dediee aux talents selectionnes en musique, mode,
-          art, entrepreneuriat, technologie, culture urbaine et sports mecaniques.
+          Rejoignez Festival Talent pour suivre la saison nationale 2026-2027
+          dediee aux talents reveles en danse, peinture, lutte, creation
+          digitale, musique, karting et Jet-Ski a travers le Senegal.
         </motion.p>
 
         {/* BUTTONS */}

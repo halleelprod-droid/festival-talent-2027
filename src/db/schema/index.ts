@@ -207,3 +207,40 @@ export const rateLimitEvents = pgTable("rate_limit_events", {
   keyHash: varchar("key_hash", { length: 128 }).notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
 }, (table) => [index("rate_limit_scope_key_time_idx").on(table.scope, table.keyHash, table.createdAt)]);
+
+export const internationalInterestStatus = pgEnum("international_interest_status", [
+  "new", "reviewing", "contacted", "qualified", "declined", "archived",
+]);
+
+export const internationalInterestSubmissions = pgTable("international_interest_submissions", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  fullName: varchar("full_name", { length: 100 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 80 }),
+  organization: varchar("organization", { length: 160 }),
+  roleTitle: varchar("role_title", { length: 160 }),
+  country: varchar("country", { length: 120 }),
+  city: varchar("city", { length: 120 }),
+  category: varchar("category", { length: 80 }).notNull(),
+  destination: varchar("destination", { length: 20 }).notNull(),
+  subject: varchar("subject", { length: 150 }).notNull(),
+  message: text("message").notNull(),
+  contributionTypes: text("contribution_types").array().notNull().default(sql`ARRAY[]::text[]`),
+  preferredPeriod: varchar("preferred_period", { length: 160 }),
+  websiteUrl: varchar("website_url", { length: 1000 }),
+  linkedinUrl: varchar("linkedin_url", { length: 1000 }),
+  instagramUrl: varchar("instagram_url", { length: 1000 }),
+  portfolioUrl: varchar("portfolio_url", { length: 1000 }),
+  preferredContactMethod: varchar("preferred_contact_method", { length: 40 }),
+  consentGiven: boolean("consent_given").notNull(),
+  nonContractualAcknowledged: boolean("non_contractual_acknowledged").notNull(),
+  status: internationalInterestStatus("status").default("new").notNull(),
+  sourcePage: varchar("source_page", { length: 300 }),
+  locale: varchar("locale", { length: 10 }).default("fr").notNull(),
+  ipHash: varchar("ip_hash", { length: 128 }),
+  userAgent: text("user_agent"),
+  ...timestamps,
+}, (table) => [
+  index("international_interest_destination_status_idx").on(table.destination, table.status),
+  index("international_interest_created_at_idx").on(table.createdAt),
+]);

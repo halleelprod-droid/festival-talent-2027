@@ -5,7 +5,7 @@ export const siteUrl = "https://festivaltalentofficial.com";
 export const siteName = "Festival Talent 2027";
 
 export const defaultDescription =
-  "Festival Talent 2027 prepare une tournee europeenne entre Paris et Rome, de janvier a avril 2027, precedee par des pre-selections officielles en danse, musique, mode, art, entrepreneuriat, technologie, culture urbaine et sports mecaniques. L'Union Europeenne est le premier partenaire officiel majeur.";
+  "Festival Talent 2027 est une plateforme internationale dédiée à la musique, la danse, la mode, la technologie, le cinéma, l'entrepreneuriat et aux cultures créatives, avec des expériences entre le Sénégal, Paris et Rome.";
 
 const defaultImage = "/images/festival-talent-logo.webp";
 

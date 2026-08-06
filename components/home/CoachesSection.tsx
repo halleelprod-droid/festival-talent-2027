@@ -77,7 +77,7 @@ export default function CoachesSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                     <div className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-yellow-400/25 bg-black/70 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-yellow-300 backdrop-blur">
                       <Mic2 size={13} />
-                      Coach officiel
+                      {coach.status ?? "Coach officiel"}
                     </div>
                   </div>
 
@@ -101,6 +101,16 @@ export default function CoachesSection() {
                         </span>
                       ))}
                     </div>
+                    {coach.tiktok && (
+                      <a
+                        href={coach.tiktok}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex w-fit items-center rounded-full border border-yellow-300/30 px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-yellow-200 transition hover:bg-yellow-300/10"
+                      >
+                        TikTok
+                      </a>
+                    )}
                   </div>
                 </article>
               </PremiumCard>

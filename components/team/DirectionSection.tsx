@@ -46,7 +46,7 @@ export default function DirectionSection({
           {directionMembers.map((member, index) => (
             <motion.article
               key={member.name}
-              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ delay: index * 0.08, duration: 0.65 }}
@@ -126,7 +126,7 @@ export default function DirectionSection({
             {governanceSteps.map((step, index) => (
               <li key={step} className="contents">
                 <motion.div
-                  initial={reduceMotion ? false : { opacity: 0, scale: 0.94 }}
+                  initial={false}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.07, duration: 0.45 }}

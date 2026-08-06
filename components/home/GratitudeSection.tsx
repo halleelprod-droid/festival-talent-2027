@@ -105,7 +105,7 @@ export default function GratitudeSection() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <header className="mx-auto max-w-4xl text-center">
           <motion.p
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
             transition={{ duration: 0.9 }}
@@ -114,7 +114,7 @@ export default function GratitudeSection() {
             Reconnaissance éternelle
           </motion.p>
           <motion.p
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
             transition={{ delay: 0.08, duration: 0.9 }}
@@ -123,7 +123,7 @@ export default function GratitudeSection() {
             Une seule lumière, invoquée à travers les langues et les traditions.
           </motion.p>
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ delay: 0.1, duration: 1 }}
@@ -139,7 +139,7 @@ export default function GratitudeSection() {
               {sacredInitials.map((initial, index) => (
                 <motion.figure
                   key={initial.src}
-                  initial={reduceMotion ? false : { opacity: 0, y: 28, scale: 0.96 }}
+                  initial={false}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.45 }}
                   transition={{ delay: 0.15 + index * 0.14, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -184,7 +184,7 @@ export default function GratitudeSection() {
           </motion.div>
           <motion.h2
             id="gratitude-title"
-            initial={reduceMotion ? false : { opacity: 0, filter: "blur(14px)", y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ delay: 0.15, duration: 1.25, ease: [0.22, 1, 0.36, 1] }}
@@ -228,7 +228,7 @@ export default function GratitudeSection() {
           {paragraphs.map((paragraph, index) => (
             <motion.p
               key={index}
-              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ delay: 0.05, duration: 0.9 }}
@@ -239,7 +239,7 @@ export default function GratitudeSection() {
           ))}
 
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, scale: 0.97 }}
+            initial={false}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 1.1 }}

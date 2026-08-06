@@ -167,16 +167,14 @@ export default function PreselectionsPage() {
             </div>
 
             <h1 className="mt-10 text-5xl font-black uppercase leading-none tracking-tight sm:text-7xl lg:text-8xl">
-              Rejoins
+              Votre talent peut commencer ici
               <span className="block bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
-                l’aventure
+                et voyager plus loin.
               </span>
             </h1>
 
             <p className="mx-auto mt-8 max-w-4xl text-base leading-8 text-white/65 sm:text-lg">
-              Les pré-sélections Festival Talent 2027 sont ouvertes pour les
-              jeunes talents en danse, musique, mode, art, entrepreneuriat,
-              technologie, culture urbaine et sports mécaniques.
+              Les pré-sélections permettent à Festival Talent d’identifier les profils qui participeront aux différentes expériences de l’édition 2027. Selon les disciplines et les programmes, les talents retenus pourront accéder à des scènes, des ateliers, des rencontres professionnelles et des opportunités de visibilité nationale ou internationale.
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
@@ -529,6 +527,9 @@ export default function PreselectionsPage() {
               Remplis le formulaire avec tes informations. L’équipe Festival
               Talent pourra ensuite te contacter pour la suite des
               pré-sélections.
+            </p>
+            <p className="mt-4 text-sm leading-7 text-yellow-200/80">
+              Les présélections actuellement ouvertes concernent la danse. D’autres appels à talents seront progressivement annoncés pour les autres disciplines.
             </p>
 
             <div className="mt-8 space-y-4">

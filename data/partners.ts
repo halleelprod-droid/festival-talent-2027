@@ -11,13 +11,49 @@ export const partnersLogos = [
   { name: "H & Hair", image: "/images/partners/h-hair.jpeg" },
   { name: "Universal Selfcare", image: "/images/partners/universal.jpeg" },
   { name: "Keebaro Entertainment", image: "/images/partners/keebaro-entertainment.png" },
+  { name: "XTREM JET SÉNÉGAL WATERSPORTS", image: "/images/partners/xtrem-jet-senegal-watersports.jpeg" },
+  { name: "Collectif des Danseurs Urbains de Thiès", image: "/images/partners/cdut-thies.jpeg" },
+  { name: "Maison des Cultures Urbaines de Dakar", image: "/images/partners/mcu-dakar.jpeg" },
+  { name: "Air France", image: "/images/partners/air-france.png" },
 ];
 
-export const officialPartners = [
+// Source de vérité UNIQUE des partenaires. `group` pilote le regroupement de la
+// page /partners ; `featured` met en avant un partenaire majeur sur l'accueil ;
+// `whiteLogo` force une carte blanche pour un logo à fond blanc. Aucune autre
+// surface ne doit redéclarer un tableau local de partenaires.
+export type PartnerGroup =
+  | "institutionnel" | "digital" | "media-comm" | "strategique" | "artistique"
+  | "media-influence" | "lutte" | "nautique" | "lifestyle" | "transport";
+
+export type OfficialPartner = {
+  name: string;
+  label: string;
+  category: string;
+  group: PartnerGroup;
+  description: string;
+  image?: string;
+  sector?: string;
+  badge?: string;
+  slug?: string;
+  responsibility?: string;
+  shortName?: string;
+  featured?: boolean;
+  whiteLogo?: boolean;
+  // Texte alternatif dédié au logo (sinon `Logo {name}` par défaut). Indispensable
+  // pour décrire précisément chaque logo à fond blanc.
+  logoAlt?: string;
+  website?: string | null;
+  href?: string;
+  contact?: { email: string; phone: string };
+};
+
+export const officialPartners: OfficialPartner[] = [
   {
     name: "Union Europeenne",
     label: "Partenaire Officiel Majeur",
     category: "Institutionnel",
+    group: "institutionnel",
+    featured: true,
     description:
       "Partenaire majeur du rayonnement international et de l'impact jeunesse de Festival Talent 2027.",
   },
@@ -25,6 +61,7 @@ export const officialPartners = [
     name: "Sen Influenceurs",
     label: "Partenaire Media & Influence Officiel",
     category: "Media",
+    group: "media-influence",
     description:
       "Partenaire media officiel pour la visibilite digitale, la couverture des annonces et la mise en avant des talents.",
   },
@@ -32,6 +69,7 @@ export const officialPartners = [
     name: "PIN EVENTS",
     label: "Partenaire Evenementiel, Production & Relations Institutionnelles",
     category: "Production",
+    group: "strategique",
     image: "/images/partners/pin-events.png",
     description:
       "Partenaire strategique pour la production evenementielle, les activations terrain, les partenariats et les relations institutionnelles.",
@@ -40,6 +78,7 @@ export const officialPartners = [
     name: "SIDRA",
     label: "Partenaire Digital Officiel",
     category: "Digital",
+    group: "digital",
     sector: "Direction Digitale",
     badge: "Direction Digitale",
     description:
@@ -49,6 +88,7 @@ export const officialPartners = [
     name: "HALLEEL",
     label: "Partenaire Media & Communication",
     category: "Media",
+    group: "media-comm",
     sector: "Direction Media & Communication",
     badge: "Direction Media & Communication",
     description:
@@ -59,6 +99,7 @@ export const officialPartners = [
     slug: "diassnor",
     label: "Partenaire Danse",
     category: "Management artistique & Evenementiel",
+    group: "artistique",
     sector: "Management artistique & Evenementiel",
     responsibility:
       "Responsable du Pole Danse : battles, preselections, organisation artistique et developpement des talents choregraphiques.",
@@ -76,6 +117,7 @@ export const officialPartners = [
     name: "Centre Culturel Blaise Senghor",
     label: "Partenaire Danse",
     category: "Partenaire Institutionnel",
+    group: "institutionnel",
     sector: "Partenaire Institutionnel",
     responsibility:
       "Partenaire institutionnel et accompagnement du developpement de la danse.",
@@ -88,6 +130,7 @@ export const officialPartners = [
     name: "Mano Perfetto",
     label: "Partenaire Construction & Developpement",
     category: "Developpement",
+    group: "lifestyle",
     image: "/images/partners/mano.jpeg",
     description:
       "Partenaire associe au developpement, a la structuration et aux besoins operationnels du projet.",
@@ -96,6 +139,7 @@ export const officialPartners = [
     name: "H & Hair",
     label: "Partenaire Beaute & Lifestyle",
     category: "Lifestyle",
+    group: "lifestyle",
     image: "/images/partners/h-hair.jpeg",
     description:
       "Partenaire lifestyle autour de l'image, de la beaute, des talents et des experiences public.",
@@ -104,6 +148,7 @@ export const officialPartners = [
     name: "Universal Selfcare",
     label: "Partenaire Bien-etre & Sante",
     category: "Bien-etre",
+    group: "lifestyle",
     image: "/images/partners/universal.jpeg",
     description:
       "Partenaire dedie a l'accompagnement, au soin et au bien-etre dans l'ecosysteme Festival Talent.",
@@ -112,6 +157,7 @@ export const officialPartners = [
     name: "Val2Events",
     label: "Partenaire associe",
     category: "Evenementiel",
+    group: "strategique",
     image: "/images/partners/val2events.jpeg",
     description:
       "Partenaire associe aux experiences evenementielles et a la dynamique terrain du festival.",
@@ -120,11 +166,70 @@ export const officialPartners = [
     name: "Keebaro Entertainment",
     label: "Partenaire Officiel Lutte",
     category: "Lutte",
+    group: "lutte",
     sector: "Lutte Senegalaise",
     badge: "Partenaire Officiel Lutte",
     image: "/images/partners/keebaro-entertainment.png",
     description:
       "Keebaro Entertainment accompagne Festival Talent 2027 en tant que partenaire officiel du secteur Lutte, contribuant a l'organisation, la valorisation et l'encadrement des talents de la lutte senegalaise.",
+  },
+  {
+    name: "XTREM JET SÉNÉGAL WATERSPORTS",
+    shortName: "XTREM JET SÉNÉGAL",
+    label: "Partenaire technique - Sports nautiques",
+    category: "Sports nautiques",
+    group: "nautique",
+    sector: "Activites nautiques",
+    badge: "Partenaire technique",
+    image: "/images/partners/xtrem-jet-senegal-watersports.jpeg",
+    whiteLogo: true,
+    logoAlt: "Logo de XTREM JET SÉNÉGAL WATERSPORTS, partenaire technique des activités nautiques du Festival Talent",
+    description:
+      "Partenaire technique du Festival Talent pour la finale de Jet-Ski, la croisiere et les experiences nautiques organisees a Saly.",
+    website: null,
+  },
+  {
+    name: "Collectif des Danseurs Urbains de Thiès",
+    shortName: "CDUT",
+    label: "Partenaire danse — Thiès",
+    category: "Danse et cultures urbaines",
+    group: "artistique",
+    sector: "Danse et cultures urbaines",
+    badge: "Partenaire danse",
+    image: "/images/partners/cdut-thies.jpeg",
+    whiteLogo: true,
+    logoAlt: "Logo du Collectif des Danseurs Urbains de Thiès, partenaire danse du Festival Talent",
+    description:
+      "Le Collectif des Danseurs Urbains de Thiès accompagne le Festival Talent dans la mobilisation et la valorisation des danseurs urbains.",
+    website: null,
+  },
+  {
+    name: "Maison des Cultures Urbaines de Dakar",
+    shortName: "MCU Dakar",
+    label: "Partenaire culturel — Dakar",
+    category: "Cultures urbaines",
+    group: "institutionnel",
+    sector: "Cultures urbaines",
+    badge: "Partenaire culturel",
+    image: "/images/partners/mcu-dakar.jpeg",
+    whiteLogo: true,
+    logoAlt: "Logo de la Maison des Cultures Urbaines de Dakar, partenaire culturel du Festival Talent",
+    description:
+      "La Maison des Cultures Urbaines de Dakar accompagne le développement et la valorisation des cultures urbaines dans le cadre du Festival Talent.",
+    website: null,
+  },
+  {
+    name: "Air France",
+    label: "Partenaire Aérien Officiel",
+    category: "Transport aérien",
+    group: "transport",
+    sector: "Transport aérien",
+    badge: "Partenaire Aérien Officiel",
+    image: "/images/partners/air-france.png",
+    whiteLogo: true,
+    logoAlt: "Logo Air France, partenaire aérien officiel du Festival Talent",
+    description:
+      "Air France est la Compagnie Aérienne Officielle du Festival Talent 2027, aux côtés du projet pour ses déplacements et son rayonnement international entre le Sénégal, Paris et Rome.",
   },
 ];
 

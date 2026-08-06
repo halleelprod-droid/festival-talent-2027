@@ -23,8 +23,8 @@ const whatsappLink =
 const highlights = [
   {
     icon: Globe2,
-    label: "Destination",
-    value: "Paris & Rome",
+    label: "Saison nationale",
+    value: "Sénégal",
   },
   {
     icon: Sparkles,
@@ -90,8 +90,8 @@ export default function HeroSection() {
 
           <p className="mt-8 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
             Festival Talent 2027 ouvre ses pré-sélections et lance le Battle
-            All Style par zones. Une aventure culturelle et internationale entre
-            le Sénégal, Paris, Rome et l’Italie.
+            All Style par zones. Une aventure culturelle nationale à travers le
+            Sénégal, avec un voyage en Italie à la clé.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
