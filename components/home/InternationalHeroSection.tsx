@@ -4,7 +4,18 @@ import { ArrowRight, Globe2, MapPin } from "lucide-react";
 export default function InternationalHeroSection() {
   return (
     <section className="relative isolate overflow-hidden bg-[#050505] px-6 pb-24 pt-32 text-white sm:px-10 sm:pt-40 lg:px-20 lg:pb-32">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(234,179,8,.2),transparent_32%),radial-gradient(circle_at_80%_70%,rgba(99,102,241,.18),transparent_35%),linear-gradient(120deg,#050505,#120d05,#050505)]" />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/previous/hero-scale-poster.webp"
+        className="absolute inset-0 -z-30 h-full w-full object-cover opacity-45"
+      >
+        <source src="/videos/hero-festival-scale.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#050505]/60 via-[#050505]/80 to-[#050505]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(234,179,8,.2),transparent_32%),radial-gradient(circle_at_80%_70%,rgba(99,102,241,.18),transparent_35%)]" />
       <div className="absolute left-[12%] top-1/2 h-px w-3/4 -rotate-12 bg-gradient-to-r from-transparent via-yellow-300/70 to-transparent" />
       <div className="absolute left-[25%] top-[46%] h-3 w-3 rounded-full bg-yellow-200 shadow-[0_0_28px_8px_rgba(253,224,71,.7)]" />
       <div className="absolute left-1/2 top-[36%] h-3 w-3 rounded-full bg-yellow-200 shadow-[0_0_28px_8px_rgba(253,224,71,.7)]" />
