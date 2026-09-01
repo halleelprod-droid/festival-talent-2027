@@ -24,7 +24,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "Activités | Festival Talent 2027",
   description:
-    "Découvrez les activités de Festival Talent 2027 : Battle All Style, peinture/design, jet ski, karting, fashion week, musique, influenceurs, lutte, théâtre et événements internationaux.",
+    "Découvrez les activités de Festival Talent 2027 : Battle All Style, peinture/design, jet ski, karting, fashion week, musique, influenceurs, lutte traditionnelle, théâtre et méga concert à Dakar.",
   path: "/activites",
 });
 
@@ -51,17 +51,17 @@ const activities = [
   },
   {
     title: "Jet Ski",
-    date: "Novembre 2026",
+    date: "Février 2027",
     location: "Plage de Saly, Sénégal",
     info:
-      "Démonstrations, initiations, animations nautiques et village partenaires.",
+      "Démonstrations, initiations, animations nautiques et village partenaires, en partenariat avec XTREM JET SÉNÉGAL WATERSPORTS.",
     meta: ["Durée : 1 semaine stratégique", "Animations", "Nautisme"],
     icon: Waves,
     accent: "from-cyan-400/15 to-yellow-400/10",
   },
   {
     title: "Karting",
-    date: "Mars 2027",
+    date: "Janvier 2027",
     location: "Saly, Sénégal",
     info:
       "Courses, exposition de karts, innovations, animations, stands et cadeaux.",
@@ -101,11 +101,11 @@ const activities = [
   },
   {
     title: "Lutte sénégalaise",
-    date: "Mars 2027",
-    location: "Sénégal",
+    date: "22 novembre 2026",
+    location: "Plage de Malibu, Sénégal",
     info:
-      "Tournois régionaux, demi-finales, finales et valorisation des champions.",
-    meta: ["Tournois", "Finales", "Champions"],
+      "Tournois régionaux, demi-finales, finale et valorisation des champions, sous réserve de l’encadrement officiel de la Fédération Sénégalaise de Lutte.",
+    meta: ["Tournois", "Finale", "Champions"],
     icon: Dumbbell,
     accent: "from-red-500/20 to-yellow-400/10",
   },
@@ -120,22 +120,22 @@ const activities = [
     accent: "from-yellow-400/20 to-white/5",
   },
   {
-    title: "Italie",
-    date: "Mars 2027",
+    title: "Voyage en Italie",
+    date: "Date à confirmer",
     location: "Italie",
     info:
-      "Voyage, installation de la délégation et participation au Festival Talent en Italie.",
-    meta: ["Délégation", "Networking", "International"],
+      "Voyage offert au grand gagnant du Battle All Style, dans le cadre du rayonnement international du Festival Talent entre le Sénégal, Paris et Rome.",
+    meta: ["Prix spécial", "International", "Rayonnement"],
     icon: Plane,
     accent: "from-green-400/15 to-yellow-400/10",
   },
   {
-    title: "Concert Final",
-    date: "15 mai 2027",
-    location: "Casino de Paris",
+    title: "Méga concert",
+    date: "26 décembre 2026",
+    location: "Esplanade du Grand Théâtre, Dakar",
     info:
-      "Concert final, célébration des talents et clôture officielle.",
-    meta: ["Casino de Paris", "Clôture", "Célébration"],
+      "Concert final avec Samba Peuzzi, célébration des talents et clôture de la saison 2026–2027.",
+    meta: ["Esplanade du Grand Théâtre", "Clôture", "Célébration"],
     icon: Crown,
     accent: "from-yellow-400/25 to-red-500/10",
   },

@@ -35,11 +35,11 @@ const structuredData = [
     name: "Festival Talent 2027",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
-    startDate: "2027-05-15",
+    startDate: "2026-12-26",
     location: {
       "@type": "Place",
-      name: "Casino de Paris",
-      address: "Paris, France",
+      name: "Esplanade du Grand Théâtre",
+      address: "Dakar, Sénégal",
     },
     organizer: {
       "@type": "Organization",

@@ -14,6 +14,7 @@ import {
   Star,
   Trophy,
   Users,
+  Waves,
   Wallet,
 } from "lucide-react";
 
@@ -23,7 +24,7 @@ import FinalConcertGuests from "@/components/guests/FinalConcertGuests";
 export const metadata: Metadata = buildPageMetadata({
   title: "Programme | Festival Talent 2027",
   description:
-    "Découvrez le programme officiel Festival Talent 2027 : pré-sélections, Battle All Style, peinture/design, influenceurs, fashion week, musique, sports, Italie et concert final au Casino de Paris.",
+    "Découvrez le programme officiel Festival Talent 2027 : pré-sélections, Battle All Style, peinture/design, influenceurs, fashion week, musique, lutte, karting, Jet-Ski et méga concert à Dakar.",
   path: "/programme",
 });
 
@@ -100,39 +101,39 @@ const timeline = [
     icon: Flag,
   },
   {
-    date: "01 au 28 février 2027",
-    title: "Tournée nationale avec Samba Peuzzi",
+    date: "22 novembre 2026",
+    title: "Finale de lutte traditionnelle",
     description:
-      "Concerts et animations dans les régions, promotion des talents sélectionnés et rencontres avec les communautés.",
-    icon: Globe2,
-  },
-  {
-    date: "01 au 15 mars 2027",
-    title: "Courses motos, voitures, avions, hélicoptères",
-    description:
-      "Compétitions régionales, sélection des meilleurs pilotes et épreuves finales.",
-    icon: Trophy,
-  },
-  {
-    date: "16 au 20 mars 2027",
-    title: "Luttes sénégalaises",
-    description:
-      "Tournois régionaux, demi-finales, finales et valorisation des champions.",
+      "Grande finale de lutte traditionnelle à la Plage de Malibu, sous réserve de l’encadrement officiel de la Fédération Sénégalaise de Lutte.",
     icon: Users,
   },
   {
-    date: "21 au 31 mars 2027",
-    title: "Festival Talent Italie",
+    date: "26 décembre 2026",
+    title: "Méga concert",
     description:
-      "Voyage et installation de la délégation, participation au Festival Talent en Italie, compétitions internationales, échanges culturels et networking.",
-    icon: Plane,
+      "Concert final à l’Esplanade du Grand Théâtre avec Samba Peuzzi, célébration des talents du Sénégal et clôture de la saison 2026–2027.",
+    icon: Sparkles,
   },
   {
-    date: "15 mai 2027",
-    title: "Concert final au Casino de Paris",
+    date: "Janvier 2027",
+    title: "Compétition de karting",
     description:
-      "Prestation de Samba Peuzzi et autres artistes, célébration des talents du Sénégal et clôture officielle.",
-    icon: Sparkles,
+      "Courses, exposition de karts et animations à Saly.",
+    icon: Trophy,
+  },
+  {
+    date: "Février 2027",
+    title: "Finale de Jet-Ski et croisière",
+    description:
+      "Démonstrations, croisière et animations nautiques à Saly, en partenariat avec XTREM JET SÉNÉGAL WATERSPORTS.",
+    icon: Waves,
+  },
+  {
+    date: "Date à confirmer",
+    title: "Battles de danse à Saly",
+    description:
+      "Étape de danse organisée à Saly, en partenariat avec le Collectif des Danseurs Urbains de Thiès et la Maison des Cultures Urbaines de Dakar.",
+    icon: MapPin,
   },
 ];
 
